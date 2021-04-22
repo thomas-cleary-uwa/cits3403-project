@@ -27,7 +27,7 @@
       <a class="navbar-brand" href="#">DFS Website Name</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="#">Home</a></li>
+      <li><a href="{{ url_for('index') }}">Home</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Learn<span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#">Content Page 1</a></li>
@@ -47,11 +47,24 @@
         </ul>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+      <li><a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-log-in"></span>Sign In</a></li>
     </ul>
   </div>
 </nav>
+
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+
+<ul>
+  {% for message in messages %}
+  <li>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
 
 {% block content %}{% endblock %}
 
