@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if current_user.is_authenticated %}
+    <h1>Hello, {{ current_user.username }}!</h1>
+    {% else %}
+    <h1>No User Currently Logged In</h1>
+    {% endif %}
+
+    {% for job in jobs %}
+    <div>
+      <p>{{ job.person.name }} is working on: 
+        <b>{{ job.task }}</b>
+      </p>
+    </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  {% if title %}
+  <title>{{ title }}</title>
+  {% else %}
+  <title>CITS3403 Project</title>
+  {% endif %}
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">DFS Website Name</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="{{ url_for('index') }}">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Learn<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Content Page 1</a></li>
+          <li><a href="#">Content Page 2</a></li>
+          <li><a href="#">Content Page 3</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Assessments<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ url_for('quiz') }}">Quiz</a></li>
+          <li><a href="#">DFS Test</a></li>
+        </ul>
+      {% if not current_user.is_anonymous %}
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">My Profile<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Results</a></li>
+          <li><a href="#">Statistics</a></li>
+        </ul>
+      {% endif %}
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      {% if current_user.is_anonymous %}
+      <li><a href="{{ url_for('register') }}"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+      {% endif %}
+      <li>
+        {% if current_user.is_anonymous %}
+        <a href="{{ url_for('login') }}">
+          <span class="glyphicon glyphicon-log-in"></span>
+          Sign In
+        {% else %}
+        <a href="{{ url_for('logout') }}">
+          <span class="glyphicon glyphicon-log-out"></span>
+          Sign Out
+        {% endif %}
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+
+<ul>
+  {% for message in messages %}
+  <li>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+
+{% block content %}{% endblock %}
+
+<footer 
+class="footer fixed-bottom"
+style="    
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #f5f5f5;
+  text-align: center;">
+  <div class="container">
+    <span class="text-muted">Authors: Calvin, Jason, Michael, Thomas</span>
+  </div>
+</footer>
+
+</body>
+
+</html>
