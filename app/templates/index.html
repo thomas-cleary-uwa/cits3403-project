@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hello, {{user.username }}!</h1>
+
+    {% for job in jobs %}
+    <div>
+      <p>{{ job.person.name }} is working on: 
+        <b>{{ job.task }}</b>
+      </p>
+    </div>
+    {% endfor %}
+{% endblock %}
