@@ -47,7 +47,9 @@
         </ul>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+      {% if current_user.is_anonymous %}
+      <li><a href="{{ url_for('register') }}"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+      {% endif %}
       <li>
         {% if current_user.is_anonymous %}
         <a href="{{ url_for('login') }}">
