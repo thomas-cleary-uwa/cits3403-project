@@ -130,3 +130,6 @@ dmypy.json
 
 # MacOS Directory files
 .DS_Store
+
+# database files
+.db
