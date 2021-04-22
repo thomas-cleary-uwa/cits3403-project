@@ -37,7 +37,7 @@
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Assessments<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Quiz</a></li>
+          <li><a href="{{ url_for('quiz') }}">Quiz</a></li>
           <li><a href="#">DFS Test</a></li>
         </ul>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">My Profile<span class="caret"></span></a>
@@ -48,7 +48,18 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
-      <li><a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-log-in"></span>Sign In</a></li>
+      <li>
+        {% if current_user.is_anonymous %}
+        <a href="{{ url_for('login') }}">
+          <span class="glyphicon glyphicon-log-in"></span>
+          Sign In
+        {% else %}
+        <a href="{{ url_for('logout') }}">
+          <span class="glyphicon glyphicon-log-out"></span>
+          Sign Out
+        {% endif %}
+        </a>
+      </li>
     </ul>
   </div>
 </nav>
