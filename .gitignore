@@ -131,6 +131,6 @@ dmypy.json
 # MacOS Directory files
 .DS_Store
 
-# database files
+# database files.db
 .db
 ./migrations/
