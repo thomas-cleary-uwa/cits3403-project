@@ -133,4 +133,5 @@ dmypy.json
 
 # database files.db
 app.db
+/migrations
 migrations/*
