@@ -133,3 +133,4 @@ dmypy.json
 
 # database files
 .db
+/migrations
