@@ -133,6 +133,7 @@ dmypy.json
 
 # database files.db
 app.db
+app.db-journal
 /migrations
 migrations/*
 
