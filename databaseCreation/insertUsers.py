@@ -31,6 +31,7 @@ def addDummyUsers():
 
 def main():
     addDummyUsers()
+    print()
 
 
 if __name__ == "__main__":
