@@ -1,3 +1,4 @@
+# adds app the PATH 
 import os, sys
 currentDir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentDir)
