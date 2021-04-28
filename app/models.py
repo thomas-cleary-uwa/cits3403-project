@@ -26,3 +26,15 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+
+class Quiz(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    question = db.Column(db.String(128), index=True, unique=True)
+    response_a = db.Column(db.String(64), index=True, unique=True)   
+    response_b = db.Column(db.String(64), index=True, unique=True)
+    response_c = db.Column(db.String(64), index=True, unique=True)
+    answer = db.Column(db.String(12), index=True, unique=True) 
+
+    def __repr__(self):
+        return '<Quiz {}>'.format(self.question)
