@@ -41,16 +41,6 @@ class User(UserMixin, db.Model):
         )
 
 
-class AdminModelView(ModelView):
-
-    def is_accessible(self):
-        return current_user.is_authenticated and current_user.isAdmin
-
-    def inaccessible_callback(self, name, **kwargs):
-        # redirect to login page if user doesn't have access
-        return redirect(url_for('index'))
-
-
 class Quiz(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.String(128), index=True, unique=True)
@@ -63,3 +53,11 @@ class Quiz(db.Model):
         return '<Quiz {}>'.format(self.question)
 
 
+class AdminModelView(ModelView):
+
+    def is_accessible(self):
+        return current_user.is_authenticated and current_user.isAdmin
+
+    def inaccessible_callback(self, name, **kwargs):
+        # redirect to login page if user doesn't have access
+        return redirect(url_for('index'))
