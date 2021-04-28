@@ -4,7 +4,7 @@ parentdir = os.path.dirname(currentDir)
 sys.path.insert(0, parentdir)
 
 from app import db
-from app.models import User
+from app.models import User, Quiz
 
 
 def addDummyUsers():
@@ -27,6 +27,8 @@ def addDummyUsers():
     db.session.add(jason)
 
     db.session.commit()
+
+
 
 
 def main():
