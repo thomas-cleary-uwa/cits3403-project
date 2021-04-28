@@ -135,3 +135,6 @@ dmypy.json
 app.db
 /migrations
 migrations/*
+
+# vscode
+.vscode
