@@ -1,9 +1,10 @@
 from flask import Flask, url_for
+from flask_admin.base import AdminIndexView
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask_login import LoginManager
-from flask_admin import Admin
+from flask_login import LoginManager, current_user
+from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.menu import MenuLink
 
 
@@ -20,8 +21,14 @@ login.login_view = 'login'
 
 from app import routes, models, adminViews
 
+# make admin page only accessible to admin user
+class MyAdminIndexView(AdminIndexView):
 
-admin = Admin(app, name="INSERT NAME HERE", template_mode="bootstrap3")
+    def is_accessible(self):
+        return current_user.is_authenticated and current_user.is_admin
+
+
+admin = Admin(app, name="INSERT NAME HERE", index_view=MyAdminIndexView(), template_mode="bootstrap3")
 
 # adds these tables to admin page for editing
 admin.add_view(adminViews.AdminUserView(models.User, db.session))
