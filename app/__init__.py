@@ -28,7 +28,7 @@ class MyAdminIndexView(AdminIndexView):
         return current_user.is_authenticated and current_user.is_admin
 
 
-admin = Admin(app, name="INSERT NAME HERE", index_view=MyAdminIndexView(), template_mode="bootstrap3")
+admin = Admin(app, name="Admin Tools", index_view=MyAdminIndexView(), template_mode="bootstrap3")
 
 # adds these tables to admin page for editing
 admin.add_view(adminViews.AdminUserView(models.User, db.session))
