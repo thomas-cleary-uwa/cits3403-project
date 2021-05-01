@@ -1,8 +1,76 @@
 {% extends "base.html" %}
 
+
+
 {% block content %}
 
-<h1>This is the quiz page</h1>
-<p> It can only be accessed if you are logged in</p>
+<h1>DFS Quiz</h1>
+<div id="quizIntro">
+<button id="start">Start Quiz</button>
+<button id="resume">Resume Quiz</button>
+</div>
+
+
+<form method="post">
+
+  <div id="test" style="display:none;">
+    {{ form.hidden_tag() }}
+
+    <table>
+    <tr>
+      <td>Q1: {{ form.question1.label }}</td>
+    </tr>
+    {% for subfield in form.question1 %}
+    <tr>
+        <td>{{ subfield }} {{ subfield.label }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    
+    <br>
+    
+    <table>
+    <tr>
+      <td>Q2: {{ form.question2.label }}</td>
+    </tr>
+    {% for subfield in form.question2 %}
+    <tr>
+        <td>{{ subfield }} {{ subfield.label }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <br>
+    
+    
+    <table>
+    <tr>
+      <td>Q3: {{ form.question3.label }}</td>
+    </tr>
+    {% for subfield in form.question3 %}
+    <tr>
+        <td>{{ subfield }} {{ subfield.label }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    
+    <br>
+      <input class="btn" type="submit" value="Submit">
+      <input class="btn" type="reset" value="Reset">
+  </div>
+
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+      $('#start').click(function(){
+          $('#test').show();
+          $('#quizIntro').hide();
+      });
+    });
+
+</script>
+
+
 
 {% endblock %}

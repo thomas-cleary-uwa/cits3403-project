@@ -16,9 +16,18 @@
     </tr>
   </table>
   <hr>
-  {% for result in results %}
+
+  <div>
+    <p>You have attempted the quiz {{ numAttempts }} times.<p>
+    <p>Your average quiz result is {{ average }}%<p>
+  </div>
+    
+  {% for attempt in attempts %}
   <p>
-    Quiz attempt {{ result.attempt }} score : <b>{{ result.score }}</b>
+    Quiz attempt {{ attempt.attempt_id }} score : <b>{{ attempt.score }}</b>
+    {% if attempt.attempt_datetime %}
+      - {{ attempt.attempt_datetime }}
+    {% endif %}
   </p>
   {% endfor %}
 {% endblock %}

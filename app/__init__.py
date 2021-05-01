@@ -26,6 +26,7 @@ admin = Admin(app, name="INSERT NAME HERE", template_mode="bootstrap3")
 # adds these tables to admin page for editing
 admin.add_view(models.AdminModelView(models.User, db.session))
 admin.add_view(models.AdminModelView(models.Quiz, db.session))
+admin.add_view(models.AdminModelView(models.Attempt, db.session)) #  REMOVE CREATE TAB
 
 # adds link to go back to website
 admin.add_link(MenuLink(name="Back to Site", url="/index", category="Links"))
