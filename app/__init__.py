@@ -9,6 +9,7 @@ from flask_admin.menu import MenuLink
 
 
 app = Flask(__name__)
+# app.static_folder=
 app.config.from_object(Config)
 
 db = SQLAlchemy(app)
@@ -28,7 +29,7 @@ class MyAdminIndexView(AdminIndexView):
         return current_user.is_authenticated and current_user.is_admin
 
 
-admin = Admin(app, name="Admin Tools", index_view=MyAdminIndexView(), template_mode="bootstrap3")
+admin = Admin(app, name="Admin Tools", index_view=MyAdminIndexView())
 
 # adds these tables to admin page for editing
 admin.add_view(adminViews.AdminUserView(models.User, db.session))
