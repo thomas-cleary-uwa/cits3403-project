@@ -1,10 +1,8 @@
 from app import db, login
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin, current_user
+from flask_login import UserMixin
 from hashlib import md5
 from datetime import datetime
-from flask_admin.contrib.sqla import ModelView
-from flask import redirect, url_for
 
 
 @login.user_loader
@@ -18,8 +16,9 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    lastSeen = db.Column(db.DateTime, default=datetime.utcnow)
-    isAdmin = db.Column(db.Boolean, default=False)
+    registered_on = db.Column(db.DateTime, default=datetime.utcnow)
+    last_seen = db.Column(db.DateTime, default=datetime.utcnow)
+    is_admin = db.Column(db.Boolean, default=False)
 
 
     def __repr__(self):
@@ -41,7 +40,7 @@ class User(UserMixin, db.Model):
         )
 
 
-class Quiz(db.Model):
+class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.String(128), index=True, unique=True)
     response_a = db.Column(db.String(64), index=True)   
@@ -74,13 +73,3 @@ class Attempt(db.Model):
     # currently returns score only
     def __repr__(self):
         return '<Attempt: {}>'.format(self.score)
-
-
-class AdminModelView(ModelView):
-
-    def is_accessible(self):
-        return current_user.is_authenticated and current_user.isAdmin
-
-    def inaccessible_callback(self, name, **kwargs):
-        # redirect to login page if user doesn't have access
-        return redirect(url_for('index'))

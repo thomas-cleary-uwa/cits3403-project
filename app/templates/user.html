@@ -7,9 +7,9 @@
       <td><img src="{{ user.avatar(128) }}"</td>
       <td> 
         <h1>User: {{user.username}}</h1>
-        {% if user.lastSeen %}
+        {% if user.last_seen %}
         <p>
-          Last seen on: {{ user.lastSeen }}
+          Last seen on: {{ user.last_seen }}
         </p>
         {% endif %}
       </td>

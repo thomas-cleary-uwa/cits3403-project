@@ -17,7 +17,7 @@
 
 <script>
     function tryAgainClick() {
-        window.location.href="{{ url_for('quizQuestions') }}";
+        window.location.href="{{ url_for('quiz_questions') }}";
     }
     function statisticsClick() {
         window.location.href="{{ url_for('user', username=current_user.username) }}"

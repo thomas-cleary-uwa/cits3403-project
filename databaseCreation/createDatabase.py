@@ -5,14 +5,14 @@ parentdir = os.path.dirname(currentDir)
 sys.path.insert(0, parentdir)
 
 from app import db
-from app.models import User, Quiz
+from app.models import User, Question
 import os
 
 
 def addAdmin():
     """ adds admin user to database """
 
-    admin = User(username="admin", email="admin@email.com", isAdmin=True)
+    admin = User(username="admin", email="admin@email.com", is_admin=True)
     admin.set_password("admin")
     db.session.add(admin)
     db.session.commit()
@@ -21,13 +21,13 @@ def addAdmin():
 def addQuiz():
     """ adds quiz questions to the database for testing purposes """
 
-    q1 = Quiz(question='1?', response_a='N', response_b='Y', response_c='N', answer=2)
+    q1 = Question(question='1?', response_a='N', response_b='Y', response_c='N', answer=2)
     db.session.add(q1)
 
-    q2 = Quiz(question='2?', response_a='N', response_b='N', response_c='Y', answer=3)
+    q2 = Question(question='2?', response_a='N', response_b='N', response_c='Y', answer=3)
     db.session.add(q2)
 
-    q3 = Quiz(question='3?', response_a='Y', response_b='N', response_c='N', answer=1)
+    q3 = Question(question='3?', response_a='Y', response_b='N', response_c='N', answer=1)
     db.session.add(q3)
 
     db.session.commit()

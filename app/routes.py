@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, url_for, request
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, QuizForm
 from flask_login import current_user, login_user, login_required, logout_user
-from app.models import User, Quiz, Attempt
+from app.models import User, Question, Attempt
 from werkzeug.urls import url_parse
 from datetime import datetime
 
@@ -103,7 +103,7 @@ def quiz():
 
 @app.route('/quizQuestions', methods=['GET','POST'])
 @login_required
-def quizQuestions():
+def quiz_questions():
     form = QuizForm()
 
     # TO RANDOMISE THIS 
@@ -117,7 +117,7 @@ def quizQuestions():
     fields = fields[:-2]
 
     for i in range(1, len(fields)+1):
-        question = Quiz.query.get(i)
+        question = Question.query.get(i)
         questions.append(question)
 
     index = 0
@@ -134,14 +134,14 @@ def quizQuestions():
         index += 1
 
 
-    outcome = 9001 #dummy value for initialisation
+    outcome = None #dummy value for initialisation
     if form.validate_on_submit():
        
-        if Quiz.query.get(1).answer == form.question1.data: value_a = 1
+        if Question.query.get(1).answer == form.question1.data: value_a = 1
         else: value_a = 0
-        if Quiz.query.get(2).answer == form.question2.data: value_b = 1
+        if Question.query.get(2).answer == form.question2.data: value_b = 1
         else: value_b = 0
-        if Quiz.query.get(3).answer == form.question3.data: value_c = 1
+        if Question.query.get(3).answer == form.question3.data: value_c = 1
         else: value_c = 0
         value_score = value_a + value_b + value_c
 
@@ -169,6 +169,6 @@ def quizQuestions():
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
-        current_user.lastSeen = datetime.utcnow()
+        current_user.last_seen = datetime.utcnow()
         db.session.commit()
 
