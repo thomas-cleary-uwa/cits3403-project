@@ -101,6 +101,10 @@ def user(username):
 def quiz():
     form = QuizForm()
 
+    # TO RANDOMISE THIS 
+    # GET NUMBER OF ROWS IN QUESTION TABLE
+    # SELECT RANDOM INT FROM 1->NUM_ROWS FOR NUMBER OF QUESTIONS ON QUIZ
+    # SELECT THESE ROWS FROM THE TABLE TO BE THE QUIZ QUESTIONS
     questions = []
 
     # every field except the submit field

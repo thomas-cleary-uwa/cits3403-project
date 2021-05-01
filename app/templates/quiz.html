@@ -25,6 +25,9 @@
         <td>{{ subfield }} {{ subfield.label }}</td>
     </tr>
     {% endfor %}
+    {% for error in form.question1.errors %}
+    <span style="color: red;">[{{ error }}]</span>
+    {% endfor %}
     </table>
     
     <br>
@@ -54,8 +57,7 @@
     </table>
     
     <br>
-      <input class="btn" type="submit" value="Submit">
-      <input class="btn" type="reset" value="Reset">
+    <p>{{ form.submit() }}</p>
   </div>
 
 </form>
