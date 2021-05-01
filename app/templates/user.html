@@ -1,11 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>User: {{user.username}}</h1>
+
+  <table>
+    <tr valign="top">
+      <td><img src="{{ user.avatar(128) }}"</td>
+      <td> 
+        <h1>User: {{user.username}}</h1>
+        {% if user.lastSeen %}
+        <p>
+          Last seen on: {{ user.lastSeen }}
+        </p>
+        {% endif %}
+      </td>
+    </tr>
+  </table>
   <hr>
   {% for result in results %}
   <p>
-    Quiz attempt {{ result.attempt}} score : <b>{{ result.score }}</b>
+    Quiz attempt {{ result.attempt }} score : <b>{{ result.score }}</b>
   </p>
   {% endfor %}
 {% endblock %}
