@@ -1,4 +1,21 @@
+# adds the app to the PATH variable
+import os, sys
+currentDir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentDir)
+sys.path.insert(0, parentdir)
+
+from app import db
+from app.models import User
 import os
+
+
+def addAdmin():
+    """ adds admin user to database """
+
+    admin = User(username="admin", email="admin@email.com", isAdmin=True)
+    admin.set_password("admin")
+    db.session.add(admin)
+    db.session.commit()
 
 
 def createDatabase():
@@ -29,7 +46,22 @@ def createDatabase():
     print("Database upgraded")
     print("-" * 80)
     print()
-    
+
+    print("-" * 80)
+    print("Inserting admin user into database")
+    print()
+    print(
+    """
+    admin = User(username="admin", email="admin@email.com", isAdmin=True)
+    admin.set_password("admin")
+    db.session.add(admin)
+    db.session.commit()" """
+    )
+    addAdmin() 
+    print()
+    print("admin inserted [Username='admin', Password='admin']")
+    print("-" * 80)
+    print()
 
 def main():
     """ only run this file when you don't have a migrations folder and app.db """
