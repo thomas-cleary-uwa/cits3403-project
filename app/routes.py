@@ -95,10 +95,15 @@ def user(username):
 
     return render_template('user.html', user=user, attempts=attempts, average=average, numAttempts=numAttempts)
 
-
-@app.route('/quiz', methods=['GET','POST'])
+@app.route('/quiz')
 @login_required
 def quiz():
+    return render_template('quizStartPage.html')
+
+
+@app.route('/quizQuestions', methods=['GET','POST'])
+@login_required
+def quizQuestions():
     form = QuizForm()
 
     # TO RANDOMISE THIS 
@@ -158,7 +163,7 @@ def quiz():
     else:
         print(form.errors)
 
-    return render_template('quiz.html',form=form, outcome=outcome)
+    return render_template('quizQuestions.html',form=form, outcome=outcome)
 
 
 @app.before_request
