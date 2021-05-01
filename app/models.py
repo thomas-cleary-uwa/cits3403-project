@@ -44,13 +44,36 @@ class User(UserMixin, db.Model):
 class Quiz(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.String(128), index=True, unique=True)
-    response_a = db.Column(db.String(64), index=True, unique=True)   
-    response_b = db.Column(db.String(64), index=True, unique=True)
-    response_c = db.Column(db.String(64), index=True, unique=True)
-    answer = db.Column(db.String(12), index=True, unique=True) 
+    response_a = db.Column(db.String(64), index=True)   
+    response_b = db.Column(db.String(64), index=True)
+    response_c = db.Column(db.String(64), index=True)
+    answer = db.Column(db.Integer, index=True)
 
     def __repr__(self):
         return '<Quiz {}>'.format(self.question)
+
+
+class Attempt(db.Model):
+    
+    attempt_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=True)
+    
+    response_a = db.Column(db.Integer, index=True)
+    mark_a = db.Column(db.Integer, index=True)
+    
+    response_b = db.Column(db.Integer, index=True)
+    mark_b = db.Column(db.Integer, index=True)
+    
+    response_c = db.Column(db.Integer, index=True)
+    mark_c = db.Column(db.Integer, index=True)
+
+    score = db.Column(db.Integer, index=True)
+
+    attempt_datetime = db.Column(db.DateTime, index=True)
+
+    # currently returns score only
+    def __repr__(self):
+        return '<Attempt: {}>'.format(self.score)
 
 
 class AdminModelView(ModelView):
