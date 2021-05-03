@@ -252,13 +252,9 @@ def get_saved_attempt():
 
 def get_questions(num_questions):
     """ returns a list of questions from the database of length, num_questions """
-    questions = []
-    for i in range(1, num_questions+1):
-        question = Question.query.get(i)
-        questions.append(question)
-
-    return questions
-
+    all_questions = Question.query.all()
+    random.shuffle(all_questions)
+    return all_questions[:NUM_QUESTIONS_IN_QUIZ]
 
 
 def get_question_choices(question):
