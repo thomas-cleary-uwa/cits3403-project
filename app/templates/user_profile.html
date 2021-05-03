@@ -19,14 +19,16 @@
 
   {% if numAttempts > 0 %}
   <div>
-    <p>You have attempted the quiz {{ numAttempts }} times.<p>
+    <p>You have attempted the quiz {{ num_attempts }} times.<p>
     <p>Your average quiz result is {{ average }}%<p>
   </div>
     
   {% for attempt in attempts %}
   <p>
-    Quiz attempt {{ attempt.attempt_id }} score : <b>{{ attempt.score }}</b>
-      - {{ attempt.attempt_datetime }}
+    <a href="{{ url_for('result', score=attempt.score) }}">
+      Quiz attempt {{ attempt.attempt_id }}
+    </a>
+    score : <b>{{ attempt.score }}</b> - {{ attempt.attempt_datetime }}
   </p>
   {% endfor %}
   {% else %}

@@ -131,7 +131,7 @@ def user(username):
         average = int(average * 100)
 
     return render_template(
-        'user.html', user=user, attempts=attempts,
+        'user_profile.html', user=user, attempts=attempts,
         average=average, numAttempts=num_attempts
     )
 
@@ -167,12 +167,7 @@ def quiz_questions():
             if current_user.has_saved_attempt:
                 delete_saved_attempts()
 
-            return render_template(
-                'result.html',
-                form=form, 
-                outcome=score, 
-                num_questions=NUM_QUESTIONS_IN_QUIZ
-            )
+            return redirect(url_for('result', score=score))
 
 
     # if the save button was pressed
@@ -194,6 +189,11 @@ def quiz_questions():
 
     return render_template('quizQuestions.html',form=form)
 
+
+@app.route('/result/<score>')
+@login_required
+def result(score):
+    return render_template('result.html', outcome=score, num_questions=NUM_QUESTIONS_IN_QUIZ)
 
 
 @app.before_request
@@ -260,7 +260,7 @@ def get_questions(num_questions):
 def get_question_choices(question):
     """ get a list of the choices for the field constructor """
     choices = [
-        (question.answer, question.answer),
+        (question.answer,  question.answer),
         (question.wrong_1, question.wrong_1),
         (question.wrong_2, question.wrong_2),
         (question.wrong_3, question.wrong_3)
