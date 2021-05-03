@@ -85,17 +85,25 @@ class SubmittedAttempt(db.Model):
     id               = db.Column(db.Integer, primary_key=True)
     user_id          = db.Column(db.Integer, db.ForeignKey(User.id))
 
-    question_a_id    = db.Column(db.Integer, db.ForeignKey(Question.id))
-    response_a       = db.Column(db.String(64), index=True)
-    mark_a           = db.Column(db.Integer, index=True)
+    question_1_id    = db.Column(db.Integer, db.ForeignKey(Question.id))
+    response_1       = db.Column(db.String(64), index=True)
+    mark_1           = db.Column(db.Integer, index=True)
 
-    question_b_id    = db.Column(db.Integer, db.ForeignKey(Question.id))
-    response_b       = db.Column(db.String(64), index=True)
-    mark_b           = db.Column(db.Integer, index=True)
+    question_2_id    = db.Column(db.Integer, db.ForeignKey(Question.id))
+    response_2       = db.Column(db.String(64), index=True)
+    mark_2           = db.Column(db.Integer, index=True)
 
-    question_c_id    = db.Column(db.Integer, db.ForeignKey(Question.id))
-    response_c       = db.Column(db.String(64), index=True)
-    mark_c           = db.Column(db.Integer, index=True)
+    question_3_id    = db.Column(db.Integer, db.ForeignKey(Question.id))
+    response_3       = db.Column(db.String(64), index=True)
+    mark_3           = db.Column(db.Integer, index=True)
+
+    question_4_id    = db.Column(db.Integer, db.ForeignKey(Question.id))
+    response_4       = db.Column(db.String(64), index=True)
+    mark_4           = db.Column(db.Integer, index=True)
+
+    question_5_id    = db.Column(db.Integer, db.ForeignKey(Question.id))
+    response_5       = db.Column(db.String(64), index=True)
+    mark_5           = db.Column(db.Integer, index=True)
 
     score            = db.Column(db.Integer, index=True)
 
@@ -113,14 +121,20 @@ class SavedAttempt(db.Model):
     id             = db.Column(db.Integer, primary_key=True)
     user_id        = db.Column(db.Integer, db.ForeignKey(User.id))
 
-    question_a_id  = db.Column(db.Integer, db.ForeignKey(Question.id))
-    response_a     = db.Column(db.String(64), index=True, nullable=True)
+    question_1_id  = db.Column(db.Integer, db.ForeignKey(Question.id))
+    response_1     = db.Column(db.String(64), index=True, nullable=True)
 
-    question_b_id  = db.Column(db.Integer, db.ForeignKey(Question.id))
-    response_b     = db.Column(db.String(64), index=True, nullable=True)
+    question_2_id  = db.Column(db.Integer, db.ForeignKey(Question.id))
+    response_2     = db.Column(db.String(64), index=True, nullable=True)
 
-    question_c_id  = db.Column(db.Integer, db.ForeignKey(Question.id))
-    response_c     = db.Column(db.String(64), index=True, nullable=True)
+    question_3_id  = db.Column(db.Integer, db.ForeignKey(Question.id))
+    response_3     = db.Column(db.String(64), index=True, nullable=True)
+
+    question_4_id  = db.Column(db.Integer, db.ForeignKey(Question.id))
+    response_4     = db.Column(db.String(64), index=True, nullable=True)
+
+    question_5_id  = db.Column(db.Integer, db.ForeignKey(Question.id))
+    response_5     = db.Column(db.String(64), index=True, nullable=True)
 
     saved_datetime = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 

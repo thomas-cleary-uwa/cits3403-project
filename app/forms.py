@@ -2,7 +2,7 @@
 
 from flask_wtf import FlaskForm
 
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
 
 from app.models import User
@@ -61,11 +61,6 @@ class RegistrationForm(FlaskForm):
 
 class QuizForm(FlaskForm):
     """ form for the quiz questions """
-
-    question1 = RadioField(validators=[DataRequired()])
-    question2 = RadioField(validators=[DataRequired()])
-    question3 = RadioField(validators=[DataRequired()])
-
     # submit button
     submit = SubmitField('Submit Test')
 

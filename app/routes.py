@@ -1,10 +1,14 @@
 """ define the routes for the flask application """
 
+import random
+
 from datetime import datetime
 
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, login_required, logout_user
 from werkzeug.urls import url_parse
+from wtforms import RadioField
+from wtforms.validators import DataRequired
 
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, QuizForm
@@ -13,7 +17,7 @@ from app.models import User, Question, SubmittedAttempt, SavedAttempt
 
 
 # Constants
-NUM_QUESTIONS_IN_QUIZ = 3
+NUM_QUESTIONS_IN_QUIZ = 5
 
 
 
@@ -141,7 +145,7 @@ def quiz():
 
 
 
-@app.route('/quizQuestions', methods=['GET','POST'])
+@app.route('/quiz_questions', methods=['GET','POST'])
 @login_required
 def quiz_questions():
     """ quiz questions/form route """
@@ -237,14 +241,6 @@ def get_saved_attempt():
 
 
 
-def get_radio_fields(QuizForm):
-    """ returns a list of the radiofield objects in QuizForm """
-    fields = [field for field in QuizForm]
-    fields = fields[:-NUM_QUESTIONS_IN_QUIZ]
-    return fields
-
-
-
 def get_questions(num_questions):
     """ returns a list of questions from the database of length, num_questions """
     questions = []
@@ -256,42 +252,41 @@ def get_questions(num_questions):
 
 
 
+def get_question_choices(question):
+    """ get a list of the choices for the field constructor """
+    choices = [
+        (question.answer, question.answer),
+        (question.wrong_1, question.wrong_1),
+        (question.wrong_2, question.wrong_2),
+        (question.wrong_3, question.wrong_3)
+    ]
+
+    return choices
+
+
+
 def create_quiz_form():
     """ returns a quiz form and a list of the questions in it """
     if current_user.has_saved_attempt:
-        questions, saved_responses = get_saved_attempt()
-
-        # create quiz form
-        form = QuizForm(
-            question1=saved_responses[0],
-            question2=saved_responses[1],
-            question3=saved_responses[2]
-        )
-        # setting default values with field.default doesn't work
-
-        fields = get_radio_fields(form)
+        questions, defaults = get_saved_attempt()
 
     else:
+        questions = get_questions(NUM_QUESTIONS_IN_QUIZ)
+        defaults = [None] * len(questions)
+
+    for question, default in zip(questions, defaults):
+        question_choices = get_question_choices(question)
+        random.shuffle(question_choices)
+
+        field = RadioField(
+            label=question.question,
+            validators=[DataRequired()],
+            choices=question_choices,
+            default=default
+        )
+        setattr(QuizForm, question.question, field)
+
         form = QuizForm()
-        fields = get_radio_fields(form)
-        questions = get_questions(len(fields))
-
-
-    idx = 0
-
-    # for each question, set the possible answers
-    for field in fields:
-        question = questions[idx]
-        field.label = question.question
-
-        field.choices = [
-            (question.answer, question.answer),
-            (question.wrong_1, question.wrong_1),
-            (question.wrong_2, question.wrong_2),
-            (question.wrong_3, question.wrong_3)
-        ]
-
-        idx += 1
 
     return (form, questions)
 
@@ -302,42 +297,40 @@ def submit_attempt(form, questions):
         returns the score the user achieved
     """
 
-    print("Test 1:\n{} == {}".format(
-        Question.query.get(1).answer,
-        form.question1.data
-    ))
-    if Question.query.get(1).answer == form.question1.data:
-        value_a = 1
-    else:
-        value_a = 0
+    marks = []
+    form_data = form.data
 
-    if Question.query.get(2).answer == form.question2.data:
-        value_b = 1
-    else:
-        value_b = 0
+    for question in questions:
+        if question.answer == form_data[question.question]:
+            marks.append(1)
+        else:
+            marks.append(0)
 
-    if Question.query.get(3).answer == form.question3.data:
-        value_c = 1
-    else:
-        value_c = 0
 
-    score = value_a + value_b + value_c
+    score = sum(marks)
 
     attempt = SubmittedAttempt(
         user_id=current_user.id,
 
-        # change this from being hard coded for question id
-        question_a_id = questions[0].id,
-        response_a=form.question1.data,
-        mark_a=value_a,
+        question_1_id = questions[0].id,
+        response_1= form_data[questions[0].question],
+        mark_1= marks[0],
 
-        question_b_id = questions[1].id,
-        response_b=form.question2.data,
-        mark_b=value_b,
+        question_2_id = questions[1].id,
+        response_2=form_data[questions[1].question],
+        mark_2= marks[1],
 
-        question_c_id = questions[2].id,
-        response_c=form.question3.data,
-        mark_c=value_c,
+        question_3_id = questions[2].id,
+        response_3=form_data[questions[2].question],
+        mark_3= marks[2],
+
+        question_4_id = questions[3].id,
+        response_4=form_data[questions[3].question],
+        mark_4 = marks[3],
+
+        question_5_id = questions[4].id,
+        response_5=form_data[questions[4].question],
+        mark_5 = marks[4],
 
         score = score,
         attempt_datetime = datetime.utcnow()
@@ -352,18 +345,25 @@ def submit_attempt(form, questions):
 
 def save_attempt(form, questions):
     """ save the partially completed quiz attempt to the database """
+    form_data = form.data
 
     saved_attempt = SavedAttempt(
         user_id        =current_user.id,
 
-        question_a_id  = questions[0].id,
-        response_a     = form.question1.data,
+        question_1_id  = questions[0].id,
+        response_1     = form_data[questions[0].question],
 
-        question_b_id  = questions[1].id,
-        response_b     = form.question2.data,
+        question_2_id  = questions[1].id,
+        response_2     = form_data[questions[1].question],
 
-        question_c_id  = questions[2].id,
-        response_c     = form.question3.data,
+        question_3_id  = questions[2].id,
+        response_3     = form_data[questions[2].question],
+
+        question_4_id  = questions[3].id,
+        response_4     = form_data[questions[3].question],
+
+        question_5_id  = questions[4].id,
+        response_5     = form_data[questions[4].question],
 
         saved_datetime = datetime.utcnow()
     )

@@ -78,6 +78,24 @@ def add_quiz():
     )
     db.session.add(q_3)
 
+    q_4 = Question(
+        question='4?', 
+        answer='Y', 
+        wrong_1='N1',
+        wrong_2='N2',
+        wrong_3='N3',
+    )
+    db.session.add(q_4)
+
+    q_5 = Question(
+        question='5?', 
+        answer='Y', 
+        wrong_1='N1',
+        wrong_2='N2',
+        wrong_3='N3',
+    )
+    db.session.add(q_5)
+
     db.session.commit()
 
 
