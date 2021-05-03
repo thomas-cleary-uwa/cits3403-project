@@ -232,31 +232,42 @@ def quiz_questions():
             return render_template('result.html',form=form, outcome=outcome)
         
 
-        # save button was pressed
-        if form.save.data:
+    # save button was pressed
+    if form.save.data:
 
-            savedAttempt = SavedAttempt(
-                user_id=current_user.id,
-                
-                # change this from being hard coded for question id
-                question_a_id = questions[0].id,
-                response_a=form.question1.data, 
+        # NEED TO DELETE ANY SAVED ATTEMPTS IN THE DATABASE FOR THIS USER 
+        if current_user.has_saved_attempt:
+            savedAttempts = SavedAttempt.query.filter_by(user_id=current_user.id).all()
 
-                question_b_id = questions[1].id,
-                response_b=form.question2.data, 
+            for attempt in savedAttempts:
+                db.session.delete(attempt)
 
-                question_c_id = questions[2].id,
-                response_c=form.question3.data, 
-                    
-                saved_datetime = datetime.utcnow()
-            )
+            current_user.has_saved_attempt = False
 
-            db.session.add(savedAttempt)
-            current_user.has_saved_attempt = True
             db.session.commit()
 
+        savedAttempt = SavedAttempt(
+            user_id=current_user.id,
+            
+            # change this from being hard coded for question id
+            question_a_id = questions[0].id,
+            response_a=form.question1.data, 
 
-            return redirect(url_for('quiz'))
+            question_b_id = questions[1].id,
+            response_b=form.question2.data, 
+
+            question_c_id = questions[2].id,
+            response_c=form.question3.data, 
+                
+            saved_datetime = datetime.utcnow()
+        )
+
+        db.session.add(savedAttempt)
+        current_user.has_saved_attempt = True
+        db.session.commit()
+
+
+        return redirect(url_for('quiz'))
 
     else:
         print(form.errors)
