@@ -1,19 +1,14 @@
 """ initialise the flask application """
 
-# flask
 from flask import Flask
 
-# flask-admin
 from flask_admin import Admin
 from flask_admin.menu import MenuLink
 
-# sqlalchemy
 from flask_sqlalchemy import SQLAlchemy
 
-# flask-migrate
 from flask_migrate import Migrate
 
-# flask-login
 from flask_login import LoginManager, current_user
 
 from config import Config

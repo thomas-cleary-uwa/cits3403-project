@@ -1,13 +1,10 @@
 """ customises each table view in the admin interface """
 
-# flask
 from flask import redirect, url_for
 
-# flask-admin
 from flask_admin.base import AdminIndexView
 from flask_admin.contrib.sqla import ModelView
 
-# flask-login
 from flask_login import current_user
 
 

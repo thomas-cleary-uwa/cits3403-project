@@ -1,9 +1,7 @@
 """ wtforms forms to be used in the flask application """
 
-# flask-wtf
 from flask_wtf import FlaskForm
 
-# WTForms
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
 
