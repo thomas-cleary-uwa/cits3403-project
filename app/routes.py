@@ -161,7 +161,7 @@ def quiz_questions():
         if form.submit.data:
 
             # calculate their score for this quiz
-            score = submit_attempt(form, questions)
+            summary, score = submit_attempt(form, questions)
 
             # if they had this quiz saved before, delete it from the database
             if current_user.has_saved_attempt:
@@ -312,39 +312,51 @@ def submit_attempt(form, questions):
             marks.append(0)
 
 
+    summary = {}
+
+    for i, curr_question in enumerate(questions):
+        key = "question_" + str(i+1)
+
+        summary[key] = {
+            "question_id" : curr_question.id,
+            "question"    : curr_question.question,
+            "response"    : form_data[curr_question.question],
+            "mark"        : marks[i]
+        }
+        
+        i += 1
+
+
     score = sum(marks)
 
     attempt = SubmittedAttempt(
         user_id=current_user.id,
 
-        question_1_id = questions[0].id,
-        response_1= form_data[questions[0].question],
-        mark_1= marks[0],
+        question_1_id = summary["question_1"]["question_id"],
+        response_1 = summary["question_1"]["response"],
+        mark_1 = summary["question_1"]["mark"],
 
-        question_2_id = questions[1].id,
-        response_2=form_data[questions[1].question],
-        mark_2= marks[1],
+        question_2_id = summary["question_2"]["question_id"],
+        response_2 = summary["question_2"]["response"],
+        mark_2 = summary["question_2"]["mark"],
 
-        question_3_id = questions[2].id,
-        response_3=form_data[questions[2].question],
-        mark_3= marks[2],
+        question_3_id = summary["question_3"]["question_id"],
+        response_3 = summary["question_3"]["response"],
+        mark_3 = summary["question_3"]["mark"],
 
-        question_4_id = questions[3].id,
-        response_4=form_data[questions[3].question],
-        mark_4 = marks[3],
+        question_4_id = summary["question_4"]["question_id"],
+        response_4 = summary["question_4"]["response"],
+        mark_4 = summary["question_4"]["mark"],
 
-        question_5_id = questions[4].id,
-        response_5=form_data[questions[4].question],
-        mark_5 = marks[4],
-
-        score = score,
-        attempt_datetime = datetime.utcnow()
+        question_5_id = summary["question_5"]["question_id"],
+        response_5 = summary["question_5"]["response"],
+        mark_5 = summary["question_5"]["mark"]
     )
 
     db.session.add(attempt)
     db.session.commit()
 
-    return score
+    return (summary, score)
 
 
 
