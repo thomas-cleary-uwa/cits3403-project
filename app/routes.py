@@ -12,26 +12,7 @@ NUM_QUESTIONS_IN_QUIZ = 3
 @app.route('/index')
 def index():
 
-    jobs = [
-        {
-            'person' : {'name' : 'Thomas'},
-            'task' : 'login'
-        },
-        {
-            'person' : {'name' : 'Calvin'},
-            'task' : 'content'
-        },
-        {
-            'person' : {'name' : 'Jason'},
-            'task' : 'home page'
-        },
-        {
-            'person' : {'name' : 'Michael'},
-            'task' : 'quiz'
-        }
-    ]
-
-    return render_template('index.html', jobs=jobs)
+    return render_template('index.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
