@@ -35,11 +35,11 @@
           <li><a href="#">Content Page 3</a></li>
         </ul>
       </li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Assessments<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="{{ url_for('quiz') }}">Quiz</a></li>
-          <li><a href="#">DFS Test</a></li>
-        </ul>
+      <li>
+        <a href="{{ url_for('quiz') }}">
+          Quiz
+        </a>
+      </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       {% if current_user.is_anonymous %}
@@ -51,7 +51,7 @@
           Sign In
       {% else %}
       <li>
-        {% if current_user.isAdmin and current_user.is_authenticated %}
+        {% if current_user.is_admin and current_user.is_authenticated %}
         <a href="/admin">Admin Tools</a>
         {% else %}
         <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>

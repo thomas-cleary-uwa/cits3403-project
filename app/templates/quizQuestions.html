@@ -4,16 +4,10 @@
 
 {% block content %}
 
-<h1>DFS Quiz</h1>
-<div id="quizIntro">
-<button id="start">Start Quiz</button>
-<button id="resume">Resume Quiz</button>
-</div>
-
 
 <form method="post">
 
-  <div id="test" style="display:none;">
+  <div id="test">
     {{ form.hidden_tag() }}
 
     <table>
@@ -24,6 +18,9 @@
     <tr>
         <td>{{ subfield }} {{ subfield.label }}</td>
     </tr>
+    {% endfor %}
+    {% for error in form.question1.errors %}
+    <span style="color: red;">[{{ error }}]</span>
     {% endfor %}
     </table>
     
@@ -38,6 +35,9 @@
         <td>{{ subfield }} {{ subfield.label }}</td>
     </tr>
     {% endfor %}
+    {% for error in form.question2.errors %}
+    <span style="color: red;">[{{ error }}]</span>
+    {% endfor %}
     </table>
     <br>
     
@@ -51,26 +51,15 @@
         <td>{{ subfield }} {{ subfield.label }}</td>
     </tr>
     {% endfor %}
+    {% for error in form.question3.errors %}
+    <span style="color: red;">[{{ error }}]</span>
+    {% endfor %}
     </table>
     
     <br>
-      <input class="btn" type="submit" value="Submit">
-      <input class="btn" type="reset" value="Reset">
+    <p>{{ form.submit() }}</p>
   </div>
 
 </form>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script>
-    $(document).ready(function(){
-      $('#start').click(function(){
-          $('#test').show();
-          $('#quizIntro').hide();
-      });
-    });
-
-</script>
-
-
 
 {% endblock %}

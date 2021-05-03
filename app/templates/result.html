@@ -10,10 +10,22 @@
     <p>Result: {{  outcome  }}/3</p>
 </div>
 <div>
-    <button id="tryagain" onclick="window.location.href='{{ url_for('quiz') }}'"> Try Again</button>
-    <button id="exit" onclick="window.location.href='{{ url_for('user', username=current_user.username) }}'"">Statitics</button>
-    <button id="exit" onclick="window.location.href='{{ url_for('index') }}'">Exit Quiz</button>
+    <button id="tryagain" onclick=tryAgainClick()> Try Again</button>
+    <button id="exit" onclick=statisticsClick()>Statitics</button>
+    <button id="exit" onclick=exitClick()>Exit Quiz</button>
 </div>
+
+<script>
+    function tryAgainClick() {
+        window.location.href="{{ url_for('quiz_questions') }}";
+    }
+    function statisticsClick() {
+        window.location.href="{{ url_for('user', username=current_user.username) }}"
+    }
+    function exitClick() {
+        window.location.href="{{ url_for('index') }}";
+    }
+</script>
 
 
 {% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>DFS Quiz</h1>
+    <div id="quizIntro">
+    <button id="start" onclick=startQuizClick()>Start Quiz</button>
+    <button id="resume">Resume Quiz</button>
+    </div>
+
+    <script>
+        function startQuizClick() {
+            window.location.href="{{ url_for('quiz_questions') }}";
+        }
+    </script>
+
+{% endblock %}
