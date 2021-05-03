@@ -152,13 +152,16 @@ def quiz_questions():
                 
                 # change this from being hard coded for question id
                 question_a_id = questions[0].id,
-                response_a=form.question1.data, mark_a=value_a,
+                response_a=form.question1.data, 
+                mark_a=value_a,
 
                 question_b_id = questions[1].id,
-                response_b=form.question2.data, mark_b=value_b, 
+                response_b=form.question2.data, 
+                mark_b=value_b, 
 
                 question_c_id = questions[2].id,
-                response_c=form.question3.data, mark_c=value_c,
+                response_c=form.question3.data, 
+                mark_c=value_c,
                  
                 score = value_score,
                 attempt_datetime = datetime.utcnow()
@@ -166,6 +169,10 @@ def quiz_questions():
             
             db.session.add(attempt)
             db.session.commit()
+
+            # NEED TO DELETE ANY SAVED ATTEMPTS IN THE DATABASE FOR THIS USER 
+            
+            current_user.has_saved_attempt = False
 
             outcome = value_score
             return render_template('result.html',form=form, outcome=outcome)
@@ -175,7 +182,29 @@ def quiz_questions():
 
     # save button was pressed
     elif form.save.data:
-        return redirect(url_for('index'))
+
+        savedAttempt = SavedAttempt(
+            user_id=current_user.id,
+            
+            # change this from being hard coded for question id
+            question_a_id = questions[0].id,
+            response_a=form.question1.data, 
+
+            question_b_id = questions[1].id,
+            response_b=form.question2.data, 
+
+            question_c_id = questions[2].id,
+            response_c=form.question3.data, 
+                
+            saved_datetime = datetime.utcnow()
+        )
+
+        db.session.add(savedAttempt)
+        db.session.commit()
+
+        current_user.has_saved_attempt = True
+
+        return redirect(url_for('quiz'))
 
     return render_template('quizQuestions.html',form=form)
 
