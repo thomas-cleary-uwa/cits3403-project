@@ -19,6 +19,10 @@ class User(UserMixin, db.Model):
     registered_on = db.Column(db.DateTime, default=datetime.utcnow)
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     is_admin = db.Column(db.Boolean, default=False)
+    has_saved_attempt = db.Column(db.Boolean, default=False)
+    saved_attempt = db.relationship('SavedAttempt', backref='taker', lazy='dynamic')
+    submitted_attempt = db.relationship('SubmittedAttempt', backref='taker', lazy='dynamic')
+
 
 
     def __repr__(self):
@@ -52,23 +56,45 @@ class Question(db.Model):
         return '<Quiz {}>'.format(self.question)
 
 
-class Attempt(db.Model):
+class SubmittedAttempt(db.Model):
     
     attempt_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=True)
     
+    question_a_id = db.Column(db.Integer, db.ForeignKey(User.id))
     response_a = db.Column(db.Integer, index=True)
     mark_a = db.Column(db.Integer, index=True)
     
+    question_b_id = db.Column(db.Integer, db.ForeignKey(User.id))
     response_b = db.Column(db.Integer, index=True)
     mark_b = db.Column(db.Integer, index=True)
     
+    question_c_id = db.Column(db.Integer, db.ForeignKey(User.id))
     response_c = db.Column(db.Integer, index=True)
     mark_c = db.Column(db.Integer, index=True)
 
     score = db.Column(db.Integer, index=True)
 
     attempt_datetime = db.Column(db.DateTime, index=True)
+
+    # currently returns score only
+    def __repr__(self):
+        return '<Attempt: {}>'.format(self.score)
+
+
+class SavedAttempt(db.Model):
+
+    attempt_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=True)
+
+    question_a_id = db.Column(db.Integer, db.ForeignKey(User.id))
+    response_a = db.Column(db.Integer, index=True, nullable=True)
+    
+    question_b_id = db.Column(db.Integer, db.ForeignKey(User.id))
+    response_b = db.Column(db.Integer, index=True, nullable=True)
+    
+    question_c_id = db.Column(db.Integer, db.ForeignKey(User.id))
+    response_c = db.Column(db.Integer, index=True, nullable=True)
 
     # currently returns score only
     def __repr__(self):
