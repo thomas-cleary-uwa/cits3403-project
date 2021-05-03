@@ -3,8 +3,13 @@
 {% block content %}
     <h1>DFS Quiz</h1>
     <div id="quizIntro">
-    <button id="start" onclick=startQuizClick()>Start Quiz</button>
-    <button id="resume">Resume Quiz</button>
+      <button id="start" onclick=startQuizClick()>
+        {% if current_user.has_saved_attempt %}
+        Resume Quiz
+        {% else %}
+        Start Quiz
+        {% endif %}
+      </button>
     </div>
 
     <script>
