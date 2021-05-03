@@ -120,6 +120,8 @@ def user(username):
 
     # list of the scores for each attempt
     all_scores = [attempt.score for attempt in attempts]
+    for score in all_scores:
+        print(score)
 
     total = sum(all_scores)
 
@@ -350,7 +352,9 @@ def submit_attempt(form, questions):
 
         question_5_id = summary["question_5"]["question_id"],
         response_5 = summary["question_5"]["response"],
-        mark_5 = summary["question_5"]["mark"]
+        mark_5 = summary["question_5"]["mark"],
+
+        score = score
     )
 
     db.session.add(attempt)
