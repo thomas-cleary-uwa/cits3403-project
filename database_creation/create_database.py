@@ -52,7 +52,7 @@ def print_finished_message(message=None):
     print()
     print(message)
     print("-" * 80)
-    print("*" * 80)
+    print()
 
 
 def create_database():
