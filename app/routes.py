@@ -174,9 +174,9 @@ def quiz_questions():
 
             index += 1
 
-
+    print(form.csrf_token)
     if form.validate_on_submit():
-        if form.save.data:
+        if form.submit.data:
 
             outcome = 0 # dummy value
             if Question.query.get(1).answer == form.question1.data: value_a = 1
