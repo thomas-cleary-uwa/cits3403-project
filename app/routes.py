@@ -71,8 +71,11 @@ def user(username):
 
     total = sum(all_scores)
     print("Total: {}, numAttempts: {}".format(total, numAttempts))
-    average = total / (numAttempts * NUM_QUESTIONS_IN_QUIZ)
-    average = int(average * 100)
+    if numAttempts == 0:
+        average = None
+    else:
+        average = total / (numAttempts * NUM_QUESTIONS_IN_QUIZ)
+        average = int(average * 100)
 
     return render_template('user.html', user=user, attempts=attempts, average=average, numAttempts=numAttempts)
 
