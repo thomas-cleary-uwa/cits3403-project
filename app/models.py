@@ -100,4 +100,9 @@ class SavedAttempt(db.Model):
 
     # currently returns score only
     def __repr__(self):
-        return '<Attempt: {}>'.format(self.score)
+        return '<Attempt: {}>\nResponse A: {}\nResponse B: {}\nResponse C: {}\n'.format(
+            self.user_id,
+            self.response_a,
+            self.response_b,
+            self.response_c
+        )

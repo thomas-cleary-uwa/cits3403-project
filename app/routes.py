@@ -105,35 +105,76 @@ def quiz():
 @login_required
 def quiz_questions():
     NUM_NON_QUESTION_FIELDS = 3 # 2 Submits and 1 hidden?
-    form = QuizForm()
 
+    form = QuizForm()
+    questions = []
+    
+    fields = [field for field in form]
+    fields = fields[:-NUM_QUESTIONS_IN_QUIZ]
+
+    if current_user.has_saved_attempt:
+        saved_attempt = SavedAttempt.query.filter_by(user_id=current_user.id).first()
+        if saved_attempt is None:
+            # do some actual error checking
+            print("error no saved attempt")
+
+        else:
+            # do something not hard coded once this is working
+            questions = [
+                Question.query.get(saved_attempt.question_a_id),
+                Question.query.get(saved_attempt.question_b_id),
+                Question.query.get(saved_attempt.question_c_id)
+            ]
+
+            saved_responses = [
+                saved_attempt.response_a,
+                saved_attempt.response_b,
+                saved_attempt.response_c
+            ]
+
+            index = 0
+            for field in fields:
+                question = questions[index]
+                field.label = question.question
+
+                field.choices = [
+                    (1, question.response_a), 
+                    (2, question.response_b),
+                    (3, question.response_c)
+                ]
+
+                field.default = saved_responses[index]
+                index += 1
+
+            # set default values
+            form.process()
+
+
+
+    else:
     # REMOVE THIS LOGIC INTO SEPERATE FUNCTION
     # TO RANDOMISE THIS 
     # GET NUMBER OF ROWS IN QUESTION TABLE
     # SELECT RANDOM INT FROM 1->NUM_ROWS FOR NUMBER OF QUESTIONS ON QUIZ
     # SELECT THESE ROWS FROM THE TABLE TO BE THE QUIZ QUESTIONS
-    questions = []
+        # every field except the submit field
 
-    # every field except the submit field
-    fields = [field for field in form]
-    fields = fields[:-NUM_QUESTIONS_IN_QUIZ]
+        for i in range(1, len(fields)+1):
+            question = Question.query.get(i)
+            questions.append(question)
 
-    for i in range(1, len(fields)+1):
-        question = Question.query.get(i)
-        questions.append(question)
+        index = 0
+        for field in fields:
+            question = questions[index]
+            field.label = question.question
+            # change to allow for as many questions as in the questions list
+            field.choices = [
+                (1, question.response_a), 
+                (2, question.response_b),
+                (3, question.response_c)
+            ]
 
-    index = 0
-    for field in fields:
-        question = questions[index]
-        field.label = question.question
-        # change to allow for as many questions as in the questions list
-        field.choices = [
-            (1, question.response_a), 
-            (2, question.response_b),
-            (3, question.response_c)
-        ]
-
-        index += 1
+            index += 1
 
 
     if form.submit.data:
