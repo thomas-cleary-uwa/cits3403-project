@@ -104,6 +104,7 @@ def quiz():
 @app.route('/quizQuestions', methods=['GET','POST'])
 @login_required
 def quiz_questions():
+    NUM_NON_QUESTION_FIELDS = 3 # 2 Submits and 1 hidden?
     form = QuizForm()
 
     # TO RANDOMISE THIS 
@@ -114,7 +115,7 @@ def quiz_questions():
 
     # every field except the submit field
     fields = [field for field in form]
-    fields = fields[:-2]
+    fields = fields[:-NUM_QUESTIONS_IN_QUIZ]
 
     for i in range(1, len(fields)+1):
         question = Question.query.get(i)
@@ -134,11 +135,10 @@ def quiz_questions():
         index += 1
 
 
-    outcome = None #dummy value for initialisation
-    if form.validate_on_submit():
+    if form.submit.data:
+        if form.validate_on_submit():
 
-        if form.submit:
-
+            outcome = 0 # dummy value
             if Question.query.get(1).answer == form.question1.data: value_a = 1
             else: value_a = 0
             if Question.query.get(2).answer == form.question2.data: value_b = 1
@@ -149,9 +149,17 @@ def quiz_questions():
 
             attempt = SubmittedAttempt( 
                 user_id=current_user.id,
+                
+                # change this from being hard coded for question id
+                question_a_id = questions[0].id,
                 response_a=form.question1.data, mark_a=value_a,
+
+                question_b_id = questions[1].id,
                 response_b=form.question2.data, mark_b=value_b, 
-                response_c=form.question3.data, mark_c=value_c, 
+
+                question_c_id = questions[2].id,
+                response_c=form.question3.data, mark_c=value_c,
+                 
                 score = value_score,
                 attempt_datetime = datetime.utcnow()
             )
@@ -161,15 +169,15 @@ def quiz_questions():
 
             outcome = value_score
             return render_template('result.html',form=form, outcome=outcome)
+        
+        else:
+            print(form.errors)
 
-        if form.save:
+    # save button was pressed
+    elif form.save.data:
+        return redirect(url_for('index'))
 
-            return render_template('index.html')
-
-    else:
-        print(form.errors)
-
-    return render_template('quizQuestions.html',form=form, outcome=outcome)
+    return render_template('quizQuestions.html',form=form)
 
 
 @app.before_request

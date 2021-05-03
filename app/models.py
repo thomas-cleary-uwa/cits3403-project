@@ -61,15 +61,15 @@ class SubmittedAttempt(db.Model):
     attempt_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=True)
     
-    question_a_id = db.Column(db.Integer, db.ForeignKey(User.id))
+    question_a_id = db.Column(db.Integer, db.ForeignKey(Question.id))
     response_a = db.Column(db.Integer, index=True)
     mark_a = db.Column(db.Integer, index=True)
     
-    question_b_id = db.Column(db.Integer, db.ForeignKey(User.id))
+    question_b_id = db.Column(db.Integer, db.ForeignKey(Question.id))
     response_b = db.Column(db.Integer, index=True)
     mark_b = db.Column(db.Integer, index=True)
     
-    question_c_id = db.Column(db.Integer, db.ForeignKey(User.id))
+    question_c_id = db.Column(db.Integer, db.ForeignKey(Question.id))
     response_c = db.Column(db.Integer, index=True)
     mark_c = db.Column(db.Integer, index=True)
 
@@ -87,13 +87,13 @@ class SavedAttempt(db.Model):
     attempt_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=True)
 
-    question_a_id = db.Column(db.Integer, db.ForeignKey(User.id))
+    question_a_id = db.Column(db.Integer, db.ForeignKey(Question.id))
     response_a = db.Column(db.Integer, index=True, nullable=True)
     
-    question_b_id = db.Column(db.Integer, db.ForeignKey(User.id))
+    question_b_id = db.Column(db.Integer, db.ForeignKey(Question.id))
     response_b = db.Column(db.Integer, index=True, nullable=True)
     
-    question_c_id = db.Column(db.Integer, db.ForeignKey(User.id))
+    question_c_id = db.Column(db.Integer, db.ForeignKey(Question.id))
     response_c = db.Column(db.Integer, index=True, nullable=True)
 
     saved_datetime = db.Column(db.DateTime, index=True)

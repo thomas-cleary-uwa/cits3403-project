@@ -5,7 +5,7 @@ parentdir = os.path.dirname(currentDir)
 sys.path.insert(0, parentdir)
 
 from app import db
-from app.models import User, Quiz
+from app.models import User
 
 
 def addDummyUsers():
