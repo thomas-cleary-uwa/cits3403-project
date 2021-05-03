@@ -62,9 +62,9 @@ class RegistrationForm(FlaskForm):
 class QuizForm(FlaskForm):
     """ form for the quiz questions """
 
-    question1 = RadioField(coerce=int, validators=[DataRequired()])
-    question2 = RadioField(coerce=int, validators=[DataRequired()])
-    question3 = RadioField(coerce=int, validators=[DataRequired()])
+    question1 = RadioField(validators=[DataRequired()])
+    question2 = RadioField(validators=[DataRequired()])
+    question3 = RadioField(validators=[DataRequired()])
 
     # submit button
     submit = SubmitField('Submit Test')

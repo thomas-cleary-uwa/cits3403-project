@@ -51,13 +51,31 @@ def add_admin():
 def add_quiz():
     """ adds quiz questions to the database for testing purposes """
 
-    q_1 = Question(question='1?', response_a='N', response_b='Y', response_c='N', answer=2)
+    q_1 = Question(
+        question='1?', 
+        answer='Y', 
+        wrong_1='N1',
+        wrong_2='N2',
+        wrong_3='N3',
+    )
     db.session.add(q_1)
 
-    q_2 = Question(question='2?', response_a='N', response_b='N', response_c='Y', answer=3)
+    q_2 = Question(
+        question='2?', 
+        answer='Y', 
+        wrong_1='N1',
+        wrong_2='N2',
+        wrong_3='N3',
+    )
     db.session.add(q_2)
 
-    q_3 = Question(question='3?', response_a='Y', response_b='N', response_c='N', answer=1)
+    q_3 = Question(
+        question='3?', 
+        answer='Y', 
+        wrong_1='N1',
+        wrong_2='N2',
+        wrong_3='N3',
+    )
     db.session.add(q_3)
 
     db.session.commit()

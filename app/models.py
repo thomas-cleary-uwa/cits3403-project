@@ -64,16 +64,14 @@ class User(UserMixin, db.Model):
 class Question(db.Model):
     """ the question model """
 
-    id          = db.Column(db.Integer, primary_key=True)
-    question    = db.Column(db.String(128), index=True, unique=True)
+    id       = db.Column(db.Integer, primary_key=True)
+    question = db.Column(db.String(128), index=True, unique=True)
 
-    response_a  = db.Column(db.String(64), index=True)
-    response_b  = db.Column(db.String(64), index=True)
-    response_c  = db.Column(db.String(64), index=True)
-
-    # refers to the number radio button that the response will be
-    # a=1, b=2, c=3
-    answer      = db.Column(db.Integer, index=True)
+    answer   = db.Column(db.String(64), index=True)
+    wrong_1  = db.Column(db.String(64), index=True)
+    wrong_2  = db.Column(db.String(64), index=True)
+    wrong_3  = db.Column(db.String(64), index=True)
+    
 
     def __repr__(self):
         return '<Quiz {}>'.format(self.question)
@@ -88,15 +86,15 @@ class SubmittedAttempt(db.Model):
     user_id          = db.Column(db.Integer, db.ForeignKey(User.id))
 
     question_a_id    = db.Column(db.Integer, db.ForeignKey(Question.id))
-    response_a       = db.Column(db.Integer, index=True)
+    response_a       = db.Column(db.String(64), index=True)
     mark_a           = db.Column(db.Integer, index=True)
 
     question_b_id    = db.Column(db.Integer, db.ForeignKey(Question.id))
-    response_b       = db.Column(db.Integer, index=True)
+    response_b       = db.Column(db.String(64), index=True)
     mark_b           = db.Column(db.Integer, index=True)
 
     question_c_id    = db.Column(db.Integer, db.ForeignKey(Question.id))
-    response_c       = db.Column(db.Integer, index=True)
+    response_c       = db.Column(db.String(64), index=True)
     mark_c           = db.Column(db.Integer, index=True)
 
     score            = db.Column(db.Integer, index=True)
@@ -116,13 +114,13 @@ class SavedAttempt(db.Model):
     user_id        = db.Column(db.Integer, db.ForeignKey(User.id))
 
     question_a_id  = db.Column(db.Integer, db.ForeignKey(Question.id))
-    response_a     = db.Column(db.Integer, index=True, nullable=True)
+    response_a     = db.Column(db.String(64), index=True, nullable=True)
 
     question_b_id  = db.Column(db.Integer, db.ForeignKey(Question.id))
-    response_b     = db.Column(db.Integer, index=True, nullable=True)
+    response_b     = db.Column(db.String(64), index=True, nullable=True)
 
     question_c_id  = db.Column(db.Integer, db.ForeignKey(Question.id))
-    response_c     = db.Column(db.Integer, index=True, nullable=True)
+    response_c     = db.Column(db.String(64), index=True, nullable=True)
 
     saved_datetime = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 

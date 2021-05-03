@@ -285,9 +285,10 @@ def create_quiz_form():
         field.label = question.question
 
         field.choices = [
-            (1, question.response_a),
-            (2, question.response_b),
-            (3, question.response_c)
+            (question.answer, question.answer),
+            (question.wrong_1, question.wrong_1),
+            (question.wrong_2, question.wrong_2),
+            (question.wrong_3, question.wrong_3)
         ]
 
         idx += 1
@@ -301,6 +302,10 @@ def submit_attempt(form, questions):
         returns the score the user achieved
     """
 
+    print("Test 1:\n{} == {}".format(
+        Question.query.get(1).answer,
+        form.question1.data
+    ))
     if Question.query.get(1).answer == form.question1.data:
         value_a = 1
     else:
