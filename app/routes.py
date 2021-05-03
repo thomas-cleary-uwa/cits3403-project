@@ -231,15 +231,19 @@ def get_saved_attempt():
     saved_attempt = SavedAttempt.query.filter_by(user_id=current_user.id).first()
 
     questions = [
-        Question.query.get(saved_attempt.question_a_id),
-        Question.query.get(saved_attempt.question_b_id),
-        Question.query.get(saved_attempt.question_c_id)
+        Question.query.get(saved_attempt.question_1_id),
+        Question.query.get(saved_attempt.question_2_id),
+        Question.query.get(saved_attempt.question_3_id),
+        Question.query.get(saved_attempt.question_4_id),
+        Question.query.get(saved_attempt.question_5_id)
     ]
 
     saved_responses = [
-        saved_attempt.response_a,
-        saved_attempt.response_b,
-        saved_attempt.response_c
+        saved_attempt.response_1,
+        saved_attempt.response_2,
+        saved_attempt.response_3,
+        saved_attempt.response_4,
+        saved_attempt.response_5
     ]
 
     return(questions, saved_responses)
