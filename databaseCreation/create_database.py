@@ -40,47 +40,36 @@ def add_quiz():
     db.session.commit()
 
 
-def print_seperator(message=None, with_newline=False):
+def print_start_message(message=None):
+    """ print starting message for function call """
     print("-" * 80)
-    if message is not None:
-        print(message)
-    if with_newline:
-        print() 
+    print(message)
+    print()
+
+
+def print_finished_message(message=None):
+    """ print finished message for function call """
+    print()
+    print(message)
+    print("-" * 80)
+    print("*" * 80)
 
 
 def create_database():
-    """ creates database for your branch """
-    print("-" * 80)
-    print("Initialising Database [ flask db init ]")
-    print()
+    """ creates database for the website """
+    print_start_message("Initialising Database [ flask db init ]")
     os.system("flask db init")
-    print()
-    print("Database initialised")
-    print("-" * 80)
-    print()
+    print_finished_message("Database initialised")
 
-    print("-" * 80)
-    print("Creating database migration script [ flask db migrate ]")
-    print()
+    print_start_message("Creating database migration script [ flask db migrate ]")
     os.system("flask db migrate")
-    print()
-    print("Database migrated")
-    print("-" * 80)
-    print()
+    print_finished_message("Database migrated")
 
-    print("-" * 80)
-    print("Upgrading database [ flask db upgrade ]")
-    print()
+    print_start_message("Upgrading database [ flask db upgrade ]")
     os.system("flask db upgrade")
-    print()
-    print("Database upgraded")
-    print("-" * 80)
-    print()
+    print_finished_message("Database upgraded")
 
-    print("-" * 80)
-    print("Inserting admin user into database")
-    print()
-    print(
+    print_start_message("Inserting admin user into database" + \
     """
     admin = User(username="admin", email="admin@email.com", isAdmin=True)
     admin.set_password("admin")
@@ -89,15 +78,9 @@ def create_database():
     """
     )
     add_admin()
-    print()
-    print("admin inserted [Username='admin', Password='admin']")
-    print("-" * 80)
-    print()
+    print_finished_message("admin inserted [Username='admin', Password='admin']")
 
-    print("-" * 80)
-    print("Inserting quiz questions into database")
-    print()
-    print(
+    print_start_message("Inserting quiz questions into database" + \
     """
     q1 = Quiz(question='1?', response_a='N', response_b='Y', response_c='N', answer=2)
     db.session.add(q1)
@@ -112,10 +95,7 @@ def create_database():
     """
     )
     add_quiz()
-    print()
-    print("quiz inserted")
-    print("-" * 80)
-    print()
+    print_finished_message("quiz inserted")
 
 def main():
     """ only run this file when you don't have a migrations folder and app.db """
