@@ -34,7 +34,7 @@ class RegistrationForm(FlaskForm):
 
 
 class QuizForm(FlaskForm):
-    
+
     question1 = RadioField(coerce=int, validators=[DataRequired()])
     question2 = RadioField(coerce=int, validators=[DataRequired()])
     question3 = RadioField(coerce=int, validators=[DataRequired()])

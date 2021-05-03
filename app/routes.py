@@ -106,12 +106,6 @@ def quiz():
 def quiz_questions():
     NUM_NON_QUESTION_FIELDS = 3 # 2 Submits and 1 hidden?
 
-    form = QuizForm()
-    questions = []
-    
-    fields = [field for field in form]
-    fields = fields[:-NUM_QUESTIONS_IN_QUIZ]
-
     if current_user.has_saved_attempt:
         saved_attempt = SavedAttempt.query.filter_by(user_id=current_user.id).first()
         if saved_attempt is None:
@@ -132,6 +126,15 @@ def quiz_questions():
                 saved_attempt.response_c
             ]
 
+            # set default values field.default doesn't work
+            form = QuizForm(
+                question1=saved_responses[0],
+                question2=saved_responses[1],
+                question3=saved_responses[2]
+            )
+            
+            fields = [field for field in form]
+            fields = fields[:-NUM_QUESTIONS_IN_QUIZ]
             index = 0
             for field in fields:
                 question = questions[index]
@@ -143,11 +146,8 @@ def quiz_questions():
                     (3, question.response_c)
                 ]
 
-                field.default = saved_responses[index]
                 index += 1
 
-            # set default values
-            form.process()
 
     else:
     # REMOVE THIS LOGIC INTO SEPERATE FUNCTION
@@ -156,6 +156,11 @@ def quiz_questions():
     # SELECT RANDOM INT FROM 1->NUM_ROWS FOR NUMBER OF QUESTIONS ON QUIZ
     # SELECT THESE ROWS FROM THE TABLE TO BE THE QUIZ QUESTIONS
         # every field except the submit field
+        form = QuizForm()
+        questions = []
+    
+        fields = [field for field in form]
+        fields = fields[:-NUM_QUESTIONS_IN_QUIZ]
 
         for i in range(1, len(fields)+1):
             question = Question.query.get(i)
@@ -175,7 +180,9 @@ def quiz_questions():
             index += 1
 
     print(form.csrf_token)
+
     if form.validate_on_submit():
+
         if form.submit.data:
 
             outcome = 0 # dummy value
@@ -202,7 +209,7 @@ def quiz_questions():
                 question_c_id = questions[2].id,
                 response_c=form.question3.data, 
                 mark_c=value_c,
-                 
+                    
                 score = value_score,
                 attempt_datetime = datetime.utcnow()
             )
@@ -226,7 +233,7 @@ def quiz_questions():
         
 
         # save button was pressed
-        elif form.save.data:
+        if form.save.data:
 
             savedAttempt = SavedAttempt(
                 user_id=current_user.id,
