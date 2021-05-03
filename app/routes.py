@@ -149,8 +149,6 @@ def quiz_questions():
             # set default values
             form.process()
 
-
-
     else:
     # REMOVE THIS LOGIC INTO SEPERATE FUNCTION
     # TO RANDOMISE THIS 
@@ -177,8 +175,8 @@ def quiz_questions():
             index += 1
 
 
-    if form.submit.data:
-        if form.validate_on_submit():
+    if form.validate_on_submit():
+        if form.save.data:
 
             outcome = 0 # dummy value
             if Question.query.get(1).answer == form.question1.data: value_a = 1
@@ -226,34 +224,35 @@ def quiz_questions():
             outcome = value_score
             return render_template('result.html',form=form, outcome=outcome)
         
-        else:
-            print(form.errors)
 
-    # save button was pressed
-    elif form.save.data:
+        # save button was pressed
+        elif form.save.data:
 
-        savedAttempt = SavedAttempt(
-            user_id=current_user.id,
-            
-            # change this from being hard coded for question id
-            question_a_id = questions[0].id,
-            response_a=form.question1.data, 
-
-            question_b_id = questions[1].id,
-            response_b=form.question2.data, 
-
-            question_c_id = questions[2].id,
-            response_c=form.question3.data, 
+            savedAttempt = SavedAttempt(
+                user_id=current_user.id,
                 
-            saved_datetime = datetime.utcnow()
-        )
+                # change this from being hard coded for question id
+                question_a_id = questions[0].id,
+                response_a=form.question1.data, 
 
-        db.session.add(savedAttempt)
-        current_user.has_saved_attempt = True
-        db.session.commit()
+                question_b_id = questions[1].id,
+                response_b=form.question2.data, 
+
+                question_c_id = questions[2].id,
+                response_c=form.question3.data, 
+                    
+                saved_datetime = datetime.utcnow()
+            )
+
+            db.session.add(savedAttempt)
+            current_user.has_saved_attempt = True
+            db.session.commit()
 
 
-        return redirect(url_for('quiz'))
+            return redirect(url_for('quiz'))
+
+    else:
+        print(form.errors)
 
     return render_template('quizQuestions.html',form=form)
 
