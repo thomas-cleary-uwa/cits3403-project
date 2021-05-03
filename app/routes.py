@@ -107,6 +107,7 @@ def quiz_questions():
     NUM_NON_QUESTION_FIELDS = 3 # 2 Submits and 1 hidden?
     form = QuizForm()
 
+    # REMOVE THIS LOGIC INTO SEPERATE FUNCTION
     # TO RANDOMISE THIS 
     # GET NUMBER OF ROWS IN QUESTION TABLE
     # SELECT RANDOM INT FROM 1->NUM_ROWS FOR NUMBER OF QUESTIONS ON QUIZ
@@ -171,8 +172,15 @@ def quiz_questions():
             db.session.commit()
 
             # NEED TO DELETE ANY SAVED ATTEMPTS IN THE DATABASE FOR THIS USER 
-            
-            current_user.has_saved_attempt = False
+            if current_user.has_saved_attempt:
+                savedAttempts = SavedAttempt.query.filter_by(user_id=current_user.id).all()
+
+                for attempt in savedAttempts:
+                    db.session.delete(attempt)
+
+                current_user.has_saved_attempt = False
+
+                db.session.commit()
 
             outcome = value_score
             return render_template('result.html',form=form, outcome=outcome)
@@ -200,9 +208,9 @@ def quiz_questions():
         )
 
         db.session.add(savedAttempt)
+        current_user.has_saved_attempt = True
         db.session.commit()
 
-        current_user.has_saved_attempt = True
 
         return redirect(url_for('quiz'))
 
