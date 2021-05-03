@@ -167,7 +167,12 @@ def quiz_questions():
             if current_user.has_saved_attempt:
                 delete_saved_attempts()
 
-            return render_template('result.html',form=form, outcome=score)
+            return render_template(
+                'result.html',
+                form=form, 
+                outcome=score, 
+                num_questions=NUM_QUESTIONS_IN_QUIZ
+            )
 
 
     # if the save button was pressed
