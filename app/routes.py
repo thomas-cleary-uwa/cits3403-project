@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, url_for, request
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, QuizForm
 from flask_login import current_user, login_user, login_required, logout_user
-from app.models import User, Question, Attempt
+from app.models import User, Question, SubmittedAttempt, SavedAttempt
 from werkzeug.urls import url_parse
 from datetime import datetime
 
@@ -79,7 +79,7 @@ def register():
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     
-    attempts = Attempt.query.filter_by(user_id=current_user.id)
+    attempts = SubmittedAttempt.query.filter_by(user_id=current_user.id)
     numAttempts = attempts.count()
 
     all_scores = []
@@ -136,29 +136,35 @@ def quiz_questions():
 
     outcome = None #dummy value for initialisation
     if form.validate_on_submit():
-       
-        if Question.query.get(1).answer == form.question1.data: value_a = 1
-        else: value_a = 0
-        if Question.query.get(2).answer == form.question2.data: value_b = 1
-        else: value_b = 0
-        if Question.query.get(3).answer == form.question3.data: value_c = 1
-        else: value_c = 0
-        value_score = value_a + value_b + value_c
 
-        attempt = Attempt( 
-            user_id=current_user.id,
-            response_a=form.question1.data, mark_a=value_a,
-            response_b=form.question2.data, mark_b=value_b, 
-            response_c=form.question3.data, mark_c=value_c, 
-            score = value_score,
-            attempt_datetime = datetime.utcnow()
-        )
-        
-        db.session.add(attempt)
-        db.session.commit()
+        if form.submit:
 
-        outcome = value_score
-        return render_template('result.html',form=form, outcome=outcome)
+            if Question.query.get(1).answer == form.question1.data: value_a = 1
+            else: value_a = 0
+            if Question.query.get(2).answer == form.question2.data: value_b = 1
+            else: value_b = 0
+            if Question.query.get(3).answer == form.question3.data: value_c = 1
+            else: value_c = 0
+            value_score = value_a + value_b + value_c
+
+            attempt = SubmittedAttempt( 
+                user_id=current_user.id,
+                response_a=form.question1.data, mark_a=value_a,
+                response_b=form.question2.data, mark_b=value_b, 
+                response_c=form.question3.data, mark_c=value_c, 
+                score = value_score,
+                attempt_datetime = datetime.utcnow()
+            )
+            
+            db.session.add(attempt)
+            db.session.commit()
+
+            outcome = value_score
+            return render_template('result.html',form=form, outcome=outcome)
+
+        if form.save:
+
+            return render_template('index.html')
 
     else:
         print(form.errors)

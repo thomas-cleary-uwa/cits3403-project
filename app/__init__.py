@@ -34,7 +34,8 @@ admin = Admin(app, name="Admin Tools", index_view=MyAdminIndexView())
 # adds these tables to admin page for editing
 admin.add_view(adminViews.AdminUserView(models.User, db.session))
 admin.add_view(adminViews.AdminModelView(models.Question, db.session))
-admin.add_view(adminViews.AdminAttemptView(models.Attempt, db.session)) #  REMOVE CREATE TAB
+admin.add_view(adminViews.AdminAttemptView(models.SubmittedAttempt, db.session)) #  REMOVE CREATE TAB
+admin.add_view(adminViews.AdminAttemptView(models.SavedAttempt, db.session)) #  REMOVE CREATE TAB
 
 # adds link to go back to website
 admin.add_link(MenuLink(name="Back to Site", url="/index", category="Links"))

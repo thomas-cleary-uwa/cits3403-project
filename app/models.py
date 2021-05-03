@@ -96,6 +96,8 @@ class SavedAttempt(db.Model):
     question_c_id = db.Column(db.Integer, db.ForeignKey(User.id))
     response_c = db.Column(db.Integer, index=True, nullable=True)
 
+    saved_datetime = db.Column(db.DateTime, index=True)
+
     # currently returns score only
     def __repr__(self):
         return '<Attempt: {}>'.format(self.score)

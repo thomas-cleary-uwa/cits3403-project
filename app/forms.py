@@ -40,3 +40,4 @@ class QuizForm(FlaskForm):
     question3 = RadioField(coerce=int, validators=[DataRequired()])
 
     submit = SubmitField('Submit Test')
+    save = SubmitField('Save Test')
