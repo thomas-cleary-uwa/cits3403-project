@@ -76,7 +76,7 @@ def register():
     # if a user is already logged in send them to the index page
     if current_user.is_authenticated:
         return redirect(url_for('index'))
-    
+
     form = RegistrationForm()
 
     # if form is submitted with valid data
@@ -109,7 +109,7 @@ def user(username):
         return redirect(url_for('user', username=current_user.username))
 
     user = User.query.filter_by(username=username).first_or_404()
-    
+
     # retrieve all the quiz attempts for this user
     attempts = SubmittedAttempt.query.filter_by(user_id=current_user.id)
     num_attempts = attempts.count()
@@ -127,7 +127,7 @@ def user(username):
         average = int(average * 100)
 
     return render_template(
-        'user.html', user=user, attempts=attempts, 
+        'user.html', user=user, attempts=attempts,
         average=average, numAttempts=num_attempts
     )
 
@@ -155,7 +155,7 @@ def quiz_questions():
 
         # if the submit button was pressed
         if form.submit.data:
-            
+
             # calculate their score for this quiz
             score = submit_attempt(form, questions)
 
@@ -164,11 +164,11 @@ def quiz_questions():
                 delete_saved_attempts()
 
             return render_template('result.html',form=form, outcome=score)
-        
+
 
     # if the save button was pressed
     if form.save.data:
-        
+
         # delete any previously saved attempt
         if current_user.has_saved_attempt:
             delete_saved_attempts()
@@ -263,12 +263,12 @@ def create_quiz_form():
 
         # create quiz form
         form = QuizForm(
-            question1=saved_responses[0],   
+            question1=saved_responses[0],
             question2=saved_responses[1],
             question3=saved_responses[2]
         )
         # setting default values with field.default doesn't work
- 
+
         fields = get_radio_fields(form)
 
     else:
@@ -301,39 +301,39 @@ def submit_attempt(form, questions):
         returns the score the user achieved
     """
 
-    if Question.query.get(1).answer == form.question1.data: 
+    if Question.query.get(1).answer == form.question1.data:
         value_a = 1
-    else: 
+    else:
         value_a = 0
 
-    if Question.query.get(2).answer == form.question2.data: 
+    if Question.query.get(2).answer == form.question2.data:
         value_b = 1
-    else: 
+    else:
         value_b = 0
 
-    if Question.query.get(3).answer == form.question3.data: 
+    if Question.query.get(3).answer == form.question3.data:
         value_c = 1
-    else: 
+    else:
         value_c = 0
 
     score = value_a + value_b + value_c
 
-    attempt = SubmittedAttempt( 
+    attempt = SubmittedAttempt(
         user_id=current_user.id,
 
         # change this from being hard coded for question id
         question_a_id = questions[0].id,
-        response_a=form.question1.data, 
+        response_a=form.question1.data,
         mark_a=value_a,
 
         question_b_id = questions[1].id,
-        response_b=form.question2.data, 
-        mark_b=value_b, 
+        response_b=form.question2.data,
+        mark_b=value_b,
 
         question_c_id = questions[2].id,
-        response_c=form.question3.data, 
+        response_c=form.question3.data,
         mark_c=value_c,
-            
+
         score = score,
         attempt_datetime = datetime.utcnow()
     )
@@ -352,13 +352,13 @@ def save_attempt(form, questions):
         user_id        =current_user.id,
 
         question_a_id  = questions[0].id,
-        response_a     = form.question1.data, 
+        response_a     = form.question1.data,
 
         question_b_id  = questions[1].id,
-        response_b     = form.question2.data, 
+        response_b     = form.question2.data,
 
         question_c_id  = questions[2].id,
-        response_c     = form.question3.data, 
+        response_c     = form.question3.data,
 
         saved_datetime = datetime.utcnow()
     )
