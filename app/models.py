@@ -30,11 +30,11 @@ class User(UserMixin, db.Model):
 
 
     def set_password(self, password):
-        self.password_hash = generate_password_hash(password)
+        self.password_hash = generate_password_hash(password.strip())
 
 
     def check_password(self, password):
-        return check_password_hash(self.password_hash, password)
+        return check_password_hash(self.password_hash, password.strip())
 
 
     def avatar(self, size):
