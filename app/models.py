@@ -1,6 +1,5 @@
 """ defines models for the ORM with SQLalchemy and SQLite """
 
-
 from hashlib import md5
 from datetime import datetime
 from flask_login import UserMixin
@@ -9,13 +8,16 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from app import db, login
 
 
+
 @login.user_loader
 def load_user(id):
+    """ helps flask-login to know who the current user is """
     return User.query.get(int(id))
 
 
 
 class User(UserMixin, db.Model):
+    """ the user model """
 
     id                = db.Column(db.Integer, primary_key=True)
     username          = db.Column(db.String(64), index=True, unique=True)
@@ -37,16 +39,19 @@ class User(UserMixin, db.Model):
 
 
     def set_password(self, password):
+        """ sets the users password as a hash """
         password = password.strip()
         self.password_hash = generate_password_hash(password)
 
 
     def check_password(self, password):
+        """ checks to see whether password is correct for this user """
         password = password.strip()
         return check_password_hash(self.password_hash, password)
 
 
     def get_avatar(self, size):
+        """ returns the gravatar for this user """
         email_lower = self.email.lower()
         digest = md5(email_lower.encode('utf-8')).hexdigest()
 
@@ -57,13 +62,17 @@ class User(UserMixin, db.Model):
 
 
 class Question(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    """ the question model """
+
+    id          = db.Column(db.Integer, primary_key=True)
     question    = db.Column(db.String(128), index=True, unique=True)
 
     response_a  = db.Column(db.String(64), index=True)
     response_b  = db.Column(db.String(64), index=True)
     response_c  = db.Column(db.String(64), index=True)
 
+    # refers to the number radio button that the response will be
+    # a=1, b=2, c=3
     answer      = db.Column(db.Integer, index=True)
 
     def __repr__(self):
@@ -73,8 +82,9 @@ class Question(db.Model):
 
 
 class SubmittedAttempt(db.Model):
+    """ the submitted attempt model """
 
-    id       = db.Column(db.Integer, primary_key=True)
+    id               = db.Column(db.Integer, primary_key=True)
     user_id          = db.Column(db.Integer, db.ForeignKey(User.id))
 
     question_a_id    = db.Column(db.Integer, db.ForeignKey(Question.id))
@@ -100,8 +110,9 @@ class SubmittedAttempt(db.Model):
 
 
 class SavedAttempt(db.Model):
+    """ the saved attempt model """
 
-    id     = db.Column(db.Integer, primary_key=True)
+    id             = db.Column(db.Integer, primary_key=True)
     user_id        = db.Column(db.Integer, db.ForeignKey(User.id))
 
     question_a_id  = db.Column(db.Integer, db.ForeignKey(Question.id))
