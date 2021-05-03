@@ -142,3 +142,6 @@ migrations/*
 
 #random
 TODO
+
+#pylint
+.pylintrc

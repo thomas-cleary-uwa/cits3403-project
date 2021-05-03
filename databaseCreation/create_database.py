@@ -1,15 +1,22 @@
-# adds the app to the PATH variable
-import os, sys
+"""
+Creates the SQLite database for the application.
+Inserts an admin user for the website
+Inserts 3 dummy quiz questions
+"""
+
+import os
+import sys
+
+# add app to Python PATH variable
 currentDir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentDir)
 sys.path.insert(0, parentdir)
 
 from app import db
 from app.models import User, Question
-import os
 
 
-def addAdmin():
+def add_admin():
     """ adds admin user to database """
 
     admin = User(username="admin", email="admin@email.com", is_admin=True)
@@ -18,23 +25,30 @@ def addAdmin():
     db.session.commit()
 
 
-def addQuiz():
+def add_quiz():
     """ adds quiz questions to the database for testing purposes """
 
-    q1 = Question(question='1?', response_a='N', response_b='Y', response_c='N', answer=2)
-    db.session.add(q1)
+    q_1 = Question(question='1?', response_a='N', response_b='Y', response_c='N', answer=2)
+    db.session.add(q_1)
 
-    q2 = Question(question='2?', response_a='N', response_b='N', response_c='Y', answer=3)
-    db.session.add(q2)
+    q_2 = Question(question='2?', response_a='N', response_b='N', response_c='Y', answer=3)
+    db.session.add(q_2)
 
-    q3 = Question(question='3?', response_a='Y', response_b='N', response_c='N', answer=1)
-    db.session.add(q3)
+    q_3 = Question(question='3?', response_a='Y', response_b='N', response_c='N', answer=1)
+    db.session.add(q_3)
 
     db.session.commit()
 
 
+def print_seperator(message=None, with_newline=False):
+    print("-" * 80)
+    if message is not None:
+        print(message)
+    if with_newline:
+        print() 
 
-def createDatabase():
+
+def create_database():
     """ creates database for your branch """
     print("-" * 80)
     print("Initialising Database [ flask db init ]")
@@ -71,10 +85,10 @@ def createDatabase():
     admin = User(username="admin", email="admin@email.com", isAdmin=True)
     admin.set_password("admin")
     db.session.add(admin)
-    db.session.commit()" 
+    db.session.commit()"
     """
     )
-    addAdmin() 
+    add_admin()
     print()
     print("admin inserted [Username='admin', Password='admin']")
     print("-" * 80)
@@ -94,10 +108,10 @@ def createDatabase():
     q3 = Quiz(question='3?', response_a='Y', response_b='N', response_c='N', answer=1)
     db.session.add(q3)
 
-    db.session.commit() 
+    db.session.commit()
     """
     )
-    addQuiz() 
+    add_quiz()
     print()
     print("quiz inserted")
     print("-" * 80)
@@ -105,7 +119,7 @@ def createDatabase():
 
 def main():
     """ only run this file when you don't have a migrations folder and app.db """
-    createDatabase()
+    create_database()
 
 
 if __name__ == "__main__":

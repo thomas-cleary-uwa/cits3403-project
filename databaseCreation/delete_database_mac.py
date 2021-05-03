@@ -21,7 +21,7 @@ def deleteDatabase():
 
 
     if os.path.exists(MIGRATIONS_PATH):
-        for dirpath, dirnames, filenames in os.walk(MIGRATIONS_PATH):
+        for dirpath, _, filenames in os.walk(MIGRATIONS_PATH):
             for filename in filenames:
                 os.remove(dirpath + "/" + filename)
             if dirpath != MIGRATIONS_PATH:
