@@ -35,6 +35,7 @@ class AdminModelView(ModelView):
 class AdminUserView(AdminModelView):
     """ custom view for the User table """
     column_exclude_list = ['password_hash']
+    can_create = False
 
 
 class AdminAttemptView(AdminModelView):
