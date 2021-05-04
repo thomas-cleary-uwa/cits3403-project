@@ -2,5 +2,22 @@
 
 {% block content %}
 
+<h2>{{ username }}'s attempts</h2>
+{% for attempt in user_attempts %}
+<table class="table table-bordered">
+  <tr class="active">
+    <td>Question</td><td>Response</td><td>Mark</td>
+  </tr>
+  {% for attempt_key in attempt_keys %}
+  <tr>
+    <td>{{ attempt[attempt_key]["question"] }}</td>
+    <td>{{ attempt[attempt_key]["response"] }}</td>
+    <td>{{ attempt[attempt_key]["mark"] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endfor %}
+
+
 
 {% endblock %}

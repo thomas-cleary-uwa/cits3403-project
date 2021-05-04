@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<table class="table table-bordered table-striped">
+  {% for user, attempt_count in users %}
+  {% if attempt_count > 0 %}
+  <tr>
+    <td style="text-align: center;">
+      <a href="{{ url_for('user_attempts', username=user.username) }}">
+        {{ user.username }}
+      </a>
+    </td>
+  </tr>
+  {% else %}
+  <tr>
+    <td style="text-align: center;">
+      {{ user.username }}
+    </td>
+  </tr>
+  {% endif %}
+  {% endfor %}
+</table>
+
+
+{% endblock %}

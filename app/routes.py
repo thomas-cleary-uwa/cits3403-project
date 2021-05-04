@@ -11,8 +11,8 @@ from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
 from app.models import User, SubmittedAttempt, UserStats
-from .route_helpers import create_quiz_form, submit_attempt, delete_saved_attempts
-from .route_helpers import save_attempt, get_attempt_data, get_user_stats
+from .route_helpers import create_quiz_form, submit_attempt, delete_saved_attempts, get_all_users
+from .route_helpers import save_attempt, get_attempt_data, get_user_stats, get_users_attempts
 from .constants import NUM_QUESTIONS_IN_QUIZ
 
 
@@ -232,11 +232,32 @@ def user_stats():
     return render_template('user_stats.html', user_info=zip(users, user_stats), totals=totals)
 
 
-def user_attempts():
+@app.route('/user_attempts/<username>')
+@login_required
+def user_attempts(username):
+
     """ route for admin to view users attempts """
     if not current_user.is_admin:
         flash('Access Denied')
         return redirect(url_for('index'))
+
+    if username == "all":
+        users = get_all_users()
+        quiz_attempt_counts = []
+        for user in users:
+            quiz_attempt_counts.append(UserStats.query.filter_by(user_id=user.id).first().num_quiz_attempts)
+        return render_template('user_attempts_landing.html', users=zip(users, quiz_attempt_counts))
+    
+    users_attempts = get_users_attempts(username)
+
+    attempt_keys = []
+    template = "question_"
+    for i in range(1,NUM_QUESTIONS_IN_QUIZ+1):
+        attempt_keys.append(template + str(i))
+
+    return render_template('user_attempts.html',
+     user_attempts=users_attempts, username=username, attempt_keys=attempt_keys
+    )
 
 
 @app.before_request

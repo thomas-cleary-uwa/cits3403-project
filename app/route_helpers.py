@@ -15,8 +15,26 @@ from app.models import User, Question, SubmittedAttempt, SavedAttempt, UserStats
 from .constants import NUM_QUESTIONS_IN_QUIZ
 
 
+def get_all_users():
+    """ return a list of all users """
+    return User.query.filter(User.username != "admin").all()
+
+def get_users_attempts(username):
+    """ return list of attempts for user with username"""
+
+    user = User.query.filter_by(username=username).first()
+
+    users_attempts = []
+
+    attempts = SubmittedAttempt.query.filter_by(user_id=user.id).order_by(SubmittedAttempt.id).all()
+    for attempt in attempts:
+        users_attempts.append(get_attempt_data(attempt))
+    
+    return users_attempts
+
+
 def get_user_stats():
-    """ return tuple of (combined_user_stats, individual_user_stats) """
+    """ return tuple of (users, individual_user_stats, all_user_stats) """
     users = User.query.filter(User.username != "admin").all()
 
     user_stats = []
