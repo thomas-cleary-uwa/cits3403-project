@@ -20,7 +20,16 @@
 </table>
 
 {% for user, stats in user_info %}
-<h2>{{ user.username }}</h2>
+<h2>
+  {% if stats.num_quiz_attempts > 0 %}
+  <a href="{{ url_for('user_attempts', username=user.username) }}">
+    {{ user.username}}
+  </a>
+  {% else %}
+  {{ user.username}}
+  {% endif %}
+</h2>
+
 <table class="table table-bordered">
   <tr class="active">
     <td>Registered On</td><td>Last Seen</td><td>Login Count</td>
