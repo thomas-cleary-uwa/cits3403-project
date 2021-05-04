@@ -200,6 +200,7 @@ def quiz_questions():
 @app.route('/result/<score>')
 @login_required
 def result(score):
+    print(type(score))
     return render_template('result.html', outcome=score, num_questions=NUM_QUESTIONS_IN_QUIZ)
 
 
@@ -339,6 +340,7 @@ def submit_attempt(form, questions):
 
 
     score = sum(marks)
+    score = int((score / NUM_QUESTIONS_IN_QUIZ) * 100)
 
     attempt = SubmittedAttempt(
         user_id=current_user.id,
