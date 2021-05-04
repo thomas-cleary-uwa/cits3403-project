@@ -227,9 +227,16 @@ def user_stats():
         flash('Access Denied')
         return redirect(url_for('index'))
 
-    users, user_stats = get_user_stats()
+    users, user_stats, totals = get_user_stats()
 
-    return render_template('user_stats.html', user_info=zip(users, user_stats))
+    return render_template('user_stats.html', user_info=zip(users, user_stats), totals=totals)
+
+
+def user_attempts():
+    """ route for admin to view users attempts """
+    if not current_user.is_admin:
+        flash('Access Denied')
+        return redirect(url_for('index'))
 
 
 @app.before_request

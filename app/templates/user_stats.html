@@ -4,6 +4,21 @@
 
 <h1>User Statistics</h1>
 
+<h2>All Users</h2>
+<table class="table table-bordered">
+  <tr class="active">
+    <td>Total Logins</td><td>Average Score</td>
+  </tr>
+  <tr>
+    <td>{{ totals["login_attempts"] }}</td>
+    {% if not totals["average"] and totals["average"] != 0 %}
+    <td>No one has attempted the quiz</td>
+    {% else %}
+    <td>{{ totals["average"] }}</td>
+    {%  endif  %}
+  </tr>
+</table>
+
 {% for user, stats in user_info %}
 <h2>{{ user.username }}</h2>
 <table class="table table-bordered">
@@ -20,7 +35,7 @@
   </tr>
   <tr>
     <td>{{ stats.num_quiz_attempts }}</td>
-    {% if not stats.highest_score %}
+    {% if not stats.highest_score and stats.highest_score != 0%}
     <td>No attempts</td>
     <td>No attempts</td>
     {% else %}

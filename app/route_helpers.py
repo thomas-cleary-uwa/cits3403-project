@@ -23,7 +23,24 @@ def get_user_stats():
     for user in users:
         user_stats.append(UserStats.query.filter_by(user_id=user.id).first())
 
-    return (users, user_stats)
+    totals = {}
+    attempt_exists = False
+
+    for stats in user_stats:
+        totals["login_attempts"] = totals.get("login_attempts", 0) + stats.num_logins
+
+        if stats.average_score is not None:
+            attempt_exists = True
+            totals["average"] = round(
+                ((totals.get("average", 0) * totals.get("averages_added", 0)) + \
+                stats.average_score) / (totals.get("averages_added", 0) + 1), 
+                2
+            )
+    if not attempt_exists:
+        totals["average"] = None
+
+
+    return (users, user_stats, totals)
 
 
 def get_attempt_data(attempt):
