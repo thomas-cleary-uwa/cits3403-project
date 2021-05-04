@@ -107,7 +107,7 @@ class SubmittedAttempt(db.Model):
 
     score            = db.Column(db.Integer, index=True)
 
-    attempt_datetime = db.Column(db.DateTime, index=True)
+    attempt_datetime = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
 
     def __repr__(self):

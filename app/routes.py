@@ -4,7 +4,7 @@ import random
 
 from datetime import datetime
 
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, session
 from flask_login import current_user, login_user, login_required, logout_user
 from werkzeug.urls import url_parse
 from wtforms import RadioField
@@ -143,11 +143,12 @@ def user(username):
 @login_required
 def quiz():
     """ quiz start/resume route """
+    session["quiz_seed"] = random.randint(1, 100)
     return render_template('quizLanding.html')
 
 
 
-@app.route('/quiz_questions', methods=['GET','POST'])
+@app.route('/quiz_questions/', methods=['GET','POST'])
 @login_required
 def quiz_questions():
     """ quiz questions/form route """
@@ -163,7 +164,7 @@ def quiz_questions():
         if form.submit.data:
 
             # calculate their score for this quiz
-            summary, score = submit_attempt(form, questions)
+            score = submit_attempt(form, questions)
 
             # if they had this quiz saved before, delete it from the database
             if current_user.has_saved_attempt:
@@ -255,8 +256,8 @@ def get_saved_attempt():
 def get_questions(num_questions):
     """ returns a list of questions from the database of length, num_questions """
     all_questions = Question.query.all()
-    random.shuffle(all_questions)
-    return all_questions[:NUM_QUESTIONS_IN_QUIZ]
+    random.Random(session["quiz_seed"]).shuffle(all_questions)
+    return all_questions[:num_questions]
 
 
 def get_question_choices(question):
@@ -281,9 +282,13 @@ def create_quiz_form():
         questions = get_questions(NUM_QUESTIONS_IN_QUIZ)
         defaults = [None] * len(questions)
 
+    choice_seed_modifier = 1
     for question, default in zip(questions, defaults):
         question_choices = get_question_choices(question)
-        random.shuffle(question_choices)
+        # randomise the order of the choices so not just answer,wrong,wrong,wrong
+        random.Random(session["quiz_seed"]+choice_seed_modifier).shuffle(question_choices)
+        # change the order for the next question
+        choice_seed_modifier += 1
 
         field = RadioField(
             label=question.question,
@@ -313,7 +318,7 @@ def submit_attempt(form, questions):
         else:
             marks.append(0)
 
-
+    # might return summary and use for results page?
     summary = {}
 
     for i, curr_question in enumerate(questions):
@@ -360,7 +365,7 @@ def submit_attempt(form, questions):
     db.session.add(attempt)
     db.session.commit()
 
-    return (summary, score)
+    return score
 
 
 
