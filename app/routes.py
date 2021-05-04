@@ -143,7 +143,11 @@ def user(username):
 @login_required
 def quiz():
     """ quiz start/resume route """
-    session["quiz_seed"] = random.randint(1, 100)
+    try:
+        session["quiz_seed"] += 1
+    except KeyError:
+        session["quiz_seed"] = random.randint(1, 100)
+    
     return render_template('quizLanding.html')
 
 
@@ -364,6 +368,12 @@ def submit_attempt(form, questions):
 
     db.session.add(attempt)
     db.session.commit()
+
+    # update seed so next attempt is differnt if press 'try again'
+    try:
+        session["quiz_seed"] += 1
+    except KeyError:
+        session["quiz_seed"] = random.randint(1, 100)
 
     return score
 
