@@ -110,23 +110,23 @@ def user(username):
 
     # retrieve all the quiz attempts for this user
     attempts = SubmittedAttempt.query.filter_by(user_id=current_user.id)
-    num_attempts = attempts.count()
 
     # list of the scores for each attempt
     all_scores = [attempt.score for attempt in attempts]
 
     total = sum(all_scores)
+    num_attempts = len(all_scores)
 
     # calculate average score
     if num_attempts == 0:
         average = None
     else:
-        average = total / len(all_scores)    
+        average = total / num_attempts
         average = round(average, 2)
 
     return render_template(
         'user_profile.html', user=user, attempts=attempts,
-        average=average, numAttempts=num_attempts
+        average=average, num_attempts=num_attempts
     )
 
 
