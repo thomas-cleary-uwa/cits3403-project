@@ -227,12 +227,9 @@ def user_stats():
         flash('Access Denied')
         return redirect(url_for('index'))
 
-    user_data = get_user_stats()
-    print(user_data)
-    # GET USER STATS FOR EACH USER IN A LIST/DICT
-    # PASS THAT TO THE TEMPLATE
+    users, user_stats = get_user_stats()
 
-    return render_template('user_stats.html')
+    return render_template('user_stats.html', user_info=zip(users, user_stats))
 
 
 @app.before_request

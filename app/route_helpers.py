@@ -11,16 +11,19 @@ from wtforms import RadioField, SubmitField
 from wtforms.validators import DataRequired
 
 from app import db
-from app.models import User, Question, SubmittedAttempt, SavedAttempt
+from app.models import User, Question, SubmittedAttempt, SavedAttempt, UserStats
 from .constants import NUM_QUESTIONS_IN_QUIZ
 
 
 def get_user_stats():
     """ return tuple of (combined_user_stats, individual_user_stats) """
-    users = User.query.all()
+    users = User.query.filter(User.username != "admin").all()
 
-    
-    return users
+    user_stats = []
+    for user in users:
+        user_stats.append(UserStats.query.filter_by(user_id=user.id).first())
+
+    return (users, user_stats)
 
 
 def get_attempt_data(attempt):

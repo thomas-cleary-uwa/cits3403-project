@@ -4,4 +4,32 @@
 
 <h1>User Statistics</h1>
 
+{% for user, stats in user_info %}
+<h2>{{ user.username }}</h2>
+<table class="table table-bordered">
+  <tr class="active">
+    <td>Registered On</td><td>Last Seen</td><td>Login Count</td>
+  </tr>
+  <tr>
+    <td>{{ stats.registered_on }}</td>
+    <td>{{ stats.last_seen }}</td>
+    <td>{{ stats.num_logins }}</td>
+  </tr>
+  <tr class="active">
+    <td># of Quiz Attempts</td><td>Highest Score</td><td>Average</td>
+  </tr>
+  <tr>
+    <td>{{ stats.num_quiz_attempts }}</td>
+    {% if not stats.highest_score %}
+    <td>No attempts</td>
+    <td>No attempts</td>
+    {% else %}
+    <td>{{ stats.highest_score }}%</td>
+    <td>{{ stats.average_score }}%</td>
+    {% endif %}
+  </tr>
+</table>
+
+{% endfor %}
+
 {% endblock %}
