@@ -107,6 +107,10 @@ def user(username):
         flash('You can not access other user\'s profiles')
         return redirect(url_for('user', username=current_user.username))
 
+    if current_user.is_admin:
+        flash('Administrators do not have a profile')
+        return redirect(url_for('index'))
+
     user = User.query.filter_by(username=username).first_or_404()
 
     # retrieve all the quiz attempts for this user
