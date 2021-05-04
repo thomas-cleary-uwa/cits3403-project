@@ -16,6 +16,49 @@ from .constants import NUM_QUESTIONS_IN_QUIZ
 
 
 
+def get_attempt_data(attempt):
+    """ returns list of informative data about a submitted attempt
+        for the results page
+    """
+    key_template = "question_"
+
+    question_ids = [
+        attempt.question_1_id,
+        attempt.question_2_id,
+        attempt.question_3_id,
+        attempt.question_4_id,
+        attempt.question_5_id,
+    ]
+
+    responses = [
+        attempt.response_1,
+        attempt.response_2,
+        attempt.response_3,
+        attempt.response_4,
+        attempt.response_5,
+    ]
+
+    marks = [
+        attempt.mark_1,
+        attempt.mark_2,
+        attempt.mark_3,
+        attempt.mark_4,
+        attempt.mark_5,
+    ]
+
+    attempt_data = {}
+
+    for i in range(1, NUM_QUESTIONS_IN_QUIZ+1):
+        key = key_template + str(i)
+
+        attempt_data[key] = {
+            "question" : Question.query.get(question_ids[i-1]).question,
+            "response" : responses[i-1],
+            "mark"     : marks[i-1]
+        }
+
+    return attempt_data
+
 
 def delete_saved_attempts():
     """ delete all the saved attempts the current user has in the database """
@@ -177,13 +220,15 @@ def submit_attempt(form, questions):
     db.session.add(attempt)
     db.session.commit()
 
+    attempt_id = SubmittedAttempt.query.filter_by(user_id=current_user.id).order_by(SubmittedAttempt.id.desc()).first().id
+
     # update seed so next attempt is differnt if press 'try again'
     try:
         session["quiz_seed"] += 1
     except KeyError:
         session["quiz_seed"] = random.randint(1, 100)
 
-    return score
+    return (score, attempt_id)
 
 
 def save_attempt(form, questions):

@@ -11,7 +11,8 @@ from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
 from app.models import User, SubmittedAttempt
-from .route_helpers import create_quiz_form, submit_attempt, delete_saved_attempts, save_attempt
+from .route_helpers import create_quiz_form, submit_attempt, delete_saved_attempts
+from .route_helpers import save_attempt, get_attempt_data
 from .constants import NUM_QUESTIONS_IN_QUIZ
 
 
@@ -158,12 +159,12 @@ def quiz_questions():
         # if the submit button was pressed
         if form.submit.data:
             # calculate their score for this quiz
-            score = submit_attempt(form, questions)
+            score, attempt_id = submit_attempt(form, questions)
             # if they had this quiz saved before, delete it from the database
             if current_user.has_saved_attempt:
                 delete_saved_attempts()
 
-            return redirect(url_for('result', score=score))
+            return redirect(url_for('result', score=score, attempt_id=attempt_id))
 
 
     # if the save button was pressed
@@ -183,12 +184,18 @@ def quiz_questions():
     return render_template('quizQuestions.html',form=form)
 
 
-@app.route('/result/<score>')
+@app.route('/result/<score><attempt_id>')
 @login_required
-def result(score):
+def result(score, attempt_id):
     """ quiz results page route """
-    print(type(score))
-    return render_template('result.html', outcome=score, num_questions=NUM_QUESTIONS_IN_QUIZ)
+    attempt = SubmittedAttempt.query.get(attempt_id)
+    attempt_data = get_attempt_data(attempt)
+    return render_template(
+        'result.html',
+        outcome=score,
+        attempt=attempt_data,
+        num_questions=NUM_QUESTIONS_IN_QUIZ
+    )
 
 
 @app.before_request

@@ -9,6 +9,37 @@
 <div id="result">
     <p>Result: {{  outcome  }}%</p>
 </div>
+
+
+<div>
+    <table>
+        <tr>
+            <td>
+                Question
+            </td>
+            <td>
+                Answer
+            </td>
+            <td>
+                Mark
+            </td>
+        </tr>
+        {% for question in attempt.keys() %}
+        <tr>
+            <td>
+                {{ attempt[question]["question"]}}
+            </td>
+            <td>
+                {{ attempt[question]["response"]}}
+            </td>
+            <td>
+                {{ attempt[question]["mark"]}}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
 <div>
     <button id="tryagain" onclick=tryAgainClick()> Try Again</button>
     <button id="exit" onclick=statisticsClick()>Statitics</button>

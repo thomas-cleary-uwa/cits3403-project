@@ -24,8 +24,8 @@
     
   {% for attempt in attempts %}
   <p>
-    <a href="{{ url_for('result', score=attempt.score) }}">
-      Quiz attempt {{ attempt.attempt_id }}
+    <a href="{{ url_for('result', score=attempt.score, attempt_id=attempt.id) }}">
+      Quiz attempt {{ attempt.id }}
     </a>
     score : <b>{{ attempt.score }}%</b> - {{ attempt.attempt_datetime }}
   </p>
