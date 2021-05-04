@@ -93,6 +93,10 @@ def register():
         db.session.add(user)
         db.session.commit()
 
+        user_stats = UserStats(user_id=user.id)
+        db.session.add(user_stats)
+        db.session.commit()
+
         # flash a message to the screen for the user
         flash("Congratulations, you are now a registered user!")
 
