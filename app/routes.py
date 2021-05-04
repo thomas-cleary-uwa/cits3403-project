@@ -124,21 +124,10 @@ def user(username):
     # list of the scores for each attempt
     all_scores = [attempt.score for attempt in attempts]
 
-    total = sum(all_scores)
-    num_attempts = len(all_scores)
-
-    # calculate average score
-    if num_attempts == 0:
-        average = None
-    else:
-        average = total / num_attempts
-        average = round(average, 2)
+    user_stats = UserStats.query.filter_by(user_id=user.id).first()
 
     return render_template(
-        'user_profile.html', user=user, attempts=attempts,
-        average=average, num_attempts=num_attempts
-    )
-
+        'user_profile.html',user=user, user_stats=user_stats, attempts=attempts)
 
 
 @app.route('/quiz')
@@ -192,7 +181,7 @@ def quiz_questions():
 
             if user_average is not None:
                 new_average = (old_average_total + score) / user_stats.num_quiz_attempts
-                user_stats.average_score = new_average
+                user_stats.average_score = round(new_average, 2)
 
             db.session.commit()
 

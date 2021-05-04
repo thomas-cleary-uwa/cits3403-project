@@ -7,19 +7,19 @@
       <td><img src="{{ user.get_avatar(128) }}"</td>
       <td> 
         <h1>User: {{user.username}}</h1>
-        {% if user.last_seen %}
+        {% if user_stats.last_seen %}
         <p>
-          Last seen on: {{ user.last_seen }}
+          Last seen on: {{ user_stats.last_seen }}
         </p>
         {% endif %}
       </td>
     </tr>
   </table>
   <hr>
-  {% if num_attempts > 0 %}
+  {% if user_stats.num_quiz_attempts > 0 %}
   <div>
-    <p>You have attempted the quiz {{ num_attempts }} times.<p>
-    <p>Your average quiz result is {{ average }}%<p>
+    <p>You have attempted the quiz {{ user_stats.num_quiz_attempts }} times.<p>
+    <p>Your average quiz result is {{ user_stats.average_score }}%<p>
   </div>
     
   {% for attempt in attempts %}
