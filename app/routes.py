@@ -114,8 +114,6 @@ def user(username):
 
     # list of the scores for each attempt
     all_scores = [attempt.score for attempt in attempts]
-    for score in all_scores:
-        print(score)
 
     total = sum(all_scores)
 
@@ -123,8 +121,8 @@ def user(username):
     if num_attempts == 0:
         average = None
     else:
-        average = total / (num_attempts * NUM_QUESTIONS_IN_QUIZ)
-        average = int(average * 100)
+        average = total / len(all_scores)    
+        average = round(average, 2)
 
     return render_template(
         'user_profile.html', user=user, attempts=attempts,
