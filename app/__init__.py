@@ -41,6 +41,7 @@ admin = Admin(app, name="Admin Tools", index_view=admin_views.MyAdminIndexView()
 
 # adds database tables to the admin interface
 admin.add_view(admin_views.AdminUserView(models.User, db.session))
+admin.add_view(admin_views.AdminModelView(models.UserStats, db.session))
 admin.add_view(admin_views.AdminModelView(models.Question, db.session))
 admin.add_view(admin_views.AdminAttemptView(models.SubmittedAttempt, db.session))
 admin.add_view(admin_views.AdminAttemptView(models.SavedAttempt, db.session))

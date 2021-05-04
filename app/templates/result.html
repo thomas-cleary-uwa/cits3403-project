@@ -41,7 +41,13 @@
 </div>
 
 <div>
-    <button id="tryagain" onclick=tryAgainClick()> Try Again</button>
+    <button id="tryagain" onclick=tryAgainClick()>
+        {% if current_user.has_saved_attempt %}
+        Resume Attempt
+        {% else %}
+        Try Again
+        {% endif %}
+    </button>
     <button id="exit" onclick=statisticsClick()>Statitics</button>
     <button id="exit" onclick=exitClick()>Exit Quiz</button>
 </div>

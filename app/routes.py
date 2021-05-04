@@ -10,9 +10,9 @@ from werkzeug.urls import url_parse
 
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
-from app.models import User, SubmittedAttempt
+from app.models import User, SubmittedAttempt, UserStats
 from .route_helpers import create_quiz_form, submit_attempt, delete_saved_attempts
-from .route_helpers import save_attempt, get_attempt_data
+from .route_helpers import save_attempt, get_attempt_data, get_user_stats
 from .constants import NUM_QUESTIONS_IN_QUIZ
 
 
@@ -47,6 +47,11 @@ def login():
 
         # if username and password are correct log in the user
         login_user(user, remember=form.remember_me.data)
+
+        # update login stat
+        if not current_user.is_admin:
+            UserStats.query.filter_by(user_id=user.id).first().num_logins += 1
+            db.session.commit()
 
         # if user was redirected to the login page, send them back to where
         # they came from, else send them to the index page
@@ -168,6 +173,29 @@ def quiz_questions():
             if current_user.has_saved_attempt:
                 delete_saved_attempts()
 
+            # update user stats for num attempts MOVE THIS TO EXTERNAL FUNCTION
+            user_stats = UserStats.query.filter_by(user_id=current_user.id).first()
+            if user_stats.highest_score is None:
+                user_stats.highest_score = score
+            elif user_stats.highest_score < score:
+                user_stats.highest_score = score
+
+            user_average = user_stats.average_score
+
+            if user_average is None:
+                user_stats.average_score = score
+            
+            else:
+                old_average_total = user_average * user_stats.num_quiz_attempts
+
+            user_stats.num_quiz_attempts += 1
+
+            if user_average is not None:
+                new_average = (old_average_total + score) / user_stats.num_quiz_attempts
+                user_stats.average_score = new_average
+
+            db.session.commit()
+
             return redirect(url_for('result', score=score, attempt_id=attempt_id))
 
 
@@ -210,6 +238,11 @@ def user_stats():
         flash('Access Denied')
         return redirect(url_for('index'))
 
+    user_data = get_user_stats()
+    print(user_data)
+    # GET USER STATS FOR EACH USER IN A LIST/DICT
+    # PASS THAT TO THE TEMPLATE
+
     return render_template('user_stats.html')
 
 
@@ -217,6 +250,6 @@ def user_stats():
 def before_request():
     """ things to do before handling requests """
     # update the time this user was last seen on the website
-    if current_user.is_authenticated:
-        current_user.last_seen = datetime.utcnow()
+    if current_user.is_authenticated and not current_user.is_admin:
+        UserStats.query.filter_by(user_id=current_user.id).first().last_seen = datetime.utcnow()
         db.session.commit()

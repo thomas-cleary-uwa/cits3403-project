@@ -15,7 +15,7 @@ parentdir = os.path.dirname(currentDir)
 sys.path.insert(0, parentdir)
 
 from app import db
-from app.models import User, Question
+from app.models import User, Question, UserStats
 
 
 def add_dummy_users():
@@ -36,6 +36,17 @@ def add_dummy_users():
     jason = User(username="jason", email="jason@email.com")
     jason.set_password("admin")
     db.session.add(jason)
+
+    db.session.commit()
+
+    thomas_stats = UserStats(user_id=thomas.id)
+    db.session.add(thomas_stats)
+    michael_stats = UserStats(user_id=michael.id)
+    db.session.add(michael_stats)
+    calvin_stats = UserStats(user_id=calvin.id)
+    db.session.add(calvin_stats)
+    jason_stats = UserStats(user_id=jason.id)
+    db.session.add(jason_stats)
 
     db.session.commit()
 

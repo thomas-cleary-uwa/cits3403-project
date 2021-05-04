@@ -1,8 +1,10 @@
 """ defines models for the ORM with SQLalchemy and SQLite """
 
+from enum import unique
 from hashlib import md5
 from datetime import datetime
 from flask_login import UserMixin
+from sqlalchemy.orm import backref
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from app import db, login
@@ -24,15 +26,12 @@ class User(UserMixin, db.Model):
     email             = db.Column(db.String(120), index=True, unique=True)
     password_hash     = db.Column(db.String(128))
 
-    registered_on     = db.Column(db.DateTime, default=datetime.utcnow)
-    last_seen         = db.Column(db.DateTime, default=datetime.utcnow)
-
     is_admin          = db.Column(db.Boolean, default=False)
     has_saved_attempt = db.Column(db.Boolean, default=False)
 
     saved_attempt     = db.relationship('SavedAttempt', backref='taker', lazy='dynamic')
     submitted_attempt = db.relationship('SubmittedAttempt', backref='taker', lazy='dynamic')
-
+    stats             = db.relationship('UserStats', backref='user', lazy='dynamic')
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -58,6 +57,26 @@ class User(UserMixin, db.Model):
         return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
             digest, size
         )
+
+
+class UserStats(db.Model):
+    """ model for user statistics """
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(User.id), unique=True, nullable=False)
+
+    # login stats
+    registered_on     = db.Column(db.DateTime, default=datetime.utcnow)
+    last_seen         = db.Column(db.DateTime, default=datetime.utcnow)
+    num_logins        = db.Column(db.Integer, default=0)
+
+    # quiz attempt stats
+    num_quiz_attempts = db.Column(db.Integer, default=0)
+    highest_score     = db.Column(db.Integer, default=None)
+    average_score     = db.Column(db.Integer, default=None)
+
+
+    def __repr__(self):
+        return "<{}'s stats".format(User.query.filter_by(id=self.user_id).first())
 
 
 
