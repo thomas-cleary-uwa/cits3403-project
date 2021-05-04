@@ -17,8 +17,12 @@
       <tr>
         <td>
           {{ field.label }}
+          {% for error in field.errors %}
+          <span style="color: red;">{{ error }}</span>
+          {% endfor %}
         </td>
       </tr>
+
       {% for subfield in field %}
       <tr>
         <td>
@@ -26,6 +30,7 @@
         </td>
       </tr>
       {% endfor %}
+
       {% endif %}
       {% endfor %}
 
