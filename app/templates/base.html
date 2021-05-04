@@ -41,10 +41,14 @@
           Quiz
         </a>
       </li>
-      {% else %}
+      {% endif %}
+      {% if current_user.is_admin and current_user.is_authenticated%}
       <li>
-        <a href="#">
-          User Results
+        <a href="/admin">Admin Tools</a>
+      </li>
+      <li>
+        <a href="{{ url_for('user_stats') }}">
+          User Statistics
         </a>
       </li>
       {% endif %}
@@ -58,13 +62,11 @@
           <span class="glyphicon glyphicon-log-in"></span>
           Sign In
       {% else %}
+      {% if not current_user.is_admin and current_user.is_authenticated %}
       <li>
-        {% if current_user.is_admin and current_user.is_authenticated %}
-        <a href="/admin">Admin Tools</a>
-        {% else %}
         <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
-        {% endif %}
       </li>
+      {% endif %}
       <li>
         <a href="{{ url_for('logout') }}">
           <span class="glyphicon glyphicon-log-out"></span>

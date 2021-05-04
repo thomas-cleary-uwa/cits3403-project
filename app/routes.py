@@ -202,6 +202,17 @@ def result(score, attempt_id):
     )
 
 
+@app.route('/user_stats')
+@login_required
+def user_stats():
+    """ route for admin to view users statistics """
+    if not current_user.is_admin:
+        flash('Access Denied')
+        return redirect(url_for('index'))
+
+    return render_template('user_stats.html')
+
+
 @app.before_request
 def before_request():
     """ things to do before handling requests """
