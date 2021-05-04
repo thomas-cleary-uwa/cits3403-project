@@ -36,8 +36,12 @@ class AdminUserView(AdminModelView):
     """ custom view for the User table """
     column_exclude_list = ['password_hash']
     can_create = False
+    can_delete = False
 
 
 class AdminAttemptView(AdminModelView):
     """ custom view for the Finished and Saved Attempt table """
     can_create = False
+    can_delete = False
+
+
