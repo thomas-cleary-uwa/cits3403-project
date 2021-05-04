@@ -58,11 +58,3 @@ class RegistrationForm(FlaskForm):
             # email already registered
             raise ValidationError("This address has already been registered.")
 
-
-class QuizForm(FlaskForm):
-    """ form for the quiz questions """
-    # submit button
-    submit = SubmitField('Submit Test')
-
-    # save button
-    save = SubmitField('Save Test')

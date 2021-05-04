@@ -7,6 +7,7 @@ Inserts 4 dummy users
 
 import os
 import sys
+import csv
 
 # add app to Python PATH variable
 currentDir = os.path.dirname(os.path.realpath(__file__))
@@ -48,54 +49,37 @@ def add_admin():
     db.session.commit()
 
 
+def get_quiz_questions():
+    """ get quiz questions from INFILE """
+
+    INFILE = "./quiz_questions/clean_quiz_questions.csv"
+
+    questions = []
+
+    with open(INFILE, "r") as csv_file:
+        reader = csv.reader(csv_file, delimiter=",")
+        reader = list(reader)
+
+        for row in reader[1:]:
+            questions.append(row)
+
+    return questions
+
+
 def add_quiz():
     """ adds quiz questions to the database for testing purposes """
+    
+    questions = get_quiz_questions()
 
-    q_1 = Question(
-        question='1?', 
-        answer='Y', 
-        wrong_1='N1',
-        wrong_2='N2',
-        wrong_3='N3',
-    )
-    db.session.add(q_1)
-
-    q_2 = Question(
-        question='2?', 
-        answer='Y', 
-        wrong_1='N1',
-        wrong_2='N2',
-        wrong_3='N3',
-    )
-    db.session.add(q_2)
-
-    q_3 = Question(
-        question='3?', 
-        answer='Y', 
-        wrong_1='N1',
-        wrong_2='N2',
-        wrong_3='N3',
-    )
-    db.session.add(q_3)
-
-    q_4 = Question(
-        question='4?', 
-        answer='Y', 
-        wrong_1='N1',
-        wrong_2='N2',
-        wrong_3='N3',
-    )
-    db.session.add(q_4)
-
-    q_5 = Question(
-        question='5?', 
-        answer='Y', 
-        wrong_1='N1',
-        wrong_2='N2',
-        wrong_3='N3',
-    )
-    db.session.add(q_5)
-
+    for question in questions:
+        new_question = Question(
+            question = question[0],
+            answer   = question[1],
+            wrong_1  = question[2],
+            wrong_2  = question[3],
+            wrong_3  = question[4],
+        )
+        db.session.add(new_question)
     db.session.commit()
 
 
@@ -139,20 +123,7 @@ def create_database():
     add_admin()
     print_finished_message("admin inserted [Username='admin', Password='admin']")
 
-    print_start_message("Inserting quiz questions into database" + \
-    """
-    q1 = Quiz(question='1?', response_a='N', response_b='Y', response_c='N', answer=2)
-    db.session.add(q1)
-
-    q2 = Quiz(question='2?', response_a='N', response_b='N', response_c='Y', answer=3)
-    db.session.add(q2)
-
-    q3 = Quiz(question='3?', response_a='Y', response_b='N', response_c='N', answer=1)
-    db.session.add(q3)
-
-    db.session.commit()
-    """
-    )
+    print_start_message("Inserting quiz questions into database")
     add_quiz()
     print_finished_message("quiz inserted")
 

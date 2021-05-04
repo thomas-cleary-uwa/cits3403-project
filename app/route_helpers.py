@@ -6,11 +6,11 @@ from datetime import datetime
 
 from flask import session
 from flask_login import current_user
-from wtforms import RadioField
+from flask_wtf import FlaskForm
+from wtforms import RadioField, SubmitField
 from wtforms.validators import DataRequired
 
 from app import db
-from app.forms import QuizForm
 from app.models import Question, SubmittedAttempt, SavedAttempt
 from .constants import NUM_QUESTIONS_IN_QUIZ
 
@@ -78,6 +78,15 @@ def get_question_choices(question):
 
 def create_quiz_form():
     """ returns a quiz form and a list of the questions in it """
+
+    class QuizForm(FlaskForm):
+        """ form for the quiz questions """
+        # submit button
+        submit = SubmitField('Submit Test')
+        # save button
+        save = SubmitField('Save Test')
+
+
     if current_user.has_saved_attempt:
         questions, defaults = get_saved_attempt()
 
