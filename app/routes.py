@@ -17,6 +17,7 @@ from app.route_helpers.route_helpers import *
 from app.route_helpers.login_helpers import attempt_login
 from app.route_helpers.logout_helpers import attempt_logout
 from app.route_helpers.register_helpers import attempt_registration
+from app.route_helpers.user_helpers import attempt_load_user_profile
 
 from app.constants import NUM_QUESTIONS_IN_QUIZ
 
@@ -36,7 +37,6 @@ def login():
 
     login_form = LoginForm()
 
-    # if form data is valid when submitted
     if login_form.validate_on_submit():
         return attempt_login(login_form)
 
@@ -59,7 +59,6 @@ def register():
 
     register_form = RegistrationForm()
 
-    # if form is submitted with valid data
     if register_form.validate_on_submit():
         return attempt_registration(register_form)
 
@@ -71,24 +70,15 @@ def register():
 def user(username):
     """ user profile route """
 
-    # if user trys to view another persons profile, redirect them to their own
-    if username != current_user.username:
-        flash('You can not access other user\'s profiles')
-        return redirect(url_for('user', username=current_user.username))
+    has_access, returned_obj = attempt_load_user_profile(username)
 
-    if current_user.is_admin:
-        flash('Administrators do not have a profile')
-        return redirect(url_for('index'))
+    if not has_access:
+        # redirect object returned
+        return returned_obj
 
-    user = User.query.filter_by(username=username).first_or_404()
-
-    # retrieve all the quiz attempts for this user
-    attempts = SubmittedAttempt.query.filter_by(user_id=current_user.id)
-
-    # list of the scores for each attempt
-    all_scores = [attempt.score for attempt in attempts]
-
-    user_stats = UserStats.query.filter_by(user_id=user.id).first()
+    # else user data tuple returned
+    user, user_data = returned_obj
+    attempts, user_stats = user_data
 
     return render_template(
         'user_profile.html',user=user, user_stats=user_stats, attempts=attempts)

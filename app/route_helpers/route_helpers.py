@@ -4,12 +4,18 @@ from flask import request, url_for
 from werkzeug.urls import url_parse
 from werkzeug.utils import redirect
 
-from app.models import User
+from app.models import User, SubmittedAttempt
+
+from app.constants import NUM_QUESTIONS_IN_QUIZ
 
 
-def get_user(username):
+def get_user(username, four_zero_four=False):
     """ return the user with username=username """
-    return User.query.filter_by(username=username).first()
+    if four_zero_four:
+        user = User.query.filter_by(username=username).first_or_404()
+    else:
+        user = User.query.filter_by(username=username).first()
+    return user
 
 
 def get_all_users():
