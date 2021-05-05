@@ -3,103 +3,162 @@
 
 <head>
 
+  <!-- Page title -->
   {% if title %}
   <title>{{ title }}</title>
   {% else %}
-  <title>CITS3403 Project</title>
+  <title>PLEASE PASS A TITLE IN THIS ROUTE</title>
   {% endif %}
 
+  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- Bootstrap CSS-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- Google Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- base_style.css -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base_style.css') }}">
+
+  <!-- Insert additional style sheets here -->
+  {% block styleSheets %}{% endblock %}
 
 </head>
 
 
 <body>
+  <!-- Navigation bar for every page -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Website logo and name-->
+    <a class="navbar-brand" href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='images/tree_logo.png') }}" width="30" height="30" alt="logo" class="d-inline-block align-top">
+      Website Name
+    </a>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">DFS Website Name</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <!-- Items on the lefft side of the navbar -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('index') }}">
+            <span class="material-icons md-36">home</span>
+            Home
+          </a>
+        </li>
+        
+        <!-- items a non-admin user will see -->
+        {% if not current_user.is_admin %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="contentDropdown" data-toggle="dropdown" role="button" href="#">
+            Learn
+          </a>
+          <div class="dropdown-menu" aria-labelledby="contentDropdown">
+            <a class="dropdown-item" href="#">Topic</a>
+            <a class="dropdown-item" href="#">Topic</a>
+            <a class="dropdown-item" href="#">Topic</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('quiz') }}">
+            Quiz
+          </a>
+        </li>
+
+        <!-- items an admin user will see -->
+        {% elif current_user.is_admin and current_user.is_authenticated%}
+        <li class="nav-item">
+          <a class="nav-link" href="/admin">
+            Admin Tools
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('user_stats') }}">
+            User Statistics
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('user_attempts', username='all') }}">
+            User Attempts
+          </a>
+        </li>
+        {% endif %}  
+      </ul>
+
+
+      <!-- Items on the right side of the navbar -->
+      <ul class="navbar-nav">
+        
+        <!-- items a user who is not logged in will see -->
+        {% if current_user.is_anonymous %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('register') }}">
+            <span class="material-icons md-24">account_circle</span>
+            Sign Up
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('login') }}">
+            <span class="material-icons md-24">login</span>
+            Sign In
+          </a>
+        </li>
+        
+        <!-- items a logged in user will see-->
+        {% elif current_user.is_authenticated %}
+          <!-- items a non-admin user will see -->
+          {% if not current_user.is_admin %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('user', username=current_user.username) }}">
+              <span class="material-icons md-24">account_circle</span>
+              Profile
+            </a>
+          </li>
+          {% endif %}
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('logout') }}">
+            <i class="material-icons md-24">logout</i>
+            Sign Out
+          </a>
+        </li>
+        {% endif %}
+
+      </ul>
     </div>
-    <ul class="nav navbar-nav">
-      <li><a href="{{ url_for('index') }}">Home</a></li>
-      {% if not current_user.is_admin %}
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Learn<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Content Page 1</a></li>
-          <li><a href="#">Content Page 2</a></li>
-          <li><a href="#">Content Page 3</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="{{ url_for('quiz') }}">
-          Quiz
-        </a>
-      </li>
-      {% endif %}
-      {% if current_user.is_admin and current_user.is_authenticated%}
-      <li>
-        <a href="/admin">Admin Tools</a>
-      </li>
-      <li>
-        <a href="{{ url_for('user_stats') }}">
-          User Statistics
-        </a>
-      </li>
-      <li>
-        <a href="{{ url_for('user_attempts', username='all') }}">
-          User Attempts
-        </a>
-      </li>
-      {% endif %}
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      {% if current_user.is_anonymous %}
-      <li>
-        <a href="{{ url_for('register') }}"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
-      <li>
-        <a href="{{ url_for('login') }}">
-          <span class="glyphicon glyphicon-log-in"></span>
-          Sign In
-      {% else %}
-      {% if not current_user.is_admin and current_user.is_authenticated %}
-      <li>
-        <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
-      </li>
-      {% endif %}
-      <li>
-        <a href="{{ url_for('logout') }}">
-          <span class="glyphicon glyphicon-log-out"></span>
-          Sign Out
-        </a>
-      </li>
-      {% endif %}
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
+  </nav>
 
+  <!-- Show flashed messages under the navbar but above content -->
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% endwith %}
 
-{% with messages = get_flashed_messages() %}
-{% if messages %}
+  <!-- Insert page content here -->
+  {% block content %}{% endblock %}
 
-<ul>
-  {% for message in messages %}
-  <li>{{ message }}</li>
-  {% endfor %}
-</ul>
-{% endif %}
-{% endwith %}
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-
-{% block content %}{% endblock %}
+  <!-- Insert additional scripts here -->
+  {% block scripts %}{% endblock %}
 
 </body>
-
 </html>
