@@ -34,8 +34,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <!-- Website logo and name-->
     <a class="navbar-brand" href="{{ url_for('index') }}">
-      <img src="{{ url_for('static', filename='images/tree_logo.png') }}" width="30" height="30" alt="logo" class="d-inline-block align-top">
-      Website Name
+      <img id="nav-logo" src="{{ url_for('static', filename='images/tree_logo.png') }}" alt="logo" class="d-inline-block align-top">
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,7 +44,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
 
       <!-- Items on the lefft side of the navbar -->
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto nav-fill w-75">
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('index') }}">
             <span class="material-icons md-36">home</span>
@@ -57,6 +56,7 @@
         {% if not current_user.is_admin %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="contentDropdown" data-toggle="dropdown" role="button" href="#">
+            <span class="material-icons md-36">school</span>
             Learn
           </a>
           <div class="dropdown-menu" aria-labelledby="contentDropdown">
@@ -68,6 +68,7 @@
 
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('quiz') }}">
+            <span class="material-icons md-36">bubble_chart</span>
             Quiz
           </a>
         </li>
@@ -76,18 +77,21 @@
         {% elif current_user.is_admin and current_user.is_authenticated%}
         <li class="nav-item">
           <a class="nav-link" href="/admin">
+            <span class="material-icons md-36">handyman</span>
             Admin Tools
           </a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('user_stats') }}">
+            <span class="material-icons md-36">insights</span>
             User Statistics
           </a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('user_attempts', username='all') }}">
+            <span class="material-icons md-36">assessment</span>
             User Attempts
           </a>
         </li>
@@ -102,7 +106,7 @@
         {% if current_user.is_anonymous %}
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('register') }}">
-            <span class="material-icons md-24">account_circle</span>
+            <span class="material-icons md-24">face</span>
             Sign Up
           </a>
         </li>
