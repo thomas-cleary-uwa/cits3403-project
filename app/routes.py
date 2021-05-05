@@ -108,9 +108,12 @@ def quiz():
 def quiz_questions():
     """ quiz questions/form route """
 
-    quiz_form = create_quiz()
+    redirected, return_obj = create_quiz()
+    if redirected:
+        # returned a redirect object
+        return return_obj
 
-    return render_template('quizQuestions.html',form=quiz_form)
+    return render_template('quizQuestions.html',form=return_obj)
 
 
 @app.route('/result/<score><attempt_id>')
