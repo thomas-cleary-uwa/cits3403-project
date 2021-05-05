@@ -1,6 +1,8 @@
 """ general helper functions for all routes in routes.py """
 
-from flask import request, url_for
+import random
+
+from flask import request, url_for, session
 from werkzeug.urls import url_parse
 from werkzeug.utils import redirect
 
@@ -31,3 +33,11 @@ def redirect_next(default="index"):
         next_page = url_for(default)
 
     return redirect(next_page)
+
+
+def update_random_seed():
+    """ update/set the random seed for quiz question generation """
+    try:
+        session["quiz_seed"] += 1
+    except KeyError:
+        session["quiz_seed"] = random.randint(1, 100)

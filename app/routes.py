@@ -18,7 +18,7 @@ from app.route_helpers.login_helpers import attempt_login
 from app.route_helpers.logout_helpers import attempt_logout
 from app.route_helpers.register_helpers import attempt_registration
 from app.route_helpers.user_helpers import attempt_load_user_profile
-from app.route_helpers.quiz_helpers import update_random_seed
+from app.route_helpers.quiz_questions_helpers import create_quiz
 
 from app.constants import NUM_QUESTIONS_IN_QUIZ
 
@@ -108,61 +108,9 @@ def quiz():
 def quiz_questions():
     """ quiz questions/form route """
 
-    # get the quiz Form and the list of questions that will be in the quiz
-    form, questions = create_quiz_form()
+    quiz_form = create_quiz()
 
-    # if the user has chosen an answer for each question
-    if form.validate_on_submit():
-
-        # if the submit button was pressed
-        if form.submit.data:
-            # calculate their score for this quiz
-            score, attempt_id = submit_attempt(form, questions)
-            # if they had this quiz saved before, delete it from the database
-            if current_user.has_saved_attempt:
-                delete_saved_attempts()
-
-            # update user stats for num attempts MOVE THIS TO EXTERNAL FUNCTION
-            user_stats = UserStats.query.filter_by(user_id=current_user.id).first()
-            if user_stats.highest_score is None:
-                user_stats.highest_score = score
-            elif user_stats.highest_score < score:
-                user_stats.highest_score = score
-
-            user_average = user_stats.average_score
-
-            if user_average is None:
-                user_stats.average_score = score
-            
-            else:
-                old_average_total = user_average * user_stats.num_quiz_attempts
-
-            user_stats.num_quiz_attempts += 1
-
-            if user_average is not None:
-                new_average = (old_average_total + score) / user_stats.num_quiz_attempts
-                user_stats.average_score = round(new_average, 2)
-
-            db.session.commit()
-
-            return redirect(url_for('result', score=score, attempt_id=attempt_id))
-
-
-    # if the save button was pressed
-    if form.save.data:
-        # delete any previously saved attempt
-        if current_user.has_saved_attempt:
-            delete_saved_attempts()
-        # save this attempt
-        save_attempt(form, questions)
-
-        return redirect(url_for('quiz'))
-
-    # print errors if submit was pressed but not all questions answered
-    else:
-        print(form.errors)
-
-    return render_template('quizQuestions.html',form=form)
+    return render_template('quizQuestions.html',form=quiz_form)
 
 
 @app.route('/result/<score><attempt_id>')
