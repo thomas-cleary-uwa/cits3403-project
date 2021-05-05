@@ -8,7 +8,7 @@ from app import db
 from app.models import UserStats
 
 
-def is_user_valid(username, flash_message="Invalid username", redirect_route="index"):
+def is_user_valid(username, flash_message="Invalid username", redirect_route="login"):
     """ if username in db return (user, None)
         else return (False, redirect_obj)
     """
@@ -21,7 +21,7 @@ def is_user_valid(username, flash_message="Invalid username", redirect_route="in
     return (user, None)
 
 
-def is_password_valid(user, password, flash_message="Incorrect password", redirect_route="index"):
+def is_password_valid(user, password, flash_message="Incorrect password", redirect_route="login"):
     """ if password is valid return (True, None)
         else return (False, redirect object) and flash a message
     """

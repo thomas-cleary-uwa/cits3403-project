@@ -14,6 +14,7 @@ from app.models import User, SubmittedAttempt, UserStats
 from app.route_helpers.old_route_helpers import * 
 from app.route_helpers.route_helpers import *
 from app.route_helpers.login_helpers import attempt_login
+from app.route_helpers.logout_helpers import attempt_logout
 from app.constants import NUM_QUESTIONS_IN_QUIZ
 
 @app.route('/')
@@ -45,8 +46,7 @@ def login():
 def logout():
     """ user logout route """
     # log the current user out and redirect to the index page
-    logout_user()
-    return redirect(url_for('index'))
+    return attempt_logout()
 
 
 
