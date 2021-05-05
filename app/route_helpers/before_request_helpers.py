@@ -7,7 +7,7 @@ from app import db
 from app.models import UserStats
 
 
-def before_request():
+def do_before_request():
     """ do these things before each request """
     # update the time this user was last seen on the website
     if current_user.is_authenticated and not current_user.is_admin:

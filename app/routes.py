@@ -1,19 +1,13 @@
 """ define the routes for the flask application """
 
-import random
 
-from datetime import datetime
+from flask import render_template, redirect, url_for
+from flask_login import current_user, login_required
 
-from flask import render_template, flash, redirect, url_for, request, session
-from flask_login import current_user, login_user, login_required, logout_user
-from werkzeug.urls import url_parse
-
-from app import app, db
+from app import app
 from app.forms import LoginForm, RegistrationForm
-from app.models import User, SubmittedAttempt, UserStats
 
-
-from app.route_helpers.route_helpers import *
+from app.route_helpers.route_helpers import update_random_seed, check_admin_access
 from app.route_helpers.login_helpers import attempt_login
 from app.route_helpers.logout_helpers import attempt_logout
 from app.route_helpers.register_helpers import attempt_registration
@@ -22,9 +16,7 @@ from app.route_helpers.quiz_questions_helpers import create_quiz
 from app.route_helpers.result_helpers import get_result_data
 from app.route_helpers.user_stats_helpers import get_user_stat_data
 from app.route_helpers.user_attempts_helpers import get_landing_data, get_users_attempts
-from app.route_helpers.before_request_helpers import before_request
-
-from app.constants import NUM_QUESTIONS_IN_QUIZ
+from app.route_helpers.before_request_helpers import do_before_request
 
 
 ###############################################################################
@@ -92,13 +84,13 @@ def user(username):
         return returned_obj
 
     # else user data tuple returned
-    user, user_data = returned_obj
-    attempts, user_stats = user_data
+    this_user, user_data = returned_obj
+    attempts, this_users_stats = user_data
 
     return render_template(
         'user_profile.html',
-        user=user, 
-        user_stats=user_stats, 
+        user=this_user,
+        user_stats=this_users_stats,
         attempts=attempts
     )
 
@@ -150,9 +142,13 @@ def user_stats():
     if redirected:
         return redirect_obj
 
-    users, user_stats, totals = get_user_stat_data()
+    users, all_users_stats, totals = get_user_stat_data()
 
-    return render_template('user_stats.html', user_info=zip(users, user_stats), totals=totals)
+    return render_template(
+        'user_stats.html',
+        user_info=zip(users, all_users_stats),
+        totals=totals
+    )
 
 
 @app.route('/user_attempts/<username>')
@@ -167,13 +163,13 @@ def user_attempts(username):
         attempt_landing_data = get_landing_data()
 
         return render_template('user_attempts_landing.html', users=attempt_landing_data)
-    
+
     users_attempts, attempt_keys = get_users_attempts(username)
 
     return render_template(
         'user_attempts.html',
-        user_attempts=users_attempts, 
-        username=username, 
+        user_attempts=users_attempts,
+        username=username,
         attempt_keys=attempt_keys
     )
 
@@ -185,4 +181,4 @@ def user_attempts(username):
 @app.before_request
 def before_request():
     """ things to do before handling requests """
-    before_request()
+    do_before_request()
