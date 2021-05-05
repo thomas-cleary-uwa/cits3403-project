@@ -9,6 +9,10 @@ a.nav-link {
   align-items: center;
 }
 
+.container.content {
+  margin-top: 50px;
+}
+
 #nav-logo {
   width: 48px;
   height: 48px;
