@@ -2,11 +2,13 @@
 
 import random
 
-from flask import request, url_for, session
+from flask import flash, request, url_for, session
+from flask_login import current_user
 from werkzeug.urls import url_parse
 from werkzeug.utils import redirect
 
-from app.models import User
+from app.models import User, Question
+from app.constants import NUM_QUESTIONS_IN_QUIZ
 
 
 def get_user(username, four_zero_four=False):
@@ -51,3 +53,47 @@ def check_admin_access():
         return (redirected, redirect(url_for('index')))
     
     return (redirected, None)
+
+
+def get_attempt_data(attempt):
+    """ returns list of informative data about a submitted attempt
+        for the results page
+    """
+    key_template = "question_"
+
+    question_ids = [
+        attempt.question_1_id,
+        attempt.question_2_id,
+        attempt.question_3_id,
+        attempt.question_4_id,
+        attempt.question_5_id,
+    ]
+
+    responses = [
+        attempt.response_1,
+        attempt.response_2,
+        attempt.response_3,
+        attempt.response_4,
+        attempt.response_5,
+    ]
+
+    marks = [
+        attempt.mark_1,
+        attempt.mark_2,
+        attempt.mark_3,
+        attempt.mark_4,
+        attempt.mark_5,
+    ]
+
+    attempt_data = {}
+
+    for i in range(1, NUM_QUESTIONS_IN_QUIZ+1):
+        key = key_template + str(i)
+
+        attempt_data[key] = {
+            "question" : Question.query.get(question_ids[i-1]).question,
+            "response" : responses[i-1],
+            "mark"     : marks[i-1]
+        }
+
+    return attempt_data

@@ -12,7 +12,7 @@ from app import app, db
 from app.forms import LoginForm, RegistrationForm
 from app.models import User, SubmittedAttempt, UserStats
 
-from app.route_helpers.old_route_helpers import * 
+
 from app.route_helpers.route_helpers import *
 from app.route_helpers.login_helpers import attempt_login
 from app.route_helpers.logout_helpers import attempt_logout
@@ -21,6 +21,8 @@ from app.route_helpers.user_helpers import attempt_load_user_profile
 from app.route_helpers.quiz_questions_helpers import create_quiz
 from app.route_helpers.result_helpers import get_result_data
 from app.route_helpers.user_stats_helpers import get_user_stat_data
+from app.route_helpers.user_attempts_helpers import get_landing_data, get_users_attempts
+from app.route_helpers.before_request_helpers import before_request
 
 from app.constants import NUM_QUESTIONS_IN_QUIZ
 
@@ -144,11 +146,10 @@ def result(score, attempt_id):
 @login_required
 def user_stats():
     """ route for admin to view users statistics """
-
     redirected, redirect_obj = check_admin_access()
     if redirected:
         return redirect_obj
-    
+
     users, user_stats, totals = get_user_stat_data()
 
     return render_template('user_stats.html', user_info=zip(users, user_stats), totals=totals)
@@ -157,28 +158,23 @@ def user_stats():
 @app.route('/user_attempts/<username>')
 @login_required
 def user_attempts(username):
-
     """ route for admin to view users attempts """
-    if not current_user.is_admin:
-        flash('Access Denied')
-        return redirect(url_for('index'))
+    redirected, redirect_obj = check_admin_access()
+    if redirected:
+        return redirect_obj
 
     if username == "all":
-        users = get_all_users()
-        quiz_attempt_counts = []
-        for user in users:
-            quiz_attempt_counts.append(UserStats.query.filter_by(user_id=user.id).first().num_quiz_attempts)
-        return render_template('user_attempts_landing.html', users=zip(users, quiz_attempt_counts))
+        attempt_landing_data = get_landing_data()
+
+        return render_template('user_attempts_landing.html', users=attempt_landing_data)
     
-    users_attempts = get_users_attempts(username)
+    users_attempts, attempt_keys = get_users_attempts(username)
 
-    attempt_keys = []
-    template = "question_"
-    for i in range(1,NUM_QUESTIONS_IN_QUIZ+1):
-        attempt_keys.append(template + str(i))
-
-    return render_template('user_attempts.html',
-     user_attempts=users_attempts, username=username, attempt_keys=attempt_keys
+    return render_template(
+        'user_attempts.html',
+        user_attempts=users_attempts, 
+        username=username, 
+        attempt_keys=attempt_keys
     )
 
 
@@ -189,7 +185,4 @@ def user_attempts(username):
 @app.before_request
 def before_request():
     """ things to do before handling requests """
-    # update the time this user was last seen on the website
-    if current_user.is_authenticated and not current_user.is_admin:
-        UserStats.query.filter_by(user_id=current_user.id).first().last_seen = datetime.utcnow()
-        db.session.commit()
+    before_request()
