@@ -11,10 +11,10 @@ from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
 from app.models import User, SubmittedAttempt, UserStats
-from .route_helpers import create_quiz_form, submit_attempt, delete_saved_attempts, get_all_users
-from .route_helpers import save_attempt, get_attempt_data, get_user_stats, get_users_attempts
-from .constants import NUM_QUESTIONS_IN_QUIZ
-
+from app.route_helpers.old_route_helpers import * 
+from app.route_helpers.route_helpers import *
+from app.route_helpers.login_helpers import attempt_login
+from app.constants import NUM_QUESTIONS_IN_QUIZ
 
 @app.route('/')
 @app.route('/index')
@@ -31,37 +31,13 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
 
-    form = LoginForm()
+    login_form = LoginForm()
 
     # if form data is valid when submitted
-    if form.validate_on_submit():
+    if login_form.validate_on_submit():
+        return attempt_login(login_form)
 
-        # try and find the user with the entered username
-        user = User.query.filter_by(username=form.username.data).first()
-
-        # if we couldn't find a user with the entered username or the password
-        # is invalid, flash an error message on the page
-        if user is None or not user.check_password(form.password.data):
-            flash("Invalid username or password")
-            return redirect(url_for('login'))
-
-        # if username and password are correct log in the user
-        login_user(user, remember=form.remember_me.data)
-
-        # update login stat
-        if not current_user.is_admin:
-            UserStats.query.filter_by(user_id=user.id).first().num_logins += 1
-            db.session.commit()
-
-        # if user was redirected to the login page, send them back to where
-        # they came from, else send them to the index page
-        next_page = request.args.get('next')
-        if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('index')
-
-        return redirect(next_page)
-
-    return render_template('login.html', title='Sign In', form=form)
+    return render_template('login.html', title='Sign In', form=login_form)
 
 
 

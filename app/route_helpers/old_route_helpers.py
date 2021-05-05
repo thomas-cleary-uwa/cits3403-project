@@ -12,7 +12,7 @@ from wtforms.validators import DataRequired
 
 from app import db
 from app.models import User, Question, SubmittedAttempt, SavedAttempt, UserStats
-from .constants import NUM_QUESTIONS_IN_QUIZ
+from app.constants import NUM_QUESTIONS_IN_QUIZ
 
 
 def get_all_users():
