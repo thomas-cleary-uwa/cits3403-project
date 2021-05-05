@@ -1,7 +1,7 @@
 """ define the routes for the flask application """
 
 
-from flask import render_template, redirect, url_for, session
+from flask import render_template, redirect, url_for
 from flask_login import current_user, login_required
 
 from app import app
