@@ -18,6 +18,7 @@ from app.route_helpers.login_helpers import attempt_login
 from app.route_helpers.logout_helpers import attempt_logout
 from app.route_helpers.register_helpers import attempt_registration
 from app.route_helpers.user_helpers import attempt_load_user_profile
+from app.route_helpers.quiz_helpers import update_random_seed
 
 from app.constants import NUM_QUESTIONS_IN_QUIZ
 
@@ -88,13 +89,8 @@ def user(username):
 @login_required
 def quiz():
     """ quiz start/resume route """
-    try:
-        session["quiz_seed"] += 1
-    except KeyError:
-        session["quiz_seed"] = random.randint(1, 100)
-
+    update_random_seed()
     return render_template('quizLanding.html')
-
 
 
 @app.route('/quiz_questions/', methods=['GET','POST'])
