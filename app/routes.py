@@ -20,6 +20,7 @@ from app.route_helpers.register_helpers import attempt_registration
 from app.route_helpers.user_helpers import attempt_load_user_profile
 from app.route_helpers.quiz_questions_helpers import create_quiz
 from app.route_helpers.result_helpers import get_result_data
+from app.route_helpers.user_stats_helpers import get_user_stat_data
 
 from app.constants import NUM_QUESTIONS_IN_QUIZ
 
@@ -143,11 +144,12 @@ def result(score, attempt_id):
 @login_required
 def user_stats():
     """ route for admin to view users statistics """
-    if not current_user.is_admin:
-        flash('Access Denied')
-        return redirect(url_for('index'))
 
-    users, user_stats, totals = get_user_stats()
+    redirected, redirect_obj = check_admin_access()
+    if redirected:
+        return redirect_obj
+    
+    users, user_stats, totals = get_user_stat_data()
 
     return render_template('user_stats.html', user_info=zip(users, user_stats), totals=totals)
 

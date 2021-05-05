@@ -39,3 +39,15 @@ def update_random_seed():
         session["quiz_seed"] += 1
     except KeyError:
         session["quiz_seed"] = random.randint(1, 100)
+
+
+def check_admin_access():
+    """ returns (false, none) is user is admin else (false, redirect) """
+    redirected = False
+
+    if not current_user.is_admin:
+        flash('Access Denied')
+        redirected = True
+        return (redirected, redirect(url_for('index')))
+    
+    return (redirected, None)
