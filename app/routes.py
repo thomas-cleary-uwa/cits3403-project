@@ -1,7 +1,7 @@
 """ define the routes for the flask application """
 
 
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, session
 from flask_login import current_user, login_required
 
 from app import app
@@ -97,6 +97,7 @@ def user(username):
 def quiz():
     """ quiz start/resume route """
     route_helpers.update_random_seed()
+
     return render_template('quizLanding.html')
 
 
@@ -117,6 +118,9 @@ def quiz_questions():
 @login_required
 def result(score, attempt_id):
     """ quiz results page route """
+    # in case we are coming from profile->results->quiz and seed has not yet been set
+    route_helpers.update_random_seed()
+
     attempt_data, num_questions = result_helpers.get_result_data(attempt_id)
 
     return render_template(

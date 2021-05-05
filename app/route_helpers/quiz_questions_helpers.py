@@ -182,6 +182,7 @@ def get_question_choices(question):
 def get_questions():
     """ returns a list of questions from the database of length, num_questions """
     all_questions = Question.query.all()
+    
     random.Random(session["quiz_seed"]).shuffle(all_questions)
 
     questions = all_questions[:NUM_QUESTIONS_IN_QUIZ]
@@ -195,6 +196,7 @@ def get_saved_attempt():
         returns a list of the questions and the responses previously entered by
         the user
     """
+
     saved_attempt = SavedAttempt.query.filter_by(user_id=current_user.id).first()
 
     questions = [
