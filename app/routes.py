@@ -19,6 +19,7 @@ from app.route_helpers.logout_helpers import attempt_logout
 from app.route_helpers.register_helpers import attempt_registration
 from app.route_helpers.user_helpers import attempt_load_user_profile
 from app.route_helpers.quiz_questions_helpers import create_quiz
+from app.route_helpers.result_helpers import get_result_data
 
 from app.constants import NUM_QUESTIONS_IN_QUIZ
 
@@ -92,7 +93,11 @@ def user(username):
     attempts, user_stats = user_data
 
     return render_template(
-        'user_profile.html',user=user, user_stats=user_stats, attempts=attempts)
+        'user_profile.html',
+        user=user, 
+        user_stats=user_stats, 
+        attempts=attempts
+    )
 
 
 @app.route('/quiz')
@@ -120,13 +125,13 @@ def quiz_questions():
 @login_required
 def result(score, attempt_id):
     """ quiz results page route """
-    attempt = SubmittedAttempt.query.get(attempt_id)
-    attempt_data = get_attempt_data(attempt)
+    attempt_data, num_questions = get_result_data(attempt_id)
+
     return render_template(
         'result.html',
         outcome=score,
         attempt=attempt_data,
-        num_questions=NUM_QUESTIONS_IN_QUIZ
+        num_questions=num_questions
     )
 
 

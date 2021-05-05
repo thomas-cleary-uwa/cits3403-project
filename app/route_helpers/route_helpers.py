@@ -6,9 +6,7 @@ from flask import request, url_for, session
 from werkzeug.urls import url_parse
 from werkzeug.utils import redirect
 
-from app.models import User, SubmittedAttempt
-
-from app.constants import NUM_QUESTIONS_IN_QUIZ
+from app.models import User
 
 
 def get_user(username, four_zero_four=False):
