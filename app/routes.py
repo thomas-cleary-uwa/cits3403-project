@@ -11,10 +11,13 @@ from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
 from app.models import User, SubmittedAttempt, UserStats
+
 from app.route_helpers.old_route_helpers import * 
 from app.route_helpers.route_helpers import *
 from app.route_helpers.login_helpers import attempt_login
 from app.route_helpers.logout_helpers import attempt_logout
+from app.route_helpers.register_helpers import attempt_registration
+
 from app.constants import NUM_QUESTIONS_IN_QUIZ
 
 @app.route('/')
@@ -22,7 +25,6 @@ from app.constants import NUM_QUESTIONS_IN_QUIZ
 def index():
     """ index page route """
     return render_template('index.html')
-
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -41,13 +43,11 @@ def login():
     return render_template('login.html', title='Sign In', form=login_form)
 
 
-
 @app.route('/logout')
 def logout():
     """ user logout route """
     # log the current user out and redirect to the index page
     return attempt_logout()
-
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -57,29 +57,13 @@ def register():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
 
-    form = RegistrationForm()
+    register_form = RegistrationForm()
 
     # if form is submitted with valid data
-    if form.validate_on_submit():
-        # create the new user
-        user = User(username=form.username.data, email=form.email.data)
-        user.set_password(form.password.data)
+    if register_form.validate_on_submit():
+        return attempt_registration(register_form)
 
-        # add the user to the database
-        db.session.add(user)
-        db.session.commit()
-
-        user_stats = UserStats(user_id=user.id)
-        db.session.add(user_stats)
-        db.session.commit()
-
-        # flash a message to the screen for the user
-        flash("Congratulations, you are now a registered user!")
-
-        return redirect(url_for('login'))
-
-    return render_template('register.html', title='Register', form=form)
-
+    return render_template('register.html', title='Register', form=register_form)
 
 
 @app.route('/user_profile/<username>')
