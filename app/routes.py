@@ -7,16 +7,13 @@ from flask_login import current_user, login_required
 from app import app
 from app.forms import LoginForm, RegistrationForm
 
-from app.route_helpers.route_helpers import update_random_seed, check_admin_access
-from app.route_helpers.login_helpers import attempt_login
-from app.route_helpers.logout_helpers import attempt_logout
-from app.route_helpers.register_helpers import attempt_registration
-from app.route_helpers.user_helpers import attempt_load_user_profile
-from app.route_helpers.quiz_questions_helpers import create_quiz
-from app.route_helpers.result_helpers import get_result_data
-from app.route_helpers.user_stats_helpers import get_user_stat_data
-from app.route_helpers.user_attempts_helpers import get_landing_data, get_users_attempts
-from app.route_helpers.before_request_helpers import do_before_request
+from app.route_helpers import (
+    route_helpers,
+    login_helpers, register_helpers, logout_helpers,
+    user_helpers, quiz_questions_helpers, result_helpers,
+    user_stats_helpers, user_attempts_helpers,
+    before_request_helpers
+)
 
 
 ###############################################################################
@@ -40,7 +37,7 @@ def login():
     login_form = LoginForm()
 
     if login_form.validate_on_submit():
-        return attempt_login(login_form)
+        return login_helpers.attempt_login(login_form)
 
     return render_template('login.html', title='Sign In', form=login_form)
 
@@ -55,7 +52,7 @@ def register():
     register_form = RegistrationForm()
 
     if register_form.validate_on_submit():
-        return attempt_registration(register_form)
+        return register_helpers.attempt_registration(register_form)
 
     return render_template('register.html', title='Register', form=register_form)
 
@@ -65,7 +62,7 @@ def register():
 def logout():
     """ user logout route """
     # log the current user out and redirect to the index page
-    return attempt_logout()
+    return logout_helpers.attempt_logout()
 
 
 ###############################################################################
@@ -77,7 +74,7 @@ def logout():
 def user(username):
     """ user profile route """
 
-    has_access, returned_obj = attempt_load_user_profile(username)
+    has_access, returned_obj = user_helpers.attempt_load_user_profile(username)
 
     if not has_access:
         # redirect object returned
@@ -99,7 +96,7 @@ def user(username):
 @login_required
 def quiz():
     """ quiz start/resume route """
-    update_random_seed()
+    route_helpers.update_random_seed()
     return render_template('quizLanding.html')
 
 
@@ -108,7 +105,7 @@ def quiz():
 def quiz_questions():
     """ quiz questions/form route """
 
-    redirected, return_obj = create_quiz()
+    redirected, return_obj = quiz_questions_helpers.create_quiz()
     if redirected:
         # returned a redirect object
         return return_obj
@@ -120,7 +117,7 @@ def quiz_questions():
 @login_required
 def result(score, attempt_id):
     """ quiz results page route """
-    attempt_data, num_questions = get_result_data(attempt_id)
+    attempt_data, num_questions = result_helpers.get_result_data(attempt_id)
 
     return render_template(
         'result.html',
@@ -138,11 +135,11 @@ def result(score, attempt_id):
 @login_required
 def user_stats():
     """ route for admin to view users statistics """
-    redirected, redirect_obj = check_admin_access()
+    redirected, redirect_obj = route_helpers.check_admin_access()
     if redirected:
         return redirect_obj
 
-    users, all_users_stats, totals = get_user_stat_data()
+    users, all_users_stats, totals = user_stats_helpers.get_user_stat_data()
 
     return render_template(
         'user_stats.html',
@@ -155,16 +152,16 @@ def user_stats():
 @login_required
 def user_attempts(username):
     """ route for admin to view users attempts """
-    redirected, redirect_obj = check_admin_access()
+    redirected, redirect_obj = route_helpers.check_admin_access()
     if redirected:
         return redirect_obj
 
     if username == "all":
-        attempt_landing_data = get_landing_data()
+        attempt_landing_data = user_attempts_helpers.get_landing_data()
 
         return render_template('user_attempts_landing.html', users=attempt_landing_data)
 
-    users_attempts, attempt_keys = get_users_attempts(username)
+    users_attempts, attempt_keys = user_attempts_helpers.get_users_attempts(username)
 
     return render_template(
         'user_attempts.html',
@@ -181,4 +178,4 @@ def user_attempts(username):
 @app.before_request
 def before_request():
     """ things to do before handling requests """
-    do_before_request()
+    before_request_helpers.do_before_request()
