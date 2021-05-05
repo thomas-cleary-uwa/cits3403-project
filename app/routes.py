@@ -22,6 +22,11 @@ from app.route_helpers.quiz_helpers import update_random_seed
 
 from app.constants import NUM_QUESTIONS_IN_QUIZ
 
+
+###############################################################################
+# Routes for all users (login not required)
+###############################################################################
+
 @app.route('/')
 @app.route('/index')
 def index():
@@ -44,13 +49,6 @@ def login():
     return render_template('login.html', title='Sign In', form=login_form)
 
 
-@app.route('/logout')
-def logout():
-    """ user logout route """
-    # log the current user out and redirect to the index page
-    return attempt_logout()
-
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     """ user registration route """
@@ -65,6 +63,18 @@ def register():
 
     return render_template('register.html', title='Register', form=register_form)
 
+
+@app.route('/logout')
+@login_required
+def logout():
+    """ user logout route """
+    # log the current user out and redirect to the index page
+    return attempt_logout()
+
+
+###############################################################################
+# Routes for users that are logged in (excluding admin users)
+###############################################################################
 
 @app.route('/user_profile/<username>')
 @login_required
@@ -169,6 +179,10 @@ def result(score, attempt_id):
     )
 
 
+###############################################################################
+# Routes for Admin Users
+###############################################################################
+
 @app.route('/user_stats')
 @login_required
 def user_stats():
@@ -209,6 +223,10 @@ def user_attempts(username):
      user_attempts=users_attempts, username=username, attempt_keys=attempt_keys
     )
 
+
+###############################################################################
+# Functions to call before a request is made
+###############################################################################
 
 @app.before_request
 def before_request():
