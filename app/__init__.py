@@ -37,7 +37,12 @@ from app import routes, models, admin_views
 
 
 # represents the admin interface manager
-admin = Admin(app, name="Admin Tools", index_view=admin_views.MyAdminIndexView())
+admin = Admin(
+    app, 
+    name="Admin Tools", 
+    index_view=admin_views.MyAdminIndexView(),
+    template_mode="bootstrap4"
+)
 
 # adds database tables to the admin interface
 admin.add_view(admin_views.AdminUserView(models.User, db.session))

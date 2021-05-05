@@ -2,5 +2,11 @@
 
 {% block head_css %}
 {{ super() }}
-  <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='base_style.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container content" style="margin-top: 50px;">
+  {% block inContainer %}{% endblock %}
+</div>
 {% endblock %}
