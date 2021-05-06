@@ -1,65 +1,51 @@
-{% extends "base.html" %}
+{% extends "base_content.html" %}
 
 
 
-{% block content %}
+{% block inContainer %}
 
 
-<form method="post">
+<form method="POST">
+  {{ form.hidden_tag() }}
 
   <div id="test">
-    {{ form.hidden_tag() }}
+
 
     <table>
-    <tr>
-      <td>Q1: {{ form.question1.label }}</td>
-    </tr>
-    {% for subfield in form.question1 %}
-    <tr>
-        <td>{{ subfield }} {{ subfield.label }}</td>
-    </tr>
-    {% endfor %}
-    {% for error in form.question1.errors %}
-    <span style="color: red;">[{{ error }}]</span>
-    {% endfor %}
-    </table>
-    
-    <br>
-    
-    <table>
-    <tr>
-      <td>Q2: {{ form.question2.label }}</td>
-    </tr>
-    {% for subfield in form.question2 %}
-    <tr>
-        <td>{{ subfield }} {{ subfield.label }}</td>
-    </tr>
-    {% endfor %}
-    {% for error in form.question2.errors %}
-    <span style="color: red;">[{{ error }}]</span>
-    {% endfor %}
-    </table>
-    <br>
-    
-    
-    <table>
-    <tr>
-      <td>Q3: {{ form.question3.label }}</td>
-    </tr>
-    {% for subfield in form.question3 %}
-    <tr>
-        <td>{{ subfield }} {{ subfield.label }}</td>
-    </tr>
-    {% endfor %}
-    {% for error in form.question3.errors %}
-    <span style="color: red;">[{{ error }}]</span>
-    {% endfor %}
-    </table>
-    
-    <br>
-    <p>{{ form.submit() }}</p>
-  </div>
+      {% for field in form %}
+      {% if field.type in ['RadioField'] %}
+      <tr>
+        <td>
+          {{ field.label }}
+          {% for error in field.errors %}
+          <span style="color: red;">{{ error }}</span>
+          {% endfor %}
+        </td>
+      </tr>
 
+      {% for subfield in field %}
+      <tr>
+        <td>
+          {{ subfield }} {{ subfield.label }}
+        </td>
+      </tr>
+      {% endfor %}
+
+      {% endif %}
+      {% endfor %}
+
+      {% for field in form %}
+      {% if field.type in ['SubmitField'] %}
+      <tr>
+        <td>
+          {{ field }}
+        </td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+
+    </table>
+    
 </form>
 
 {% endblock %}

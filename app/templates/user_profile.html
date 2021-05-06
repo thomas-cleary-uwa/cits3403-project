@@ -1,0 +1,51 @@
+{% extends "base_content.html" %}
+
+{% block inContainer %}
+<table>
+  <tr valign="top">
+    <td><img src="{{ user.get_avatar(128) }}"</td>
+    <td> 
+      <h1>User: {{user.username}}</h1>
+      {% if user_stats.last_seen %}
+      <p>
+        Last seen on: {{ user_stats.last_seen }}
+      </p>
+      {% endif %}
+    </td>
+  </tr>
+</table>
+<hr>
+{% if user_stats.num_quiz_attempts > 0 %}
+<div>
+  <p>Quiz Attempts: <b>{{ user_stats.num_quiz_attempts }}</b><p>
+  <p>Average Score: <b>{{ user_stats.average_score }}%</b><p>
+</div>
+  
+<table class="table table-bordered">
+  <tr>
+    <td>Attempt ID</td><td>Score</td><td>Attempt Datetime</td>
+  </tr>
+  {% for attempt in attempts %}
+  <tr>
+    <td>
+      <a href="{{ url_for('result', score=attempt.score, attempt_id=attempt.id) }}">
+        {{ attempt.id }}
+      </a>
+    </td>
+    <td>
+      {{ attempt.score }}%
+    </td>
+    <td>
+      {{ attempt.attempt_datetime }}
+    </td>
+  </tr>
+{% endfor %}
+
+{% else %}
+<p>You have not attempted the quiz yet.</p>
+<a href="{{ url_for('quiz') }}">Click here to attempt the quiz.</a>
+{% endif %}
+</table>
+
+
+{% endblock %}

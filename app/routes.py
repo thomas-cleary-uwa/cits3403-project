@@ -1,174 +1,185 @@
-from flask import render_template, flash, redirect, url_for, request
-from app import app, db
-from app.forms import LoginForm, RegistrationForm, QuizForm
-from flask_login import current_user, login_user, login_required, logout_user
-from app.models import User, Question, Attempt
-from werkzeug.urls import url_parse
-from datetime import datetime
+""" define the routes for the flask application """
 
-NUM_QUESTIONS_IN_QUIZ = 3
+
+from flask import render_template, redirect, url_for
+from flask_login import current_user, login_required
+
+from app import app
+from app.forms import LoginForm, RegistrationForm
+
+from app.route_helpers import (
+    route_helpers,
+    login_helpers, register_helpers, logout_helpers,
+    user_helpers, quiz_questions_helpers, result_helpers,
+    user_stats_helpers, user_attempts_helpers,
+    before_request_helpers
+)
+
+
+###############################################################################
+# Routes for all users (login not required)
+###############################################################################
 
 @app.route('/')
 @app.route('/index')
 def index():
-
-    jobs = [
-        {
-            'person' : {'name' : 'Thomas'},
-            'task' : 'login'
-        },
-        {
-            'person' : {'name' : 'Calvin'},
-            'task' : 'content'
-        },
-        {
-            'person' : {'name' : 'Jason'},
-            'task' : 'home page'
-        },
-        {
-            'person' : {'name' : 'Michael'},
-            'task' : 'quiz'
-        }
-    ]
-
-    return render_template('index.html', jobs=jobs)
+    """ index page route """
+    return render_template('index.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    """ user login route """
+    # if user already logged in send them to index page
     if current_user.is_authenticated:
         return redirect(url_for('index'))
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if user is None or not user.check_password(form.password.data):
-            flash("Invalid username or password")
-            return redirect(url_for('login'))
-        login_user(user, remember=form.remember_me.data)
-        next_page = request.args.get('next')
-        if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('index')
-        return redirect(next_page)
-    return render_template('login.html', title='Sign In', form=form)
 
+    login_form = LoginForm()
 
-@app.route('/logout')
-def logout():
-    logout_user()
-    return redirect(url_for('index'))
+    if login_form.validate_on_submit():
+        return login_helpers.attempt_login(login_form)
+
+    return render_template('login.html', title='Sign In', form=login_form)
 
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    """ user registration route """
+    # if a user is already logged in send them to the index page
     if current_user.is_authenticated:
         return redirect(url_for('index'))
-    
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
-        user.set_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        flash("Congratulations, you are now a registered user!")
-        return redirect(url_for('login'))
-    return render_template('register.html', title='Register', form=form)
+
+    register_form = RegistrationForm()
+
+    if register_form.validate_on_submit():
+        return register_helpers.attempt_registration(register_form)
+
+    return render_template('register.html', title='Register', form=register_form)
 
 
-@app.route('/user/<username>')
+@app.route('/logout')
+@login_required
+def logout():
+    """ user logout route """
+    # log the current user out and redirect to the index page
+    return logout_helpers.attempt_logout()
+
+
+###############################################################################
+# Routes for users that are logged in (excluding admin users)
+###############################################################################
+
+@app.route('/user_profile/<username>')
 @login_required
 def user(username):
-    user = User.query.filter_by(username=username).first_or_404()
-    
-    attempts = Attempt.query.filter_by(user_id=current_user.id)
-    numAttempts = attempts.count()
+    """ user profile route """
 
-    all_scores = []
+    has_access, returned_obj = user_helpers.attempt_load_user_profile(username)
 
-    for attempt in attempts:
-        i = attempt.score
-        all_scores.append(i)
+    if not has_access:
+        # redirect object returned
+        return returned_obj
 
-    total = sum(all_scores)
-    print("Total: {}, numAttempts: {}".format(total, numAttempts))
-    average = total / (numAttempts * NUM_QUESTIONS_IN_QUIZ)
-    average = int(average * 100)
+    # else user data tuple returned
+    this_user, user_data = returned_obj
+    attempts, this_users_stats = user_data
 
-    return render_template('user.html', user=user, attempts=attempts, average=average, numAttempts=numAttempts)
+    return render_template(
+        'user_profile.html',
+        user=this_user,
+        user_stats=this_users_stats,
+        attempts=attempts
+    )
+
 
 @app.route('/quiz')
 @login_required
 def quiz():
-    return render_template('quizStartPage.html')
+    """ quiz start/resume route """
+    route_helpers.update_random_seed()
+
+    return render_template('quizLanding.html')
 
 
-@app.route('/quizQuestions', methods=['GET','POST'])
+@app.route('/quiz_questions/', methods=['GET','POST'])
 @login_required
 def quiz_questions():
-    form = QuizForm()
+    """ quiz questions/form route """
 
-    # TO RANDOMISE THIS 
-    # GET NUMBER OF ROWS IN QUESTION TABLE
-    # SELECT RANDOM INT FROM 1->NUM_ROWS FOR NUMBER OF QUESTIONS ON QUIZ
-    # SELECT THESE ROWS FROM THE TABLE TO BE THE QUIZ QUESTIONS
-    questions = []
+    redirected, return_obj = quiz_questions_helpers.create_quiz()
+    if redirected:
+        # returned a redirect object
+        return return_obj
 
-    # every field except the submit field
-    fields = [field for field in form]
-    fields = fields[:-2]
-
-    for i in range(1, len(fields)+1):
-        question = Question.query.get(i)
-        questions.append(question)
-
-    index = 0
-    for field in fields:
-        question = questions[index]
-        field.label = question.question
-        # change to allow for as many questions as in the questions list
-        field.choices = [
-            (1, question.response_a), 
-            (2, question.response_b),
-            (3, question.response_c)
-        ]
-
-        index += 1
+    return render_template('quizQuestions.html',form=return_obj)
 
 
-    outcome = None #dummy value for initialisation
-    if form.validate_on_submit():
-       
-        if Question.query.get(1).answer == form.question1.data: value_a = 1
-        else: value_a = 0
-        if Question.query.get(2).answer == form.question2.data: value_b = 1
-        else: value_b = 0
-        if Question.query.get(3).answer == form.question3.data: value_c = 1
-        else: value_c = 0
-        value_score = value_a + value_b + value_c
+@app.route('/result/<score><attempt_id>')
+@login_required
+def result(score, attempt_id):
+    """ quiz results page route """
+    # in case we are coming from profile->results->quiz and seed has not yet been set
+    route_helpers.update_random_seed()
 
-        attempt = Attempt( 
-            user_id=current_user.id,
-            response_a=form.question1.data, mark_a=value_a,
-            response_b=form.question2.data, mark_b=value_b, 
-            response_c=form.question3.data, mark_c=value_c, 
-            score = value_score,
-            attempt_datetime = datetime.utcnow()
-        )
-        
-        db.session.add(attempt)
-        db.session.commit()
+    attempt_data, num_questions = result_helpers.get_result_data(attempt_id)
 
-        outcome = value_score
-        return render_template('result.html',form=form, outcome=outcome)
+    return render_template(
+        'result.html',
+        outcome=score,
+        attempt=attempt_data,
+        num_questions=num_questions
+    )
 
-    else:
-        print(form.errors)
 
-    return render_template('quizQuestions.html',form=form, outcome=outcome)
+###############################################################################
+# Routes for Admin Users
+###############################################################################
 
+@app.route('/user_stats')
+@login_required
+def user_stats():
+    """ route for admin to view users statistics """
+    redirected, redirect_obj = route_helpers.check_admin_access()
+    if redirected:
+        return redirect_obj
+
+    users, all_users_stats, totals = user_stats_helpers.get_user_stat_data()
+
+    return render_template(
+        'user_stats.html',
+        user_info=zip(users, all_users_stats),
+        totals=totals
+    )
+
+
+@app.route('/user_attempts/<username>')
+@login_required
+def user_attempts(username):
+    """ route for admin to view users attempts """
+    redirected, redirect_obj = route_helpers.check_admin_access()
+    if redirected:
+        return redirect_obj
+
+    if username == "all":
+        attempt_landing_data = user_attempts_helpers.get_landing_data()
+
+        return render_template('user_attempts_landing.html', users=attempt_landing_data)
+
+    users_attempts, attempt_keys = user_attempts_helpers.get_users_attempts(username)
+
+    return render_template(
+        'user_attempts.html',
+        user_attempts=users_attempts,
+        username=username,
+        attempt_keys=attempt_keys
+    )
+
+
+###############################################################################
+# Functions to call before a request is made
+###############################################################################
 
 @app.before_request
 def before_request():
-    if current_user.is_authenticated:
-        current_user.last_seen = datetime.utcnow()
-        db.session.commit()
-
+    """ things to do before handling requests """
+    before_request_helpers.do_before_request()

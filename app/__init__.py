@@ -1,40 +1,55 @@
-from flask import Flask, url_for
-from flask_admin.base import AdminIndexView
-from config import Config
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-from flask_login import LoginManager, current_user
-from flask_admin import Admin, AdminIndexView, expose
+""" initialise the flask application """
+
+from flask import Flask
+
+from flask_admin import Admin
 from flask_admin.menu import MenuLink
 
+from flask_sqlalchemy import SQLAlchemy
 
+from flask_migrate import Migrate
+
+from flask_login import LoginManager, current_user
+
+from config import Config
+
+
+# represents the Flask application
 app = Flask(__name__)
-# app.static_folder=
+
+# set Flask configuration to be that defined in config.py
 app.config.from_object(Config)
 
+# represents the applications database
 db = SQLAlchemy(app)
 
+# represents the applications database migration engine
 migrate = Migrate(app, db)
 
+# represents the applications login manager
 login = LoginManager(app)
+# flask-login needs to know the view/route that handles login
 login.login_view = 'login'
 
 
-from app import routes, models, adminViews
-
-# make admin page only accessible to admin user
-class MyAdminIndexView(AdminIndexView):
-
-    def is_accessible(self):
-        return current_user.is_authenticated and current_user.is_admin
+# import these here to avoid circular import errors
+from app import routes, models, admin_views
 
 
-admin = Admin(app, name="Admin Tools", index_view=MyAdminIndexView())
+# represents the admin interface manager
+admin = Admin(
+    app, 
+    name="Admin Tools", 
+    index_view=admin_views.MyAdminIndexView(),
+    template_mode="bootstrap4"
+)
 
-# adds these tables to admin page for editing
-admin.add_view(adminViews.AdminUserView(models.User, db.session))
-admin.add_view(adminViews.AdminModelView(models.Question, db.session))
-admin.add_view(adminViews.AdminAttemptView(models.Attempt, db.session)) #  REMOVE CREATE TAB
+# adds database tables to the admin interface
+admin.add_view(admin_views.AdminUserView(models.User, db.session))
+admin.add_view(admin_views.AdminUserView(models.UserStats, db.session))
+admin.add_view(admin_views.AdminModelView(models.Question, db.session))
+admin.add_view(admin_views.AdminAttemptView(models.SubmittedAttempt, db.session))
+admin.add_view(admin_views.AdminAttemptView(models.SavedAttempt, db.session))
 
-# adds link to go back to website
+# adds link in admin interface to go back to the main site
 admin.add_link(MenuLink(name="Back to Site", url="/index", category="Links"))

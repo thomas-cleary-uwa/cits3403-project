@@ -1,16 +1,59 @@
-{% extends "base.html" %}
+{% extends "base_content.html" %}
 
 
 
-{% block content %}
+{% block inContainer %}
 
-<h1>DFS Quiz Result</h1>
+<h1>Quiz Result</h1>
 
-<div id="result">
-    <p>Result: {{  outcome  }}/3</p>
-</div>
 <div>
-    <button id="tryagain" onclick=tryAgainClick()> Try Again</button>
+    <table class="table table-bordered">
+        <tr class="active">
+            <td>
+                Question
+            </td>
+            <td>
+                Answer
+            </td>
+            <td>
+                Mark
+            </td>
+        </tr>
+        {% for question in attempt.keys() %}
+        <tr>
+            <td>
+                {{ attempt[question]["question"]}}
+            </td>
+            <td>
+                {{ attempt[question]["response"]}}
+            </td>
+            <td>
+                {{ attempt[question]["mark"]}}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div>
+    <table class="table table-bordered">
+        <tr>
+            <td class="active" style="text-align: center;"> Final Score</td>
+        </tr>
+        <tr>
+            <td style="text-align: center;">{{ outcome }}%</td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <button id="tryagain" onclick=tryAgainClick()>
+        {% if current_user.has_saved_attempt %}
+        Resume Attempt
+        {% else %}
+        Try Again
+        {% endif %}
+    </button>
     <button id="exit" onclick=statisticsClick()>Statitics</button>
     <button id="exit" onclick=exitClick()>Exit Quiz</button>
 </div>
