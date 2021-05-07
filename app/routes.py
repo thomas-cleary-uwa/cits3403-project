@@ -114,7 +114,7 @@ def quiz_questions():
     return render_template('quizQuestions.html',form=return_obj)
 
 
-@app.route('/result/<score><attempt_id>')
+@app.route('/result/<score>/<attempt_id>')
 @login_required
 def result(score, attempt_id):
     """ quiz results page route """
