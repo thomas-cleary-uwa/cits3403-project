@@ -114,8 +114,9 @@ def quiz_questions():
     return render_template('quizQuestions.html',form=return_obj)
 
 
-@app.route('/result/<score><attempt_id>')
+@app.route('/result/<score>/<attempt_id>')
 @login_required
+# remove score and get from attempt row with the id
 def result(score, attempt_id):
     """ quiz results page route """
     # in case we are coming from profile->results->quiz and seed has not yet been set
