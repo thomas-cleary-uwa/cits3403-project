@@ -11,22 +11,54 @@
 }
 
 .quizTable {
-  border: 3px solid blue;
   width: 500px;
-  margin: auto
+  height: 300px;
+  margin: auto;
+  }
+
+
+
+.pagination > li > a
+{
+    background-color: white;
+    color: #5A4181;
 }
 
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #5a5a5a;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.pagination > .active > a
+{
+    color: white;
+    background-color: #5A4181 !Important;
+    border: solid 1px #5A4181 !Important;
+}
+
+.pagination > .active > a:hover
+{
+    background-color: #5A4181 !Important;
+    border: solid 1px #5A4181;
+}
+
+
 </style>
+
 
 <form method="POST">
   {{ form.hidden_tag() }}
 
   <div>
 
-    <div style="display: block; border: 3px solid;" onload="insertTableIds()">
-      <p id="test" onload="testFunction()">derp</p>
-      <p id="demo">wew</p>
-
+    <div style="display: block;">
+      <h1 style="text-align:center;">DFS Quiz</h1>
+      <br>
       {% for field in form %}
         {% if field.type in ['RadioField'] %}
               
@@ -34,7 +66,7 @@
 
               <!--Question-->
               <tr><td>
-                <h5 class="quizQues">{{ field.label }}</h5><!--Question sentence-->
+                <h4 class="quizQues">{{ field.label }}</h4><!--Question sentence-->
                 {% for error in field.errors %}
                 <span style="color: red;">{{ error }}</span> <!--error message (answer not entered)-->
                 {% endfor %}
@@ -48,23 +80,20 @@
               {% endfor %}
 
           </table>
-          <br>
 
         {% endif %}
       {% endfor %}
     </div>
 
     <!--sub questions navigation menu-->
-    <div style="display: block; margin: auto; text-align: center; border: 3px solid orange;">
+    <div style="display: block; margin: auto; text-align: center;">
       <!--pagination-->
-        <ul class="pagination justify-content-center">
-          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">4</a></li>
-          <li class="page-item"><a class="page-link" href="#">5</a></li>
-          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        <ul class="pagination justify-content-center pagination-lg"  onload="showtable(1)">
+          <li class="page-item" id="pagin1" onclick="showtable(1)"><a class="page-link" href="#">1</a></li>
+          <li class="page-item" id="pagin2" onclick="showtable(2)"><a class="page-link" href="#">2</a></li>
+          <li class="page-item" id="pagin3" onclick="showtable(3)"><a class="page-link" href="#">3</a></li>
+          <li class="page-item" id="pagin4" onclick="showtable(4)"><a class="page-link" href="#">4</a></li>
+          <li class="page-item" id="pagin5" onclick="showtable(5)"><a class="page-link" href="#">5</a></li>
         </ul>
       <!--submit & save buttons-->
       {% for field in form %}
@@ -79,36 +108,31 @@
   </div>
 </form>
 
-<p onload="myFunction()">;lasjdf;lkasjdf;jlsadf</p>
+
 
 <script>
+  showtable(1);
 
-  function testFunction() {
-    document.getElementById("test").innerHTML="test1";
+  // insert tags into tables
+  for (i=1; i<6; i++) {
+    document.getElementsByTagName("table")[i].setAttribute("id", ("table" + i));
   }
 
-  function myFunction() {
-    document.getElementById("demo").innerHTML = "yeet";
-  }
 
-  function insertTableIds() {
 
-    var tableList = document.getElementsByClassName("table");
-    var count;
-    for (count = 0; count < tableList.length; count++) {
-      tableList[count].setAttribute = ("id", "testattribute");
+  function showtable(table){
+    x = document.getElementsByTagName("table")
+    var i;
+    for (i = 0; i <x.length; i++ ) {
+      if (x != (table-1)) {
+        x[i].style.display = "none";
+      }
     }
+    x[(table-1)].style.display = "block";
 
-    document.getElementById("demo").innerHTML = "yeet_2.0";
   }
-
-  myFunction();
-  testFunction();
-  insertTableIds();
-  document.getElementsByTagName("p")[0].setAttribute("id", "yeet");
 
 </script>
-
 
 
 {% endblock %}

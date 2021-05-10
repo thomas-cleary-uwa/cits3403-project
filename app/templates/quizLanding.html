@@ -1,8 +1,8 @@
 {% extends "base_content.html" %}
 
 {% block inContainer %}
-    <h1>Quiz Start Page</h1>
-    <div id="quizIntro">
+    <h1 style="text-align:center;">DFS Quiz</h1>
+    <div id="quizIntro" style="text-align:center;">
       <button id="start" onclick=startQuizClick()>
         {% if current_user.has_saved_attempt %}
         Resume Quiz
