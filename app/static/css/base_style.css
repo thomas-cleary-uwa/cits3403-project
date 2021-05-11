@@ -29,17 +29,22 @@ a.nav-link {
   background-color: rgb(0, 0, 0);;
 }
 
-/* Should probably make these classes */
-#result-table {
-  text-align: center;
-}
-
 #result-heading {
   text-align: center;
 }
 
-#result-table {
+/* Should probably make these classes */
+#final-score-table, #result-table {
+  text-align: center;
+}
+
+#result-table, #final-score-table {
   margin-left: auto;
   margin-right: auto;
-  max-width: 80%;
 }
+
+#question-heading {
+  width: 50%;
+}
+
+

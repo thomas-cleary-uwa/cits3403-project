@@ -8,26 +8,28 @@
 
 <div>
     <table class="table table-bordered" id="result-table">
-        <tr class="active">
-            <td>
-                Question
-            </td>
-            <td>
-                Answer
-            </td>
-            <td>
-                Mark
-            </td>
-        </tr>
+        <thead class="thead-light">
+            <tr class="active" id="result-table-headings">
+                <th id="question-heading">
+                    Question
+                </th>
+                <th>
+                    Answer
+                </th>
+                <th>
+                    Mark
+                </th>
+            </tr>
+        </thead>
         {% for question in attempt.keys() %}
-        <tr>
-            <td>
+        <tr class="result-table-question-row">
+            <td class="result-question">
                 {{ attempt[question]["question"]}}
             </td>
-            <td>
+            <td class="result-response">
                 {{ attempt[question]["response"]}}
             </td>
-            <td>
+            <td class="result-mark">
                 {{ attempt[question]["mark"]}}
             </td>
         </tr>
@@ -36,13 +38,15 @@
 </div>
 
 <div>
-    <table class="table table-bordered" id="result-table">
-        <tr>
-            <td> Final Score</td>
-        </tr>
-        <tr>
+    <table class="table table-bordered" id="final-score-table">
+        <thead class="thead-light">
+          <tr id="final-score-table-heading">
+              <th> Final Score</th>
+          </tr>
+        </thead>
+          <tr id="final-score-table-score-row">
             <td>{{ outcome }}%</td>
-        </tr>
+          </tr>
     </table>
 </div>
 
