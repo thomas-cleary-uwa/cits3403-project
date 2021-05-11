@@ -32,112 +32,114 @@
 <body>
   {% block particles %}{% endblock %}
   <!-- Navigation bar for every page -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <div id="nav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse" id="navbarNav">
 
-      <!-- Items on the lefft side of the navbar -->
-      <ul class="navbar-nav mr-auto nav-fill" id="left-navbar">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('index') }}">
-            <span class="material-icons md-36">home</span>
-            Home
-          </a>
-        </li>
-        
-        <!-- items a non-admin user will see -->
-        {% if not current_user.is_admin %}
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="contentDropdown" data-toggle="dropdown" role="button" href="#">
-            <span class="material-icons md-36">school</span>
-            Learn
-          </a>
-          <div class="dropdown-menu" aria-labelledby="contentDropdown">
-            <a class="dropdown-item" href="#">Topic</a>
-            <a class="dropdown-item" href="#">Topic</a>
-            <a class="dropdown-item" href="#">Topic</a>
-          </div>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('quiz') }}">
-            <span class="material-icons md-36">bubble_chart</span>
-            Quiz
-          </a>
-        </li>
-
-        <!-- items an admin user will see -->
-        {% elif current_user.is_admin and current_user.is_authenticated%}
-        <li class="nav-item">
-          <a class="nav-link" href="/admin">
-            <span class="material-icons md-36">handyman</span>
-            Admin Tools
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('user_stats') }}">
-            <span class="material-icons md-36">insights</span>
-            User Statistics
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('user_attempts', username='all') }}">
-            <span class="material-icons md-36">assessment</span>
-            User Attempts
-          </a>
-        </li>
-        {% endif %}  
-      </ul>
-
-
-      <!-- Items on the right side of the navbar -->
-      <ul class="navbar-nav ml-auto nav-fill" id="right-navbar">
-        
-        <!-- items a user who is not logged in will see -->
-        {% if current_user.is_anonymous %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('register') }}">
-            <span class="material-icons md-36">face</span>
-            Sign Up
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('login') }}">
-            <span class="material-icons md-36">login</span>
-            Sign In
-          </a>
-        </li>
-        
-        <!-- items a logged in user will see-->
-        {% elif current_user.is_authenticated %}
+        <!-- Items on the lefft side of the navbar -->
+        <ul class="navbar-nav mr-auto nav-fill" id="left-navbar">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('index') }}">
+              <span class="material-icons md-36">home</span>
+              Home
+            </a>
+          </li>
+          
           <!-- items a non-admin user will see -->
           {% if not current_user.is_admin %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="contentDropdown" data-toggle="dropdown" role="button" href="#">
+              <span class="material-icons md-36">school</span>
+              Learn
+            </a>
+            <div class="dropdown-menu" aria-labelledby="contentDropdown">
+              <a class="dropdown-item" href="#">Topic</a>
+              <a class="dropdown-item" href="#">Topic</a>
+              <a class="dropdown-item" href="#">Topic</a>
+            </div>
+          </li>
+
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('user', username=current_user.username) }}">
-              <span class="material-icons md-36">account_circle</span>
-              Profile
+            <a class="nav-link" href="{{ url_for('quiz') }}">
+              <span class="material-icons md-36">bubble_chart</span>
+              Quiz
+            </a>
+          </li>
+
+          <!-- items an admin user will see -->
+          {% elif current_user.is_admin and current_user.is_authenticated%}
+          <li class="nav-item">
+            <a class="nav-link" href="/admin">
+              <span class="material-icons md-36">handyman</span>
+              Admin Tools
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('user_stats') }}">
+              <span class="material-icons md-36">insights</span>
+              User Statistics
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('user_attempts', username='all') }}">
+              <span class="material-icons md-36">assessment</span>
+              User Attempts
+            </a>
+          </li>
+          {% endif %}  
+        </ul>
+
+
+        <!-- Items on the right side of the navbar -->
+        <ul class="navbar-nav ml-auto nav-fill" id="right-navbar">
+          
+          <!-- items a user who is not logged in will see -->
+          {% if current_user.is_anonymous %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('register') }}">
+              <span class="material-icons md-36">face</span>
+              Sign Up
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('login') }}">
+              <span class="material-icons md-36">login</span>
+              Sign In
+            </a>
+          </li>
+          
+          <!-- items a logged in user will see-->
+          {% elif current_user.is_authenticated %}
+            <!-- items a non-admin user will see -->
+            {% if not current_user.is_admin %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('user', username=current_user.username) }}">
+                <span class="material-icons md-36">account_circle</span>
+                Profile
+              </a>
+            </li>
+            {% endif %}
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('logout') }}">
+              <i class="material-icons md-36">logout</i>
+              Sign Out
             </a>
           </li>
           {% endif %}
 
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('logout') }}">
-            <i class="material-icons md-36">logout</i>
-            Sign Out
-          </a>
-        </li>
-        {% endif %}
-
-      </ul>
-    </div>
-  </nav>
+        </ul>
+      </div>
+    </nav>
+  </div>
 
   <!-- Show flashed messages under the navbar but above content -->
   {% with messages = get_flashed_messages() %}

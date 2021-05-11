@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 
 {% block particles %}
-<div id="particles-js"></div>
+<div id="particles-js">
+  <div class="relative" id="logo">
+    <div class="absolute">
+      <a href="{{url_for('index')}}">
+        <img id="logo" src="{{ url_for('static', filename='assets/images/logo.png') }}">
+      </a>
+    </div>
+  </div>
+</div>
 {% endblock %}
 
 {% block content %}
