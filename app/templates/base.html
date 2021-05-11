@@ -103,14 +103,14 @@
         {% if current_user.is_anonymous %}
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('register') }}">
-            <span class="material-icons md-24">face</span>
+            <span class="material-icons md-36">face</span>
             Sign Up
           </a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('login') }}">
-            <span class="material-icons md-24">login</span>
+            <span class="material-icons md-36">login</span>
             Sign In
           </a>
         </li>
@@ -121,7 +121,7 @@
           {% if not current_user.is_admin %}
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('user', username=current_user.username) }}">
-              <span class="material-icons md-24">account_circle</span>
+              <span class="material-icons md-36">account_circle</span>
               Profile
             </a>
           </li>
@@ -129,7 +129,7 @@
 
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('logout') }}">
-            <i class="material-icons md-24">logout</i>
+            <i class="material-icons md-36">logout</i>
             Sign Out
           </a>
         </li>

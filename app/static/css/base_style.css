@@ -10,6 +10,10 @@ body {
   color: rgb(195, 87, 98);
 }
 
+a .material-icons {
+  padding: 10px;
+}
+
 
 /* Rules for icon sizes: */
 .material-icons.md-18 { font-size: 18px; }
