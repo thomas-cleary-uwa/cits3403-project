@@ -2,6 +2,13 @@
   color : rgb(152, 195, 87);
 }
 
+.correct {
+  color: green;
+}
+.wrong {
+  color: red;
+}
+
 
 /* Rules for icon sizes: */
 .material-icons.md-18 { font-size: 18px; }
@@ -16,6 +23,7 @@ a.nav-link {
 
 .container.content {
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 #nav-logo {
@@ -31,12 +39,21 @@ a.nav-link {
 
 #result-heading {
   text-align: center;
+  font-size: 60px;
 }
 
 /* Should probably make these classes */
 #final-score-table, #result-table {
   text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
+
+#final-score-table td, #result-table td {
+  vertical-align: middle;
+  padding: 20px;
+} 
+
 
 #result-table, #final-score-table {
   margin-left: auto;
@@ -46,5 +63,11 @@ a.nav-link {
 #question-heading {
   width: 50%;
 }
+
+#result-page {
+  font-size: x-large;
+}
+
+
 
 

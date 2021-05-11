@@ -4,62 +4,70 @@
 
 {% block inContainer %}
 
-<h1 id="result-heading">Result</h1>
+<div id="result-page">
+  <h1 id="result-heading">Result</h1>
 
-<div>
-    <table class="table table-bordered" id="result-table">
-        <thead class="thead-light">
-            <tr class="active" id="result-table-headings">
-                <th id="question-heading">
-                    Question
-                </th>
-                <th>
-                    Answer
-                </th>
-                <th>
-                    Mark
-                </th>
+  <div>
+      <table class="table table-bordered table-hover" id="result-table">
+          <thead class="thead-light">
+              <tr class="active" id="result-table-headings">
+                  <th id="question-heading">
+                      Question
+                  </th>
+                  <th>
+                      Answer
+                  </th>
+                  <th>
+                      Mark
+                  </th>
+              </tr>
+          </thead>
+          {% for question in attempt.keys() %}
+          <tr class="result-table-question-row">
+              <td class="result-question">
+                  {{ attempt[question]["question"]}}
+              </td>
+              <td class="result-response">
+                  {{ attempt[question]["response"]}}
+              </td>
+              <td class="result-mark">
+                <span class="material-icons md-48 {% if attempt[question]['mark'] %} correct {% else %} wrong {% endif %}">
+                  {% if attempt[question]["mark"] %}
+                  check
+                  {% else %}
+                  clear
+                  {% endif %}
+                </span>
+              </td>
+          </tr>
+          {% endfor %}
+      </table>
+  </div>
+
+  <div>
+      <table class="table table-bordered" id="final-score-table">
+          <thead class="thead-light">
+            <tr id="final-score-table-heading">
+                <th> Final Score</th>
             </tr>
-        </thead>
-        {% for question in attempt.keys() %}
-        <tr class="result-table-question-row">
-            <td class="result-question">
-                {{ attempt[question]["question"]}}
-            </td>
-            <td class="result-response">
-                {{ attempt[question]["response"]}}
-            </td>
-            <td class="result-mark">
-                {{ attempt[question]["mark"]}}
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-</div>
+          </thead>
+            <tr id="final-score-table-score-row">
+              <td id="result-table-score">{{ outcome }}%</td>
+            </tr>
+      </table>
+  </div>
 
-<div>
-    <table class="table table-bordered" id="final-score-table">
-        <thead class="thead-light">
-          <tr id="final-score-table-heading">
-              <th> Final Score</th>
-          </tr>
-        </thead>
-          <tr id="final-score-table-score-row">
-            <td>{{ outcome }}%</td>
-          </tr>
-    </table>
-</div>
-
-<div>
-    <button id="tryagain" onclick=tryAgainClick()>
-        {% if current_user.has_saved_attempt %}
-        Resume Attempt
-        {% else %}
-        Try Again
-        {% endif %}
-    </button>
-    <button id="exit" onclick=statisticsClick()>Profile</button>
-    <button id="exit" onclick=exitClick()>Exit Quiz</button>
+  <div>
+      <button id="tryagain" onclick=tryAgainClick()>
+          {% if current_user.has_saved_attempt %}
+          Resume Attempt
+          {% else %}
+          Try Again
+          {% endif %}
+      </button>
+      <button id="exit" onclick=statisticsClick()>Profile</button>
+      <button id="exit" onclick=exitClick()>Exit Quiz</button>
+  </div>
 </div>
 
 <script>
