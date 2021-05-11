@@ -4,48 +4,136 @@
 
 {% block inContainer %}
 
+<style>
+.quizQues {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.quizTable {
+  width: 500px;
+  height: 300px;
+  margin: auto;
+  }
+
+
+
+.pagination > li > a
+{
+    background-color: white;
+    color: #5A4181;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #5a5a5a;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.pagination > .active > a
+{
+    color: white;
+    background-color: #5A4181 !Important;
+    border: solid 1px #5A4181 !Important;
+}
+
+.pagination > .active > a:hover
+{
+    background-color: #5A4181 !Important;
+    border: solid 1px #5A4181;
+}
+
+
+</style>
+
 
 <form method="POST">
   {{ form.hidden_tag() }}
 
-  <div id="test">
+  <div>
 
-
-    <table>
+    <div style="display: block;">
+      <h1 style="text-align:center;">DFS Quiz</h1>
+      <br>
       {% for field in form %}
-      {% if field.type in ['RadioField'] %}
-      <tr>
-        <td>
-          {{ field.label }}
-          {% for error in field.errors %}
-          <span style="color: red;">{{ error }}</span>
-          {% endfor %}
-        </td>
-      </tr>
+        {% if field.type in ['RadioField'] %}
+              
+          <table class="quizTable">
 
-      {% for subfield in field %}
-      <tr>
-        <td>
-          {{ subfield }} {{ subfield.label }}
-        </td>
-      </tr>
+              <!--Question-->
+              <tr><td>
+                <h4 class="quizQues">{{ field.label }}</h4><!--Question sentence-->
+                {% for error in field.errors %}
+                <span style="color: red;">{{ error }}</span> <!--error message (answer not entered)-->
+                {% endfor %}
+              </td></tr>
+
+              <!--Response Options-->
+              {% for subfield in field %}
+                <tr><td>
+                    {{ subfield }} {{ subfield.label }} <!--subfield=radiofield; label=answerchoice-->
+                </td></tr>
+              {% endfor %}
+
+          </table>
+
+        {% endif %}
       {% endfor %}
+    </div>
 
-      {% endif %}
-      {% endfor %}
-
+    <!--sub questions navigation menu-->
+    <div style="display: block; margin: auto; text-align: center;">
+      <!--pagination-->
+        <ul class="pagination justify-content-center pagination-lg"  onload="showtable(1)">
+          <li class="page-item" id="pagin1" onclick="showtable(1)"><a class="page-link" href="#">1</a></li>
+          <li class="page-item" id="pagin2" onclick="showtable(2)"><a class="page-link" href="#">2</a></li>
+          <li class="page-item" id="pagin3" onclick="showtable(3)"><a class="page-link" href="#">3</a></li>
+          <li class="page-item" id="pagin4" onclick="showtable(4)"><a class="page-link" href="#">4</a></li>
+          <li class="page-item" id="pagin5" onclick="showtable(5)"><a class="page-link" href="#">5</a></li>
+        </ul>
+      <!--submit & save buttons-->
       {% for field in form %}
-      {% if field.type in ['SubmitField'] %}
-      <tr>
-        <td>
-          {{ field }}
-        </td>
-      </tr>
-      {% endif %}
+        {% if field.type in ['SubmitField'] %}
+          <tr><td>
+            {{ field }}
+          </td></tr>
+        {% endif %}
       {% endfor %}
+    </div>
 
-    </table>
-    
+  </div>
 </form>
 
+
+
+<script>
+  showtable(1);
+
+  // insert tags into tables
+  for (i=1; i<6; i++) {
+    document.getElementsByTagName("table")[i].setAttribute("id", ("table" + i));
+  }
+
+
+
+  function showtable(table){
+    x = document.getElementsByTagName("table")
+    var i;
+    for (i = 0; i <x.length; i++ ) {
+      if (x != (table-1)) {
+        x[i].style.display = "none";
+      }
+    }
+    x[(table-1)].style.display = "block";
+
+  }
+
+</script>
+
+
 {% endblock %}
+
