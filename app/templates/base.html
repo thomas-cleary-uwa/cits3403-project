@@ -41,7 +41,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
 
       <!-- Items on the lefft side of the navbar -->
-      <ul class="navbar-nav mr-auto nav-fill w-25">
+      <ul class="navbar-nav mr-auto nav-fill" id="left-navbar">
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('index') }}">
             <span class="material-icons md-36">home</span>
@@ -97,7 +97,7 @@
 
 
       <!-- Items on the right side of the navbar -->
-      <ul class="navbar-nav">
+      <ul class="navbar-nav ml-auto nav-fill" id="right-navbar">
         
         <!-- items a user who is not logged in will see -->
         {% if current_user.is_anonymous %}

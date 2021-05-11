@@ -5,7 +5,7 @@
 {% block inContainer %}
 
 <div id="result-page">
-  <h1 id="result-heading">Result</h1>
+  <h1 id="result-heading">Final Result - Attempt X</h1>
 
   <div>
       <table class="table table-bordered table-hover" id="result-table">
@@ -58,27 +58,19 @@
   </div>
 
   <div>
-      <button id="tryagain" onclick=tryAgainClick()>
+      <button class="btn btn-primary btn-lg btn-block" id="tryagain" onclick=tryAgainClick()>
           {% if current_user.has_saved_attempt %}
           Resume Attempt
           {% else %}
           Try Again
           {% endif %}
       </button>
-      <button id="exit" onclick=statisticsClick()>Profile</button>
-      <button id="exit" onclick=exitClick()>Exit Quiz</button>
   </div>
 </div>
 
 <script>
     function tryAgainClick() {
         window.location.href="{{ url_for('quiz_questions') }}";
-    }
-    function statisticsClick() {
-        window.location.href="{{ url_for('user', username=current_user.username) }}"
-    }
-    function exitClick() {
-        window.location.href="{{ url_for('index') }}";
     }
 </script>
 

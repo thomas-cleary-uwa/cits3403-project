@@ -1,12 +1,13 @@
-.material-icons {
+body {
+  font-size: 100%;
+}
+
+.material-icons, .correct {
   color : rgb(152, 195, 87);
 }
 
-.correct {
-  color: green;
-}
 .wrong {
-  color: red;
+  color: rgb(195, 87, 98);
 }
 
 
@@ -15,6 +16,18 @@
 .material-icons.md-24 { font-size: 24px; } /* Default */
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
+
+.navbar a {
+  font-size: 200%;
+}
+
+#left-navbar .nav-item {
+  margin-right: 40px;
+}
+
+#right-navbar .nav-item {
+  margin-left: 40px;
+}
 
 a.nav-link {
   display: flex;
@@ -39,7 +52,7 @@ a.nav-link {
 
 #result-heading {
   text-align: center;
-  font-size: 60px;
+  font-size: 300%;
 }
 
 /* Should probably make these classes */
@@ -65,7 +78,18 @@ a.nav-link {
 }
 
 #result-page {
-  font-size: x-large;
+  font-size: 125%;
+  margin-top: 50px;
+}
+
+.btn-primary {
+  background-color : rgb(152, 195, 87);
+  border-color: rgb(234, 236, 239);
+}
+
+.btn-primary:hover {
+  background-color: rgb(119, 153, 69);
+  border-color: rgb(182, 183, 185);
 }
 
 
