@@ -43,10 +43,6 @@ a.nav-link {
   margin-bottom: 50px;
 }
 
-#nav-logo {
-  width: 48px;
-  height: 48px;
-}
 
 #particles-js {
   width: 100%;
@@ -67,7 +63,8 @@ a.nav-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 50%
+  top: 50%;
+  z-index: 1;
 }
 
 #result-heading {
