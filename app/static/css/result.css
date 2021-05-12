@@ -6,6 +6,7 @@
 #result-page-heading {
   text-align: center;
   font-size: 250%;
+  color: rgb(138, 78, 0);
 }
 
 /* Should probably make these classes */
@@ -22,16 +23,22 @@
   padding: 20px;
 } 
 
+#result-table-headings, #final-score-table-heading {
+  background-color: rgba(86, 181, 42, 0.356);
+}
+
 #question-heading {
   width: 50%;
 }
 
 .btn-primary {
-  background-color : rgb(152, 195, 87);
-  border-color: rgb(234, 236, 239);
+  color: black;
+  background-color: rgba(86, 181, 42, 0.13);
+  border-color: white;
 }
 
 .btn-primary:hover {
-  background-color: rgb(119, 153, 69);
-  border-color: rgb(182, 183, 185);
+  color: black;
+  background-color: rgba(86, 181, 42, 0.356);
+  border-color: black;
 }

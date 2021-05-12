@@ -6,7 +6,11 @@ body {
 
 /* Google Material Icons Styling ----------------------------------------------*/
 .material-icons, .correct {
-  color : rgb(152, 195, 87);
+  color : rgba(86, 181, 42, 0.356);
+}
+
+span.nav-icon:hover {
+  color: rgba(86, 181, 42, 1);
 }
 
 .wrong {
@@ -28,9 +32,15 @@ a .material-icons {
 #particles-js {
   width: 100%;
   height: 200px;
-  background-color: rgb(124, 124, 125);
+  background: rgb(255,225,199);
+  background: radial-gradient(circle, rgba(255,225,199,1) 0%, rgba(148,187,233,1) 100%);
   z-index: -1;
 }
+
+/* FAVOURITE SO FAR 
+  background: rgb(255,225,199);
+  background: radial-gradient(circle, rgba(255,225,199,1) 0%, rgba(148,187,233,1) 100%);
+*/
 
 /* To get icon floating over particles without them dissappearing */
 .absolute {
@@ -59,6 +69,10 @@ a.nav-link {
   align-items: center;
 }
 
+#site-navbar a{
+  color: rgb(138, 78, 0);
+}
+
 #left-navbar .nav-item {
   margin-right: 40px;
 }
@@ -66,6 +80,8 @@ a.nav-link {
 #right-navbar .nav-item {
   margin-left: 40px;
 }
+
+
 
 
 /* Content Container Styling --------------------------------------------------*/

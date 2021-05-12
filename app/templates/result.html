@@ -11,8 +11,9 @@
 
   <div>
     <table class="table table-bordered table-hover" id="result-table">
-      <thead class="thead-light">
-        <tr class="active" id="result-table-headings">
+
+      <thead id="result-table-headings">
+        <tr>
           <th id="question-heading">
             Question
           </th>
@@ -24,6 +25,7 @@
           </th>
         </tr>
       </thead>
+
       {% for question in attempt.keys() %}
       <tr class="result-table-question-row">
         <td class="result-table-question">
@@ -42,14 +44,15 @@
           </span>
         </td>
       </tr>
+  
       {% endfor %}
     </table>
   </div>
 
   <div>
     <table class="table table-bordered" id="final-score-table">
-      <thead class="thead-light">
-        <tr id="final-score-table-heading">
+      <thead id="final-score-table-heading">
+        <tr>
           <th> Final Score</th>
         </tr>
       </thead>
