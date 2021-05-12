@@ -20,6 +20,10 @@
   <!-- Google Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+  <!--Google Fonts-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Open+Sans&display=swap" rel="stylesheet">  
+
   <!-- base_style.css -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/base_style.css') }}">
 
@@ -33,7 +37,7 @@
   {% block particles %}{% endblock %}
   <!-- Navigation bar for every page -->
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="site-navbar">
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -45,7 +49,7 @@
       <ul class="navbar-nav mr-auto nav-fill" id="left-navbar">
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('index') }}">
-            <span class="material-icons md-36">home</span>
+            <span class="material-icons md-36 nav-icon">home</span>
             Home
           </a>
         </li>
@@ -54,7 +58,7 @@
         {% if not current_user.is_admin %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="contentDropdown" data-toggle="dropdown" role="button" href="#">
-            <span class="material-icons md-36">school</span>
+            <span class="material-icons md-36 nav-icon">school</span>
             Learn
           </a>
           <div class="dropdown-menu" aria-labelledby="contentDropdown">
@@ -66,7 +70,7 @@
 
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('quiz') }}">
-            <span class="material-icons md-36">bubble_chart</span>
+            <span class="material-icons md-36 nav-icon">bubble_chart</span>
             Quiz
           </a>
         </li>
@@ -75,21 +79,21 @@
         {% elif current_user.is_admin and current_user.is_authenticated%}
         <li class="nav-item">
           <a class="nav-link" href="/admin">
-            <span class="material-icons md-36">handyman</span>
+            <span class="material-icons md-36 nav-icon">handyman</span>
             Admin Tools
           </a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('user_stats') }}">
-            <span class="material-icons md-36">insights</span>
+            <span class="material-icons md-36 nav-icon">insights</span>
             User Statistics
           </a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('user_attempts', username='all') }}">
-            <span class="material-icons md-36">assessment</span>
+            <span class="material-icons md-36 nav-icon">assessment</span>
             User Attempts
           </a>
         </li>
@@ -104,14 +108,14 @@
         {% if current_user.is_anonymous %}
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('register') }}">
-            <span class="material-icons md-36">face</span>
+            <span class="material-icons md-36 nav-icon">face</span>
             Sign Up
           </a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('login') }}">
-            <span class="material-icons md-36">login</span>
+            <span class="material-icons md-36 nav-icon">login</span>
             Sign In
           </a>
         </li>
@@ -122,7 +126,7 @@
           {% if not current_user.is_admin %}
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('user', username=current_user.username) }}">
-              <span class="material-icons md-36">account_circle</span>
+              <span class="material-icons md-36 nav-icon">account_circle</span>
               Profile
             </a>
           </li>
@@ -130,7 +134,7 @@
 
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('logout') }}">
-            <i class="material-icons md-36">logout</i>
+            <span class="material-icons md-36 nav-icon">logout</span>
             Sign Out
           </a>
         </li>
@@ -159,6 +163,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+  {% block particleScripts %}{% endblock %}
   <!-- Insert additional scripts here -->
   {% block scripts %}{% endblock %}
 

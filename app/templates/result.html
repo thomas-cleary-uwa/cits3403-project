@@ -1,78 +1,84 @@
 {% extends "base_content.html" %}
 
-
+{% block styleSheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
+{% endblock %}
 
 {% block inContainer %}
 
 <div id="result-page">
-  <h1 id="result-heading">Final Result - Attempt X</h1>
+  <h1 id="result-page-heading">Final Result - Attempt X</h1>
 
   <div>
-      <table class="table table-bordered table-hover" id="result-table">
-          <thead class="thead-light">
-              <tr class="active" id="result-table-headings">
-                  <th id="question-heading">
-                      Question
-                  </th>
-                  <th>
-                      Answer
-                  </th>
-                  <th>
-                      Mark
-                  </th>
-              </tr>
-          </thead>
-          {% for question in attempt.keys() %}
-          <tr class="result-table-question-row">
-              <td class="result-question">
-                  {{ attempt[question]["question"]}}
-              </td>
-              <td class="result-response">
-                  {{ attempt[question]["response"]}}
-              </td>
-              <td class="result-mark">
-                <span class="material-icons md-48 {% if attempt[question]['mark'] %} correct {% else %} wrong {% endif %}">
-                  {% if attempt[question]["mark"] %}
-                  check
-                  {% else %}
-                  clear
-                  {% endif %}
-                </span>
-              </td>
-          </tr>
-          {% endfor %}
-      </table>
+    <table class="table table-bordered" id="result-table">
+
+      <thead id="result-table-headings">
+        <tr>
+          <th id="question-heading">
+            Question
+          </th>
+          <th id="answer-heading">
+            Answer
+          </th>
+          <th id="mark-heading">
+            Mark
+          </th>
+        </tr>
+      </thead>
+
+      {% for question in attempt.keys() %}
+      <tr class="result-table-question-row">
+        <td class="result-table-question">
+          {{ attempt[question]["question"]}}
+        </td>
+        <td class="result-table-response">
+          {{ attempt[question]["response"]}}
+        </td>
+        <td class="result-table-mark">
+          <span class="material-icons md-48 {% if attempt[question]['mark'] %} correct {% else %} wrong {% endif %}">
+            {% if attempt[question]["mark"] %}
+            check
+            {% else %}
+            clear
+            {% endif %}
+          </span>
+        </td>
+      </tr>
+  
+      {% endfor %}
+    </table>
   </div>
 
   <div>
-      <table class="table table-bordered" id="final-score-table">
-          <thead class="thead-light">
-            <tr id="final-score-table-heading">
-                <th> Final Score</th>
-            </tr>
-          </thead>
-            <tr id="final-score-table-score-row">
-              <td id="result-table-score">{{ outcome }}%</td>
-            </tr>
-      </table>
+    <table class="table table-bordered" id="final-score-table">
+      <thead id="final-score-table-heading">
+        <tr>
+          <th> Final Score</th>
+        </tr>
+      </thead>
+      <tr id="final-score-table-score-row">
+        <td id="final-score-table-score">{{ outcome }}%</td>
+      </tr>
+    </table>
   </div>
 
   <div>
-      <button class="btn btn-primary btn-lg btn-block" id="tryagain" onclick=tryAgainClick()>
-          {% if current_user.has_saved_attempt %}
-          Resume Attempt
-          {% else %}
-          Try Again
-          {% endif %}
-      </button>
+    <button 
+    class="btn btn-primary btn-lg btn-block" 
+    id="result-button" 
+    onclick="tryAgainClick( {{ url_for('quiz_questions') }} )"
+    >
+      {% if current_user.has_saved_attempt %}
+      Resume Attempt
+      {% else %}
+      Try Again
+      {% endif %}
+    </button>
   </div>
 </div>
 
-<script>
-    function tryAgainClick() {
-        window.location.href="{{ url_for('quiz_questions') }}";
-    }
-</script>
-
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/result.js') }}"></script>
+{% endblock %}
 
 {% endblock %}
