@@ -3,10 +3,20 @@ body {
   font-size: 100%;
 }
 
+/* include back up fonts here as well */
+h1, h2 {
+  font-family: 'Cabin Sketch', cursive;
+  color: rgb(138, 78, 0);
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+}
+
 
 /* Google Material Icons Styling ----------------------------------------------*/
 .material-icons, .correct {
-  color : rgba(86, 181, 42, 0.5);
+  color : rgba(120, 255, 58, 0.5);
 }
 
 span.nav-icon:hover {
@@ -61,7 +71,7 @@ a .material-icons {
 
 /* Navbar Styling -------------------------------------------------------------*/
 .navbar a {
-  font-size: 125%;
+  font-size: 150%;
 }
 
 a.nav-link {
@@ -70,11 +80,11 @@ a.nav-link {
 }
 
 #site-navbar {  
-  background-color: rgba(255, 225, 199, 0.219);
+  background-color: rgba(128, 105, 79, 0.9);
 }
 
 #site-navbar a{
-  color: rgb(138, 78, 0);
+  color: white;
   font-family: 'Cabin Sketch', cursive;
 }
 

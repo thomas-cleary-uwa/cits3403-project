@@ -1,18 +1,35 @@
 {% extends "base_content.html" %}
 
+{% block styleSheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
+{% endblock %}
+
 {% block inContainer %}
 
-<h2>{{ username }}'s attempts</h2>
+<!-- USE MORE GENERAL ID FOR THIS H1 AFTER-->
+<h1 id="result-page-heading">{{ username }}'s attempts</h1>
 {% for attempt in user_attempts %}
-<table class="table table-bordered">
-  <tr class="active">
-    <td>Question</td><td>Response</td><td>Mark</td>
-  </tr>
-  {% for attempt_key in attempt_keys %}
-  <tr>
+<table class="table table-bordered" id="result-table">
+  <thead id="result-table-headings">
+    <tr>
+      <th id="question-heading">Question</th>
+      <th id="response-heading">Response</th>
+      <th id="mark-heading">Mark</th>
+    </tr>
+  </thead>
+    {% for attempt_key in attempt_keys %}
+    <tr class="result-table-question-row">
     <td>{{ attempt[attempt_key]["question"] }}</td>
     <td>{{ attempt[attempt_key]["response"] }}</td>
-    <td>{{ attempt[attempt_key]["mark"] }}</td>
+    <td>
+      <span class="material-icons md-48 {% if attempt[attempt_key]['mark'] %} correct {% else %} wrong {% endif %}">
+        {% if attempt[attempt_key]["mark"] %}
+        check
+        {% else %}
+        clear
+        {% endif %}
+      </span>
+    </td>
   </tr>
   {% endfor %}
 </table>

@@ -6,5 +6,8 @@
     {% else %}
     <h1>No User Currently Logged In</h1>
     {% endif %}
+    {% if current_user.is_admin %}
+    <p>Maybe we shoud have a carousel of user statistics?</p>
+    {% endif %}
     
 {% endblock %}
