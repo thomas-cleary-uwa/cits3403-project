@@ -1,0 +1,37 @@
+#result-page {
+  font-size: 125%;
+  margin-top: 50px;
+}
+
+#result-page-heading {
+  text-align: center;
+  font-size: 250%;
+}
+
+/* Should probably make these classes */
+#result-table ,#final-score-table {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#result-table td ,#final-score-table td {
+  vertical-align: middle;
+  padding: 20px;
+} 
+
+#question-heading {
+  width: 50%;
+}
+
+.btn-primary {
+  background-color : rgb(152, 195, 87);
+  border-color: rgb(234, 236, 239);
+}
+
+.btn-primary:hover {
+  background-color: rgb(119, 153, 69);
+  border-color: rgb(182, 183, 185);
+}
