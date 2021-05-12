@@ -6,7 +6,7 @@ body {
 
 /* Google Material Icons Styling ----------------------------------------------*/
 .material-icons, .correct {
-  color : rgba(86, 181, 42, 0.356);
+  color : rgba(86, 181, 42, 0.5);
 }
 
 span.nav-icon:hover {
@@ -69,8 +69,13 @@ a.nav-link {
   align-items: center;
 }
 
+#site-navbar {  
+  background-color: rgba(255, 225, 199, 0.219);
+}
+
 #site-navbar a{
   color: rgb(138, 78, 0);
+  font-family: 'Cabin Sketch', cursive;
 }
 
 #left-navbar .nav-item {
