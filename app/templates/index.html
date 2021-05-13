@@ -1,10 +1,251 @@
 {% extends "base_content.html" %}
 
 {% block inContainer %}
-    {% if current_user.is_authenticated %}
+
+<!-- {% if current_user.is_authenticated %}
     <h1>Hello, {{ current_user.username }}!</h1>
     {% else %}
     <h1>No User Currently Logged In</h1>
-    {% endif %}
-    
-{% endblock %}
+    {% endif %} -->
+
+<!--#####################################################################################################################-->
+
+<style>
+    .center_box {
+        margin: auto;
+        text-align: center;
+    }
+    .carousel-control-next-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='lightgreen' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+    }
+    .carousel-control-prev-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='lightgreen' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+    }
+
+    .carousel_block_1 {
+        min-height: 640px;
+        max-height: 640px;
+        background-color: darkolivegreen;
+    }
+    .heading_box_1 {
+        margin-top: 80px;
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+    .heading_1 {
+        text-align: center;
+        color: skyblue;
+        font-size: 75px;
+    }
+    .subtext_1 {
+        margin-top: 50px;
+        text-align: center;
+        color: paleturquoise;
+        font-size: 17px;
+
+    }
+
+
+
+    button {
+        background-color: steelblue;
+        border: none;
+        color: white;
+        margin: 30px;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+
+    .carousel_block_2 {
+        min-height: 640px;
+        max-height: 640px;
+        background-image: url('../static/jason/images/snow.png');
+    }
+    .carousel_box_2 {
+        padding: 10px;
+        margin-top: 20px;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+    .heading_2 {
+        font-size: 40px;
+        color: dodgerblue;
+    }
+    .subtext_2 {
+        font-size: 20px;
+        color: cadetblue;
+    }
+    .text_box_2 {
+        margin-right: 100px;
+        padding: 10px;
+    }
+
+    .carousel_block_3 {
+        min-height: 640px;
+        max-height: 640px;
+        background-image: url('../static/jason/images/email.png');
+    }
+    .heading_3 {
+        margin-top: 60px;
+        margin-bottom: 40px;
+        text-align: center;
+        color: skyblue;
+        font-size: 60px;
+    }
+    .name_box_3 {
+        font-size: 50px;
+        color: cadetblue;
+    }
+    .quote_box_3 {
+        font-size: 20px;
+        color: darkblue;
+    }
+
+
+</style>
+
+<!--#####################################################################################################################-->
+
+<script>
+
+
+
+</script>
+
+<!--#####################################################################################################################-->
+
+<div id="carousel" class="carousel slide" data-ride="carousel">
+
+
+    <div class="carousel-inner">
+        <div class="carousel-item active carousel_block_1 ">
+            <div class="heading_box_1">
+                <p class="heading_1">It's time to learn graph structures the easier way</p>
+                <p class="subtext_1">Kodin is the best platform to learn about graph structures,
+                    understand common grapoh theory problems with real life examples</p>
+                <hr>
+                {% if current_user.is_authenticated %}
+                <div class="center_box">
+                    <button type="button"> <a>Start Learning</a></button>
+                </div>
+                {% else %}
+                <div class="center_box">
+                    <button type="button"> <a>Get Started</a></button>
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+
+        <div class="carousel-item carousel_block_2">
+            <div class="carousel_box_2">
+
+                <div class="row">
+                    <div class="col-sm-2 offset-sm-1 d-flex align-items-center justify-content-center">
+                        <img src="../static/jason/images/one.png" height="80px" , width="80px">
+                    </div>
+                    <div class="col-sm-3 d-flex align-items-center justify-content-center">
+                        <img src="../static/jason/images/learn.png" height="130px" , width="130px">
+                    </div>
+                    <div class="col-sm-6 d-flex align-items-start justify-content-start">
+                        <div class="text_box_2">
+                            <p class="heading_2">Start learning</p>
+                            <p class="subtext_2">Learn about graph theory from the best teachers and how graph theory
+                                are applied in real life!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-2 offset-sm-1 d-flex align-items-center justify-content-center">
+                        <img src="../static/jason/images/two.png" height="80px" , width="80px">
+                    </div>
+                    <div class="col-sm-3 d-flex align-items-center justify-content-center">
+                        <img src="../static/jason/images/understand.png" height="130px" , width="130px">
+                    </div>
+                    <div class="col-sm-6 d-flex align-items-start justify-content-start">
+                        <div class="text_box_2">
+                            <p class="heading_2">Learn by doing
+                            <p>
+                            <p class="subtext_2">No matter your experience level, you'll be learning and understanding
+                                in minutes!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-2 offset-sm-1 d-flex align-items-center justify-content-center">
+                        <img src="../static/jason/images/three.png" height="80px" , width="80px">
+                    </div>
+                    <div class="col-sm-3 d-flex align-items-center justify-content-center">
+                        <img src="../static/jason/images/tick.png" height="130px" , width="130px">
+                    </div>
+                    <div class="col-sm-6 d-flex align-items-start justify-content-start">
+                        <div class="text_box_2">
+                            <p class="heading_2">Get instant feedback</p>
+                            <p class="subtext_2">Your skills and knowledge are tested as soon as you submit it, so you
+                                always know if you're on
+                                the right track!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+        <div class="carousel-item carousel_block_3">
+            <div class="container" style="border-style: solid; border-color: coral;">
+                <p class=heading_3>What our users say about us</p>
+
+                <div class="row">
+                    <div class="col-6 d-flex align-items-center justify-content-center">
+                        <img src="../static/jason/images/one.png" height="130px" , width="130px">
+                    </div>
+                    <div class="col-6 d-flex align-items-center justify-content-center">
+                        <img src="../static/jason/images/two.png" height="130px" , width="130px">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 d-flex align-items-center justify-content-center">
+                        <p class="center name_box_3">ELon Musk</p>
+                    </div>
+
+                    <div class="col-6 d-flex align-items-center justify-content-center">
+                        <p class="center name_box_3">Bill Gates</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 d-flex align-items-center justify-content-center">
+                        <p class="center quote_box_3">Ever since I've used this site, I've indirectly manuiplated the market and made millions from cryptocurriencies!</p>
+                    </div>
+
+                    <div class="col-6 d-flex align-items-center justify-content-center">
+                        <p class="center quote_box_3">Shiiiii, single Af. Not looking for anything serious just down to have fun</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+
+    </div>
+
+    <!--#####################################################################################################################-->
+
+    {% endblock %}
