@@ -10,78 +10,27 @@
             <h2>Quick Navigation</h2>
             <ul>
                 <li>
-                    <!-- List of Content Sections-->
-                    <ul class="list-unstyled components">
-                    <p>Content</p>
-
-                    <!--Beginner Content Section Dropdown Box-->
-                    <li class="active"> 
-                        <!--aria-expanded shows whether to keep dropdowns open or closed by default-->
-                        <a href="#beginnerSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Beginner</a>
-                        <ul class="collapse list-unstyled" id="beginnerSubmenu">
-                            <li>
-                                <a href="#">Introduction to Graph Theory</a>
-                            </li>
-                            <li>
-                                <a href="#">Vertex/Node</a>
-                            </li>
-                            <li>
-                                <a href="#">Edge/Arc</a>
-                            </li>
-                            <li>
-                                <a href="#">Weighted Graphs</a>
-                            </li>
-                            <li>
-                                <a href="#">Directed Graphs</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <!--Intermediate Content Section Dropdown Box-->
-                    <li>
-                        <a href="#intermediateSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Intermediate</a>
-                        <ul class="collapse list-unstyled" id="intermediateSubmenu">
-                            <li id="circle">
-                                <a href="#">Introduction to Trees</a>
-                            </li>
-                            <li>
-                                <a href="#">Parent, Child and Sibling Nodes</a>
-                            </li>
-                            <li>
-                                <a href="#">Root Nodes</a>
-                            </li>
-                            <li>
-                                <a href="#">Depth</a>
-                            </li>
-                            <li>
-                                <a href="#">Level</a>
-                            </li>
-                            <li>
-                                <a href="#">Height</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#">Advanced</a>
-                    </li>
-
-                    </ul>
-                        <li>
-                            <button onclick="showDiv('Graphs')">Graph</button>
-                        </li>
-                        <li>
-                            <button onclick="showDiv('Trees')">Trees</button>
-                        </li> 
+                    <button onclick="showDiv('Introduction')">Introduction</button>
+                </li>
+                <li>
+                    <button onclick="showDiv('Graphs')">Graph</button>
+                </li>
+                <li>
+                    <button onclick="showDiv('Trees')">Trees</button>
+                </li> 
             </ul>
         </div>
         <div class="col-sm-9" id="contentColumn">
-            <div class="contentSection" id="Graphs" style="display: block;">
+
+            <div class="contentSection" id="Introduction" style="display: block;">
                 <h1>Introduction to Graph Theory</h1>
                 <p>In one way or another, everything in our lives is connected. Whether it be the branches of a tree, the roads we drive on, the way our blood flows throughout our body, down to the very bonds that keep the atoms that make up our universe together. These connections or networks are often complex and are required to be analysed.</p>
                 <p>Graph theory is a way to represent these connections or networks. A graph (not to be mistaken with a graph of a function) consists of objects called nodes or vertices connected by lines that are called edges. An easy example is that we will focus on is a map of a town. A simple example is shown below</p>
                 <img src="../static/images/basic.png" alt="Basic Graph">
                 <p>Where each letter represents the name of a house in the town and each line represents the roads to get to each house.</p>
+            </div>
+
+            <div class="contentSection" id="Graphs" style="display: block;">
 
                 <h1>Vertex/Node</h1>
                 <p>The objects that make up a network are represented in the graph by nodes or vertices. If a node is connected to another node, it is adjacent to that node and we can also say that those two nodes are neighbours. In the town example, the houses in the town are represented by nodes and we can say that house “A” and house “B” are adjacent to each other as they are connected by a line, therefore they are also neighbours. We can also say the same thing for house “A” and house “B”.</p>
