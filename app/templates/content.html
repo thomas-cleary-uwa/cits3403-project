@@ -1,0 +1,94 @@
+{% extends "base_content.html" %}
+
+{% block styleSheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/content.css') }}">
+{% endblock %}
+
+{% block inContainer %}
+    <div class="row">
+        <div class="col-sm-3">
+            <p>P1</p>
+            <ul>
+                <li>
+                    <button onclick="showDiv('Graphs')">Graph</button>
+                </li>
+                <li>
+                    <button onclick="showDiv('Trees')">Trees</button>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-9" id="contentColumn">
+            <div class="contentSection" id="Graphs" style="display: block;">
+                <h1>Introduction to Graph Theory</h1>
+                <p>In one way or another, everything in our lives is connected. Whether it be the branches of a tree, the roads we drive on, the way our blood flows throughout our body, down to the very bonds that keep the atoms that make up our universe together. These connections or networks are often complex and are required to be analysed.</p>
+                <p>Graph theory is a way to represent these connections or networks. A graph (not to be mistaken with a graph of a function) consists of objects called nodes or vertices connected by lines that are called edges. An easy example is that we will focus on is a map of a town. A simple example is shown below</p>
+                <img src="../static/images/basic.png" alt="Basic Graph">
+                <p>Where each letter represents the name of a house in the town and each line represents the roads to get to each house.</p>
+
+                <h1>Vertex/Node</h1>
+                <p>The objects that make up a network are represented in the graph by nodes or vertices. If a node is connected to another node, it is adjacent to that node and we can also say that those two nodes are neighbours. In the town example, the houses in the town are represented by nodes and we can say that house “A” and house “B” are adjacent to each other as they are connected by a line, therefore they are also neighbours. We can also say the same thing for house “A” and house “B”.</p>
+                <p>Paths are a sequence or order of nodes that we pass to get to a certain node. For example, if I wanted to get to node C from node A, I would have to go from A to B to C, so the path would be A > B > C. If there is no possible path to a node or it is not connected to any other node, then the node is called isolated. House “E” in the town is an example of an isolated node.</p>
+
+                <h1>Edge/Arc</h1>
+                <p>Any link between any two objects is called an edge or arc. In the town example, the road or streets connecting the houses are represented by edges shown by the lines in the graph. We tend to name the edges by the nodes that they connect, for example, the edge connecting node A and node B would be called edge AB. Note that edges that only connect 2 nodes at a time and no more.</p>
+
+                <h1>Weighted Graph</h1>
+                <p>The shortest path problem is a very common question in data structures that uses weighted graphs. As the name implies, you have to find the path with the shortest distance to a node where distance is simply the sum of all the weights along the path. This is done by looking at all possible paths to a node and then adding all the weights along the way. In the town example, you would add the lengths of each road to a house.</p>
+
+                <h1>Directed Graphs</h1>
+                <p>Until now, the graphs that we have looked at have only have bi-directional edges, meaning that you can go back and forth between nodes. For example, in the previous graph we looked at, path A > B > C and path C > B > A are both valid paths, along with path A > B > A > D > C. However, with directed graphs, there are now restrictions to the direction that we can travel along a graph.</p>
+                <img src="../static/images/directed.png" alt="Directed Graph">     
+            </div>
+
+            <div class="contentSection" id="Trees" style="display: none;">
+
+                <h1>Introduction to Trees</h1>
+                <p>Trees are commonly used variation of directed graphs that are represented in the shape of an upside-down tree. This is demonstrated in the following images</p>
+                <img src="../static/images/basic_tree.png" alt="Basic Tree Graph">
+                <img src="../static/images/tree.png" alt="Tree Graph">
+                <p>The image on the left is an example of a binary tree which is a very commonly used data structure while the image on the right is used to help visualise the concept of a tree. As can be seen from comparing the two, we can say that node A is the root node, where the entire tree is created from. We can also say that node B and C are the branches of the tree, also commonly called internal nodes. Finally we can say that nodes D,E,F and G are the leaves  of the tree or more commonly known as the external nodes.</p>
+
+                <h1>Parent, Child and Sibling Nodes</h1>
+                <p>Some commonly used terms in trees are parent, child and sibling nodes. These terms come from the concept of a family tree. Think of the graph on the left as your mums’ side of the family:</p>
+                <ul>
+                    <li>Node A would represent your grandma</li>
+                    <li>Node B and C would represent your mum and aunty respectively</li>
+                    <li>Node D and E would represent you and your brother or sister respectively</li>
+                    <li>Node F and G would represent your cousins</li>
+                </ul>
+            
+                <p>You would say that your grandma is the parent of your mum and aunty, hence A is the parent node of B and C who in turn, are the child nodes of A. You would also say that your mum and aunty are siblings and therefore node B and C are sibling nodes.</p>
+                <p>Here is an example of the graph being applied to the family tree</p>
+                <img src="../static/images/family_tree.png" alt="Family Tree Graph">
+                <p>As shown from the family tree concept, any node that has a directed edge pointing towards another node is the parent of that node and that node is now a child node. In trees, we also refer to nodes with no children as the external nodes of the tree or the leaves of the tree as there is nothing branching out from them. As such, any other node that is not an external node is an internal node as they exist inside the tree.Note that any paths in a tree must go downwards due to the direction of the edges</p>
+
+                <h1>Root Nodes</h1>
+                <p>The root node is simply the node at the top of the tree. There is only one root node in any tree and there is only one possible path from the root node to any other node in the tree. In the example graph, node A is the root node.</p>
+
+                <h1>Depth</h1>
+                <p>Every node has a depth which is the number of edges from the node to the tree’s root node. To calculate depth, we start at the root node and go along a downwards path until we reach the target node, counting the number of edges along the way. Note that the path we have chosen should not matter and any path that reaches the target node can be used. For example, node 6 in the tree graph would have depth of 3.</p>
+
+                <h1>Level</h1>
+                <p>Every node has a level which is normally calculated as depth + 1. It can also be thought of as the generation of the node when visualising a family tree. From the family tree example, we can say that your grandma is the first generation in the family tree and therefore, node A has a level of 1 or exists at level 1 of the tree. Your mum and aunty would then be the second generation of the tree and therefore node B and C have a level of 2 and so forth. Note that levels ALWAYS START FROM 1. From the example of the node 8 of the tree graph has a level of 2.</p>
+
+                <h1>Height</h1>
+                <p>The height of a tree is the number of edges that exist on the longest downward path from the root node to a leaf node. To find this, imagine we are starting from the ground up, so we start at the lowest leaf node and go along an upwards path to the root, counting the number of edges along the way. Note that a common question that involves the height of the tree is what is the maximum number of nodes a tree can have if it has a height of “h”. Simply use the formula max =2^h– 1.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showDiv(divName) {
+        var x = document.getElementsByClassName("contentSection");
+        var i;
+        for (i = 0; i < x.length; i++){
+            if (x[i].id == divName){
+                x[i].style.display = "block";
+            }
+            else {
+                x[i].style.display = "none";
+            }
+        }
+    }
+    </script>
+{% endblock %}
