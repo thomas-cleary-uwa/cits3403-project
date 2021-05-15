@@ -4,48 +4,138 @@
 
 {% block inContainer %}
 
+<style>
+
+
+.quizTable {
+  width: 500px;
+  height: 300px;
+  margin: auto;
+}
+.quizQues {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.responseChoices {
+  text-align: left;
+}
+
+.errorSpan {
+  color: red; 
+}
+
+#quizSubMenu {
+  display: block; 
+  margin: auto; 
+  text-align: center;
+}
+
+</style>
+
 
 <form method="POST">
   {{ form.hidden_tag() }}
 
-  <div id="test">
+  <div>
 
-
-    <table>
+    <div style="display: block;">
+      <p id="quizTitle" class="page-heading">DFS Quiz</p>
+      <br>
       {% for field in form %}
-      {% if field.type in ['RadioField'] %}
-      <tr>
-        <td>
-          {{ field.label }}
-          {% for error in field.errors %}
-          <span style="color: red;">{{ error }}</span>
-          {% endfor %}
-        </td>
-      </tr>
+        {% if field.type in ['RadioField'] %}
+              
+          <table class="quizTable">
 
-      {% for subfield in field %}
-      <tr>
-        <td>
-          {{ subfield }} {{ subfield.label }}
-        </td>
-      </tr>
+              <!--Question-->
+              <tr><td>
+                <p class="quizQues page-subheading">{{ field.label }}</p><!--Question sentence-->
+                {% for error in field.errors %}
+                <span class="errorSpan">{{ error }}</span> <!--error message (answer not entered)-->
+                {% endfor %}
+              </td></tr>
+
+              <!--Response Options-->
+              {% for subfield in field %}
+                <tr><td class ="responseChoices page-text">
+                    {{ subfield }} {{ subfield.label }} <!--subfield=radiofield; label=answerchoice-->
+                </td></tr>
+              {% endfor %}
+
+          </table>
+
+        {% endif %}
       {% endfor %}
+    </div>
 
-      {% endif %}
-      {% endfor %}
-
+    <!--sub questions navigation menu-->
+    <div id="quizSubMenu" style="padding-top: 50px;">
+      <!--pagination-->
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary btn-lg shadow-none q-num-btn" id="navbut1" onclick="showtable(1)">1</button>
+        <button type="button" class="btn btn-primary btn-lg shadow-none q-num-btn" id="navbut2" onclick="showtable(2)">2</button>
+        <button type="button" class="btn btn-primary btn-lg shadow-none q-num-btn" id="navbut3" onclick="showtable(3)">3</button>
+        <button type="button" class="btn btn-primary btn-lg shadow-none q-num-btn" id="navbut4" onclick="showtable(4)">4</button>
+        <button type="button" class="btn btn-primary btn-lg shadow-none q-num-btn" id="navbut5" onclick="showtable(5)">5</button>
+      </div> 
+      <br>
+      <br>
+        <!--submit & save buttons-->
       {% for field in form %}
-      {% if field.type in ['SubmitField'] %}
-      <tr>
-        <td>
-          {{ field }}
-        </td>
-      </tr>
-      {% endif %}
+        {% if field.type in ['SubmitField'] %}
+          <tr><td>
+            {{ field(class_="btn btn-primary btn-lg shadow-none") }}
+          </td></tr>
+        {% endif %}
       {% endfor %}
+      <br>
+      <p id="incomplete"></p>
+    </div>
 
-    </table>
-    
+  </div>
 </form>
 
+
+<script>
+  showtable(1);
+  checkComplete();
+  updateBtn();
+
+  // insert id attributes into tables 1-5
+  for (i=1; i<6; i++) {
+    document.getElementsByTagName("table")[i].setAttribute("id", ("table" + i));
+  }
+
+  function updateBtn() {
+    document.getElementById("submit").classList.add("btn btn-outline-secondary");
+    document.getElementById("save").classList.add("btn btn-outline-secondary");
+  }
+
+  // check for an unfilled answer on submission, and show error message
+  function checkComplete(){
+    x = document.getElementsByClassName("errorSpan");
+    for (i = 0; i<x.length; i++) {
+      if (x[i].innerText.length != 0) {
+        // sets alert below buttons if any question does not have a reply
+        document.getElementById("incomplete").innerText = ("Please answer all questions.");
+      }
+    }
+  }
+
+  // show the selected table and hide others
+  function showtable(table){
+    x = document.getElementsByTagName("table");
+    var i;
+    for (i = 0; i <x.length; i++ ) {
+      if (x != (table-1)) {
+        x[i].style.display = "none";
+      }
+    }
+    x[(table-1)].style.display = "block";
+  }
+
+</script>
+
+
 {% endblock %}
+

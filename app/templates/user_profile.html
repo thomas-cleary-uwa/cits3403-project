@@ -1,33 +1,43 @@
 {% extends "base_content.html" %}
 
+{% block styleSheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user_profile.css') }}">
+
+
+{% endblock %}
+
 {% block inContainer %}
-<table>
-  <tr valign="top">
-    <td><img src="{{ user.get_avatar(128) }}"</td>
-    <td> 
-      <h1>User: {{user.username}}</h1>
-      {% if user_stats.last_seen %}
-      <p>
-        Last seen on: {{ user_stats.last_seen }}
-      </p>
-      {% endif %}
-    </td>
+
+<div id="profile-heading-div">
+  <img id="heading-profile-avatar" src="{{ user.get_avatar(256) }}">
+
+  <h1 id="heading-username">{{ current_user.username }}</h1>
+</div>
+
+<table class="table table-bordered" id="user-stats-table">
+  <thead id="user-stats-table-headings">
+    <th class="width-third">Number of Logins</th>
+    <th class="width-third">Average Score</th>
+    <th class="width-third">Highest Score</th>
+  </thead>
+  <tr>
+    <td>NUM_LOGINS</td>
+    <td>AVERAGE</td>
+    <td>HIGHEST</td>
   </tr>
 </table>
-<hr>
+
+
 {% if user_stats.num_quiz_attempts > 0 %}
-<div>
-  <p>Quiz Attempts: <b>{{ user_stats.num_quiz_attempts }}</b><p>
-  <p>Average Score: <b>{{ user_stats.average_score }}%</b><p>
-</div>
-  
-<table class="table table-bordered">
-  <tr>
-    <td>Attempt ID</td><td>Score</td><td>Attempt Datetime</td>
-  </tr>
+<table class="table table-bordered" id="user-attempts-table">
+  <thead id="user-attempts-table-headings">
+    <th class="width-third">Attempt ID</th>
+    <th class="width-third">Score</th>
+    <th class="width-third">Attempt Datetime</th>
+  </thead>
   {% for attempt in attempts %}
   <tr>
-    <td>
+    <td class="result-page-link">
       <a href="{{ url_for('result', score=attempt.score, attempt_id=attempt.id) }}">
         {{ attempt.id }}
       </a>

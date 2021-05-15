@@ -1,0 +1,195 @@
+/* Set font size based of device */
+body {
+  font-size: 100%;
+}
+
+/* Sitewide classes */
+
+/* Font */
+.page-heading, .page-subheading {
+  font-family: 'Cabin Sketch', cursive;
+  color: rgb(138, 78, 0);
+}
+
+.page-heading {
+  font-size: 300%;
+  text-align: center;
+}
+
+.page-subheading {
+  font-size: 150%;
+}
+
+.page-text {
+  font-size: 125%;
+}
+
+.index-carousel {
+  text-align: center;
+  color: rgba(86, 181, 42, 0.6);
+}
+
+/* Buttons */
+.btn-primary {
+  font-size: 200%;
+  font-family: 'Cabin Sketch', cursive;
+  color: white;
+  background-color: rgba(128, 105, 79, 0.6);
+  border-color: rgb(233, 235, 238);
+
+}
+
+.btn-primary:hover {
+  color: white;
+  background-color: rgba(128, 105, 79, 0.9);
+  border-color: rgb(233, 235, 238);
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled):focus{ 
+  color: rgba(128, 105, 79, 0.9);
+  background-color: rgba(86, 181, 42, 0.356);
+  border-color: rgba(233, 235, 238, 1);
+}
+
+.q-num-btn {
+  background-color: rgba(86, 181, 42, 0.356);
+  border-color: rgb(233, 235, 238);
+}
+
+.q-num-btn:hover {
+  background-color: rgba(86, 181, 42, 1);
+  border-color: rgb(233, 235, 238);
+}
+
+.content-image {
+  display: block;
+  margin: auto;
+}
+
+.content-btns {
+  padding-bottom: 50px;
+}
+
+.content-section {
+  padding: 1em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Google Material Icons Styling ----------------------------------------------*/
+.material-icons, .correct {
+  color : rgba(120, 255, 58, 0.5);
+}
+
+span.nav-icon:hover {
+  color: rgba(86, 181, 42, 1);
+}
+
+.wrong {
+  color: rgb(195, 87, 98);
+}
+
+a .material-icons {
+  padding: 10px;
+}
+
+/* Rules for icon sizes: */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; } /* Default */
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+
+/* Particles styling ----------------------------------------------------------*/
+#particles-js {
+  width: 100%;
+  height: 200px;
+  background: rgb(255,225,199);
+  background: radial-gradient(circle, rgba(255,225,199,1) 0%, rgba(148,187,233,1) 100%);
+  z-index: -1;
+}
+
+/* FAVOURITE SO FAR 
+  background: rgb(255,225,199);
+  background: radial-gradient(circle, rgba(255,225,199,1) 0%, rgba(148,187,233,1) 100%);
+*/
+
+/* To get icon floating over particles without them dissappearing */
+.absolute {
+  position: absolute;
+}
+.relative {
+  position: relative;
+}
+
+#logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  z-index: 1;
+}
+
+
+/* Navbar Styling -------------------------------------------------------------*/
+.navbar a {
+  font-size: 150%;
+}
+
+a.nav-link {
+  display: flex;
+  align-items: center;
+}
+
+#site-navbar {  
+  background-color: rgba(128, 105, 79, 0.9);
+}
+
+#site-navbar a{
+  color: white;
+  font-family: 'Cabin Sketch', cursive;
+}
+
+#left-navbar .nav-item {
+  margin-right: 40px;
+}
+
+#right-navbar .nav-item {
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+
+
+
+/* Content Container Styling --------------------------------------------------*/
+.container.content {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+
+
+

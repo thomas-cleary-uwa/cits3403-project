@@ -1,0 +1,60 @@
+#result-page {
+  margin-top: 50px;
+}
+
+#result-page-heading {
+  font-family: 'Cabin Sketch', cursive;
+  text-align: center;
+  font-size: 250%;
+  color: rgb(138, 78, 0);
+}
+
+/* Should probably make these classes */
+#result-table ,#final-score-table {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#result-table td ,#final-score-table td {
+  vertical-align: middle;
+  padding: 20px;
+  font-family: 'Open Sans', sans-serif;
+} 
+
+#result-table td:hover ,#final-score-table td:hover {
+  background-color: rgba(255, 225, 199, 0.15);
+}
+
+#result-table-headings, #final-score-table-heading {
+  background-color: rgba(86, 181, 42, 0.356);
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 125%;
+}
+
+#question-heading {
+  width: 50%;
+}
+
+.btn-primary {
+  font-size: 125%;
+  font-family: 'Cabin Sketch', cursive;
+  color: white;
+  background-color: rgba(128, 105, 79, 0.6);
+  border-color: rgb(233, 235, 238);
+
+}
+
+.btn-primary:hover {
+  color: white;
+  background-color: rgba(128, 105, 79, 0.9);
+  border-color: rgb(233, 235, 238);
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled):focus{ 
+  color: black;
+  background-color: rgba(86, 181, 42, 0.356);;
+  border-color: rgba(233, 235, 238, 1);
+}
