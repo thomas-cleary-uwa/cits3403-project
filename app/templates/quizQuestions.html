@@ -5,16 +5,35 @@
 {% block inContainer %}
 
 <style>
-.quizQues {
-  text-align: justify;
-  text-justify: inter-word;
+
+#quizTitle {
+  text-align: center;
 }
 
 .quizTable {
   width: 500px;
   height: 300px;
   margin: auto;
-  }
+}
+.quizQues {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.responseChoices {
+  text-align: left;
+}
+
+.errorSpan {
+  color: red; 
+}
+
+#quizSubMenu {
+  display: block; 
+  margin: auto; 
+  text-align: center;
+}
+
 </style>
 
 
@@ -24,7 +43,7 @@
   <div>
 
     <div style="display: block;">
-      <h1 style="text-align:center;">DFS Quiz</h1>
+      <p id="quizTitle" class="page-heading">DFS Quiz</p>
       <br>
       {% for field in form %}
         {% if field.type in ['RadioField'] %}
@@ -33,15 +52,15 @@
 
               <!--Question-->
               <tr><td>
-                <h4 class="quizQues">{{ field.label }}</h4><!--Question sentence-->
+                <p class="quizQues page-sub-heading">{{ field.label }}</p><!--Question sentence-->
                 {% for error in field.errors %}
-                <span style="color: red;" class="errorSpan">{{ error }}</span> <!--error message (answer not entered)-->
+                <span class="errorSpan">{{ error }}</span> <!--error message (answer not entered)-->
                 {% endfor %}
               </td></tr>
 
               <!--Response Options-->
               {% for subfield in field %}
-                <tr><td>
+                <tr><td class ="responseChoices">
                     {{ subfield }} {{ subfield.label }} <!--subfield=radiofield; label=answerchoice-->
                 </td></tr>
               {% endfor %}
@@ -53,7 +72,7 @@
     </div>
 
     <!--sub questions navigation menu-->
-    <div style="display: block; margin: auto; text-align: center;">
+    <div id="quizSubMenu">
       <!--pagination-->
       <div class="btn-group">
         <button type="button" class="btn btn-outline-secondary" id="navbut1" onclick="showtable(1)">1</button>
@@ -73,7 +92,7 @@
         {% endif %}
       {% endfor %}
       <br>
-      <p style="color: red;" id="incomplete"></p>
+      <p id="incomplete"></p>
     </div>
 
   </div>
