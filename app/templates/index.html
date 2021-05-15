@@ -23,8 +23,6 @@
     }
 
     .carousel_block_1 {
-        min-height: 640px;
-        max-height: 640px;
         background-color: darkolivegreen;
     }
     .heading_box_1 {
@@ -60,8 +58,6 @@
     }
 
     .carousel_block_2 {
-        min-height: 640px;
-        max-height: 640px;
         background-image: url('../static/jason/images/snow.png');
     }
     .carousel_box_2 {
@@ -84,8 +80,6 @@
     }
 
     .carousel_block_3 {
-        min-height: 640px;
-        max-height: 640px;
         background-image: url('../static/jason/images/email.png');
     }
     .heading_3 {
@@ -100,6 +94,8 @@
         color: cadetblue;
     }
     .quote_box_3 {
+        margin-left: 20px;
+        margin-right: 20px;
         font-size: 20px;
         color: darkblue;
     }
@@ -107,13 +103,6 @@
 
 </style>
 
-<!--#####################################################################################################################-->
-
-<script>
-
-
-
-</script>
 
 <!--#####################################################################################################################-->
 
@@ -121,6 +110,7 @@
 
 
     <div class="carousel-inner">
+        
         <div class="carousel-item active carousel_block_1 ">
             <div class="heading_box_1">
                 <p class="heading_1">It's time to learn graph structures the easier way</p>
@@ -129,11 +119,11 @@
                 <hr>
                 {% if current_user.is_authenticated %}
                 <div class="center_box">
-                    <button type="button"> <a>Start Learning</a></button>
+                    <a href="{{ url_for('quizLanding') }}"><button type="button">Start Learning</button></a>
                 </div>
                 {% else %}
                 <div class="center_box">
-                    <button type="button"> <a>Get Started</a></button>
+                    <a href="{{ url_for('register') }}"><button type="button">Get Started</button></a>
                 </div>
                 {% endif %}
             </div>
@@ -150,7 +140,7 @@
                     <div class="col-sm-3 d-flex align-items-center justify-content-center">
                         <img src="../static/jason/images/learn.png" height="130px" , width="130px">
                     </div>
-                    <div class="col-sm-6 d-flex align-items-start justify-content-start">
+                    <div class="col-sm-6 d-flex align-items-center justify-content-center">
                         <div class="text_box_2">
                             <p class="heading_2">Start learning</p>
                             <p class="subtext_2">Learn about graph theory from the best teachers and how graph theory
@@ -166,7 +156,7 @@
                     <div class="col-sm-3 d-flex align-items-center justify-content-center">
                         <img src="../static/jason/images/understand.png" height="130px" , width="130px">
                     </div>
-                    <div class="col-sm-6 d-flex align-items-start justify-content-start">
+                    <div class="col-sm-6 d-flex align-items-center justify-content-center">
                         <div class="text_box_2">
                             <p class="heading_2">Learn by doing
                             <p>
@@ -183,7 +173,7 @@
                     <div class="col-sm-3 d-flex align-items-center justify-content-center">
                         <img src="../static/jason/images/tick.png" height="130px" , width="130px">
                     </div>
-                    <div class="col-sm-6 d-flex align-items-start justify-content-start">
+                    <div class="col-sm-6 d-flex align-items-center justify-content-center">
                         <div class="text_box_2">
                             <p class="heading_2">Get instant feedback</p>
                             <p class="subtext_2">Your skills and knowledge are tested as soon as you submit it, so you
@@ -200,7 +190,7 @@
         </div>
 
         <div class="carousel-item carousel_block_3">
-            <div class="container" style="border-style: solid; border-color: coral;">
+            <div class="container">
                 <p class=heading_3>What our users say about us</p>
 
                 <div class="row">
@@ -214,7 +204,7 @@
 
                 <div class="row">
                     <div class="col-6 d-flex align-items-center justify-content-center">
-                        <p class="center name_box_3">ELon Musk</p>
+                        <p class="center name_box_3">Elon Musk</p>
                     </div>
 
                     <div class="col-6 d-flex align-items-center justify-content-center">
@@ -224,11 +214,11 @@
 
                 <div class="row">
                     <div class="col-6 d-flex align-items-center justify-content-center">
-                        <p class="center quote_box_3">Ever since I've used this site, I've indirectly manuiplated the market and made millions from cryptocurriencies!</p>
+                        <p class="center quote_box_3">I love this website!</p>
                     </div>
 
                     <div class="col-6 d-flex align-items-center justify-content-center">
-                        <p class="center quote_box_3">Shiiiii, single Af. Not looking for anything serious just down to have fun</p>
+                        <p class="center quote_box_3">Cool website!</p>
                     </div>
                 </div>
 
