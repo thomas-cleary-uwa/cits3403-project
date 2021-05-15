@@ -6,9 +6,6 @@
 
 <style>
 
-#quizTitle {
-  text-align: center;
-}
 
 .quizTable {
   width: 500px;
@@ -52,7 +49,7 @@
 
               <!--Question-->
               <tr><td>
-                <p class="quizQues page-sub-heading">{{ field.label }}</p><!--Question sentence-->
+                <p class="quizQues page-subheading">{{ field.label }}</p><!--Question sentence-->
                 {% for error in field.errors %}
                 <span class="errorSpan">{{ error }}</span> <!--error message (answer not entered)-->
                 {% endfor %}
@@ -60,7 +57,7 @@
 
               <!--Response Options-->
               {% for subfield in field %}
-                <tr><td class ="responseChoices">
+                <tr><td class ="responseChoices page-text">
                     {{ subfield }} {{ subfield.label }} <!--subfield=radiofield; label=answerchoice-->
                 </td></tr>
               {% endfor %}
@@ -75,11 +72,11 @@
     <div id="quizSubMenu">
       <!--pagination-->
       <div class="btn-group">
-        <button type="button" class="btn btn-outline-secondary" id="navbut1" onclick="showtable(1)">1</button>
-        <button type="button" class="btn btn-outline-secondary" id="navbut2" onclick="showtable(2)">2</button>
-        <button type="button" class="btn btn-outline-secondary" id="navbut3" onclick="showtable(3)">3</button>
-        <button type="button" class="btn btn-outline-secondary" id="navbut4" onclick="showtable(4)">4</button>
-        <button type="button" class="btn btn-outline-secondary" id="navbut5" onclick="showtable(5)">5</button>
+        <button type="button" class="btn btn-primary btn-lg shadow-none q-num-btn" id="navbut1" onclick="showtable(1)">1</button>
+        <button type="button" class="btn btn-primary btn-lg shadow-none q-num-btn" id="navbut2" onclick="showtable(2)">2</button>
+        <button type="button" class="btn btn-primary btn-lg shadow-none q-num-btn" id="navbut3" onclick="showtable(3)">3</button>
+        <button type="button" class="btn btn-primary btn-lg shadow-none q-num-btn" id="navbut4" onclick="showtable(4)">4</button>
+        <button type="button" class="btn btn-primary btn-lg shadow-none q-num-btn" id="navbut5" onclick="showtable(5)">5</button>
       </div> 
       <br>
       <br>
@@ -87,7 +84,7 @@
       {% for field in form %}
         {% if field.type in ['SubmitField'] %}
           <tr><td>
-            {{ field }}
+            {{ field(class_="btn btn-primary btn-lg shadow-none") }}
           </td></tr>
         {% endif %}
       {% endfor %}

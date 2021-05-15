@@ -4,13 +4,16 @@ body {
 }
 
 /* Sitewide classes */
+
+/* Font */
 .page-heading, .page-subheading {
   font-family: 'Cabin Sketch', cursive;
   color: rgb(138, 78, 0);
 }
 
 .page-heading {
-  font-size: 250%;
+  font-size: 300%;
+  text-align: center;
 }
 
 .page-subheading {
@@ -21,6 +24,42 @@ body {
   font-size: 125%;
 }
 
+/* Buttons */
+.btn-primary {
+  font-size: 200%;
+  font-family: 'Cabin Sketch', cursive;
+  color: white;
+  background-color: rgba(128, 105, 79, 0.6);
+  border-color: rgb(233, 235, 238);
+
+}
+
+.btn-primary:hover {
+  color: white;
+  background-color: rgba(128, 105, 79, 0.9);
+  border-color: rgb(233, 235, 238);
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled):focus{ 
+  color: rgba(128, 105, 79, 0.9);
+  background-color: rgba(86, 181, 42, 0.356);
+  border-color: rgba(233, 235, 238, 1);
+}
+
+.q-num-btn {
+  background-color: rgba(86, 181, 42, 0.356);
+  border-color: rgb(233, 235, 238);
+}
+
+.q-num-btn:hover {
+  background-color: rgba(86, 181, 42, 1);
+  border-color: rgb(233, 235, 238);
+}
+
+.content-image {
+  display: block;
+  margin: auto;
+}
 
 
 

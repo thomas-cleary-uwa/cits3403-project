@@ -7,20 +7,28 @@
 {% block inContainer %}
     <div class="row">
         <div class="col-sm-3">
-            <ul>
-                <li>
-                    <button onclick="showDiv('Introduction')">Introduction</button>
-                </li>
-                <li>
-                    <button onclick="showDiv('Graphs')">Graph</button>
-                </li>
-                <li>
-                    <button onclick="showDiv('Trees')">Trees</button>
-                </li>
-                <li>
-                    <button onclick="showDiv('DFS')">Depth First Search</button>
-                </li> 
-            </ul>
+            <div style="margin-top: 50px;">
+                <button 
+                class="btn btn-primary btn-block shadow-none"
+                onclick="showDiv('Introduction')">
+                Introduction
+                </button>
+                <button 
+                class="btn btn-primary btn-block shadow-none"
+                onclick="showDiv('Graphs')">
+                Graph
+                </button>
+                <button 
+                class="btn btn-primary btn-block shadow-none"
+                onclick="showDiv('Trees')">
+                Trees
+                </button>
+                <button 
+                class="btn btn-primary btn-block shadow-none"
+                onclick="showDiv('DFS')">
+                Depth First Search
+                </button>
+            </div>
         </div>
         <div class="col-sm-9" id="contentColumn">
 
@@ -28,7 +36,7 @@
                 <h1 class="page-heading">Introduction to Graph Theory</h1>
                 <p class="page-text">In one way or another, everything in our lives is connected. Whether it be the branches of a tree, the roads we drive on, the way our blood flows throughout our body, down to the very bonds that keep the atoms that make up our universe together. These connections or networks are often complex and are required to be analysed.</p>
                 <p class="page-text">Graph theory is a way to represent these connections or networks. A graph (not to be mistaken with a graph of a function) consists of objects called nodes or vertices connected by lines that are called edges. An easy example is that we will focus on is a map of a town. A simple example is shown below</p>
-                <img src="../static/images/basic.png" alt="Basic Graph">
+                <img class="content-image" src="../static/images/basic.png" alt="Basic Graph">
                 <p class="page-text">Where each letter represents the name of a house in the town and each line represents the roads to get to each house.</p>
             </div>
 
@@ -46,15 +54,15 @@
 
                 <h1 class="page-subheading">Directed Graphs</h1>
                 <p class="page-text">Until now, the graphs that we have looked at have only have bi-directional edges, meaning that you can go back and forth between nodes. For example, in the previous graph we looked at, path A > B > C and path C > B > A are both valid paths, along with path A > B > A > D > C. However, with directed graphs, there are now restrictions to the direction that we can travel along a graph.</p>
-                <img src="../static/images/directed.png" alt="Directed Graph">     
+                <img class="content-image" src="../static/images/directed.png" alt="Directed Graph">     
             </div>
 
             <div class="contentSection" id="Trees" style="display: none;">
 
                 <h1 class="page-heading">Introduction to Trees</h1>
                 <p class="page-text">Trees are commonly used variation of directed graphs that are represented in the shape of an upside-down tree. This is demonstrated in the following images</p>
-                <img src="../static/images/basic_tree.png" alt="Basic Tree Graph">
-                <img src="../static/images/tree.png" alt="Tree Graph">
+                <img class="content-image" src="../static/images/basic_tree.png" alt="Basic Tree Graph">
+                <img class="content-image" src="../static/images/tree.png" alt="Tree Graph">
                 <p class="page-text">The image on the left is an example of a binary tree which is a very commonly used data structure while the image on the right is used to help visualise the concept of a tree. As can be seen from comparing the two, we can say that node A is the root node, where the entire tree is created from. We can also say that node B and C are the branches of the tree, also commonly called internal nodes. Finally we can say that nodes D,E,F and G are the leaves  of the tree or more commonly known as the external nodes.</p>
 
                 <h1 class="page-subheading">Parent, Child and Sibling Nodes</h1>
@@ -68,7 +76,7 @@
             
                 <p class="page-text">You would say that your grandma is the parent of your mum and aunty, hence A is the parent node of B and C who in turn, are the child nodes of A. You would also say that your mum and aunty are siblings and therefore node B and C are sibling nodes.</p>
                 <p class="page-text">Here is an example of the graph being applied to the family tree</p>
-                <img src="../static/images/family_tree.png" alt="Family Tree Graph">
+                <img class="content-image" src="../static/images/family_tree.png" alt="Family Tree Graph">
                 <p class="page-text">As shown from the family tree concept, any node that has a directed edge pointing towards another node is the parent of that node and that node is now a child node. In trees, we also refer to nodes with no children as the external nodes of the tree or the leaves of the tree as there is nothing branching out from them. As such, any other node that is not an external node is an internal node as they exist inside the tree.Note that any paths in a tree must go downwards due to the direction of the edges</p>
 
                 <h1 class="page-subheading">Root Nodes</h1>

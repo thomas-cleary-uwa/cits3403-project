@@ -224,9 +224,9 @@ def create_quiz_form():
     class QuizForm(FlaskForm):
         """ form for the quiz questions """
         # submit button
-        submit = SubmitField('Submit Test')
+        submit = SubmitField('Submit')
         # save button
-        save = SubmitField('Save Test')
+        save = SubmitField('Save')
 
 
     if current_user.has_saved_attempt:

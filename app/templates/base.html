@@ -66,7 +66,11 @@
         </li>
 
         <li class="nav-item">
+          {% if current_user.has_saved_attempt %}
+          <a class="nav-link" href="{{ url_for('quiz_questions') }}">
+          {% else %}
           <a class="nav-link" href="{{ url_for('quiz') }}">
+          {% endif %}
             <span class="material-icons md-36 nav-icon">bubble_chart</span>
             Quiz
           </a>
