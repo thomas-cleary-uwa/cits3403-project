@@ -4,11 +4,22 @@ body {
 }
 
 /* Sitewide classes */
-.page-heading {
-  font-size: 150%;
+.page-heading, .page-subheading {
   font-family: 'Cabin Sketch', cursive;
   color: rgb(138, 78, 0);
 }
+
+.page-heading {
+  font-size: 150%;
+}
+
+.page-subheading {
+  font-size: 125%;
+}
+
+
+
+
 
 
 
