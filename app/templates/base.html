@@ -58,16 +58,11 @@
         
         <!-- items a non-admin user will see -->
         {% if not current_user.is_admin %}
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="contentDropdown" data-toggle="dropdown" role="button" href="#">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('content') }}">
             <span class="material-icons md-36 nav-icon">school</span>
             Learn
           </a>
-          <div class="dropdown-menu" aria-labelledby="contentDropdown">
-            <a class="dropdown-item" href="{{ url_for('content') }}"></a>
-            <a class="dropdown-item" href="#">Topic</a>
-            <a class="dropdown-item" href="#">Topic</a>
-          </div>
         </li>
 
         <li class="nav-item">

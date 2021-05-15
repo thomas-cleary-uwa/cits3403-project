@@ -1,0 +1,21 @@
+{% extends "base_content.html" %}
+
+{% block inContainer %}
+    <h1 style="text-align:center;">DFS Quiz</h1>
+    <div id="quizIntro" style="text-align:center;">
+      <button id="start" onclick=startQuizClick()>
+        {% if current_user.has_saved_attempt %}
+        Resume Quiz
+        {% else %}
+        Start Quiz
+        {% endif %}
+      </button>
+    </div>
+
+    <script>
+        function startQuizClick() {
+            window.location.href="{{ url_for('quiz_questions') }}";
+        }
+    </script>
+
+{% endblock %}
