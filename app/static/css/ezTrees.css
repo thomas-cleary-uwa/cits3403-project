@@ -3,15 +3,32 @@ body {
   font-size: 100%;
 }
 
-/* include back up fonts here as well */
-h1, h2 {
+/* Sitewide classes */
+.page-heading {
+  font-size: 150%;
   font-family: 'Cabin Sketch', cursive;
   color: rgb(138, 78, 0);
 }
 
-p {
-  font-family: 'Open Sans', sans-serif;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Google Material Icons Styling ----------------------------------------------*/
