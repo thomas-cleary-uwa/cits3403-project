@@ -7,14 +7,72 @@
 {% block inContainer %}
     <div class="row">
         <div class="col-sm-3">
-            <p>P1</p>
+            <h2>Quick Navigation</h2>
             <ul>
                 <li>
-                    <button onclick="showDiv('Graphs')">Graph</button>
-                </li>
-                <li>
-                    <button onclick="showDiv('Trees')">Trees</button>
-                </li>
+                    <!-- List of Content Sections-->
+                    <ul class="list-unstyled components">
+                    <p>Content</p>
+
+                    <!--Beginner Content Section Dropdown Box-->
+                    <li class="active"> 
+                        <!--aria-expanded shows whether to keep dropdowns open or closed by default-->
+                        <a href="#beginnerSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Beginner</a>
+                        <ul class="collapse list-unstyled" id="beginnerSubmenu">
+                            <li>
+                                <a href="#">Introduction to Graph Theory</a>
+                            </li>
+                            <li>
+                                <a href="#">Vertex/Node</a>
+                            </li>
+                            <li>
+                                <a href="#">Edge/Arc</a>
+                            </li>
+                            <li>
+                                <a href="#">Weighted Graphs</a>
+                            </li>
+                            <li>
+                                <a href="#">Directed Graphs</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--Intermediate Content Section Dropdown Box-->
+                    <li>
+                        <a href="#intermediateSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Intermediate</a>
+                        <ul class="collapse list-unstyled" id="intermediateSubmenu">
+                            <li id="circle">
+                                <a href="#">Introduction to Trees</a>
+                            </li>
+                            <li>
+                                <a href="#">Parent, Child and Sibling Nodes</a>
+                            </li>
+                            <li>
+                                <a href="#">Root Nodes</a>
+                            </li>
+                            <li>
+                                <a href="#">Depth</a>
+                            </li>
+                            <li>
+                                <a href="#">Level</a>
+                            </li>
+                            <li>
+                                <a href="#">Height</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">Advanced</a>
+                    </li>
+
+                    </ul>
+                        <li>
+                            <button onclick="showDiv('Graphs')">Graph</button>
+                        </li>
+                        <li>
+                            <button onclick="showDiv('Trees')">Trees</button>
+                        </li> 
             </ul>
         </div>
         <div class="col-sm-9" id="contentColumn">
