@@ -64,6 +64,10 @@ def logout():
     # log the current user out and redirect to the index page
     return logout_helpers.attempt_logout()
 
+@app.route('/content') 
+def content():
+    return render_template('content.html', title='Content')
+
 
 ###############################################################################
 # Routes for users that are logged in (excluding admin users)
