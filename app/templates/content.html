@@ -1,13 +1,9 @@
 {% extends "base_content.html" %}
 
-{% block styleSheets %}
-<link rel="stylesheet" href="{{ url_for('static', filename = 'css/content.css') }}">
-{% endblock %}
-
 {% block inContainer %}
     <div class="row">
         <div class="col-sm-3">
-            <div style="margin-top: 50px;">
+            <div class="content-btns" style="margin-top: 50px;">
                 <button 
                 class="btn btn-primary btn-block shadow-none"
                 onclick="showDiv('Introduction')">
@@ -42,12 +38,16 @@
 
             <div class="contentSection" id="Graphs" style="display: block;">
 
+                <div class="content-section">
                 <h1 class="page-heading">Graphs</h1>
                 <p class="page-text">The objects that make up a network are represented in the graph by nodes or vertices. If a node is connected to another node, it is adjacent to that node and we can also say that those two nodes are neighbours. In the town example, the houses in the town are represented by nodes and we can say that house “A” and house “B” are adjacent to each other as they are connected by a line, therefore they are also neighbours. We can also say the same thing for house “A” and house “B”.</p>
                 <p class="page-text">Paths are a sequence or order of nodes that we pass to get to a certain node. For example, if I wanted to get to node C from node A, I would have to go from A to B to C, so the path would be A > B > C. If there is no possible path to a node or it is not connected to any other node, then the node is called isolated. House “E” in the town is an example of an isolated node.</p>
+                </div>
 
+                <div class="content-section">
                 <h1 class="page-subheading">Edge/Arc</h1>
                 <p class="page-text">Any link between any two objects is called an edge or arc. In the town example, the road or streets connecting the houses are represented by edges shown by the lines in the graph. We tend to name the edges by the nodes that they connect, for example, the edge connecting node A and node B would be called edge AB. Note that edges that only connect 2 nodes at a time and no more.</p>
+                </div>
 
                 <h1 class="page-subheading">Weighted Graph</h1>
                 <p class="page-text">The shortest path problem is a very common question in data structures that uses weighted graphs. As the name implies, you have to find the path with the shortest distance to a node where distance is simply the sum of all the weights along the path. This is done by looking at all possible paths to a node and then adding all the weights along the way. In the town example, you would add the lengths of each road to a house.</p>

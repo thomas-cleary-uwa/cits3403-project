@@ -1,6 +1,6 @@
-{% extends "base_content.html" %}
+{% extends "base.html" %}
 
-{% block inContainer %}
+{% block content %}
 
 <!-- {% if current_user.is_authenticated %}
     <h1>Hello, {{ current_user.username }}!</h1>
@@ -23,7 +23,6 @@
     }
 
     .carousel_block_1 {
-        background-color: darkolivegreen;
     }
     .heading_box_1 {
         margin-top: 80px;
@@ -43,22 +42,7 @@
 
     }
 
-
-
-    button {
-        background-color: steelblue;
-        border: none;
-        color: white;
-        margin: 30px;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-    }
-
     .carousel_block_2 {
-        background-image: url('../static/jason/images/snow.png');
     }
     .carousel_box_2 {
         padding: 10px;
@@ -80,7 +64,6 @@
     }
 
     .carousel_block_3 {
-        background-image: url('../static/jason/images/email.png');
     }
     .heading_3 {
         margin-top: 60px;
@@ -111,26 +94,26 @@
 
     <div class="carousel-inner">
         
-        <div class="carousel-item active carousel_block_1 ">
+        <div class="carousel-item active carousel_block_1 min-vh-100">
             <div class="heading_box_1">
-                <p class="heading_1">It's time to learn graph structures the easier way</p>
-                <p class="subtext_1">Kodin is the best platform to learn about graph structures,
+                <p class="page-heading">It's time to learn graph structures the easier way</p>
+                <p class="page-subheading index-carousel">Kodin is the best platform to learn about graph structures,
                     understand common grapoh theory problems with real life examples</p>
                 <hr>
                 {% if current_user.is_authenticated %}
-                <div class="center_box">
-                    <a href="{{ url_for('quiz_questions') }}"><button type="button">Start Learning</button></a>
-                </div>
+                <button class="btn btn-primary btn-lg shadow-none">
+                    <a href="{{ url_for('quiz_questions') }}">Start Learning</a>
+                </button>
                 {% else %}
-                <div class="center_box">
-                    <a href="{{ url_for('register') }}"><button type="button">Get Started</button></a>
+                <button class="btn btn-primary btn-lg shadow-none">
+                    <a href="{{ url_for('register') }}">Get Started</a>
                 </div>
                 {% endif %}
             </div>
 
-        </div>
+    </div>
 
-        <div class="carousel-item carousel_block_2">
+        <div class="carousel-item carousel_block_2 min-vh-100">
             <div class="carousel_box_2">
 
                 <div class="row">
@@ -189,7 +172,7 @@
 
         </div>
 
-        <div class="carousel-item carousel_block_3">
+        <div class="carousel-item carousel_block_3 min-vh-100">
             <div class="container">
                 <p class=heading_3>What our users say about us</p>
 

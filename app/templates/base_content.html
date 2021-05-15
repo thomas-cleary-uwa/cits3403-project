@@ -1,16 +1,5 @@
 {% extends "base.html" %}
 
-{% block particles %}
-<div id="particles-js">
-  <div class="relative" id="logo">
-    <div class="absolute">
-      <a href="{{url_for('index')}}">
-        <img id="logo" src="{{ url_for('static', filename='assets/images/logo.png') }}">
-      </a>
-    </div>
-  </div>
-</div>
-{% endblock %}
 
 {% block content %}
 
@@ -18,15 +7,6 @@
   {% block inContainer %}{% endblock %}
 </div>
 
-{% block particleScripts %}
-<!-- Particles.js -->
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script>
-  particlesJS.load('particles-js', "{{url_for('static', filename='assets/json/particlesjs-config.json') }}", function() {
-  console.log('callback - particles.js config loaded');
-  });
-</script>
-{% endblock %}
 
 
 {% endblock %}
