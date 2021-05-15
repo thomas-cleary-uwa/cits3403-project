@@ -10,10 +10,14 @@ body {
 }
 
 .page-heading {
-  font-size: 150%;
+  font-size: 250%;
 }
 
 .page-subheading {
+  font-size: 150%;
+}
+
+.page-text {
   font-size: 125%;
 }
 
