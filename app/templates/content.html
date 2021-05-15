@@ -17,6 +17,9 @@
                 </li>
                 <li>
                     <button onclick="showDiv('Trees')">Trees</button>
+                </li>
+                <li>
+                    <button onclick="showDiv('DFS')">Depth First Search</button>
                 </li> 
             </ul>
         </div>
@@ -80,6 +83,18 @@
 
                 <h1>Height</h1>
                 <p>The height of a tree is the number of edges that exist on the longest downward path from the root node to a leaf node. To find this, imagine we are starting from the ground up, so we start at the lowest leaf node and go along an upwards path to the root, counting the number of edges along the way. Note that a common question that involves the height of the tree is what is the maximum number of nodes a tree can have if it has a height of “h”. Simply use the formula max =2^h– 1.</p>
+            </div>
+
+            <div class="contentSection" id="DFS" style="display: none;">
+                <h1>Introduction to Tree Traversal Algorithms</h1>
+                <p>Trees are often used in a variety of problems. For example, you are a great grandfather, and your memory is not that great these days. You hear you have a great granddaughter named Lily. You want to know if this is true and who her parents are.</p>
+                <p>Due to your poor memory, you only know the names of your own kids so you can only ask them the names of their kids. Unfortunately, poor memory runs in the family and each family member only knows the names of their siblings and their own children.</p>
+                <p>This is situation where you would need to search through your entire family tree to see if Lily really exists. But what would be the fastest or most efficient way of searching through this tree? This is where Tree Traversal Algorithms Come in></p>
+                <p>A Tree Traversal Algorithm is a way of searching through a tree ensuring that all nodes have been checked. We will be focusing on one type of algorithm called a Depth First Search</p>
+
+                <h1>Introduction to Depth First Search</h1>
+                <p>Depth First Search involves searching all the way down one path in a tree. If our goal is not achieved down that one path, you would backtrack up one level and go down another path. In the family tree problem, you would ask your children if they have children, then ask that child the same thing until you find someone without a child, then you would know that you have reached the bottom of your family tree (reached a leaf).</p>
+                <p>If that child is not Lily, you would then see if their parents if they have any other children and see if Lily is one of them. If not, you would then check the parent of that parent and check their children. This process is repeated until you have checked your whole family tree</p>
             </div>
         </div>
     </div>
