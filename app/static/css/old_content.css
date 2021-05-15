@@ -1,0 +1,105 @@
+/* @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+        /* Style for sidebar */
+        /* stretch equalises the page content and sidebar while flex means the page content will take up the rest of the space not taken up by the sidebar*/
+        /* .wrapper {
+            display: flex;
+            width: 100%;
+            align-items: stretch;
+        } */
+
+        /* Set sidebars minimum height to at least equal screen height */
+        /* #sidebar {
+            min-width: 250px;
+            max-width: 250px;
+            background: #7386D5;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        #sidebar.active {
+        margin-left: -250px;
+        } */
+
+        /* Adding the dropdown arrow */
+        /* a[data-toggle="collapse"] {
+        position: relative;
+        }
+
+        #sidebar .sidebar-header {
+            padding: 20px;
+            background:#47748b;
+        }
+        
+        #sidebar ul.components {
+            padding: 20px 0;
+            border-bottom: 1px solid #47748b;
+        }
+
+        #sidebar ul p {
+            color: #fff;
+            padding: 10px;
+        }
+
+        #sidebar ul li a {
+            padding: 10px;
+            font-size: 1.1em;
+            display: block;
+            color: #fff;
+        }
+
+        #sidebar ul li a:hover {
+            color: #7386D5;
+            background: #fff;
+        }
+
+        #sidebar ul li.active>a,
+        a[aria-expanded="true"] {
+            color: #fff;
+            background: #6d7fcc;
+        }
+
+        a[data-toggle="collapse"] {
+            position: relative;
+        }
+        .dropdown-toggle::after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+
+        ul ul a {
+            font-size: 0.9em !important;
+            padding-left: 30px !important;
+            background: #6d7fcc; */
+        /* } */
+
+        /* Style for the actual content */
+        /* #content {
+            width: 100%;
+            padding: 20px;
+            min-height: 100vh;
+            transition: all 0.3s;
+        }                */
+
+        /* For smaller screens, sidebar will only appear after clicking toggle button */
+        /* @media (max-width: 768px) {
+            #sidebar {
+                margin-left: -250px;
+            }
+            #sidebar.active {
+                margin-left: 0;
+            }
+            #sidebarCollapse span {
+                display: none;
+            }
+        }
+
+        .pagination > li > a
+        {
+            background-color: white;
+            color: #5A4181;
+            border: green;
+        } */ 
