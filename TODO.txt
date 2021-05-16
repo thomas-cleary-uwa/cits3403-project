@@ -8,7 +8,9 @@ MONDAY:
 
 4. Add more quiz questions
 
-5. Create zip file for project that doesnt include
+5. Final git-log update
+
+6. Create zip file for project that doesnt include
     - /old_database_creation
     - /quiz_questions
     - /migrations
