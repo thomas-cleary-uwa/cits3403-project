@@ -29,5 +29,3 @@ HTML Validation
 Proofreading
 Add more questions
 
-Finish README
-
