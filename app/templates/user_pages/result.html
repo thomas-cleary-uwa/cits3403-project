@@ -57,7 +57,7 @@
     <button 
     class="btn btn-primary btn-lg btn-block shadow-none" 
     id="result-button" 
-    onclick="tryAgainClick( {{ url_for('quiz_questions') }} )"
+    onclick="sendToPage( {{ url_for('quiz_questions') }} )"
     >
       {% if current_user.has_saved_attempt %}
       Resume Attempt
@@ -67,9 +67,5 @@
     </button>
   </div>
 </div>
-
-{% block scripts %}
-<script src="{{ url_for('static', filename='js/result.js') }}"></script>
-{% endblock %}
 
 {% endblock %}

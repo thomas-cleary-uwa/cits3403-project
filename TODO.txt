@@ -9,7 +9,7 @@ Tom
 4. Externalise javascript from html files
 5. Write proper setup script
 5.b Write launch from local host readme
-6. REFERENCE THE PARTICLES IN THE CODE
+6. REFERENCE THE PARTICLES IN THE CODE - Done
 
 
 Michael
@@ -28,4 +28,7 @@ Monday:
 HTML Validation
 Proofreading
 Add more questions
+
+
+! Submit but dont include .git or .venv
 
