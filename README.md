@@ -85,8 +85,31 @@ After we were happy with how each page was structured we worked together to impl
 
 ### Learning Git
 All group members were at best novices at using version control, and it took several weeks before it seemed as if all of us were comfortable with the concepts of pushing/pulling/branching/merging. Towards the end of the project though we had come to appreciate how easy it was for us to work collaboratively and get tasks done together.
+<br><br>
 
-###
+## Architecture of the Web Application
+---
+The site is a Flask app that uses several extensions to provide further functionality
+- Flask-login to manage user login/registration
+- Flask-admin to allow the admin user to access the database for the app
+- Flask-sqlalchemy to abstract the implementation of the database when accessing it
+- Flask-migrate to implement database migrations when updating its schema
+<br><br>
+
+## Running Tests
+---
+MICHAEL ADD STUFF HERE
+<br><br>
 
 
+## Launching From localhost
+---
+THOMAS DESCRIBE HOW TO LAUNCH FROM LOCALHOST HERE
+<br><br>
+
+
+## Git Logs
+---
+The git logs have been included in a seperate file, "git-log.txt"
+<br><br>
 
