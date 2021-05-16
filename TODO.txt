@@ -2,9 +2,12 @@ Sunday:
 Tom
 1. Externalise CSS - Done
 2. Add styling to admin pages
+2.b add classes to calvins page
+2.c add proper links to calvins index button
+2.d add correct info to profile
 3. Write README.md
 4. Externalise javascript from html files
-5. Client side validation for register
+5. Write proper setup script
 
 
 Michael
@@ -21,6 +24,8 @@ Jason
 
 Monday:
 HTML Validation
-Add javascript and Externalise
-Do more dom manipulation
-Look for javascript things to do for marks
+Proofreading
+Add more questions
+
+Finish README
+

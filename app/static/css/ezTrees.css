@@ -91,6 +91,11 @@
 
 .table-results a {
   color: rgb(138, 78, 0);
+  text-decoration: underline;
+}
+
+.table-results a:hover {
+  color: black
 }
 
 .table-col-w50 {
