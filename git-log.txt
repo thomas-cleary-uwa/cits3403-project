@@ -1,0 +1,220 @@
+git log --pretty=format:'%h was %an, %ar, message: %s' > log.log
+
+5bfb6c4 was tclearyUWA, 2 minutes ago, message: update requirements.txt
+928f200 was tclearyUWA, 5 minutes ago, message: add files for app setup
+fdccde8 was tclearyUWA, 18 minutes ago, message: externalise some js
+cf2ed81 was tclearyUWA, 25 minutes ago, message: start externalising javascript
+193d853 was tclearyUWA, 46 minutes ago, message: REMOVE hz lines from readme
+be68a2b was tclearyUWA, 47 minutes ago, message: update todo
+47a5803 was tclearyUWA, 51 minutes ago, message: update readme
+bf53253 was tclearyUWA, 51 minutes ago, message: finish readme except for testing and launch part
+0af1dfd was tclearyUWA, 62 minutes ago, message: update readme
+60b20dc was tclearyUWA, 70 minutes ago, message: start the readme
+e4dba1f was tclearyUWA, 2 hours ago, message: fix user profile data
+3e17742 was tclearyUWA, 2 hours ago, message: send user to correct route when using button on index page
+4ff963a was tclearyUWA, 2 hours ago, message: fixed spacing on calvins page
+52ae2cc was tclearyUWA, 3 hours ago, message: add style to user stats admin page
+e39c48e was tclearyUWA, 3 hours ago, message: add styling to admin user_attempts page
+02268ca was tclearyUWA, 3 hours ago, message: seperate pages only users will see into seperate folder
+9dad3f0 was tclearyUWA, 4 hours ago, message: added titles to pages
+2d87d98 was tclearyUWA, 4 hours ago, message: move  non-flaskadmin admin pages to seperate directory
+20b4277 was tclearyUWA, 4 hours ago, message: removed css from login page
+1157c67 was tclearyUWA, 4 hours ago, message: remove styling from register page
+7dfdc68 was tclearyUWA, 4 hours ago, message: removed css from index page
+ed30d30 was tclearyUWA, 4 hours ago, message: fix jasons login and register pages
+198bbcc was tclearyUWA, 5 hours ago, message: fix the src address for all images jason has added to new index
+a0bc88d was tclearyUWA, 5 hours ago, message: add jasons new images
+e94b9c2 was tclearyUWA, 5 hours ago, message: add new index page
+f669a38 was tclearyUWA, 6 hours ago, message: remove css from user_profile.html
+1c0ff64 was tclearyUWA, 6 hours ago, message: remove link to old stylesheet from results.html
+eed8f9e was tclearyUWA, 6 hours ago, message: remove css from results page
+13f0594 was tclearyUWA, 6 hours ago, message: add css for quiz questions page
+3409f35 was tclearyUWA, 6 hours ago, message: removed css from quiz questions page
+7c22b9e was tclearyUWA, 7 hours ago, message: quizLanding css -> exTrees.css
+abe7014 was tclearyUWA, 7 hours ago, message: remove all css styling from content.html into ezTrees.css
+ef6576d was tclearyUWA, 26 hours ago, message: Merge pull request #12 from tclearyUWA/profileHomeContentPresentation
+6a851ac was tclearyUWA, 26 hours ago, message: add lots of stuff
+3d50a6f was tclearyUWA, 27 hours ago, message: fixed lots of css and quiz resume
+a640cfd was tclearyUWA, 28 hours ago, message: Merge remote-tracking branch 'origin/quizPresCSSmerge' into profileHomeContentPresentation
+cf68e22 was michsarg, 28 hours ago, message: updated quiz CSS
+feb0b0e was tclearyUWA, 28 hours ago, message: added style classes to content
+22d8297 was tclearyUWA, 29 hours ago, message: Merge remote-tracking branch 'origin/profileHomeContentPresentation-calvin' into profileHomeContentPresentation
+2fce06f was tclearyUWA, 29 hours ago, message: Merge remote-tracking branch 'origin/profileHomeContentPresentation-calvin' into profileHomeContentPresentation
+d2036ec was tclearyUWA, 29 hours ago, message: add css classes and remove learn button heading
+c5542bf was calvinnguyen-gitHub, 29 hours ago, message: Update content.html
+d3bd432 was calvinnguyen-gitHub, 29 hours ago, message: Update content.html
+3cf9268 was tclearyUWA, 29 hours ago, message: start css adding
+8bbcbac was tclearyUWA, 29 hours ago, message: Merge branch 'quizPresentation' into profileHomeContentPresentation
+30266ab was tclearyUWA, 29 hours ago, message: Merge branch 'contentPresentation' into profileHomeContentPresentation
+71c6f03 was calvinnguyen-gitHub, 30 hours ago, message: Update content.html
+0ecf248 was michsarg, 30 hours ago, message: button group replace pagination
+987e059 was tclearyUWA, 30 hours ago, message: add quiz landing back and remove drop down menu for learn
+8557b3d was tclearyUWA, 30 hours ago, message: Merge remote-tracking branch 'origin/contentPresentation' into profileHomeContentPresentation
+302f87b was calvinnguyen-gitHub, 30 hours ago, message: Update Content Page with Routes
+245be8b was tclearyUWA, 30 hours ago, message: Merge remote-tracking branch 'origin/contentPresentation' into profileHomeContentPresentation
+fda7bdb was tclearyUWA, 30 hours ago, message: put submit button in form
+252dde1 was tclearyUWA, 31 hours ago, message: change bootstrap version and fix quiz route
+ed407d6 was tclearyUWA, 31 hours ago, message: Merge remote-tracking branch 'origin/jason' into profileHomePresentation
+2a965d5 was calvinnguyen-gitHub, 31 hours ago, message: New Development Branch for Content Presentation
+67d6228 was 22732794, 31 hours ago, message: login/register done
+f91810d was tclearyUWA, 33 hours ago, message: finish structuring profile page
+2cb2cfa was 22732794, 3 days ago, message: homepage updated
+ccff151 was tclearyUWA, 4 days ago, message: add same table styling to admin per student result page
+0ba96bf was tclearyUWA, 4 days ago, message: Merge branch 'profilePresentation' into quizProfilePresentation
+9a986fb was tclearyUWA, 4 days ago, message: added fonts and changed some background colors
+20188e9 was tclearyUWA, 4 days ago, message: adjust color scheme and hover for nav icons
+aa44b9a was tclearyUWA, 4 days ago, message: create seperate css files for results and externalise javascript, seperate css files for now only
+715d892 was tclearyUWA, 5 days ago, message: changed colors of pagination buttons
+525265d was tclearyUWA, 5 days ago, message: Merge branch 'quizPresentation' into quizProfilePresentation
+7adb1a4 was tclearyUWA, 5 days ago, message: z-index greater than particles for logo to bring to front
+adff0f7 was tclearyUWA, 5 days ago, message: remove div surrounding navbar to fix sticky but then breaks banner
+ad5046d was tclearyUWA, 5 days ago, message: add a temporary logo to the top of the banner, needs specific styling to be in the center and make the particles work
+1c87a2a was tclearyUWA, 5 days ago, message: add padding to navbar icons and change size of left navbar icons
+f5c796f was tclearyUWA, 5 days ago, message: remove exit button from result page and change navbar spacing and font size
+5195c83 was tclearyUWA, 5 days ago, message: added icons to result table and further styled result page
+27c90af was tclearyUWA, 5 days ago, message: change alignment and sizing of results tables on results page
+ab18826 was tclearyUWA, 5 days ago, message: navbar is now sticky and slight css changes to result page
+0a0f6c8 was michsarg, 6 days ago, message: Quiz presentation structure
+fdb7110 was michsarg, 7 days ago, message: testing javascript
+4198e8e was tclearyUWA, 7 days ago, message: added particles above navbar
+0d77fa7 was michsarg, 8 days ago, message: cleaned code; pagination menu, alignment added
+b578917 was tclearyUWA, 8 days ago, message: Merge pull request #11 from tclearyUWA/thomas
+104ee89 was tclearyUWA, 9 days ago, message: left message to fix results route
+59e7fff was tclearyUWA, 9 days ago, message: change the app route for results page to seperate score and attempt id variable
+5aefe22 was tclearyUWA, 9 days ago, message: change navbar spacing
+d45edea was tclearyUWA, 10 days ago, message: Merge pull request #9 from tclearyUWA/thomas
+256fc08 was tclearyUWA, 10 days ago, message: Merge branch 'main' into thomas
+3504b72 was tclearyUWA, 10 days ago, message: made icons same color as logo
+64f188c was tclearyUWA, 11 days ago, message: remove unused import
+cb5b152 was tclearyUWA, 11 days ago, message: update random seed when coming form profile->result->quizquestions as it may not be set
+27ff7a4 was tclearyUWA, 11 days ago, message: make flask-admin page appear in bootstrap4 style
+e842da8 was tclearyUWA, 11 days ago, message: add content base page to put page contents into container
+270e936 was tclearyUWA, 11 days ago, message: spread nav items out
+533d104 was tclearyUWA, 11 days ago, message: convert base.html to bootstrap4
+75d84f5 was tclearyUWA, 11 days ago, message: simply routes.py imports
+4f1bf1d was tclearyUWA, 11 days ago, message: finished refactoring routes.py
+138e2e0 was tclearyUWA, 11 days ago, message: finished refactoring all route code into seperate helper files
+7dfdb73 was tclearyUWA, 11 days ago, message: refactor user_stats route
+56d2dcd was tclearyUWA, 11 days ago, message: refactor result route
+de3b814 was tclearyUWA, 11 days ago, message: refactored quiz_questions route
+1011a87 was tclearyUWA, 11 days ago, message: midway through refactor quiz_questions route
+81066d8 was tclearyUWA, 11 days ago, message: reorder routes in routes.py
+1c01be9 was tclearyUWA, 11 days ago, message: refactor quiz route
+30f2cac was tclearyUWA, 11 days ago, message: refactor user route
+c9483e8 was tclearyUWA, 11 days ago, message: refactor registration route
+1f4508e was tclearyUWA, 11 days ago, message: refactor logout route
+e21edf4 was tclearyUWA, 11 days ago, message: refactor login route functions into seperate file
+499a7cd was tclearyUWA, 12 days ago, message: fix user registration not creating user stats row
+0f961fa was tclearyUWA, 12 days ago, message: add link user_stats so that user heading takes you to their attempts list
+ce7ceaa was tclearyUWA, 12 days ago, message: adds admin view for users attempts
+960338c was tclearyUWA, 12 days ago, message: add user totals to stats page and fixed not showing 0s bug
+0c41ec8 was tclearyUWA, 12 days ago, message: add user statistics page for admin
+508e8d5 was tclearyUWA, 12 days ago, message: admin now cannot delete user or their stats
+4d2f4ef was tclearyUWA, 12 days ago, message: user profile page uses userStats model now
+cba1582 was tclearyUWA, 12 days ago, message: add user stats model that tracks several stats that the admin can view
+eb149af was tclearyUWA, 12 days ago, message: re ordered navbar for admins
+1222677 was tclearyUWA, 12 days ago, message: change admin navbar and block them from profile route
+674108c was tclearyUWA, 12 days ago, message: add extra feedback on results page, and ability to return to it from profile
+318c313 was tclearyUWA, 12 days ago, message: clean calvins questions, add them to test database, move QuizForm to create_quiz function to reset fields each time we start a quiz
+dc93dbf was tclearyUWA, 12 days ago, message: fixed number of attempts not showing in user profile
+861f809 was tclearyUWA, 12 days ago, message: fix average score to display correct average in user profile
+14c86ff was tclearyUWA, 12 days ago, message: Update .gitignore
+704b2de was tclearyUWA, 12 days ago, message: refactor route helper functions out of routes.py into seperate file, create a file for shared constants too
+a4a4273 was tclearyUWA, 12 days ago, message: add error checking back into quiz
+4574351 was tclearyUWA, 12 days ago, message: add error checking back into quiz
+27309da was tclearyUWA, 12 days ago, message: change quiz_seed across multiple attempts in the same session
+974e7de was tclearyUWA, 12 days ago, message: fixed order of quiz questions not being the same across save states with a session variable for the randomisation seed
+c2c606a was tclearyUWA, 13 days ago, message: admin cannot create users now
+eb0ca6e was tclearyUWA, 13 days ago, message: fixed function not adding score to submission table
+da42340 was tclearyUWA, 13 days ago, message: simplified submit_attempt()
+5a13dab was tclearyUWA, 13 days ago, message: add link from previous quiz results in profile back to results page
+7f0878a was tclearyUWA, 13 days ago, message: questions now randomly selected from database and are presented in random order when resuming/starting
+59a3f81 was tclearyUWA, 13 days ago, message: fix incorrect column names
+d5cdc18 was tclearyUWA, 13 days ago, message: fix results statistic from /3 to /numquestions
+6ae31ab was tclearyUWA, 13 days ago, message: make question form dynamic, increased question count to 5, made question choices appear in random order
+cdda4b7 was tclearyUWA, 13 days ago, message: change Question table to have 1 column for answer string and 3 wrong answers (fixed route logic to handle this)
+e5e492b was tclearyUWA, 13 days ago, message: commented
+dfca6f3 was tclearyUWA, 13 days ago, message: remove trailing whitespace
+23ed7bc was tclearyUWA, 13 days ago, message: refactored and commented
+dd405b8 was tclearyUWA, 13 days ago, message: refactor and comments added
+fb8f4fa was tclearyUWA, 13 days ago, message: refactor and add comments
+732bb3a was tclearyUWA, 13 days ago, message: refactored and added comments
+f59fd5e was tclearyUWA, 13 days ago, message: renamed directory for database creation files
+2178205 was tclearyUWA, 13 days ago, message: refactor database creation files
+35d31ce was tclearyUWA, 13 days ago, message: rename database creation files
+b5b9c75 was tclearyUWA, 13 days ago, message: fixed register form trying to register same username if whitespace added to it
+cb2729c was tclearyUWA, 13 days ago, message: change header in quiz pae
+ae60ab7 was tclearyUWA, 13 days ago, message: fix division by zero error when user trying to access profile without attempting the quiz first
+7875482 was tclearyUWA, 13 days ago, message: save datetime of saved attempt and show resume button instead of start if user has saved test
+7ef3518 was tclearyUWA, 13 days ago, message: remove jobs from index page
+f2e309f was tclearyUWA, 13 days ago, message: refactored the quiz_questions route
+de53dce was tclearyUWA, 13 days ago, message: delete old saved test when saving again
+fb7094d was tclearyUWA, 13 days ago, message: quiz now loads first saved quiz on resume
+fd71661 was tclearyUWA, 13 days ago, message: fix form.save to form.submit
+3c152ca was tclearyUWA, 13 days ago, message: add broken form processing
+f9fcfb0 was tclearyUWA, 13 days ago, message: add saved quiz will show when resuming quiz
+4ea17a4 was tclearyUWA, 13 days ago, message: fix line that sets has_saved_quiz to true
+e4105db was tclearyUWA, 13 days ago, message: add quiz is now saved to db when save button clicked
+9b7d286 was tclearyUWA, 13 days ago, message: add testDb create script and dummy save button
+a7c7014 was tclearyUWA, 13 days ago, message: add save quiz table to db and a dummy save button to quiz
+97a0de3 was tclearyUWA, 2 weeks ago, message: add save attempt table
+aae286b was tclearyUWA, 2 weeks ago, message: Merge pull request #7 from tclearyUWA/thomas
+7d9a324 was tclearyUWA, 2 weeks ago, message: allow custom css for admin pages
+da2b337 was tclearyUWA, 2 weeks ago, message: change theme of admin page
+e8c19b6 was tclearyUWA, 2 weeks ago, message: make admin page only accessible to admin user
+78095aa was tclearyUWA, 2 weeks ago, message: remove ability for admin to create a quiz attempt
+75864a8 was tclearyUWA, 2 weeks ago, message: seperated quiz start page from quiz questions page
+91ae122 was tclearyUWA, 2 weeks ago, message: add error message to first question
+7a8651c was tclearyUWA, 2 weeks ago, message: remove assessments tab and replace with quiz
+d7d1591 was michsarg, 2 weeks ago, message: Merge pull request #6 from tclearyUWA/thomasMichael
+3b571ac was tclearyUWA, 2 weeks ago, message: Merge pull request #5 from tclearyUWA/thomasWork
+0a9ee56 was tclearyUWA, 2 weeks ago, message: added michaels quiz system to thomas's login/admin system
+cab8f48 was tclearyUWA, 2 weeks ago, message: move process of insertAdmin.py into createDatabase.py
+6a17189 was tclearyUWA, 2 weeks ago, message: edit gitignore to include all files inside .vscode
+aeca1aa was tclearyUWA, 3 weeks ago, message: added admin view for quiz table
+98de4ba was tclearyUWA, 3 weeks ago, message: add links in admin page to go back to main site
+eb7119f was tclearyUWA, 3 weeks ago, message: add admin system and authentication for admin page
+28a105b was tclearyUWA, 3 weeks ago, message: add lastSeen to user profile
+49af935 was tclearyUWA, 3 weeks ago, message: add user avatars to profile page
+ef69c76 was tclearyUWA, 3 weeks ago, message: added quiz table to models and database
+81adc4e was tclearyUWA, 3 weeks ago, message: Merge branch 'main' of https://github.com/tclearyUWA/cits3403-project into thomasWork
+934d49e was tclearyUWA, 3 weeks ago, message: edit insertUsers
+d10306e was tclearyUWA, 3 weeks ago, message: cool
+b6cfb5d was tclearyUWA, 3 weeks ago, message: Merge pull request #4 from tclearyUWA/thomasWork
+1bc4f00 was tclearyUWA, 3 weeks ago, message: Merge branch 'main' into thomasWork
+bd705b9 was tclearyUWA, 3 weeks ago, message: add script to insert dummy users into database
+6cef904 was tclearyUWA, 3 weeks ago, message: add scripts that will automatically create or delete the database migration and db files
+6eb3551 was tclearyUWA, 3 weeks ago, message: remove My Profile tab from navabar
+d9b2cea was tclearyUWA, 3 weeks ago, message: added user profile to webpage
+18be28b was tclearyUWA, 3 weeks ago, message: Update .gitignore
+a7381b7 was tclearyUWA, 3 weeks ago, message: added app.db and migrations folder to git ignore
+735938a was tclearyUWA, 3 weeks ago, message: added app.db to gitignore
+63cd943 was tclearyUWA, 3 weeks ago, message: updated gitignore
+dc2955a was tclearyUWA, 3 weeks ago, message: updated gitignore
+f92e34c was tclearyUWA, 3 weeks ago, message: removing .db file from tracked files
+3a307b9 was tclearyUWA, 3 weeks ago, message: added migrations folder to the git ignore
+952c990 was tclearyUWA, 3 weeks ago, message: removed migrations from main branch
+c1f1494 was tclearyUWA, 3 weeks ago, message: Merge pull request #3 from tclearyUWA/thomasWork
+70ddeef was tclearyUWA, 3 weeks ago, message: added debug=True when running with 'python application_instance' and not 'flask run'
+f45fa26 was tclearyUWA, 3 weeks ago, message: Merge pull request #2 from tclearyUWA/thomasWork
+b48f98f was tclearyUWA, 3 weeks ago, message: updated readme
+bbbb5ea was tclearyUWA, 3 weeks ago, message: Delete app.db
+3a13ebc was tclearyUWA, 3 weeks ago, message: Merge pull request #1 from tclearyUWA/thomasWk9Lab-user_login
+e2a95b3 was tclearyUWA, 3 weeks ago, message: hides MyProfile unless you are logged in
+9cb0c9e was tclearyUWA, 3 weeks ago, message: added user registration
+58a9af2 was tclearyUWA, 3 weeks ago, message: added email-validator to requirements.txt
+83aa098 was tclearyUWA, 3 weeks ago, message: added login/out and blocked quiz from being accessed unless you are logged in
+a8bfceb was tclearyUWA, 3 weeks ago, message: added flask-login to requirements
+2c2039a was tclearyUWA, 3 weeks ago, message: added .db to gitignore and added flask shel context processor
+3c018cd was tclearyUWA, 3 weeks ago, message: rebuilt db to change extension from bd to db
+221ab44 was tclearyUWA, 3 weeks ago, message: added user table to the app database
+a7444e5 was tclearyUWA, 3 weeks ago, message: added flask database migration with 'flask db init'
+3ebe7bc was tclearyUWA, 3 weeks ago, message: added flask-sqlalchemy and flask-migrate to requirements
+57b6f81 was tclearyUWA, 3 weeks ago, message: added sign in form from week 8 lab walkthrough
+8cc2a0c was tclearyUWA, 3 weeks ago, message: added flask-wtf to requirements
+60733e1 was tclearyUWA, 3 weeks ago, message: removed heading and paragraph that was left accidently in the base template
+ef9361b was tclearyUWA, 3 weeks ago, message: created base template for flask app
+1f0f87c was tclearyUWA, 3 weeks ago, message: Added python-dotenv to requirements and set FLASK_APP in .flaskenv so you dont have to reset it every time you start a new terminal
+c2ffe0e was tclearyUWA, 3 weeks ago, message: created basic set up for project and flask app
+56c3c01 was tclearyUWA, 3 weeks ago, message: Create requirements.txt
+838d81f was tclearyUWA, 3 weeks ago, message: Initial commit
