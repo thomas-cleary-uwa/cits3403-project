@@ -1,34 +1,20 @@
-Sunday:
-Tom
-1. Externalise CSS - Done
-2. Add styling to admin pages - Done
-2.b add classes to calvins page - Done
-2.c add proper links to jasons index button - Done
-2.d add correct info to profile - Done
-3. Write README.md - Done
-4. Externalise javascript from html files
-5. Write proper setup script
-5.b Write launch from local host readme
-6. REFERENCE THE PARTICLES IN THE CODE - Done
+MONDAY:
 
+1. Validate HTML pages
 
-Michael
-1. Try Write Tests
+2. Get tests off Michael
 
-Calvin
-1. Add more question
-2. Write development process for readme
+3. Add testing discussion to readme
 
-Jason
-1. Finish index page - Done
-2. Login and register same heading and button styles - Done
-3. start client side validation for register page
+4. Add more quiz questions
 
-Monday:
-HTML Validation
-Proofreading
-Add more questions
-
-
-! Submit but dont include .git or .venv
-
+5. Create zip file for project that doesnt include
+    - /old_database_creation
+    - /quiz_questions
+    - /migrations
+    - /venv 
+    - app.db 
+    - .git 
+    - TODO.txt
+    - .pylintrc
+    - .vscode
