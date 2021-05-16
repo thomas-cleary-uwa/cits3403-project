@@ -1,51 +1,44 @@
 {% extends "base_content.html" %}
 
-{% block styleSheets %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/user_profile.css') }}">
-
-
-{% endblock %}
-
 {% block inContainer %}
 
-<div id="profile-heading-div">
-  <img id="heading-profile-avatar" src="{{ user.get_avatar(256) }}">
-
-  <h1 id="heading-username">{{ current_user.username }}</h1>
+<div class="div-centered">
+  <img src="{{ user.get_avatar(256) }}">
+  <h1 class="page-heading" id="profile-heading">{{ current_user.username }}</h1>
 </div>
 
-<table class="table table-bordered" id="user-stats-table">
-  <thead id="user-stats-table-headings">
-    <th class="width-third">Number of Logins</th>
-    <th class="width-third">Average Score</th>
-    <th class="width-third">Highest Score</th>
+<table class="table table-bordered table-results" id="user-stats-table">
+  <thead>
+    <th class="page-subheading table-col-w33">Number of Logins</th>
+    <th class="page-subheading table-col-w33">Average Score</th>
+    <th class="page-subheading table-col-w33">Highest Score</th>
   </thead>
   <tr>
-    <td>NUM_LOGINS</td>
-    <td>AVERAGE</td>
-    <td>HIGHEST</td>
+    <td class="page-text">NUM_LOGINS</td>
+    <td class="page-text">AVERAGE</td>
+    <td class="page-text">HIGHEST</td>
   </tr>
 </table>
 
 
 {% if user_stats.num_quiz_attempts > 0 %}
-<table class="table table-bordered" id="user-attempts-table">
-  <thead id="user-attempts-table-headings">
-    <th class="width-third">Attempt ID</th>
-    <th class="width-third">Score</th>
-    <th class="width-third">Attempt Datetime</th>
+<table class="table table-bordered table-results">
+  <thead>
+    <th class="page-subheading table-col-w33">Attempt ID</th>
+    <th class="page-subheading table-col-w33">Score</th>
+    <th class="page-subheading table-col-w33">Attempt Datetime</th>
   </thead>
   {% for attempt in attempts %}
   <tr>
-    <td class="result-page-link">
+    <td class="page-text">
       <a href="{{ url_for('result', score=attempt.score, attempt_id=attempt.id) }}">
         {{ attempt.id }}
       </a>
     </td>
-    <td>
+    <td class="page-text">
       {{ attempt.score }}%
     </td>
-    <td>
+    <td class="page-text">
       {{ attempt.attempt_datetime }}
     </td>
   </tr>

@@ -60,6 +60,10 @@
   margin-right: auto;
 }
 
+.table-results thead {
+  background-color: rgba(86, 181, 42, 0.356);
+}
+
 .table-results td {
   vertical-align: middle;
   padding: 20px;
@@ -69,12 +73,16 @@
   background-color: rgba(255, 225, 199, 0.15);
 }
 
+.table-results a {
+  color: rgb(138, 78, 0);
+}
+
 .table-col-w50 {
   width: 50%
 }
 
-.table-headings {
-  background-color: rgba(86, 181, 42, 0.356);
+.table-col-w33 {
+  width: 33%
 }
 
 
@@ -111,6 +119,11 @@ body {
 
 #incomplete-error-msg {
   padding-top: 1em;
+}
+
+/* -- Profile Page -- */
+#profile-heading {
+  padding: 1em;
 }
 
 
