@@ -12,7 +12,7 @@
                 <button 
                 class="btn btn-primary btn-block shadow-none"
                 onclick="showDiv('Graphs')">
-                Graph
+                Graphs
                 </button>
                 <button 
                 class="btn btn-primary btn-block shadow-none"
@@ -44,24 +44,44 @@
 
                 <div class="content-section">
                 <h1 class="page-heading">Graphs</h1>
-                <p class="page-text">The objects that make up a network are represented in the graph by nodes or vertices. If a node is connected to another node, it is adjacent to that node and we can also say that those two nodes are neighbours. In the town example, the houses in the town are represented by nodes and we can say that house “A” and house “B” are adjacent to each other as they are connected by a line, therefore they are also neighbours. We can also say the same thing for house “A” and house “B”.</p>
-                <p class="page-text">Paths are a sequence or order of nodes that we pass to get to a certain node. For example, if I wanted to get to node C from node A, I would have to go from A to B to C, so the path would be A > B > C. If there is no possible path to a node or it is not connected to any other node, then the node is called isolated. House “E” in the town is an example of an isolated node.</p>
+                <p class="page-text">The objects that make up a network are represented in the graph by nodes or vertices normally in the shape of circles. If a node is connected to another node, it is adjacent to that node and we can also say that those two nodes are neighbours.
+                <img class="content-image" src="../static/images/basic.png" alt="Basic Graph">
+                <p class="page-text">In the town example shown above, the houses in the town are represented by nodes and we can say that house “A” and house “B” are adjacent to each other as they are connected by a line, therefore they are also neighbours. We can also say the same thing for every pair of houses connected by a line.</p>                
                 </div>
 
                 <div class="content-section">
-                <h1 class="page-subheading">Edge/Arc</h1>
-                <p class="page-text">Any link between any two objects is called an edge or arc. In the town example, the road or streets connecting the houses are represented by edges shown by the lines in the graph. We tend to name the edges by the nodes that they connect, for example, the edge connecting node A and node B would be called edge AB. Note that edges that only connect 2 nodes at a time and no more.</p>
+                <h1 class="page-subheading">Edges/Arcs</h1>
+                <p class="page-text">Any link between any two objects is called an edge or arc. In the town example, the road or streets connecting the houses are represented by edges shown by the lines in the graph. We tend to name the edges by the nodes that they connect, for example, the edge connecting node A and node B would be called edge AB. Note that edges can only ever connect 2 nodes at a time and no more.</p>
                 </div>
 
                 <div class="content-section">
-                <h1 class="page-subheading">Weighted Graph</h1>
-                <p class="page-text">The shortest path problem is a very common question in data structures that uses weighted graphs. As the name implies, you have to find the path with the shortest distance to a node where distance is simply the sum of all the weights along the path. This is done by looking at all possible paths to a node and then adding all the weights along the way. In the town example, you would add the lengths of each road to a house.</p>
+                <h1 class="page-subheading">Paths</h1>
+                <p class="page-text">Paths are a sequence or order of nodes that we pass through to get to a certain node. For example, if I wanted to get to node C from node A, I would have to go from A to B to C, so the path would be A > B > C. If there is no possible path to a node or it is not connected to any other node, then the node is called isolated. House “E” in the town is an example of an isolated node.</p>
+                </div>
+
+                <div class="content-section">
+                <h1 class="page-subheading">Connected Graphs</h1>
+                <p class="page-text">Connected graphs are graphs where all nodes are connected to at least one other node or there are no isolated nodes in a connected graph. In order words, there is at least one possible path to get from one node to another meaning a connected graph has at least n - 1 amounts of edges where n represents the number of nodes in the graph. Any graph that is not connected is called a disconnected graph. Looking at the previous graph, we can see it is an example of a disconnected graph as node E is an isolated node. The following graph is an example of a connected graph:</p>
+                <img class="content-image" src="../static/images/connected_graph.png" alt="Basic Graph">
+                </div>
+
+                <div class="content-section">
+                <h1 class="page-subheading">Weighted Graphs</h1>
+                <p class="page-text">You can add "weighting" to a graph by giving each edge a number or weight. In the town example, the length of each road is represented by the weights of each edge. An example of a weighted graph is shown below:</p>
+                <img class="content-image" src="../static/images/weighted.png" alt="Weighted Graph">
+                <p class="page-text">You would say that edge AB has a weighting of 2 or in the context of the town example, you would say that to get from house A to house B, you need to travel 2km.</p>
+                </div>
+
+                <div class="content-section">
+                <h1 class="page-subheading">Shortest Path Problem</h1>
+                <p class="page-text">The shortest path problem is a very common question in data structures that uses weighted graphs. As the name implies, you have to find the path with the shortest distance to a node, where distance is simply the sum of all the weights along the path. This is done by looking at all possible paths to a node and then adding all the weights along the way. In the graph shown above and again using the context of a town, if you want to travel from house A to house C, you would want to find the route with the least distance. In this case, you would go from house A to B then to C as it takes 5km compared to the other path through house D which is 6km</p>
                 </div>
 
                 <div class="content-section">
                 <h1 class="page-subheading">Directed Graphs</h1>
-                <p class="page-text">Until now, the graphs that we have looked at have only have bi-directional edges, meaning that you can go back and forth between nodes. For example, in the previous graph we looked at, path A > B > C and path C > B > A are both valid paths, along with path A > B > A > D > C. However, with directed graphs, there are now restrictions to the direction that we can travel along a graph.</p>
-                <img class="content-image" src="../static/images/directed.png" alt="Directed Graph">   
+                <p class="page-text">Until now, the graphs that we have looked at have only been undirected graphs with have bi-directional edges, meaning that you can go back and forth between nodes in a path. For example, looking at the previous undirected weighted graph, we wished to find a path from node A to C. We can say that path A > B > C and path A > D > C are both valid paths, but we can also say that  path A > B > A > D > C is valid as well. However, with directed graphs, there are now restrictions to the direction that we can travel along a graph. An example of a directed weighted graph is shown below: </p>
+                <img class="content-image" src="../static/images/directed.png" alt="Directed Graph">
+                <p class="page-text">As represented by the arrows in the edges, this graph is now directed, and you can only travel in the same direction that the arrows are pointing to. Meaning that you can no longer travel from C to B or from D to A. In the town example, the arrows or directions could represent one-way roads. This affects the shortest path problem as paths must now be checked if they are valid before their distances can be calculated.</p>
                 </div>
             </div>
 
@@ -69,28 +89,44 @@
 
                 <div class="content-section">
                 <h1 class="page-heading">Introduction to Trees</h1>
-                <p class="page-text">Trees are commonly used variation of directed graphs that are represented in the shape of an upside-down tree. This is demonstrated in the following images</p>
-                <img class="content-image" src="../static/images/basic_tree.png" alt="Basic Tree Graph">
-                <img class="content-image" src="../static/images/tree.png" alt="Tree Graph">
-                <p class="page-text">The image on the left is an example of a binary tree which is a very commonly used data structure while the image on the right is used to help visualise the concept of a tree. As can be seen from comparing the two, we can say that node A is the root node, where the entire tree is created from. We can also say that node B and C are the branches of the tree, also commonly called internal nodes. Finally we can say that nodes D,E,F and G are the leaves  of the tree or more commonly known as the external nodes.</p>
+                <p class="page-text">Trees are commonly used variation of directed graphs that are represented in the shape of an upside-down tree. This is demonstrated in the following images:</p>
+                
+                <!--Trying to place 2 images on the same line and center both of them-->
+                <div class="row">
+                    <div class="column">
+                        <img class="content-image" src="../static/images/basic_tree.png" alt="Basic Tree Graph">
+                    </div>
+                    <div class="column">
+                        <img class="content-image" src="../static/images/tree.png" alt="Tree Graph">
+                    </div>
+                  </div>
+                
+                  <div class="container">
+                    <img class="inline-images" src="../static/images/basic_tree.png" alt="Basic Tree Graph">
+                    <img class="inline-images" src="../static/images/tree.png" alt="Tree Graph">
+                  </div>
+                <!--Please help lol-->
+                  
+                <p class="page-text">The left image is an example of a binary tree which is a very common type of tree which we will learn about while the right image is used to help visualise the concept of a tree. Applying the tree visualisation to the left image, we can say that node A is the root node, where the entire tree is created from. We can also say that node B and C are the branches of the tree, also commonly called internal nodes. Finally we can say that nodes D,E,F and G are the leaves of the tree or more commonly known as the external nodes.</p>
                 </div>
             
                 <div class="content-section">
                 <h1 class="page-subheading">Parent, Child and Sibling Nodes</h1>
-                <p class="page-text">Some commonly used terms in trees are parent, child and sibling nodes. These terms come from the concept of a family tree. Think of the graph on the left as your mums’ side of the family:</p>
+                <p class="page-text">Some commonly used terms in trees are parent, child and sibling nodes. These terms come from the concept of a family tree. Think of the tree graph on the left as your mums’ side of the family:</p>
+                <img class="content-image" src="../static/images/basic_tree.png" alt="Basic Tree Graph">
                 <ul>
-                    <li>Node A would represent your grandma</li>
-                    <li>Node B and C would represent your mum and aunty respectively</li>
-                    <li>Node D and E would represent you and your brother or sister respectively</li>
-                    <li>Node F and G would represent your cousins</li>
+                    <li class="page-text">Node A would represent your grandma</li>
+                    <li class="page-text">Node B and C would represent your mum and aunty respectively</li>
+                    <li class="page-text">Node D and E would represent you and your brother or sister respectively</li>
+                    <li class="page-text">Node F and G would represent your cousins</li>
                 </ul>
                 </div>
                 
                 <div class="content-section">
                 <p class="page-text">You would say that your grandma is the parent of your mum and aunty, hence A is the parent node of B and C who in turn, are the child nodes of A. You would also say that your mum and aunty are siblings and therefore node B and C are sibling nodes.</p>
-                <p class="page-text">Here is an example of the graph being applied to the family tree</p>
+                <p class="page-text">Here is an example of the graph being applied to the family tree:</p>
                 <img class="content-image" src="../static/images/family_tree.png" alt="Family Tree Graph">
-                <p class="page-text">As shown from the family tree concept, any node that has a directed edge pointing towards another node is the parent of that node and that node is now a child node. In trees, we also refer to nodes with no children as the external nodes of the tree or the leaves of the tree as there is nothing branching out from them. As such, any other node that is not an external node is an internal node as they exist inside the tree.Note that any paths in a tree must go downwards due to the direction of the edges</p>
+                <p class="page-text">As shown from the family tree concept, any node that has a directed edge pointing towards another node is the parent of that node and that node is now a child node. In trees, we also refer to nodes with no children as the external nodes of the tree or the leaves of the tree, as there is nothing branching out from them. As such, any  node that is not an external node is an internal node as they exist inside the tree.</p>
                 </div>
 
                 <div class="content-section">
@@ -100,17 +136,22 @@
 
                 <div class="content-section">
                 <h1 class="page-subheading">Depth</h1>
-                <p class="page-text">Every node has a depth which is the number of edges from the node to the tree’s root node. To calculate depth, we start at the root node and go along a downwards path until we reach the target node, counting the number of edges along the way. Note that the path we have chosen should not matter and any path that reaches the target node can be used. For example, node 6 in the tree graph would have depth of 3.</p>
+                <p class="page-text">Every node has a depth, which is the number of edges from the node to the tree’s root node. To calculate depth, we start at the root node and go along a downward path until we reach the target node, counting the number of edges along the way. Note that the path we have chosen should not matter and any path that reaches the target node can be used. For example, node 6 of the tree visualisation graph would have depth of 3.</p>
                 </div>
                 
                 <div class="content-section">
                 <h1 class="page-subheading">Level</h1>
-                <p class="page-text">Every node has a level which is normally calculated as depth + 1. It can also be thought of as the generation of the node when visualising a family tree. From the family tree example, we can say that your grandma is the first generation in the family tree and therefore, node A has a level of 1 or exists at level 1 of the tree. Your mum and aunty would then be the second generation of the tree and therefore node B and C have a level of 2 and so forth. Note that levels ALWAYS START FROM 1. From the example of the node 8 of the tree graph has a level of 2.</p>
+                <p class="page-text">Every node has a level which is normally calculated as depth + 1. It can also be thought of as the generation of the node when visualising a family tree. From the family tree example, we can say that your grandma is the first generation in the family tree and therefore, node A has a level of 1 or exists at level 1 of the tree. Your mum and aunty would then be the second generation of the tree and therefore node B and C have a level of 2 and so forth. For example, node 8 of the tree visualisation graph has a level of 2. Note that levels ALWAYS START FROM 1 and as such, the root node is the only node that has a level of 1.</p>
                 </div>
 
                 <div class="content-section">
                 <h1 class="page-subheading">Height</h1>
-                <p class="page-text">The height of a tree is the number of edges that exist on the longest downward path from the root node to a leaf node. To find this, imagine we are starting from the ground up, so we start at the lowest leaf node and go along an upwards path to the root, counting the number of edges along the way. Note that a common question that involves the height of the tree is what is the maximum number of nodes a tree can have if it has a height of “h”. Simply use the formula max =2^h– 1.</p>
+                <p class="page-text">The height of a tree is the number of edges that exist on the longest downward path from the root node to a leaf node. To find this, imagine we are starting from the ground up, so we start at the lowest leaf node and go along an upwards path to the root, counting the number of edges along the way.</p>
+                </div>
+
+                <div class="content-section">
+                <h1 class="page-subheading">Binary trees</h1>
+                <p class="page-text">A binary tree is a tree graph where every parent node can have at MOST two children. We normally refer to any children in a binary tree as either the left or right child. Binary trees appear often in data structure algorithms and there are a variety of classifications such perfect binary trees where each internal node has exactly 2 children and all leaf nodes are at the same level. The family tree graph is an example of a perfect binary tree. Note that a common question that involves binary trees is "what is the maximum number of nodes a binary tree can have if it has a height of h". Simply use the formula max =2<sup>h</sup> – 1 while the minimum number of nodes can be calculated using h + 1 </p>
                 </div>
 
             </div>
@@ -121,14 +162,14 @@
                 <h1 class="page-heading">Introduction to Tree Traversal Algorithms</h1>
                 <p class="page-text">Trees are often used in a variety of problems. For example, you are a great grandfather, and your memory is not that great these days. You hear you have a great granddaughter named Lily. You want to know if this is true and who her parents are.</p>
                 <p class="page-text">Due to your poor memory, you only know the names of your own kids so you can only ask them the names of their kids. Unfortunately, poor memory runs in the family and each family member only knows the names of their siblings and their own children.</p>
-                <p class="page-text">This is situation where you would need to search through your entire family tree to see if Lily really exists. But what would be the fastest or most efficient way of searching through this tree? This is where Tree Traversal Algorithms Come in></p>
-                <p class="page-text">A Tree Traversal Algorithm is a way of searching through a tree ensuring that all nodes have been checked. We will be focusing on one type of algorithm called a Depth First Search</p>
+                <p class="page-text">This is situation where you would need to search through your entire family tree to see if Lily really exists. But what would be the fastest or most efficient way of searching through this tree? This is where Tree Traversal Algorithms Come in.</p>
+                <p class="page-text">A Tree Traversal Algorithm is a way of searching through a tree ensuring that all nodes have been checked. We will be focusing on one type of algorithm called a Depth First Search.</p>
                 </div>
 
                 <div class="content-section">
                 <h1 class="page-heading">Introduction to Depth First Search</h1>
                 <p class="page-text">Depth First Search involves searching all the way down one path in a tree. If our goal is not achieved down that one path, you would backtrack up one level and go down another path. In the family tree problem, you would ask your children if they have children, then ask that child the same thing until you find someone without a child, then you would know that you have reached the bottom of your family tree (reached a leaf).</p>
-                <p class="page-text">If that child is not Lily, you would then see if their parents if they have any other children and see if Lily is one of them. If not, you would then check the parent of that parent and check their children. This process is repeated until you have checked your whole family tree</p>
+                <p class="page-text">If that child is not Lily, you would then see if their parents if they have any other children and see if Lily is one of them. If not, you would then check the parent of that parent and check their children. This process is repeated until you have checked your whole family tree.</p>
                 </div>
             </div>
         </div>
