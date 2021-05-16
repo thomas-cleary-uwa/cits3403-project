@@ -6,7 +6,7 @@
       <button 
       class="btn btn-primary btn-lg shadow-none"
       id="start" 
-      onclick=startQuizClick()>
+      onclick=sendToPage({{ url_for('quiz_questions') }})>
         {% if current_user.has_saved_attempt %}
         Resume Quiz
         {% else %}
@@ -15,10 +15,5 @@
       </button>
     </div>
 
-    <script>
-        function startQuizClick() {
-            window.location.href="{{ url_for('quiz_questions') }}";
-        }
-    </script>
 
 {% endblock %}
