@@ -1,11 +1,32 @@
+/* -- Divs ----------------------------------------------------------------- */
+
+/* -- Learn Page -- */
+.content-topic {
+  display: none;
+}
+
+.content-first-topic {
+  display: block;
+}
+
+.content-section {
+  padding: 1em;
+}
+
+.content-btns {
+  padding-bottom: 50px;
+  margin-top: 50px;
+}
+
+
+/* -- Font ----------------------------------------------------------------- */
+
+/* -- All pages -- */
 /* Set font size based of device */
 body {
   font-size: 100%;
 }
 
-/* Sitewide classes */
-
-/* Font */
 .page-heading, .page-subheading {
   font-family: 'Cabin Sketch', cursive;
   color: rgb(138, 78, 0);
@@ -24,12 +45,10 @@ body {
   font-size: 125%;
 }
 
-.index-carousel {
-  text-align: center;
-  color: rgba(86, 181, 42, 0.6);
-}
 
-/* Buttons */
+/* -- Buttons -------------------------------------------------------------- */
+
+/* -- All pages -- */
 .btn-primary {
   font-size: 200%;
   font-family: 'Cabin Sketch', cursive;
@@ -51,6 +70,7 @@ body {
   border-color: rgba(233, 235, 238, 1);
 }
 
+/* -- Quiz page -- */
 .q-num-btn {
   background-color: rgba(86, 181, 42, 0.356);
   border-color: rgb(233, 235, 238);
@@ -61,17 +81,13 @@ body {
   border-color: rgb(233, 235, 238);
 }
 
+
+/* -- Images --------------------------------------------------------------- */
+
+/* -- Learn page -- */
 .content-image {
   display: block;
   margin: auto;
-}
-
-.content-btns {
-  padding-bottom: 50px;
-}
-
-.content-section {
-  padding: 1em;
 }
 
 

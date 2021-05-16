@@ -3,7 +3,7 @@
 {% block inContainer %}
     <div class="row">
         <div class="col-sm-3">
-            <div class="content-btns" style="margin-top: 50px;">
+            <div class="content-btns">
                 <button 
                 class="btn btn-primary btn-block shadow-none"
                 onclick="showDiv('Introduction')">
@@ -28,7 +28,7 @@
         </div>
         <div class="col-sm-9" id="contentColumn">
 
-            <div class="contentSection" id="Introduction" style="display: block;">
+            <div class="content-topic content-first-topic" id="Introduction">
                 <h1 class="page-heading">Introduction to Graph Theory</h1>
                 <p class="page-text">In one way or another, everything in our lives is connected. Whether it be the branches of a tree, the roads we drive on, the way our blood flows throughout our body, down to the very bonds that keep the atoms that make up our universe together. These connections or networks are often complex and are required to be analysed.</p>
                 <p class="page-text">Graph theory is a way to represent these connections or networks. A graph (not to be mistaken with a graph of a function) consists of objects called nodes or vertices connected by lines that are called edges. An easy example is that we will focus on is a map of a town. A simple example is shown below</p>
@@ -36,7 +36,7 @@
                 <p class="page-text">Where each letter represents the name of a house in the town and each line represents the roads to get to each house.</p>
             </div>
 
-            <div class="contentSection" id="Graphs" style="display: block;">
+            <div class="content-topic" id="Graphs">
 
                 <div class="content-section">
                 <h1 class="page-heading">Graphs</h1>
@@ -57,7 +57,7 @@
                 <img class="content-image" src="../static/images/directed.png" alt="Directed Graph">     
             </div>
 
-            <div class="contentSection" id="Trees" style="display: none;">
+            <div class="content-topic" id="Trees">
 
                 <h1 class="page-heading">Introduction to Trees</h1>
                 <p class="page-text">Trees are commonly used variation of directed graphs that are represented in the shape of an upside-down tree. This is demonstrated in the following images</p>
@@ -92,7 +92,7 @@
                 <p class="page-text">The height of a tree is the number of edges that exist on the longest downward path from the root node to a leaf node. To find this, imagine we are starting from the ground up, so we start at the lowest leaf node and go along an upwards path to the root, counting the number of edges along the way. Note that a common question that involves the height of the tree is what is the maximum number of nodes a tree can have if it has a height of “h”. Simply use the formula max =2^h– 1.</p>
             </div>
 
-            <div class="contentSection" id="DFS" style="display: none;">
+            <div class="content-topic" id="DFS">
                 <h1 class="page-heading">Introduction to Tree Traversal Algorithms</h1>
                 <p class="page-text">Trees are often used in a variety of problems. For example, you are a great grandfather, and your memory is not that great these days. You hear you have a great granddaughter named Lily. You want to know if this is true and who her parents are.</p>
                 <p class="page-text">Due to your poor memory, you only know the names of your own kids so you can only ask them the names of their kids. Unfortunately, poor memory runs in the family and each family member only knows the names of their siblings and their own children.</p>
@@ -108,7 +108,7 @@
 
     <script>
         function showDiv(divName) {
-        var x = document.getElementsByClassName("contentSection");
+        var x = document.getElementsByClassName("content-topic");
         var i;
         for (i = 0; i < x.length; i++){
             if (x[i].id == divName){
