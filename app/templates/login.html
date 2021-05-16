@@ -2,42 +2,19 @@
 
 {% block inContainer %}
 
-  <style>
-    
-
-    .size {
-      font-size: 4vw;
-    }
-
-    .input:hover {
-      border-color: springgreen;
-    }
-    .input:focus {
-      border-color: springgreen;
-      outline-color: springgreen;
-    }
-
-
-    .already {
-      color: grey;
-      text-decoration: underline;
-      
-    }
-
-  </style>
-
-
-
 <div class="row justify-content-center">
-  <div class="col-sm-6 align-self-start p-3" style= "background: rgb(255,225,199); background: radial-gradient(circle, rgba(255,225,199,1) 0%, rgba(148,187,233,1) 100%);">
-    <p class="page-heading size">Sign In</p>
+  <div class="col-sm-6 align-self-start p-3 form-col">
+
+    <p class="page-heading">Sign In</p>
+
     <form class="form-signin" action="" method="post" novalidate>
       {{ form.hidden_tag() }}
+
       <div class="form-group my-5">
           {{ form.username.label(class_="page-subheading") }}<br>
           {{ form.username(size=32, class_="form-control form-control-lg input") }}<br>
           {% for error in form.username.errors %}
-          <span style="color: red;">[{{ error }}]</span>
+          <span class="wrong">[{{ error }}]</span>
           {% endfor %}
       </div>
 
@@ -45,7 +22,7 @@
         {{ form.password.label(class_="page-subheading") }}<br>
         {{ form.password(size=64, class_="form-control form-control-lg input") }}<br>
         {% for error in form.password.errors %}
-        <span style="color: red;">[{{ error }}]</span>
+        <span class="wrong">[{{ error }}]</span>
         {% endfor %}
       </div>
 
@@ -54,7 +31,7 @@
       </div>
     </form>
 
-    <a class="already" href="{{ url_for('register') }}">Don't have an account?</a>
+    <a class="form-link" href="{{ url_for('register') }}">Don't have an account?</a>
 
 
   </div>
