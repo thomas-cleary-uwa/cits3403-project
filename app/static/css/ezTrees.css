@@ -4,6 +4,12 @@
   text-align: center;
 }
 
+/* -- Content Container Styling -- */
+.container.content {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 /* -- Learn Page -- */
 .hideable {
   display: none;
@@ -20,6 +26,11 @@
 .content-btns {
   padding-bottom: 50px;
   margin-top: 50px;
+}
+
+/* -- Index page -- */
+#index-panel-2 {
+  background-color: rgba(255, 225, 199, 0.15);
 }
 
 /* -- Quiz Questions page -- */
@@ -101,7 +112,6 @@ body {
 
 .page-heading {
   font-size: 300%;
-  text-align: center;
 }
 
 .page-subheading {
@@ -110,6 +120,10 @@ body {
 
 .page-text {
   font-size: 125%;
+}
+
+.center-text, .page-heading {
+  text-align: center;
 }
 
 /* -- Quiz questions page -- */
@@ -172,29 +186,6 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Google Material Icons Styling ----------------------------------------------*/
 .material-icons, .correct {
   color : rgba(120, 255, 58, 0.5);
@@ -227,11 +218,6 @@ a .material-icons {
   background: radial-gradient(circle, rgba(255,225,199,1) 0%, rgba(148,187,233,1) 100%);
   z-index: -1;
 }
-
-/* FAVOURITE SO FAR 
-  background: rgb(255,225,199);
-  background: radial-gradient(circle, rgba(255,225,199,1) 0%, rgba(148,187,233,1) 100%);
-*/
 
 /* To get icon floating over particles without them dissappearing */
 .absolute {
@@ -277,16 +263,3 @@ a.nav-link {
   padding-left: 0px;
   margin-left: 0px;
 }
-
-
-
-
-/* Content Container Styling --------------------------------------------------*/
-.container.content {
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-
-
-
