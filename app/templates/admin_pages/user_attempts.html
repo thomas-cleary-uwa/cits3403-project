@@ -6,21 +6,23 @@
 
 {% block inContainer %}
 
-<!-- USE MORE GENERAL ID FOR THIS H1 AFTER-->
-<h1 id="result-page-heading">{{ username }}'s attempts</h1>
+<h1 class="page-heading">{{ username }}'s attempts</h1>
 {% for attempt in user_attempts %}
-<table class="table table-bordered" id="result-table">
-  <thead id="result-table-headings">
+<table class="table table-bordered table-results">
+
+  <thead>
     <tr>
-      <th id="question-heading">Question</th>
-      <th id="response-heading">Response</th>
-      <th id="mark-heading">Mark</th>
+      <th class="page-subheading table-col-w50">Question</th>
+      <th class="page-subheading">Response</th>
+      <th class="page-subheading">Mark</th>
     </tr>
   </thead>
+
     {% for attempt_key in attempt_keys %}
-    <tr class="result-table-question-row">
-    <td>{{ attempt[attempt_key]["question"] }}</td>
-    <td>{{ attempt[attempt_key]["response"] }}</td>
+    <tr>
+
+    <td class="page-text">{{ attempt[attempt_key]["question"] }}</td>
+    <td class="page-text">{{ attempt[attempt_key]["response"] }}</td>
     <td>
       <span class="material-icons md-48 {% if attempt[attempt_key]['mark'] %} correct {% else %} wrong {% endif %}">
         {% if attempt[attempt_key]["mark"] %}
@@ -30,11 +32,11 @@
         {% endif %}
       </span>
     </td>
+
   </tr>
-  {% endfor %}
+    {% endfor %}
+
 </table>
 {% endfor %}
-
-
 
 {% endblock %}
