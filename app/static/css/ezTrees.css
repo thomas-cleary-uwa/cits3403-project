@@ -189,6 +189,7 @@ body {
 .q-num-btn {
   background-color: rgba(86, 181, 42, 0.356);
   border-color: rgb(233, 235, 238);
+  margin-top: 50px;
 }
 
 .q-num-btn:hover {
