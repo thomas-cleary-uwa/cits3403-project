@@ -25,9 +25,9 @@ from app.route_helpers import (
 def index():
     """ index page route """
     if current_user.is_authenticated and current_user.is_admin:
-            return render_template('admin_pages/admin_index.html')
+            return render_template('admin_pages/admin_index.html', title="Admin")
 
-    return render_template('index.html')
+    return render_template('index.html', title="Home")
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -69,7 +69,7 @@ def logout():
 
 @app.route('/content') 
 def content():
-    return render_template('content.html', title='Content')
+    return render_template('content.html', title='Learn')
 
 
 ###############################################################################
@@ -95,7 +95,8 @@ def user(username):
         'user_profile.html',
         user=this_user,
         user_stats=this_users_stats,
-        attempts=attempts
+        attempts=attempts,
+        title="{}'s Profile".format(username)
     )
 
 
@@ -105,7 +106,7 @@ def quiz():
     """ quiz start/resume route """
     route_helpers.update_random_seed()
 
-    return render_template('quizLanding.html')
+    return render_template('quizLanding.html', title="Quiz")
 
 
 @app.route('/quiz_questions/', methods=['GET','POST'])
@@ -118,7 +119,7 @@ def quiz_questions():
         # returned a redirect object
         return return_obj
 
-    return render_template('quizQuestions.html',form=return_obj)
+    return render_template('quizQuestions.html',form=return_obj, title="Quiz")
 
 
 @app.route('/result/<score>/<attempt_id>')
@@ -135,7 +136,8 @@ def result(score, attempt_id):
         'result.html',
         outcome=score,
         attempt=attempt_data,
-        num_questions=num_questions
+        num_questions=num_questions,
+        title="Results"
     )
 
 
@@ -156,7 +158,8 @@ def user_stats():
     return render_template(
         'admin_pages/user_stats.html',
         user_info=zip(users, all_users_stats),
-        totals=totals
+        totals=totals,
+        title="User Stats"
     )
 
 
@@ -171,7 +174,11 @@ def user_attempts(username):
     if username == "all":
         attempt_landing_data = user_attempts_helpers.get_landing_data()
 
-        return render_template('admin_pages/user_attempts_landing.html', users=attempt_landing_data)
+        return render_template(
+            'admin_pages/user_attempts_landing.html', 
+            users=attempt_landing_data,
+            title="User's Attempts"
+        )
 
     users_attempts, attempt_keys = user_attempts_helpers.get_users_attempts(username)
 
@@ -179,7 +186,8 @@ def user_attempts(username):
         'admin_pages/user_attempts.html',
         user_attempts=users_attempts,
         username=username,
-        attempt_keys=attempt_keys
+        attempt_keys=attempt_keys,
+        title="{}'s Attempts".format(username)
     )
 
 
