@@ -24,6 +24,9 @@ from app.route_helpers import (
 @app.route('/index')
 def index():
     """ index page route """
+    if current_user.is_authenticated and current_user.is_admin:
+            return render_template('admin_pages/admin_index.html')
+
     return render_template('index.html')
 
 
@@ -151,7 +154,7 @@ def user_stats():
     users, all_users_stats, totals = user_stats_helpers.get_user_stat_data()
 
     return render_template(
-        'user_stats.html',
+        'admin_pages/user_stats.html',
         user_info=zip(users, all_users_stats),
         totals=totals
     )
@@ -168,12 +171,12 @@ def user_attempts(username):
     if username == "all":
         attempt_landing_data = user_attempts_helpers.get_landing_data()
 
-        return render_template('user_attempts_landing.html', users=attempt_landing_data)
+        return render_template('admin_pages/user_attempts_landing.html', users=attempt_landing_data)
 
     users_attempts, attempt_keys = user_attempts_helpers.get_users_attempts(username)
 
     return render_template(
-        'user_attempts.html',
+        'admin_pages/user_attempts.html',
         user_attempts=users_attempts,
         username=username,
         attempt_keys=attempt_keys
