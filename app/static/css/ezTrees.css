@@ -50,7 +50,32 @@
   text-justify: inter-word;
 }
 
+/* -- Result tables (result page for users / admin ) -- */
 
+.table-results {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table-results td {
+  vertical-align: middle;
+  padding: 20px;
+}
+
+.table-results td:hover {
+  background-color: rgba(255, 225, 199, 0.15);
+}
+
+.table-col-w50 {
+  width: 50%
+}
+
+.table-headings {
+  background-color: rgba(86, 181, 42, 0.356);
+}
 
 
 /* -- Font ----------------------------------------------------------------- */
