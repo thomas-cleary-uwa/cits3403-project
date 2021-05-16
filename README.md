@@ -9,8 +9,15 @@ Calvin LASTNAME  - 22509815<br>
 <br>
 
 ## Purpose and Context
+---
+The purpose of the site we have branded "ezTrees" is to teach some basic theory about graph and tree data structures. 
 
-<br>
+All group members have a shared belief that there is not many easily locatable web resources that attempt to teach the theory of graphs and trees (no programming) at a beginner level. Therefore we believed this was a suitable topic for our project.
+
+Early on we decided we wished to use a multi-choice quiz as the assessment method. (This was largely developed by Michael)
+
+All group members were complete beginners in the field of web development at the start of the semester and have had to learn alot to develop this project. 
+<br><br>
 
 ## Design and Development Process
 ---
@@ -37,7 +44,8 @@ After this meeting each group member was assigned a task to work on over the nex
 - Thomas -> Setting up the backend for the website (Flask App, Flask-Login, Flask-Admin)
 
 Our goal was to in two weeks time have a basic function Flask app that we could build upon.
-<br>
+
+<br><br>
 
 ### Initial Development Process
 During these two weeks the foundation was laid for the website:
@@ -52,7 +60,7 @@ Our assessment mechanism made good progress:
 
 The content for the learning page was worked on.<br>
 The index page for the home page of the website was worked on<br>
-<br>
+<br><br>
 
 ### Refining Page Structures
 After we had learnt was capable with the Flask framework and other modules, we continued to further refine how each of the page views looked and what they presented.
@@ -68,11 +76,15 @@ Jason
 
 Calvin
 - Worked on implementing the structure for the learning page
-<br>
+
+<br><br>
 
 ### Implementing a Consistent Style
 After we were happy with how each page was structured we worked together to implement a consistent style for the website by implementing CSS in ezTrees.css. The group had a meeting where we worked together in writing the basic classes the site would use. After this session individual efforts were made by all further enhance the CSS stylings for the website.
-<br>
+<br><br>
+
+### Learning Git
+All group members were at best novices at using version control, and it took several weeks before it seemed as if all of us were comfortable with the concepts of pushing/pulling/branching/merging. Towards the end of the project though we had come to appreciate how easy it was for us to work collaboratively and get tasks done together.
 
 ###
 
