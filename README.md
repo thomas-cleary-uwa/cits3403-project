@@ -1,7 +1,6 @@
 # README: CITS3403 - Project - 2021 Semester 1
 
 ## Students
----
 Thomas Cleary    - 21704985<br>
 Michael LASTNAME - 22737938<br>
 Jason LASTNAME   - 22732794<br>
@@ -9,7 +8,6 @@ Calvin LASTNAME  - 22509815<br>
 <br>
 
 ## Purpose and Context
----
 The purpose of the site we have branded "ezTrees" is to teach some basic theory about graph and tree data structures. 
 
 All group members have a shared belief that there is not many easily locatable web resources that attempt to teach the theory of graphs and trees (no programming) at a beginner level. Therefore we believed this was a suitable topic for our project.
@@ -20,7 +18,6 @@ All group members were complete beginners in the field of web development at the
 <br><br>
 
 ## Design and Development Process
----
 <br>
 
 ### Initial Design Process:
@@ -88,7 +85,6 @@ All group members were at best novices at using version control, and it took sev
 <br><br>
 
 ## Architecture of the Web Application
----
 The site is a Flask app that uses several extensions to provide further functionality
 - Flask-login to manage user login/registration
 - Flask-admin to allow the admin user to access the database for the app
@@ -97,19 +93,16 @@ The site is a Flask app that uses several extensions to provide further function
 <br><br>
 
 ## Running Tests
----
 MICHAEL ADD STUFF HERE
 <br><br>
 
 
 ## Launching From localhost
----
 THOMAS DESCRIBE HOW TO LAUNCH FROM LOCALHOST HERE
 <br><br>
 
 
 ## Git Logs
----
 The git logs have been included in a seperate file, "git-log.txt"
 <br><br>
 
