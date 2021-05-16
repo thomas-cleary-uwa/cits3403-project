@@ -5,11 +5,11 @@
 }
 
 /* -- Learn Page -- */
-.content-topic {
+.hideable {
   display: none;
 }
 
-.content-first-topic {
+.show-first {
   display: block;
 }
 
@@ -21,6 +21,36 @@
   padding-bottom: 50px;
   margin-top: 50px;
 }
+
+/* -- Quiz Questions page -- */
+#quiz-sub-menu {
+  display: block; 
+  margin: auto; 
+  text-align: center;
+  padding-top: 50px;
+}
+
+
+/* -- Tables --------------------------------------------------------------- */
+
+
+/* -- Quiz questions page -- */
+.quiz-table {
+  width: 500px;
+  height: 300px;
+  margin: auto;
+}
+
+.response-choices {
+  text-align: left;
+}
+
+.quiz-question {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+
 
 
 /* -- Font ----------------------------------------------------------------- */
@@ -47,6 +77,15 @@ body {
 
 .page-text {
   font-size: 125%;
+}
+
+/* -- Quiz questions page -- */
+.error-span, #incomplete-error-msg {
+  color: rgb(195, 87, 98);
+}
+
+#incomplete-error-msg {
+  padding-top: 1em;
 }
 
 
