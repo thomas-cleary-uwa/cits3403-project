@@ -1,5 +1,9 @@
 /* -- Divs ----------------------------------------------------------------- */
 
+.div-centered {
+  text-align: center;
+}
+
 /* -- Learn Page -- */
 .content-topic {
   display: none;
