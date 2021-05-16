@@ -58,8 +58,16 @@
   </thead>
 
   <tr>
-    <td class="page-text">{{ stats.registered_on }}</td>
-    <td class="page-text">{{ stats.last_seen }}</td>
+    <td class="page-text">
+      {{ stats.registered_on.day }} - 
+      {{ stats.registered_on.month }} - 
+      {{ stats.registered_on.year }}
+    </td>
+    <td class="page-text">
+      {{ stats.last_seen.day }} - 
+      {{ stats.last_seen.month }} - 
+      {{ stats.last_seen.year }}
+    </td>
     <td class="page-text">{{ stats.num_logins }}</td>
   </tr>
 

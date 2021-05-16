@@ -91,11 +91,12 @@
 
 .table-results a {
   color: rgb(138, 78, 0);
-  text-decoration: underline;
 }
 
+
 .table-results a:hover {
-  color: black
+  color: black;
+  text-decoration: underline;
 }
 
 .table-col-w50 {
@@ -117,6 +118,10 @@ body {
 
 .page-heading, .page-subheading {
   font-family: 'Cabin Sketch', cursive;
+  color: rgb(138, 78, 0);
+}
+
+.page-subheading a {
   color: rgb(138, 78, 0);
 }
 

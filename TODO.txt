@@ -3,8 +3,8 @@ Tom
 1. Externalise CSS - Done
 2. Add styling to admin pages - Done
 2.b add classes to calvins page - Done
-2.c add proper links to jasons index button
-2.d add correct info to profile
+2.c add proper links to jasons index button - Done
+2.d add correct info to profile - Done
 3. Write README.md
 4. Externalise javascript from html files
 5. Write proper setup script
