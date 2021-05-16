@@ -4,24 +4,10 @@
 
   <style>
 
-    .sign_in_heading {
-      margin-top: 35px;
-      font-size: 50px;
-      color: green;
+    .size {
+      font-size: 4vw;
     }
-    .label{
-      font-weight: bold;
-      font-size: 17px;
-      margin-top: -10px;
 
-    }
-    .input {
-      background-color: white;
-      border-style: solid;
-      border-width: 1px;
-      width: auto;
-      height: 45px;
-    }
     .input:hover {
       border-color: springgreen;
     }
@@ -30,124 +16,60 @@
       outline-color: springgreen;
     }
 
-    .submit {
-      border-radius: 5px;
-      text-align: center;
-      border-style: solid;
-      border-width: 1px;
-      color: white;
-      background-color: springgreen;
-      font-size: 30px;
-      width: auto;
-      height: 45px;
+    body {
+      /* Yeah nah? */
+      background-image: url(../static/jason/images/color2.png); 
+      background-size: cover;
     }
-    .submit:hover {
-      opacity: 70%;
-    }
-
-
-
 
   </style>
 
-<div class="container">
+
 
   <div class="row justify-content-center">
-    <div class="col-sm-4 d-flex justify-content-center">
-      <div class="col-sm-4 d-flex justify-content-center">
-        <p class="sign_in_heading">Kodin</p>
-      </div>
-      
-    </div>
-  </div>
-
-  <div class="row justify-content-center">
-    <div class="col-sm-4 d-flex justify-content-center">
-      <form class="form-signin" action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
+    <div class="col-sm-6 align-self-start p-3" style="background-color: #85FFBD; background-image: linear-gradient(180deg, #85FFBD 0%, #FFFB7D 100%);">
+      <p class="page-heading size">Sign Up</p>
+      <form>
         <div class="form-group">
-          {{ form.username.label(class_="label") }}
-          {{ form.username(size=32, class_="input form-control") }}
-          {% for error in form.username.errors %}
+            {{ form.username.label(class_="page-subheading") }}<br>
+            {{ form.username(size=32, class_="form-control form-control-lg input") }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+          {{ form.email.label(class_="page-subheading") }}<br>
+          {{ form.email(size=64, class_="form-control form-control-lg input") }}<br>
+          {% for error in form.email.errors %}
           <span style="color: red;">[{{ error }}]</span>
           {% endfor %}
         </div>
 
         <div class="form-group">
-          {{ form.email.label(class_="label") }}
-          {{ form.email(size=32, class_="input form-control") }}
+          {{ form.password.label(class_="page-subheading") }}<br>
+          {{ form.password(size=32, class_="form-control form-control-lg input") }}<br>
           {% for error in form.password.errors %}
           <span style="color: red;">[{{ error }}]</span>
           {% endfor %}
         </div>
 
         <div class="form-group">
-          {{ form.password.label(class_="label") }}
-          {{ form.password(size=32, class_="input form-control") }}
-          {% for error in form.password.errors %}
+          {{ form.password_repeat.label(class_="page-subheading") }}<br>
+          {{ form.password_repeat(size=32, class_="form-control form-control-lg input") }}<br>
+          {% for error in form.password_repeat.errors %}
           <span style="color: red;">[{{ error }}]</span>
           {% endfor %}
         </div>
 
         <div class="form-group">
-          {{ form.password_repeat.label(class_="label") }}
-          {{ form.password_repeat(size=32, class_="input form-control") }}
-          {% for error in form.password.errors %}
-          <span style="color: red;">[{{ error }}]</span>
-          {% endfor %}
+          {{ form.submit(class_="btn btn-block btn-primary btn-lg shadow-none") }}
         </div>
-
-
       </form>
 
     </div>
   </div>
 
-  <div class="row justify-content-center">
-    <div class="col-sm-4 d-flex align-items-center justify-content-center">
-      {{ form.submit(class_="submit") }}
-      
-    </div>
 
-  </div>
-
-
-  
-</div>
-
-
-    <!-- <h1>Register</h1>
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
-            {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.email.label }}<br>
-            {{ form.email(size=64) }}<br>
-            {% for error in form.email.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}<br>
-            {% for error in form.password.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password_repeat.label }}<br>
-            {{ form.password_repeat(size=32) }}<br>
-            {% for error in form.password_repeat.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form> -->
 
 {% endblock %}
