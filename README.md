@@ -98,7 +98,37 @@ MICHAEL ADD STUFF HERE
 
 
 ## Launching From localhost
-THOMAS DESCRIBE HOW TO LAUNCH FROM LOCALHOST HERE
+(The below instructions use shell commands that relate to macOS, you may have to use different commands on other platforms)<br><br>
+To launch the application from localhost, first ensure the project directory does not contain /migrations or app.db. If it does you can try running from a terminal while in the top level directory: <br><br>
+` python3 setup/delete_database_mac.py ` <br><br>
+However we have had varying degrees of success with this script, so if it does not work, manually delete the migrations directory and app.db file.
+<br><br>
+
+Before running any setup scripts you will require the python dependancies listed in requirements.txt.
+These can be installed by running (preferably in a virtual environment):<br><br>
+
+`pip3 install -r requirements.txt`<br><br>
+
+Now to setup up the applications database, from the top level directory run:<br><br>
+` python3 setup/setup_application.py `<br><br>
+You should see output on the terminal that describes the code being run in the script to setup the database.
+<br><br>
+After this script has finished you now have two options to launch the web application from local host:
+
+`flask run`<br>
+or<br>
+`python3 application_instance.py`<br><br>
+
+The latter will run the application in debug mode.
+
+You should now be able to search for local host in your web browser of choice and login with the admin
+credentials:
+
+- username: admin
+- password: admin
+
+(these can be changed by editing setup_application.py)
+
 <br><br>
 
 
