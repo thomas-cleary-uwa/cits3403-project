@@ -5,9 +5,10 @@ Tom
 2.b add classes to calvins page - Done
 2.c add proper links to jasons index button - Done
 2.d add correct info to profile - Done
-3. Write README.md
+3. Write README.md - Done
 4. Externalise javascript from html files
 5. Write proper setup script
+5.b Write launch from local host readme
 6. REFERENCE THE PARTICLES IN THE CODE
 
 
