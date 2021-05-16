@@ -8,6 +8,7 @@ Tom
 3. Write README.md
 4. Externalise javascript from html files
 5. Write proper setup script
+6. REFERENCE THE PARTICLES IN THE CODE
 
 
 Michael
