@@ -1,0 +1,1466 @@
+{
+  "id": "6b8f9b8d-e303-4f72-a595-f6da916e0ff4",
+  "version": "2.0",
+  "name": "ezTrees",
+  "url": "http://127.0.0.1:5000/index",
+  "tests": [{
+    "id": "f9893e16-0366-4503-bd91-038420b116fe",
+    "name": "learn-viewAllContent",
+    "commands": [{
+      "id": "914ad673-f372-4eab-a35f-067e68aa2552",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:5000/index",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9cf5393f-2869-4d63-82a1-1cf0a9e41c5e",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//a[contains(@href, '/content')]",
+      "targets": [
+        ["css=#left-navbar > .nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//ul[@id='left-navbar']/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/content')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a4f48b36-20d0-4a63-ab61-02443adb4092",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//h1[contains(.,'Introduction to Graph Theory')]",
+      "targets": [
+        ["css=#Introduction > .page-heading", "css:finder"],
+        ["xpath=//div[@id='Introduction']/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Introduction to Graph Theory')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1a3f5216-202e-4053-9934-1aaf49aefd73",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//p[contains(.,'Where each letter represents the name of a house in the town and each line represents the roads to get to each house.')]",
+      "targets": [
+        ["css=#Introduction > .page-text:nth-child(5)", "css:finder"],
+        ["xpath=//div[@id='Introduction']/p[3]", "xpath:idRelative"],
+        ["xpath=//p[3]", "xpath:position"],
+        ["xpath=//p[contains(.,'Where each letter represents the name of a house in the town and each line represents the roads to get to each house.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "903badad-2594-4b9f-9c7f-1190cc8d062a",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//img[@alt='Directed Graph']",
+      "targets": [
+        ["css=.content-image:nth-child(7)", "css:finder"],
+        ["xpath=//img[@alt='Directed Graph']", "xpath:img"],
+        ["xpath=//div[@id='Graphs']/img", "xpath:idRelative"],
+        ["xpath=//div[2]/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4501f4b9-addc-477b-aad6-dd788728cf39",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[contains(.,'Graph')]",
+      "targets": [
+        ["css=.btn:nth-child(2)", "css:finder"],
+        ["xpath=//button[@onclick=\"showDiv('Graphs')\"]", "xpath:attributes"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Graph')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2bd46dce-3ccf-4b89-a916-2e7e162ff302",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//h1[contains(.,'Graphs')]",
+      "targets": [
+        ["css=.content-section > .page-heading", "css:finder"],
+        ["xpath=//div[@id='Graphs']/div/h1", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Graphs')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9e88ad8b-a702-47fd-83a6-4e712b060cea",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//p[contains(.,'Any link between any two objects is called an edge or arc. In the town example, the road or streets connecting the houses are represented by edges shown by the lines in the graph. We tend to name the edges by the nodes that they connect, for example, the edge connecting node A and node B would be called edge AB. Note that edges that only connect 2 nodes at a time and no more.')]",
+      "targets": [
+        ["css=.content-section:nth-child(2) > .page-text", "css:finder"],
+        ["xpath=//div[@id='Graphs']/div[2]/p", "xpath:idRelative"],
+        ["xpath=//div[2]/p", "xpath:position"],
+        ["xpath=//p[contains(.,'Any link between any two objects is called an edge or arc. In the town example, the road or streets connecting the houses are represented by edges shown by the lines in the graph. We tend to name the edges by the nodes that they connect, for example, the edge connecting node A and node B would be called edge AB. Note that edges that only connect 2 nodes at a time and no more.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e0883bf7-a6e7-41c7-a4d2-8ca2d3da1aba",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//img[@alt='Directed Graph']",
+      "targets": [
+        ["css=.content-image:nth-child(7)", "css:finder"],
+        ["xpath=//img[@alt='Directed Graph']", "xpath:img"],
+        ["xpath=//div[@id='Graphs']/img", "xpath:idRelative"],
+        ["xpath=//div[2]/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dfab31f5-7e96-498d-b327-5c4cc82bcdd7",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[contains(.,'Trees')]",
+      "targets": [
+        ["css=.btn:nth-child(3)", "css:finder"],
+        ["xpath=//button[@onclick=\"showDiv('Trees')\"]", "xpath:attributes"],
+        ["xpath=//button[3]", "xpath:position"],
+        ["xpath=//button[contains(.,'Trees')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "78c8226e-11b3-423f-a8b2-c9bc10e5f41d",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//h1[contains(.,'Introduction to Trees')]",
+      "targets": [
+        ["css=#Trees > .page-heading", "css:finder"],
+        ["xpath=//div[@id='Trees']/h1", "xpath:idRelative"],
+        ["xpath=//div[3]/h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Introduction to Trees')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "94cc5112-10e5-45ba-9085-fcabaad91440",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//p[contains(.,'Some commonly used terms in trees are parent, child and sibling nodes. These terms come from the concept of a family tree. Think of the graph on the left as your mums’ side of the family:')]",
+      "targets": [
+        ["css=#Trees > .page-text:nth-child(7)", "css:finder"],
+        ["xpath=//div[@id='Trees']/p[3]", "xpath:idRelative"],
+        ["xpath=//div[3]/p[3]", "xpath:position"],
+        ["xpath=//p[contains(.,'Some commonly used terms in trees are parent, child and sibling nodes. These terms come from the concept of a family tree. Think of the graph on the left as your mums’ side of the family:')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "725914c9-244b-4606-add3-d12af84422cc",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//img[@alt='Family Tree Graph']",
+      "targets": [
+        ["css=.content-image:nth-child(11)", "css:finder"],
+        ["xpath=//img[@alt='Family Tree Graph']", "xpath:img"],
+        ["xpath=//div[@id='Trees']/img[3]", "xpath:idRelative"],
+        ["xpath=//img[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "199080d4-4e36-4023-af7e-0a47c7a73bf9",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[contains(.,'Depth First Search')]",
+      "targets": [
+        ["css=.btn:nth-child(4)", "css:finder"],
+        ["xpath=//button[@onclick=\"showDiv('DFS')\"]", "xpath:attributes"],
+        ["xpath=//button[4]", "xpath:position"],
+        ["xpath=//button[contains(.,'Depth First Search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "42010b6a-473f-4ed6-aed5-a813d01ff2f8",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//h1[contains(.,'Introduction to Tree Traversal Algorithms')]",
+      "targets": [
+        ["css=#DFS > .page-heading:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='DFS']/h1", "xpath:idRelative"],
+        ["xpath=//div[4]/h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Introduction to Tree Traversal Algorithms')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3f673ef5-9eb6-4622-a9d4-025a928e1deb",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//p[contains(.,'Depth First Search involves searching all the way down one path in a tree. If our goal is not achieved down that one path, you would backtrack up one level and go down another path. In the family tree problem, you would ask your children if they have children, then ask that child the same thing until you find someone without a child, then you would know that you have reached the bottom of your family tree (reached a leaf).')]",
+      "targets": [
+        ["css=#DFS > .page-text:nth-child(7)", "css:finder"],
+        ["xpath=//div[@id='DFS']/p[5]", "xpath:idRelative"],
+        ["xpath=//div[4]/p[5]", "xpath:position"],
+        ["xpath=//p[contains(.,'Depth First Search involves searching all the way down one path in a tree. If our goal is not achieved down that one path, you would backtrack up one level and go down another path. In the family tree problem, you would ask your children if they have children, then ask that child the same thing until you find someone without a child, then you would know that you have reached the bottom of your family tree (reached a leaf).')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "4908c5ea-febf-4b15-8ca1-a93f97e4c90f",
+    "name": "quiz-attemptResult",
+    "commands": [{
+      "id": "d49b08b2-4c3f-470c-91ea-994382673587",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:5000/index",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3b2e12d1-fc99-45b8-82c7-c98ec57f51de",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(3) .material-icons",
+      "targets": [
+        ["css=.nav-item:nth-child(3) .material-icons", "css:finder"],
+        ["xpath=//ul[@id='left-navbar']/li[3]/a/span", "xpath:idRelative"],
+        ["xpath=//li[3]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'bubble_chart')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "18b56c9b-4978-4a18-a5ad-b43dd21befa4",
+      "comment": "",
+      "command": "click",
+      "target": "id=start",
+      "targets": [
+        ["id=start", "id"],
+        ["css=#start", "css:finder"],
+        ["xpath=//button[@id='start']", "xpath:attributes"],
+        ["xpath=//div[@id='quizIntro']/button", "xpath:idRelative"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Start Quiz')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "77907aa2-d2b3-480f-819a-e71fc2766f67",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//td/input",
+      "targets": [
+        ["id=What is the maximum amount of possible nodes in a binary tree of height 4?-0", "id"],
+        ["name=What is the maximum amount of possible nodes in a binary tree of height 4?", "name"],
+        ["css=#What\\ is\\ the\\ maximum\\ amount\\ of\\ possible\\ nodes\\ in\\ a\\ binary\\ tree\\ of\\ height\\ 4\\?-0", "css:finder"],
+        ["xpath=//input[@id='What is the maximum amount of possible nodes in a binary tree of height 4?-0']", "xpath:attributes"],
+        ["xpath=//td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "de6df374-6bee-403f-b97c-bda4cab70e92",
+      "comment": "",
+      "command": "click",
+      "target": "id=navbut2",
+      "targets": [
+        ["id=navbut2", "id"],
+        ["css=#navbut2", "css:finder"],
+        ["xpath=//button[@id='navbut2']", "xpath:attributes"],
+        ["xpath=//div[@id='quizSubMenu']/div/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'2')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e288859a-ae27-4e85-badc-c6015010e5ca",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//table[2]/tbody/tr[3]/td/input",
+      "targets": [
+        ["id=What node is the parent of E?-1", "id"],
+        ["css=#What\\ node\\ is\\ the\\ parent\\ of\\ E\\?-1", "css:finder"],
+        ["xpath=//input[@id='What node is the parent of E?-1']", "xpath:attributes"],
+        ["xpath=//table[2]/tbody/tr[3]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "56f7ee1f-ec7d-46c9-810a-b90ff055bca1",
+      "comment": "",
+      "command": "click",
+      "target": "id=navbut3",
+      "targets": [
+        ["id=navbut3", "id"],
+        ["css=#navbut3", "css:finder"],
+        ["xpath=//button[@id='navbut3']", "xpath:attributes"],
+        ["xpath=//div[@id='quizSubMenu']/div/button[3]", "xpath:idRelative"],
+        ["xpath=//button[3]", "xpath:position"],
+        ["xpath=//button[contains(.,'3')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a152028b-6b23-425a-a71a-182500b919a0",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//table[3]/tbody/tr[4]/td/input",
+      "targets": [
+        ["id=The maximum and minimum number of nodes in a binary tree of height 5 are ____-2", "id"],
+        ["css=#The\\ maximum\\ and\\ minimum\\ number\\ of\\ nodes\\ in\\ a\\ binary\\ tree\\ of\\ height\\ 5\\ are\\ ____-2", "css:finder"],
+        ["xpath=//input[@id='The maximum and minimum number of nodes in a binary tree of height 5 are ____-2']", "xpath:attributes"],
+        ["xpath=//table[3]/tbody/tr[4]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3f375ed8-eaf3-4cfe-b767-06cec3a3fe4e",
+      "comment": "",
+      "command": "click",
+      "target": "id=navbut4",
+      "targets": [
+        ["id=navbut4", "id"],
+        ["css=#navbut4", "css:finder"],
+        ["xpath=//button[@id='navbut4']", "xpath:attributes"],
+        ["xpath=//div[@id='quizSubMenu']/div/button[4]", "xpath:idRelative"],
+        ["xpath=//button[4]", "xpath:position"],
+        ["xpath=//button[contains(.,'4')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4e775467-cd9a-4717-b65b-e0be6623c189",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//table[4]/tbody/tr[5]/td/input",
+      "targets": [
+        ["id=How many of these graphs have a cycle?-3", "id"],
+        ["css=#How\\ many\\ of\\ these\\ graphs\\ have\\ a\\ cycle\\?-3", "css:finder"],
+        ["xpath=//input[@id='How many of these graphs have a cycle?-3']", "xpath:attributes"],
+        ["xpath=//table[4]/tbody/tr[5]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "44e293ad-6c2f-49d0-b1ab-af57cb340435",
+      "comment": "",
+      "command": "click",
+      "target": "id=navbut5",
+      "targets": [
+        ["id=navbut5", "id"],
+        ["css=#navbut5", "css:finder"],
+        ["xpath=//button[@id='navbut5']", "xpath:attributes"],
+        ["xpath=//div[@id='quizSubMenu']/div/button[5]", "xpath:idRelative"],
+        ["xpath=//button[5]", "xpath:position"],
+        ["xpath=//button[contains(.,'5')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "70aae1ce-58fa-460f-8da6-38d9d858d8ac",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//table[5]/tbody/tr[2]/td/input",
+      "targets": [
+        ["id=If vertex A has no neighbours, then it is ____-0", "id"],
+        ["name=If vertex A has no neighbours, then it is ____", "name"],
+        ["css=#If\\ vertex\\ A\\ has\\ no\\ neighbours\\,\\ then\\ it\\ is\\ ____-0", "css:finder"],
+        ["xpath=//input[@id='If vertex A has no neighbours, then it is ____-0']", "xpath:attributes"],
+        ["xpath=//table[5]/tbody/tr[2]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6463355b-a5cd-4ca8-b3b2-d21b96c28340",
+      "comment": "",
+      "command": "click",
+      "target": "id=submit",
+      "targets": [
+        ["id=submit", "id"],
+        ["name=submit", "name"],
+        ["css=#submit", "css:finder"],
+        ["xpath=//input[@id='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='quizSubMenu']/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "906f4ec5-c3b4-4628-afd9-be16dd97b703",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "id=final-score-table-score",
+      "targets": [
+        ["id=final-score-table-score", "id"],
+        ["css=#final-score-table-score", "css:finder"],
+        ["xpath=//td[@id='final-score-table-score']", "xpath:attributes"],
+        ["xpath=//tr[@id='final-score-table-score-row']/td", "xpath:idRelative"],
+        ["xpath=//div[2]/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'60%')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "eb8e717d-50ee-4e7a-b62d-9f1b8f79341e",
+    "name": "quiz-saveResume",
+    "commands": [{
+      "id": "a741e15e-d9d3-459a-aa9b-569c459d2e07",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:5000/index",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "07124650-f85f-4166-93bf-2fa3abd5ddc2",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//a[contains(@href, '/quiz')]",
+      "targets": [
+        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=//ul[@id='left-navbar']/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/quiz')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0b411921-3177-4c3d-b269-46ca847a4451",
+      "comment": "",
+      "command": "click",
+      "target": "id=start",
+      "targets": [
+        ["id=start", "id"],
+        ["css=#start", "css:finder"],
+        ["xpath=//button[@id='start']", "xpath:attributes"],
+        ["xpath=//div[@id='quizIntro']/button", "xpath:idRelative"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Start Quiz')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "13d2ac3e-da8f-4a93-87f0-0c149525f6d9",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//tr[4]/td/input",
+      "targets": [
+        ["id=What is the shortest possible path of this graph from A to E?-2", "id"],
+        ["css=#What\\ is\\ the\\ shortest\\ possible\\ path\\ of\\ this\\ graph\\ from\\ A\\ to\\ E\\?-2", "css:finder"],
+        ["xpath=//input[@id='What is the shortest possible path of this graph from A to E?-2']", "xpath:attributes"],
+        ["xpath=//tr[4]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fae9a619-36d9-4805-8827-fa27ffdf3dd2",
+      "comment": "",
+      "command": "click",
+      "target": "id=navbut2",
+      "targets": [
+        ["id=navbut2", "id"],
+        ["css=#navbut2", "css:finder"],
+        ["xpath=//button[@id='navbut2']", "xpath:attributes"],
+        ["xpath=//div[@id='quizSubMenu']/div/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'2')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "10d68a08-4962-4f9f-8da5-70b5f4627ce2",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//table[2]/tbody/tr[2]/td/input",
+      "targets": [
+        ["id=Which of the following statements about BINARY TREES is NOT true? -0", "id"],
+        ["name=Which of the following statements about BINARY TREES is NOT true? ", "name"],
+        ["css=#Which\\ of\\ the\\ following\\ statements\\ about\\ BINARY\\ TREES\\ is\\ NOT\\ true\\?\\ -0", "css:finder"],
+        ["xpath=//input[@id='Which of the following statements about BINARY TREES is NOT true? -0']", "xpath:attributes"],
+        ["xpath=//table[2]/tbody/tr[2]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d37943b8-b376-4904-a67f-f3bb4ab064c0",
+      "comment": "",
+      "command": "click",
+      "target": "id=submit",
+      "targets": [
+        ["id=submit", "id"],
+        ["name=submit", "name"],
+        ["css=#submit", "css:finder"],
+        ["xpath=//input[@id='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='quizSubMenu']/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9691d8bf-ff8c-4e62-b829-b01931150e09",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//p[contains(.,'Please answer all questions.')]",
+      "targets": [
+        ["id=incomplete", "id"],
+        ["css=#incomplete", "css:finder"],
+        ["xpath=//p[@id='incomplete']", "xpath:attributes"],
+        ["xpath=//div[@id='quizSubMenu']/p", "xpath:idRelative"],
+        ["xpath=//div[2]/p", "xpath:position"],
+        ["xpath=//p[contains(.,'Please answer all questions.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "63297745-bbf5-4acb-b8bc-8752cc0bff7a",
+      "comment": "",
+      "command": "click",
+      "target": "id=navbut3",
+      "targets": [
+        ["id=navbut3", "id"],
+        ["css=#navbut3", "css:finder"],
+        ["xpath=//button[@id='navbut3']", "xpath:attributes"],
+        ["xpath=//div[@id='quizSubMenu']/div/button[3]", "xpath:idRelative"],
+        ["xpath=//button[3]", "xpath:position"],
+        ["xpath=//button[contains(.,'3')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e96360d5-9bc7-498b-8032-37bfa273bab2",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//span[contains(.,'This field is required.')]",
+      "targets": [
+        ["css=.quizTable:nth-child(5) .errorSpan", "css:finder"],
+        ["xpath=//td/span", "xpath:position"],
+        ["xpath=//span[contains(.,'This field is required.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "31d2db74-75ee-4e3b-b0b0-977b07e3082b",
+      "comment": "",
+      "command": "click",
+      "target": "id=save",
+      "targets": [
+        ["id=save", "id"],
+        ["name=save", "name"],
+        ["css=#save", "css:finder"],
+        ["xpath=//input[@id='save']", "xpath:attributes"],
+        ["xpath=//div[@id='quizSubMenu']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "25ec2ee2-4ec3-4133-a3d3-0c6b0ee35267",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//a[contains(@href, '/content')]",
+      "targets": [
+        ["css=#left-navbar > .nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//ul[@id='left-navbar']/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/content')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6f69cdf4-c6f1-48a5-b38d-e74229e3be07",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//ul[@id='left-navbar']/li[3]/a",
+      "targets": [
+        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=//ul[@id='left-navbar']/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/quiz_questions/')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9f545b9b-5bf4-4d5a-a601-1c59a0a0b7d2",
+      "comment": "",
+      "command": "click",
+      "target": "id=navbut3",
+      "targets": [
+        ["id=navbut3", "id"],
+        ["css=#navbut3", "css:finder"],
+        ["xpath=//button[@id='navbut3']", "xpath:attributes"],
+        ["xpath=//div[@id='quizSubMenu']/div/button[3]", "xpath:idRelative"],
+        ["xpath=//button[3]", "xpath:position"],
+        ["xpath=//button[contains(.,'3')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "847e34ee-d37b-401a-8e10-04985e783f03",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//table[3]/tbody/tr[5]/td/input",
+      "targets": [
+        ["id=How many leaves are on this tree?-3", "id"],
+        ["css=#How\\ many\\ leaves\\ are\\ on\\ this\\ tree\\?-3", "css:finder"],
+        ["xpath=//input[@id='How many leaves are on this tree?-3']", "xpath:attributes"],
+        ["xpath=//table[3]/tbody/tr[5]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b3fcdafd-3f2b-482f-b34c-e072cf21a86b",
+      "comment": "",
+      "command": "click",
+      "target": "id=navbut4",
+      "targets": [
+        ["id=navbut4", "id"],
+        ["css=#navbut4", "css:finder"],
+        ["xpath=//button[@id='navbut4']", "xpath:attributes"],
+        ["xpath=//div[@id='quizSubMenu']/div/button[4]", "xpath:idRelative"],
+        ["xpath=//button[4]", "xpath:position"],
+        ["xpath=//button[contains(.,'4')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "eac6b4e7-7c2b-40d0-bee3-48eb4d1aa2ed",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//table[4]/tbody/tr[3]/td/input",
+      "targets": [
+        ["id=The root node of this tree is ____-1", "id"],
+        ["css=#The\\ root\\ node\\ of\\ this\\ tree\\ is\\ ____-1", "css:finder"],
+        ["xpath=//input[@id='The root node of this tree is ____-1']", "xpath:attributes"],
+        ["xpath=//table[4]/tbody/tr[3]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "078de8e2-20ee-4d9e-b242-86289f7d400a",
+      "comment": "",
+      "command": "click",
+      "target": "id=navbut5",
+      "targets": [
+        ["id=navbut5", "id"],
+        ["css=#navbut5", "css:finder"],
+        ["xpath=//button[@id='navbut5']", "xpath:attributes"],
+        ["xpath=//div[@id='quizSubMenu']/div/button[5]", "xpath:idRelative"],
+        ["xpath=//button[5]", "xpath:position"],
+        ["xpath=//button[contains(.,'5')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5aff7877-cf57-4e8b-80a3-e5883dc1f55a",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//table[5]/tbody/tr[5]/td/input",
+      "targets": [
+        ["id=If we simplify the map of a town into a graph containing only the locations and streets, the locations would be the ____ of the graph-3", "id"],
+        ["css=#If\\ we\\ simplify\\ the\\ map\\ of\\ a\\ town\\ into\\ a\\ graph\\ containing\\ only\\ the\\ locations\\ and\\ streets\\,\\ the\\ locations\\ would\\ be\\ the\\ ____\\ of\\ the\\ graph-3", "css:finder"],
+        ["xpath=//input[@id='If we simplify the map of a town into a graph containing only the locations and streets, the locations would be the ____ of the graph-3']", "xpath:attributes"],
+        ["xpath=//table[5]/tbody/tr[5]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fb31275e-d9f9-4f1d-b742-d31ee695df27",
+      "comment": "",
+      "command": "click",
+      "target": "id=submit",
+      "targets": [
+        ["id=submit", "id"],
+        ["name=submit", "name"],
+        ["css=#submit", "css:finder"],
+        ["xpath=//input[@id='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='quizSubMenu']/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d9fc5e67-6291-47df-809d-a465e7ae537f",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "id=final-score-table-score",
+      "targets": [
+        ["id=final-score-table-score", "id"],
+        ["css=#final-score-table-score", "css:finder"],
+        ["xpath=//td[@id='final-score-table-score']", "xpath:attributes"],
+        ["xpath=//tr[@id='final-score-table-score-row']/td", "xpath:idRelative"],
+        ["xpath=//div[2]/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'20%')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "889c3042-ac4d-48c1-96e1-568c2af87237",
+    "name": "signup-withPasswordError",
+    "commands": [{
+      "id": "7194431f-91d3-4874-991c-86a3b5f58c63",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:5000/index",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "89811eab-fa9c-4c2f-86f9-a2c234baf55e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1080",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "baef2f98-8680-4308-81fc-a3280b20b23d",
+      "comment": "",
+      "command": "click",
+      "target": "css=#right-navbar > .nav-item:nth-child(2) > .nav-link",
+      "targets": [
+        ["css=#right-navbar > .nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//ul[@id='right-navbar']/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/logout')]", "xpath:href"],
+        ["xpath=//ul[2]/li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "39b56a44-82ee-46a1-b149-15754129135b",
+      "comment": "",
+      "command": "click",
+      "target": "css=#right-navbar > .nav-item:nth-child(2) > .nav-link",
+      "targets": [
+        ["css=#right-navbar > .nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//ul[@id='right-navbar']/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/login')]", "xpath:href"],
+        ["xpath=//ul[2]/li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "61a84560-369f-49fa-b03b-7839a0b498f8",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "da819ae4-e0fd-4124-a891-fb50f5e66bc4",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "billybob"
+    }, {
+      "id": "39c6f340-b028-45c5-9ffa-891212022f67",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "password"
+    }, {
+      "id": "72794576-e26f-40ea-800f-014f10ed4cd6",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "4054d93a-34d6-4370-a34d-aaa6b2e39e16",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=ul:nth-child(3) > li",
+      "targets": [
+        ["css=ul:nth-child(3) > li", "css:finder"],
+        ["xpath=//body/ul/li", "xpath:position"],
+        ["xpath=//li[contains(.,'Invalid username')]", "xpath:innerText"]
+      ],
+      "value": "Invalid username"
+    }, {
+      "id": "f93aa9ce-d84d-44ab-b83a-77a1c72a902c",
+      "comment": "",
+      "command": "click",
+      "target": "css=#right-navbar > .nav-item:nth-child(1) > .nav-link",
+      "targets": [
+        ["css=#right-navbar > .nav-item:nth-child(1) > .nav-link", "css:finder"],
+        ["xpath=//ul[@id='right-navbar']/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/register')]", "xpath:href"],
+        ["xpath=//ul[2]/li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1a44cef6-e34e-4d89-9877-b6be78bb6eab",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1aaa19d1-bbdf-4de0-b9a5-7387f1f9e2c4",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "billybob"
+    }, {
+      "id": "15255ed6-0a67-40bd-a298-d8a160360f80",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "billybob@internets.net"
+    }, {
+      "id": "7d678650-ff34-47ac-9de3-75ae47f5e278",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "password"
+    }, {
+      "id": "e2e96f14-46f2-4941-92a9-eda48ff2f91a",
+      "comment": "",
+      "command": "type",
+      "target": "id=password_repeat",
+      "targets": [
+        ["id=password_repeat", "id"],
+        ["name=password_repeat", "name"],
+        ["css=#password_repeat", "css:finder"],
+        ["xpath=//input[@id='password_repeat']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "passwords"
+    }, {
+      "id": "da1246e5-0293-4284-b2a9-d62afc49155e",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=password_repeat",
+      "targets": [
+        ["id=password_repeat", "id"],
+        ["name=password_repeat", "name"],
+        ["css=#password_repeat", "css:finder"],
+        ["xpath=//input[@id='password_repeat']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "104dd5af-ba6c-4b6f-8dde-90912b43eaf0",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.wrong",
+      "targets": [
+        ["css=.wrong", "css:finder"],
+        ["xpath=//div[4]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'[Field must be equal to password.]')]", "xpath:innerText"]
+      ],
+      "value": "[Field must be equal to password.]"
+    }, {
+      "id": "afc84ba8-f542-4281-8efe-bbc7a494c93f",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1f9489e4-8375-418c-8c0a-6a216a16f141",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "password"
+    }, {
+      "id": "13cf16f3-9113-4e9c-bbcb-d215bf4262fa",
+      "comment": "",
+      "command": "type",
+      "target": "id=password_repeat",
+      "targets": [
+        ["id=password_repeat", "id"],
+        ["name=password_repeat", "name"],
+        ["css=#password_repeat", "css:finder"],
+        ["xpath=//input[@id='password_repeat']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "password"
+    }, {
+      "id": "c47c716b-e58c-4550-860b-29c640938dcf",
+      "comment": "",
+      "command": "click",
+      "target": "id=submit",
+      "targets": [
+        ["id=submit", "id"],
+        ["name=submit", "name"],
+        ["css=#submit", "css:finder"],
+        ["xpath=//input[@id='submit']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2e979662-903d-4bca-959a-2620b589d920",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "80fd7c68-f89e-4ce2-9e0d-b2b4d790dfac",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "billybob"
+    }, {
+      "id": "80b8df57-c9de-469f-9ded-2338a599605e",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "password"
+    }, {
+      "id": "22c02b94-4774-4073-b127-d34329f1cc53",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=ul:nth-child(3) > li",
+      "targets": [
+        ["css=ul:nth-child(3) > li", "css:finder"],
+        ["xpath=//body/ul/li", "xpath:position"],
+        ["xpath=//li[contains(.,'Congratulations, you are now a registered user!')]", "xpath:innerText"]
+      ],
+      "value": "Congratulations, you are now a registered user!"
+    }]
+  }, {
+    "id": "b32530e5-f808-4ad9-b0ad-d6820eb17392",
+    "name": "quiz-viewPastAttempt",
+    "commands": [{
+      "id": "091cadae-a85a-4fac-8c71-0e86e3d85a4f",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:5000/index",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e26d817e-350f-4820-a5ba-fbd2db94cd93",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1080",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a4e5596d-40fe-4f25-80e4-74693d687331",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(3) > .nav-link",
+      "targets": [
+        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=//ul[@id='left-navbar']/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/quiz')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "64065d4c-60a3-4091-ad58-a69459347103",
+      "comment": "",
+      "command": "click",
+      "target": "id=start",
+      "targets": [
+        ["id=start", "id"],
+        ["css=#start", "css:finder"],
+        ["xpath=//button[@id='start']", "xpath:attributes"],
+        ["xpath=//div[@id='quizIntro']/button", "xpath:idRelative"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Start Quiz')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "63f09db7-5500-46b0-b3e9-37db9fe0eb30",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//td/input",
+      "targets": [
+        ["id=What node is the parent of E?-0", "id"],
+        ["name=What node is the parent of E?", "name"],
+        ["css=#What\\ node\\ is\\ the\\ parent\\ of\\ E\\?-0", "css:finder"],
+        ["xpath=//input[@id='What node is the parent of E?-0']", "xpath:attributes"],
+        ["xpath=//td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1633eb41-c3ee-4397-9f5e-5294bbd0d4bd",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=.quiz-table:nth-child(3) tr:nth-child(2) label",
+      "targets": [],
+      "value": "response1"
+    }, {
+      "id": "2ea65d57-115a-42f6-8947-7ab190ae2b88",
+      "comment": "",
+      "command": "click",
+      "target": "id=navbut2",
+      "targets": [
+        ["id=navbut2", "id"],
+        ["css=#navbut2", "css:finder"],
+        ["xpath=//button[@id='navbut2']", "xpath:attributes"],
+        ["xpath=//div[@id='quiz-sub-menu']/div/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'2')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e72f1cc3-ca41-4882-9628-71e43fb242b4",
+      "comment": "",
+      "command": "echo",
+      "target": "${response1}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "203b5e2b-d669-46aa-9851-088e66785c68",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//table[2]/tbody/tr[3]/td/input",
+      "targets": [
+        ["id=If vertex A has no neighbours, then it is ____-1", "id"],
+        ["css=#If\\ vertex\\ A\\ has\\ no\\ neighbours\\,\\ then\\ it\\ is\\ ____-1", "css:finder"],
+        ["xpath=//input[@id='If vertex A has no neighbours, then it is ____-1']", "xpath:attributes"],
+        ["xpath=//table[@id='table1']/tbody/tr[3]/td/input", "xpath:idRelative"],
+        ["xpath=//table[2]/tbody/tr[3]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "648308fe-69c1-45a1-ab0e-278d1975f5b9",
+      "comment": "",
+      "command": "click",
+      "target": "id=navbut3",
+      "targets": [
+        ["id=navbut3", "id"],
+        ["css=#navbut3", "css:finder"],
+        ["xpath=//button[@id='navbut3']", "xpath:attributes"],
+        ["xpath=//div[@id='quiz-sub-menu']/div/button[3]", "xpath:idRelative"],
+        ["xpath=//button[3]", "xpath:position"],
+        ["xpath=//button[contains(.,'3')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cd09f029-6885-473b-9c60-7125e22b7bec",
+      "comment": "",
+      "command": "",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cbd29d85-cf71-4a3e-be68-cd7c22b38172",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//table[3]/tbody/tr[4]/td/input",
+      "targets": [
+        ["id=How many of these graphs have a cycle?-2", "id"],
+        ["css=#How\\ many\\ of\\ these\\ graphs\\ have\\ a\\ cycle\\?-2", "css:finder"],
+        ["xpath=//input[@id='How many of these graphs have a cycle?-2']", "xpath:attributes"],
+        ["xpath=//table[@id='table2']/tbody/tr[4]/td/input", "xpath:idRelative"],
+        ["xpath=//table[3]/tbody/tr[4]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ac9e5ec2-8899-417b-a605-c61fdb203f44",
+      "comment": "",
+      "command": "click",
+      "target": "id=navbut4",
+      "targets": [
+        ["id=navbut4", "id"],
+        ["css=#navbut4", "css:finder"],
+        ["xpath=//button[@id='navbut4']", "xpath:attributes"],
+        ["xpath=//div[@id='quiz-sub-menu']/div/button[4]", "xpath:idRelative"],
+        ["xpath=//button[4]", "xpath:position"],
+        ["xpath=//button[contains(.,'4')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "76584338-f100-4c00-8354-7e57c0649cbd",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//table[4]/tbody/tr[5]/td/input",
+      "targets": [
+        ["id=The maximum and minimum number of nodes in a binary tree of height 5 are ____-3", "id"],
+        ["css=#The\\ maximum\\ and\\ minimum\\ number\\ of\\ nodes\\ in\\ a\\ binary\\ tree\\ of\\ height\\ 5\\ are\\ ____-3", "css:finder"],
+        ["xpath=//input[@id='The maximum and minimum number of nodes in a binary tree of height 5 are ____-3']", "xpath:attributes"],
+        ["xpath=//table[@id='table3']/tbody/tr[5]/td/input", "xpath:idRelative"],
+        ["xpath=//table[4]/tbody/tr[5]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c3fa384b-481a-4c16-9465-f1eb46574d88",
+      "comment": "",
+      "command": "click",
+      "target": "id=navbut5",
+      "targets": [
+        ["id=navbut5", "id"],
+        ["css=#navbut5", "css:finder"],
+        ["xpath=//button[@id='navbut5']", "xpath:attributes"],
+        ["xpath=//div[@id='quiz-sub-menu']/div/button[5]", "xpath:idRelative"],
+        ["xpath=//button[5]", "xpath:position"],
+        ["xpath=//button[contains(.,'5')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "765c07a7-5f89-409c-a736-a0701cb699a1",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//table[5]/tbody/tr[2]/td/input",
+      "targets": [
+        ["id=If we simplify the map of a town into a graph containing only the locations and streets, the locations would be the ____ of the graph-0", "id"],
+        ["name=If we simplify the map of a town into a graph containing only the locations and streets, the locations would be the ____ of the graph", "name"],
+        ["css=#If\\ we\\ simplify\\ the\\ map\\ of\\ a\\ town\\ into\\ a\\ graph\\ containing\\ only\\ the\\ locations\\ and\\ streets\\,\\ the\\ locations\\ would\\ be\\ the\\ ____\\ of\\ the\\ graph-0", "css:finder"],
+        ["xpath=//input[@id='If we simplify the map of a town into a graph containing only the locations and streets, the locations would be the ____ of the graph-0']", "xpath:attributes"],
+        ["xpath=//table[@id='table4']/tbody/tr[2]/td/input", "xpath:idRelative"],
+        ["xpath=//table[5]/tbody/tr[2]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ada85448-d640-4adc-8b3e-0c0eae253e0c",
+      "comment": "",
+      "command": "click",
+      "target": "id=submit",
+      "targets": [
+        ["id=submit", "id"],
+        ["name=submit", "name"],
+        ["css=#submit", "css:finder"],
+        ["xpath=//input[@id='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='quiz-sub-menu']/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d759204c-8c75-41be-aac3-7611d101eaf7",
+      "comment": "",
+      "command": "storeText",
+      "target": "id=final-score-table-score",
+      "targets": [
+        ["id=final-score-table-score", "id"],
+        ["css=#final-score-table-score", "css:finder"],
+        ["xpath=//td[@id='final-score-table-score']", "xpath:attributes"],
+        ["xpath=//tr[@id='final-score-table-score-row']/td", "xpath:idRelative"],
+        ["xpath=//div[2]/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'20%')]", "xpath:innerText"]
+      ],
+      "value": "scoreResult"
+    }, {
+      "id": "37ef7b33-f00e-4daa-ad2c-d07919615988",
+      "comment": "",
+      "command": "echo",
+      "target": "scoreResult = ${scoreResult}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "57b666aa-b644-4243-af3d-78ef3c7f4e03",
+      "comment": "",
+      "command": "click",
+      "target": "css=#right-navbar > .nav-item:nth-child(1) > .nav-link",
+      "targets": [
+        ["css=#right-navbar > .nav-item:nth-child(1) > .nav-link", "css:finder"],
+        ["xpath=//ul[@id='right-navbar']/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/user_profile/michael')]", "xpath:href"],
+        ["xpath=//ul[2]/li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "95a92fe8-7f23-4f87-982e-8baca1b5795e",
+      "comment": "",
+      "command": "storeText",
+      "target": "xpath=//div[2]/table/tbody/tr/td",
+      "targets": [
+        ["id=final-score-table-score", "id"],
+        ["css=#final-score-table-score", "css:finder"],
+        ["xpath=//td[@id='final-score-table-score']", "xpath:attributes"],
+        ["xpath=//tr[@id='final-score-table-score-row']/td", "xpath:idRelative"],
+        ["xpath=//div[2]/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'20%')]", "xpath:innerText"]
+      ],
+      "value": "scoreAnswer"
+    }, {
+      "id": "fa2a81e8-4925-439e-b0c6-28335a7609ab",
+      "comment": "",
+      "command": "echo",
+      "target": "scoreAnswer = ${scoreAnswer}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f9e8ea4b-27ff-405b-b0a0-0aeaf81c4bd6",
+      "comment": "",
+      "command": "if",
+      "target": "${scoreResult} == ${scoreAnswer}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "37a430ca-4de6-4d83-956c-2ccda7def994",
+      "comment": "",
+      "command": "echo",
+      "target": "Score Correct",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fe6a25ab-c704-430f-a0e0-2dfad82ffd79",
+      "comment": "",
+      "command": "else",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5166b365-4d26-46bd-9b11-ebf03a3c50bf",
+      "comment": "",
+      "command": "echo",
+      "target": "Score Incorrect",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bb484752-a68f-42d3-9629-0d5d1c3c47ea",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "b687f726-cf84-4800-b670-5de7405ddbd5",
+    "name": "signin - withErrors",
+    "commands": [{
+      "id": "74b2169a-22c1-4eed-bad0-ffefb562203c",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:5000/index",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8ee717f9-e1de-4775-ba4f-682876804714",
+      "comment": "",
+      "command": "click",
+      "target": "css=#right-navbar > .nav-item:nth-child(2) > .nav-link",
+      "targets": [
+        ["css=#right-navbar > .nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//ul[@id='right-navbar']/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/login')]", "xpath:href"],
+        ["xpath=//ul[2]/li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "45203447-07bf-4167-8399-58cd307d56c4",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5fddbd77-1f06-4378-b424-3ec1b9b41af6",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "miguel"
+    }, {
+      "id": "c11e0943-ffb8-4222-bf4a-123e747a79ff",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "password"
+    }, {
+      "id": "d6969ff5-fbe1-4ac0-87c4-e13d87a21146",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "57ab198b-2056-42f5-ab78-198482e4f279",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b9aadc27-e7f3-48fc-a46f-18aaaa7515c9",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "michael"
+    }, {
+      "id": "327102d5-d16f-45f8-bc38-c2c1131e9723",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "password"
+    }, {
+      "id": "9357c2d7-5a09-4e75-825c-089f0984549c",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "401580da-0e6f-48ae-af6c-b4db23e97ecc",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7381ed63-6c67-44a0-826d-0e28555fc9c8",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "michael"
+    }, {
+      "id": "92b796ce-542f-40c3-9fea-a5601accddce",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "admin"
+    }, {
+      "id": "f1c451d1-05ce-41bd-8819-68b4b3307a85",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "e20e9334-24ca-46ff-b76e-c3737ad207e8",
+      "comment": "",
+      "command": "click",
+      "target": "css=#right-navbar > .nav-item:nth-child(1) > .nav-link",
+      "targets": [
+        ["css=#right-navbar > .nav-item:nth-child(1) > .nav-link", "css:finder"],
+        ["xpath=//ul[@id='right-navbar']/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/user_profile/michael')]", "xpath:href"],
+        ["xpath=//ul[2]/li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "88871d1e-37ef-477c-b920-9628f9b4e5c5",
+      "comment": "",
+      "command": "verifyText",
+      "target": "id=profile-heading",
+      "targets": [
+        ["id=profile-heading", "id"],
+        ["css=#profile-heading", "css:finder"],
+        ["xpath=//h1[@id='profile-heading']", "xpath:attributes"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'michael')]", "xpath:innerText"]
+      ],
+      "value": "michael"
+    }]
+  }],
+  "suites": [{
+    "id": "be67be2a-e9c4-45e6-ab98-73ee1e5b2da8",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://127.0.0.1:5000/", "http://127.0.0.1:5000/index"],
+  "plugins": []
+}
