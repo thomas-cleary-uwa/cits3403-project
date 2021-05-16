@@ -22,13 +22,13 @@
             <div class="col-sm-12 d-flex justify-content-center mb-5 p-5">
                 {% if current_user.is_authenticated %}
                 <button class="btn btn-primary btn-lg shadow-none"
-                onclick=getStarted()>
+                onclick=sendToContent()>
                 Start Learning
                 </button>
                 {% else %}
                 <button 
-                class="btn btn-primary btn-block shadow-none"
-                onclick=getStarted()>
+                class="btn btn-primary btn-lg shadow-none"
+                onclick=sendToRegister()>
                 Get Started
                 </button>
                 {% endif %}
@@ -190,8 +190,11 @@
 
         
     <script>
-        function getStarted() {
+        function sendToRegister() {
             window.location.href="{{ url_for('register') }}";
+        }
+        function sendToContent() {
+            window.location.href="{{ url_for('content') }}";
         }
 
     </script>

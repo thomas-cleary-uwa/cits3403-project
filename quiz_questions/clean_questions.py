@@ -1,3 +1,5 @@
+""" this script extracts the necessary stuff out of calvins questions csv file..."""
+
 import csv
 
 INFILE = "./quiz_questions/quiz_questions.csv"

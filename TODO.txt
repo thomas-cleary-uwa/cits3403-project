@@ -1,9 +1,9 @@
 Sunday:
 Tom
 1. Externalise CSS - Done
-2. Add styling to admin pages
-2.b add classes to calvins page
-2.c add proper links to calvins index button
+2. Add styling to admin pages - Done
+2.b add classes to calvins page - Done
+2.c add proper links to jasons index button
 2.d add correct info to profile
 3. Write README.md
 4. Externalise javascript from html files
