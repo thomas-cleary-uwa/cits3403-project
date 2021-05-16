@@ -25,9 +25,9 @@ from app.route_helpers import (
 def index():
     """ index page route """
     if current_user.is_authenticated and current_user.is_admin:
-            return render_template('admin_pages/admin_index.html', title="Admin")
+        return render_template('admin_pages/admin_index.html', title="Admin")
 
-    return render_template('index.html', title="Home")
+    return render_template('user_pages/index.html', title="Home")
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -69,7 +69,7 @@ def logout():
 
 @app.route('/content') 
 def content():
-    return render_template('content.html', title='Learn')
+    return render_template('user_pages/content.html', title='Learn')
 
 
 ###############################################################################
@@ -92,7 +92,7 @@ def user(username):
     attempts, this_users_stats = user_data
 
     return render_template(
-        'user_profile.html',
+        'user_pages/user_profile.html',
         user=this_user,
         user_stats=this_users_stats,
         attempts=attempts,
@@ -106,7 +106,7 @@ def quiz():
     """ quiz start/resume route """
     route_helpers.update_random_seed()
 
-    return render_template('quizLanding.html', title="Quiz")
+    return render_template('user_pages/quizLanding.html', title="Quiz")
 
 
 @app.route('/quiz_questions/', methods=['GET','POST'])
@@ -119,7 +119,7 @@ def quiz_questions():
         # returned a redirect object
         return return_obj
 
-    return render_template('quizQuestions.html',form=return_obj, title="Quiz")
+    return render_template('user_pages/quizQuestions.html',form=return_obj, title="Quiz")
 
 
 @app.route('/result/<score>/<attempt_id>')
@@ -133,7 +133,7 @@ def result(score, attempt_id):
     attempt_data, num_questions = result_helpers.get_result_data(attempt_id)
 
     return render_template(
-        'result.html',
+        'user_pages/result.html',
         outcome=score,
         attempt=attempt_data,
         num_questions=num_questions,

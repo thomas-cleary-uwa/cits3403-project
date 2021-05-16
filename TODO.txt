@@ -1,8 +1,11 @@
 Sunday:
 Tom
-1. Externalise CSS
-2. Write Setup Part of Read Me
-3. Finish admin pages
+1. Externalise CSS - Done
+2. Add styling to admin pages
+3. Write README.md
+4. Externalise javascript from html files
+5. Client side validation for register
+
 
 Michael
 1. Try Write Tests
@@ -12,8 +15,8 @@ Calvin
 2. Write development process for readme
 
 Jason
-1. Finish index page
-2. Login and register same heading and button styles
+1. Finish index page - Done
+2. Login and register same heading and button styles - Done
 3. start client side validation for register page
 
 Monday:
@@ -21,5 +24,3 @@ HTML Validation
 Add javascript and Externalise
 Do more dom manipulation
 Look for javascript things to do for marks
-Look at ajax?
-
