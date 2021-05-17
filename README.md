@@ -93,7 +93,22 @@ The site is a Flask app that uses several extensions to provide further function
 <br><br>
 
 ## Running Tests
-MICHAEL ADD STUFF HERE
+Testing was conducted using Selenium IDE and unittest/Selenium. The Selenium IDE was found to be superior due its recording capabilities and its more flexible way of automatically generating multiple options for referring to specific web content independent of any programming language. In contrast, unittest suffered from different implemenations across different programming languages which made it harder to use online forums to solve problems caused by errors. Consequently,  for this project more comprehensive testing was achieved using the Selenium IDE.
+
+Both a saved Selenium file (ezTreez.side) and a unittest file (test.py) have been included in the testing folder. Instructions for running the tests from are as follows:
+
+Both tests:
+ - delete (if any) pre-existing app.db and migrations folder
+ - run setup/create_test_database.py
+
+    Running unittest/Selenium:
+    - run testint/test.py
+
+    Running Selenium IDE:
+    - install and setup Selenium IDE based on your browser (supplied code assumes latest Chrome)
+    - load test/ezTrees.side into the Selenium addon
+    - click run all tests button
+    - note: browser maximisation / user login may be required based on previous web page loads
 <br><br>
 
 
