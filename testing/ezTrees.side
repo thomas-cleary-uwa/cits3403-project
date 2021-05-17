@@ -1259,28 +1259,27 @@
       "targets": [],
       "value": ""
     }, {
+      "id": "c6ec8793-bea5-4e8b-b3bb-8310f22a832d",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//a[contains(@href, '/logout')]",
+      "targets": [
+        ["css=#right-navbar > .nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//ul[@id='right-navbar']/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/logout')]", "xpath:href"],
+        ["xpath=//ul[2]/li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
       "id": "8ee717f9-e1de-4775-ba4f-682876804714",
       "comment": "",
       "command": "click",
-      "target": "css=#right-navbar > .nav-item:nth-child(2) > .nav-link",
+      "target": "xpath=//a[contains(@href, '/login')]",
       "targets": [
         ["css=#right-navbar > .nav-item:nth-child(2) > .nav-link", "css:finder"],
         ["xpath=//ul[@id='right-navbar']/li[2]/a", "xpath:idRelative"],
         ["xpath=//a[contains(@href, '/login')]", "xpath:href"],
         ["xpath=//ul[2]/li[2]/a", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "45203447-07bf-4167-8399-58cd307d56c4",
-      "comment": "",
-      "command": "click",
-      "target": "id=username",
-      "targets": [
-        ["id=username", "id"],
-        ["name=username", "name"],
-        ["css=#username", "css:finder"],
-        ["xpath=//input[@id='username']", "xpath:attributes"],
-        ["xpath=//div/input", "xpath:position"]
       ],
       "value": ""
     }, {
