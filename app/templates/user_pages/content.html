@@ -32,8 +32,8 @@
                 <h1 class="page-heading">Introduction to Graph Theory</h1>
 
                 <div class="content-section">
-                <p class="page-text">In one way or another, everything in our lives is connected. Whether it be the branches of a tree, the roads we drive on, the way our blood flows throughout our body, down to the very bonds that keep the atoms that make up our universe together. These connections or networks are often complex and are required to be analysed.</p>
-                <p class="page-text">Graph theory is a way to represent these connections or networks. A graph (not to be mistaken with a graph of a function) consists of objects called nodes or vertices connected by lines that are called edges. An easy example is that we will focus on is a map of a town. A simple example is shown below</p>
+                <p class="page-text">In one way or another, everything in our lives is connected. Whether it be the branches of a tree, the roads we drive on, the way our blood flows through our bodies, down to the very bonds hold together the atoms that make up our universe. These connections or networks, are often complex and are required to be analysed.</p>
+                <p class="page-text">Graph theory is a way to represent these connections or networks. A graph (not to be mistaken with a graph of a function) consists of objects called nodes or vertices connected by lines that are called edges. An easy example that we will focus on is a map of a town. A simple example is shown below</p>
                 <img class="content-image" src="../static/images/basic.png" alt="Basic Graph">
                 <p class="page-text">Where each letter represents the name of a house in the town and each line represents the roads to get to each house.</p>
                 </div>
@@ -46,22 +46,22 @@
                 <h1 class="page-heading">Graphs</h1>
                 <p class="page-text">The objects that make up a network are represented in the graph by nodes or vertices normally in the shape of circles. If a node is connected to another node, it is adjacent to that node and we can also say that those two nodes are neighbours.
                 <img class="content-image" src="../static/images/basic.png" alt="Basic Graph">
-                <p class="page-text">In the town example shown above, the houses in the town are represented by nodes and we can say that house “A” and house “B” are adjacent to each other as they are connected by a line, therefore they are also neighbours. We can also say the same thing for every pair of houses connected by a line.</p>                
+                <p class="page-text">In the town example shown above, the houses in the town are represented by nodes and we can say that house “A” and house “B” are adjacent to each other as they are connected by a line. Therefore they are also neighbours, as is the case for every other pair of houses connected by a line.</p>                
                 </div>
 
                 <div class="content-section">
                 <h1 class="page-subheading">Edges/Arcs</h1>
-                <p class="page-text">Any link between any two objects is called an edge or arc. In the town example, the road or streets connecting the houses are represented by edges shown by the lines in the graph. We tend to name the edges by the nodes that they connect, for example, the edge connecting node A and node B would be called edge AB. Note that edges can only ever connect 2 nodes at a time and no more.</p>
+                <p class="page-text">A link between any two objects is called an edge or arc. In the town example, the road or streets connecting the houses are represented by edges shown by the lines in the graph. We tend to name the edges by the nodes that they connect, for example, the edge connecting node A and node B would be called edge AB. Note that edges can only ever connect at most 2 nodes at once.</p>
                 </div>
 
                 <div class="content-section">
                 <h1 class="page-subheading">Paths</h1>
-                <p class="page-text">Paths are a sequence or order of nodes that we pass through to get to a certain node. For example, if I wanted to get to node C from node A, I would have to go from A to B to C, so the path would be A > B > C. If there is no possible path to a node or it is not connected to any other node, then the node is called isolated. House “E” in the town is an example of an isolated node.</p>
+                <p class="page-text">Paths are a sequence or order of nodes that we pass through to get to a certain node. For example, if I wanted to get to node C from node A, I would have to go from A to B to C, so the path would be A -> B -> C. If there is no possible path to a node or it is not connected to any other node, then the node is called isolated. House “E” in the town is an example of an isolated node.</p>
                 </div>
 
                 <div class="content-section">
                 <h1 class="page-subheading">Connected Graphs</h1>
-                <p class="page-text">Connected graphs are graphs where all nodes are connected to at least one other node or there are no isolated nodes in a connected graph. In order words, there is at least one possible path to get from one node to another meaning a connected graph has at least n - 1 amounts of edges where n represents the number of nodes in the graph. Any graph that is not connected is called a disconnected graph. Looking at the previous graph, we can see it is an example of a disconnected graph as node E is an isolated node. The following graph is an example of a connected graph:</p>
+                <p class="page-text">Connected graphs are graphs where all nodes are connected to at least one other node (the graph contains no isolated nodes). In order words, there is a path between all possible pairs of nodes. This means a connected graph has at least n-1 edges, where n represents the number of nodes in the graph. Any graph that is not connected is called a disconnected graph. Looking at the previous graph, we can see it is an example of a disconnected graph as node E is an isolated node. The following graph is an example of a connected graph:</p>
                 <img class="content-image" src="../static/images/connected_graph.png" alt="Basic Graph">
                 </div>
 
