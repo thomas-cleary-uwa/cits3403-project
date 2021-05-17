@@ -1,44 +1,46 @@
 {% extends "base_content.html" %}
 
-
 {% block inContainer %}
 
 <form method="POST">
   {{ form.hidden_tag() }}
 
   <div>
-
     <div>
       <p id="quizTitle" class="page-heading">ezTrees Quiz</p>
       <br>
       {% for field in form %}
-        {% if field.type in ['RadioField'] %}
-              
-          <table class="quiz-table">
+      {% if field.type in ['RadioField'] %}
 
-              <!--Question-->
-              <tr><td>
-                <p class="quiz-question page-subheading">{{ field.label }}</p><!--Question sentence-->
-                {% for error in field.errors %}
-                <span class="error-span">{{ error }}</span> <!--error message (answer not entered)-->
-                {% endfor %}
-              </td></tr>
+      <table class="quiz-table">
 
-              <!--Response Options-->
-              {% for subfield in field %}
-                <tr><td class ="response-choices page-text">
-                    {{ subfield }} {{ subfield.label }} <!--subfield=radiofield; label=answerchoice-->
-                </td></tr>
-              {% endfor %}
+        <!--Question-->
+        <tr>
+          <td>
+            <p class="quiz-question page-subheading">{{ field.label }}</p>
+            <!--Question sentence-->
+            {% for error in field.errors %}
+            <span class="error-span">{{ error }}</span> <!--error message (answer not entered)-->
+            {% endfor %}
+          </td>
+        </tr>
 
-          </table>
-
-        {% endif %}
+        <!--Response Options-->
+        {% for subfield in field %}
+        <tr>
+          <td class ="response-choices page-text">
+            {{ subfield }} {{ subfield.label }} <!--subfield=radiofield; label=answerchoice-->
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %}
       {% endfor %}
     </div>
 
     <!--sub questions navigation menu-->
     <div id="quiz-sub-menu">
+
       <!--pagination-->
       <div class="btn-group">
         <button type="button" class="btn btn-primary btn-lg shadow-none q-num-btn" id="navbut1" onclick="showtable(1)">1</button>
@@ -46,34 +48,36 @@
         <button type="button" class="btn btn-primary btn-lg shadow-none q-num-btn" id="navbut3" onclick="showtable(3)">3</button>
         <button type="button" class="btn btn-primary btn-lg shadow-none q-num-btn" id="navbut4" onclick="showtable(4)">4</button>
         <button type="button" class="btn btn-primary btn-lg shadow-none q-num-btn" id="navbut5" onclick="showtable(5)">5</button>
-      </div> 
+      </div>
       <br>
       <br>
-        <!--submit & save buttons-->
+
+      <!--submit & save buttons-->
       {% for field in form %}
-        {% if field.type in ['SubmitField'] %}
-          <tr><td>
-            {{ field(class_="btn btn-primary btn-lg shadow-none") }}
-          </td></tr>
-        {% endif %}
+      {% if field.type in ['SubmitField'] %}
+      <tr>
+        <td>
+          {{ field(class_="btn btn-primary btn-lg shadow-none") }}
+        </td>
+      </tr>
+      {% endif %}
       {% endfor %}
       <br>
       <p id="incomplete-error-msg"></p>
-    </div>
 
+    </div>
   </div>
 </form>
-
 
 <script>
   showtable(1);
   checkComplete();
-
+  
   // insert id attributes into tables 1-5
   for (i=1; i<6; i++) {
     document.getElementsByTagName("table")[i].setAttribute("id", ("table" + i));
   }
-
+  
   // check for an unfilled answer on submission, and show error message
   function checkComplete(){
     x = document.getElementsByClassName("error-span");
@@ -84,7 +88,7 @@
       }
     }
   }
-
+  
   // show the selected table and hide others
   function showtable(table){
     x = document.getElementsByTagName("table");
@@ -96,9 +100,7 @@
     }
     x[(table-1)].style.display = "block";
   }
-
+  
 </script>
 
-
 {% endblock %}
-
