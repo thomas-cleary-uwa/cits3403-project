@@ -1,9 +1,9 @@
 {% extends "base_content.html" %}
 
-
 {% block inContainer %}
 
 <div>
+
   <h1 class="page-heading">Final Result</h1>
 
   <div>
@@ -27,15 +27,14 @@
         </td>
         <td class="page-text">
           <span class="material-icons md-48 {% if attempt[question]['mark'] %} correct {% else %} wrong {% endif %}">
-            {% if attempt[question]["mark"] %}
-            check
-            {% else %}
-            clear
-            {% endif %}
+          {% if attempt[question]["mark"] %}
+          check
+          {% else %}
+          clear
+          {% endif %}
           </span>
         </td>
       </tr>
-  
       {% endfor %}
     </table>
   </div>
@@ -55,15 +54,15 @@
 
   <div>
     <button 
-    class="btn btn-primary btn-lg btn-block shadow-none" 
-    id="result-button" 
-    onclick="sendToPage( {{ url_for('quiz_questions') }} )"
-    >
-      {% if current_user.has_saved_attempt %}
-      Resume Attempt
-      {% else %}
-      Try Again
-      {% endif %}
+      class="btn btn-primary btn-lg btn-block shadow-none" 
+      id="result-button" 
+      onclick="sendToPage( {{ url_for('quiz_questions') }} )"
+      >
+    {% if current_user.has_saved_attempt %}
+    Resume Attempt
+    {% else %}
+    Try Again
+    {% endif %}
     </button>
   </div>
 </div>
