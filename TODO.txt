@@ -6,7 +6,7 @@ MONDAY:
 
 3. Add testing discussion to readme
 
-4. Add more quiz questions
+4. Add more quiz questions - DONE
 
 5. Final git-log update
 
