@@ -76,7 +76,7 @@
   margin-right: auto;
 }
 
-.table-results thead, .second-heading {
+.table-results thead {
   background-color: rgba(86, 181, 42, 0.356);
 }
 
@@ -144,6 +144,11 @@ body {
 .form-link {
   color: rgba(128, 105, 79, 0.6);
   text-decoration: underline;
+}
+
+.important-text {
+  font-weight: bold;
+  color: rgb(138, 78, 0);
 }
 
 /* -- Quiz questions page -- */
