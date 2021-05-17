@@ -4,7 +4,7 @@
 Thomas Cleary    - 21704985<br>
 Michael LASTNAME - 22737938<br>
 Jason LASTNAME   - 22732794<br>
-Calvin LASTNAME  - 22509815<br>
+Calvin Nguyen    - 22509815<br>
 <br>
 
 ## Purpose and Context

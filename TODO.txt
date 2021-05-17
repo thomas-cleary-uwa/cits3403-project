@@ -1,6 +1,6 @@
 MONDAY:
 
-1. Validate HTML pages
+1. Validate HTML pages - DONE
 
 2. Get tests off Michael
 
