@@ -76,7 +76,7 @@
   margin-right: auto;
 }
 
-.table-results thead {
+.table-results thead, .second-heading {
   background-color: rgba(86, 181, 42, 0.356);
 }
 
