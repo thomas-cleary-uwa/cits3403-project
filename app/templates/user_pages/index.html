@@ -1,207 +1,190 @@
 {% extends "base.html" %}
 
 {% block content %}
-    
-    <div class="container-fluid">
 
-        <div class="row my-5 p-1">
-            <div class="col-sm-12">
-                <p class="page-heading">It's time to learn graph structures the easier way</p>
-            </div>
-        </div>
+<div class="container-fluid">
+  <div class="row my-5 p-1">
+    <div class="col-sm-12">
+      <p class="page-heading">It's time to learn graph structures the easier way</p>
+    </div>
+  </div>
 
-        <div class="row my-5">
-            <div class="col-sm-12 my-5">
-                <p class="center-text page-subheading">ezTrees is the best platform for you to learn about graph structures,
-                    understand common graph theory problems with real life examples
-                </p>
-            </div>
-        </div>
+  <div class="row my-5">
+    <div class="col-sm-12 my-5">
+      <p class="center-text page-subheading">ezTrees is the best platform for you to learn about graph structures,
+        understand common graph theory problems with real life examples
+      </p>
+    </div>
+  </div>
 
-        <div class="row my-5">
-            <div class="col-sm-12 d-flex justify-content-center mb-5 p-5">
-                {% if current_user.is_authenticated %}
-                <button class="btn btn-primary btn-lg shadow-none"
-                onclick=sendToContent()>
-                Start Learning
-                </button>
-                {% else %}
-                <button 
-                class="btn btn-primary btn-lg shadow-none"
-                onclick=sendToRegister()>
-                Get Started
-                </button>
-                {% endif %}
-            </div>
-        </div>
+  <div class="row my-5">
+    <div class="col-sm-12 d-flex justify-content-center mb-5 p-5">
+      {% if current_user.is_authenticated %}
+      <button class="btn btn-primary btn-lg shadow-none"
+        onclick=sendToContent()>
+      Start Learning
+      </button>
+      {% else %}
+      <button 
+        class="btn btn-primary btn-lg shadow-none"
+        onclick=sendToRegister()>
+      Get Started
+      </button>
+      {% endif %}
+    </div>
+  </div>
 
+</div>
+
+<br>
+
+<div class="container-fluid" id="index-panel-2">
+
+  <div class="row my-5">
+    <div class="col-sm-3 d-flex align-items-center justify-content-center my-4">
+      <img src="{{ url_for('static', filename='images/one.png') }}" height="150" width="150" alt="one">
     </div>
 
-    <br>
-
-    <div class="container-fluid" id="index-panel-2">
-        
-        <div class="row my-5">
-            <div class="col-sm-3 d-flex align-items-center justify-content-center my-4">
-                <img src="{{ url_for('static', filename='images/one.png') }}" height="150" width="150" alt="one">
-            </div>
-            <div class="col-sm-3 d-flex align-items-center justify-content-center my-4">
-                <img src="{{ url_for('static', filename='images/learning.png') }}" height="200" width="200" alt="learning">
-            </div>
-            <div class="col-sm-6 my-5">
-                <p class="page-heading">
-                    Start Learning
-                </p>
-                <p class="page-subheading">Learn about graph theory from the best teachers and how graph theory
-                    are applied in real life!
-                </p>
-            </div>
-        </div>
-
-        <div class="row my-5">
-            <div class="col-sm-3 d-flex align-items-center justify-content-center my-4">
-                <img src="{{ url_for('static', filename='images/two.png') }}" height="150" width="150" alt="two">
-            </div>
-            <div class="col-sm-3 d-flex align-items-center justify-content-center my-4">
-                <img src="{{ url_for('static', filename='images/doing.png') }}" height="200" width="200" alt="doing">
-            </div>
-            <div class="col-sm-6 my-4">
-                <p class="page-heading">
-                    Learn by doing
-                </p>
-                <p class="page-subheading">No matter your experience level, you'll be learning and understanding
-                    in minutes!
-                </p>
-            </div>
-        </div>
-            
-        <div class="row mt-5">
-            <div class="col-sm-3 d-flex align-items-center justify-content-center my-4">
-                <img src="{{ url_for('static', filename='images/three.png') }}" height="150" width="150" alt="three">
-            </div>
-            <div class="col-sm-3 d-flex align-items-center justify-content-center my-4">
-                <img src="{{ url_for('static', filename='images/feedback.png') }}" height="200" width="200" alt="feedback">
-            </div>
-            <div class="col-sm-6 my-4">
-                <p class="page-heading">
-                    Get instant feedback
-                </p>
-                <p class="page-subheading">Your skills and knowledge are tested as soon as you submit it, so you
-                    always know if you're on the right track!
-                </p>
-            </div>
-        </div>
-
+    <div class="col-sm-3 d-flex align-items-center justify-content-center my-4">
+      <img src="{{ url_for('static', filename='images/learning.png') }}" height="200" width="200" alt="learning">
     </div>
 
-    
-
-    <div class="container-fluid" style= "
-    background: rgb(255,225,199);
-    background: radial-gradient(circle, rgba(255,225,199,1) 0%, rgba(148,187,233,1) 100%);">
-    
-        <div class="row p-5">
-            <div class="col-sm-12">
-                <p class="page-heading">What our users say about us</p>
-            </div>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-sm-10">
-
-                <div id="mycarousel" class="carousel slide" data-ride="carousel">
-
-                    <ol class="carousel-indicators">
-                        <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#mycarousel" data-slide-to="1"></li>
-                        <li data-target="#mycarousel" data-slide-to="2"></li>
-                    </ol>
-
-                    <div class="carousel-inner">
-        
-                        <div class="carousel-item active">
-                            <div class="d-flex justify-content-center my-4">
-                                <img src="{{ url_for('static', filename='images/portrait.jpg') }}" height="200" width="200" alt="Mark">
-                            </div>
-
-                            <div class="mb-5 p-5">
-                                <p class="page-heading">Mark</p>
-                                <p class="page-subheading center-text">Joining ezTrees course is one of the best decisions I have made in my life. Not only have I
-                                    gained in-depth knowledge but also enjoyed the friendly environment and ongoing support.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="carousel-item">
-                            <div class="d-flex justify-content-center my-4">
-                                <img src="{{ url_for('static', filename='images/portrait3.jpg') }}" height="200" width="200" alt="Elon">
-                            </div>
-
-                            <div class="mb-5 p-5">
-                                <p class="page-heading">Elon</p>
-                                <p class="page-subheading center-text">ezTress has helped me understand graph structures better and as a 
-                                    result I have aced my CITS2200 exam! I can not express how much gratitude I have for you guys!
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="carousel-item">
-                            <div class="d-flex justify-content-center my-4">
-                                <img src="{{ url_for('static', filename='images/portrait2.jpg') }}" height="200" width="200" alt="Brenda">
-                            </div>
-
-                            <div class="mb-5 p-5">
-                                <p class="page-heading">Brenda</p>
-                                <p class="page-subheading center-text">ezTrees offers a well structured course and quizzes to further
-                                    consolidate your understanding. With the help of ezTrees I'm able to utilise graph theory and help me
-                                    solve real life problems.
-                                </p>
-                            </div>
-                        </div>
-
-                        <a class="carousel-control-prev" href="#mycarousel" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        
+    <div class="col-sm-6 my-5">
+      <p class="page-heading">
+        Start Learning
+      </p>
+      <p class="page-subheading">Learn about graph theory from the best teachers and how graph theory
+        are applied in real life!
+      </p>
+    </div>
+  </div>
 
 
-
-
-
-
-
+  <div class="row my-5">
+    <div class="col-sm-3 d-flex align-items-center justify-content-center my-4">
+      <img src="{{ url_for('static', filename='images/two.png') }}" height="150" width="150" alt="two">
     </div>
 
+    <div class="col-sm-3 d-flex align-items-center justify-content-center my-4">
+      <img src="{{ url_for('static', filename='images/doing.png') }}" height="200" width="200" alt="doing">
+    </div>
+
+    <div class="col-sm-6 my-4">
+      <p class="page-heading">
+        Learn by doing
+      </p>
+      <p class="page-subheading">No matter your experience level, you'll be learning and understanding
+        in minutes!
+      </p>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-sm-3 d-flex align-items-center justify-content-center my-4">
+      <img src="{{ url_for('static', filename='images/three.png') }}" height="150" width="150" alt="three">
+    </div>
+
+    <div class="col-sm-3 d-flex align-items-center justify-content-center my-4">
+      <img src="{{ url_for('static', filename='images/feedback.png') }}" height="200" width="200" alt="feedback">
+    </div>
+
+    <div class="col-sm-6 my-4">
+      <p class="page-heading">
+        Get instant feedback
+      </p>
+      <p class="page-subheading">Your skills and knowledge are tested as soon as you submit it, so you
+        always know if you're on the right track!
+      </p>
+    </div>
+  </div>
+
+</div>
 
 
+<div class="container-fluid" style= "
+  background: rgb(255,225,199);
+  background: radial-gradient(circle, rgba(255,225,199,1) 0%, rgba(148,187,233,1) 100%);">
 
+  <div class="row p-5">
+    <div class="col-sm-12">
+      <p class="page-heading">What our users say about us</p>
+    </div>
+  </div>
 
+  <div class="row justify-content-center">
+    <div class="col-sm-10">
+      <div id="mycarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#mycarousel" data-slide-to="1"></li>
+          <li data-target="#mycarousel" data-slide-to="2"></li>
+        </ol>
 
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="d-flex justify-content-center my-4">
+              <img src="{{ url_for('static', filename='images/portrait.jpg') }}" height="200" width="200" alt="Mark">
+            </div>
 
-        
-    <script>
-        function sendToRegister() {
-            window.location.href="{{ url_for('register') }}";
-        }
-        function sendToContent() {
-            window.location.href="{{ url_for('content') }}";
-        }
+            <div class="mb-5 p-5">
+              <p class="page-heading">Mark</p>
+              <p class="page-subheading center-text">Joining ezTrees course is one of the best decisions I have made in my life. Not only have I
+                gained in-depth knowledge but also enjoyed the friendly environment and ongoing support.
+              </p>
+            </div>
+          </div>
 
-    </script>
+          <div class="carousel-item">
+            <div class="d-flex justify-content-center my-4">
+              <img src="{{ url_for('static', filename='images/portrait3.jpg') }}" height="200" width="200" alt="Elon">
+            </div>
 
+            <div class="mb-5 p-5">
+              <p class="page-heading">Elon</p>
+              <p class="page-subheading center-text">ezTress has helped me understand graph structures better and as a 
+                result I have aced my CITS2200 exam! I can not express how much gratitude I have for you guys!
+              </p>
+            </div>
+          </div>
 
+          <div class="carousel-item">
+            <div class="d-flex justify-content-center my-4">
+              <img src="{{ url_for('static', filename='images/portrait2.jpg') }}" height="200" width="200" alt="Brenda">
+            </div>
 
+            <div class="mb-5 p-5">
+              <p class="page-heading">Brenda</p>
+              <p class="page-subheading center-text">ezTrees offers a well structured course and quizzes to further
+                consolidate your understanding. With the help of ezTrees I'm able to utilise graph theory and help me
+                solve real life problems.
+              </p>
+            </div>
+          </div>
 
+          <a class="carousel-control-prev" href="#mycarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+          </a>
 
+          <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function sendToRegister() {
+      window.location.href="{{ url_for('register') }}";
+  }
+  function sendToContent() {
+      window.location.href="{{ url_for('content') }}";
+  }
+  
+</script>
 
 {% endblock %}
