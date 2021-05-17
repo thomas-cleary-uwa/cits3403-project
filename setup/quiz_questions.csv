@@ -15,4 +15,3 @@ If a tree has 4 nodes, what is the maximum number of leaf nodes it can have?,3,2
 What is the maximum amount of possible nodes in a binary tree of height 4?,15,16,5,8
 The maximum and minimum number of nodes in a binary tree of height 5 are ____,63 and 6,64 and 5,32 and 6,31 and 5
 If a node has a depth of 5, what is its level?,4,6,10,11
-iiiiiiiiiiiiiiiiiiii iiiiiiiiiiiiiiiiiii iiiiiiiiiiiiiiiiiiiiiiiiiiiiii iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii iiiiiiiiiiiiiii,correct,wrong,wrong,wrong
