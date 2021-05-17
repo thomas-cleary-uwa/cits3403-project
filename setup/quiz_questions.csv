@@ -1,18 +1,17 @@
 question,answer,wrong_1,wrong_2,wrong_3
 A vertex is a ____,point or object in a graph,line connecting two nodes in a graph,number assigned to an edge in a weighted graph,a loop
 "If we simplify the map of a town into a graph containing only the locations and streets, the locations would be the ____ of the graph",vertices,edges,trees,levels
-"If vertex A has no neighbours, then it is ____",adjacent,distinct,isolated,incident
-Which of the following is true?,A graph may contain no edges and many vertices,A graph may contain many edges and no vertices,A graph may contain no edges and no vertices,A graph may contain no vertices and many edges
-What is the shortest possible path of this graph from A to E?,A > B > C > E,A > B > C > D > E ,A > C > D > E ,A > B > D > E
+"If vertex A has no neighbours then it is ____",adjacent,distinct,isolated,incident
+Which of the following is TRUE?,A graph may contain no edges and many vertices,A graph may contain many edges and no vertices,A graph may contain no edges and no vertices,A graph may contain no vertices and many edges
+Which of the following is FALSE?,All nodes in a graph have to be connected by an edge, Edges always connect two nodes, If one edge has a weight, all other edges must also have weights, All Trees are directed graphs 
 "If we simplify the map of a town into a graph containing only the locations and streets, what would be the ""weight"" component of the graph?",Street lengths,Locations,Street names,Fast food restraunts
-How many of these graphs have a cycle?,2,0,3,1
+What is the minimum number of edges in a connected graph with 5 nodes?,4,3,2,1
 Which of the following statements about BINARY TREES is NOT true? ,Every binary tree has at least one node,Every non-empty tree has exactly one root node,Every node has at most two children,Every non-root node has exactly one parent
-How many internal nodes are there?,3,6,2,5
-The root node of this tree is ____,A,B,C,D
-What node is the parent of E?,B,C,D,A
+A graph has 4 nodes and 2 edges what could it NOT be classified as?,connected, disconnected, directed, weighted
+What is the minimum number of nodes in a binary tree of height 68?,69,136,34,137
+Depth First Searches involve starting at a node and going as far as possible ____?,downwards,upwards,horizontally,diagonally
 What are leaves?,Nodes with no children ,Nodes with only one child ,Nodes with no siblings,Nodes with no parents
-How many leaves are on this tree?,3,4,0,2
+If a tree has 4 nodes what is the maximum number of leaf nodes it can have?,3,2,1,4
 What is the maximum amount of possible nodes in a binary tree of height 4?,15,16,5,8
 The maximum and minimum number of nodes in a binary tree of height 5 are ____,63 and 6,64 and 5,32 and 6,31 and 5
-What is the level of node E?,3,2,4,5
-iiiiiiiiiiiiiiiiiiii iiiiiiiiiiiiiiiiiii iiiiiiiiiiiiiiiiiiiiiiiiiiiiii iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii iiiiiiiiiiiiiii,correct,wrong,wrong,wrong
+If a node has a depth of 5 what is its level?,4,6,10,11

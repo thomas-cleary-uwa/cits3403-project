@@ -8,15 +8,17 @@
       <th class="page-subheading">Users</th>
     </tr>
   </thead>
+
   {% for user, attempt_count in users %}
   {% if attempt_count > 0 %}
   <tr>
     <td class="page-text">
       <a href="{{ url_for('user_attempts', username=user.username) }}">
-        {{ user.username }}
+      {{ user.username }}
       </a>
     </td>
   </tr>
+
   {% else %}
   <tr>
     <td class="page-text">
@@ -25,7 +27,7 @@
   </tr>
   {% endif %}
   {% endfor %}
-</table>
 
+</table>
 
 {% endblock %}

@@ -1,8 +1,8 @@
-"""
-Creates an SQLite database for testing application.
-Inserts an admin user for the website
-Inserts 3 dummy quiz questions
-Inserts 4 dummy users
+""" 
+
+Sets up the database for the flask application
+Inserts an admin user with username: 'admin' password: 'admin'
+
 """
 
 import os
@@ -18,38 +18,6 @@ from app import db
 from app.models import User, Question, UserStats
 
 
-def add_dummy_users():
-    """ adds users to the database for testing purposes """
-
-    thomas = User(username="thomas", email="thomas@email.com")
-    thomas.set_password("admin")
-    db.session.add(thomas)
-
-    michael = User(username="michael", email="michael@email.com")
-    michael.set_password("admin")
-    db.session.add(michael)
-
-    calvin = User(username="calvin", email="calvin@email.com")
-    calvin.set_password("admin")
-    db.session.add(calvin)
-
-    jason = User(username="jason", email="jason@email.com")
-    jason.set_password("admin")
-    db.session.add(jason)
-
-    db.session.commit()
-
-    thomas_stats = UserStats(user_id=thomas.id)
-    db.session.add(thomas_stats)
-    michael_stats = UserStats(user_id=michael.id)
-    db.session.add(michael_stats)
-    calvin_stats = UserStats(user_id=calvin.id)
-    db.session.add(calvin_stats)
-    jason_stats = UserStats(user_id=jason.id)
-    db.session.add(jason_stats)
-
-    db.session.commit()
-
 
 def add_admin():
     """ adds admin user to database """
@@ -63,7 +31,7 @@ def add_admin():
 def get_quiz_questions():
     """ get quiz questions from INFILE """
 
-    INFILE = "./quiz_questions/clean_quiz_questions.csv"
+    INFILE = "./setup/quiz_questions.csv"
 
     questions = []
 
@@ -137,30 +105,6 @@ def create_database():
     print_start_message("Inserting quiz questions into database")
     add_quiz()
     print_finished_message("quiz inserted")
-
-    print_start_message("Inserting dummy users into database" + \
-    """
-    thomas = User(username="thomas", email="thomas@email.com")
-    thomas.set_password("admin")
-    db.session.add(thomas)
-
-    michael = User(username="michael", email="michael@email.com")
-    michael.set_password("admin")
-    db.session.add(michael)
-
-    calvin = User(username="calvin", email="calvin@email.com")
-    calvin.set_password("admin")
-    db.session.add(calvin)
-
-    jason = User(username="jason", email="jason@email.com")
-    jason.set_password("admin")
-    db.session.add(jason)
-
-    db.session.commit()
-    """
-    )
-    add_dummy_users()
-    print_finished_message("users inserted [thomas, calvin, michael, jason] (password=admin)")
 
 
 def main():

@@ -1,15 +1,11 @@
 {% extends "base_content.html" %}
 
-{% block styleSheets %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
-{% endblock %}
-
 {% block inContainer %}
 
 <h1 class="page-heading">{{ username }}'s attempts</h1>
+
 {% for attempt in user_attempts %}
 <table class="table table-bordered table-results">
-
   <thead>
     <tr>
       <th class="page-subheading table-col-w50">Question</th>
@@ -18,25 +14,23 @@
     </tr>
   </thead>
 
-    {% for attempt_key in attempt_keys %}
-    <tr>
-
+  {% for attempt_key in attempt_keys %}
+  <tr>
     <td class="page-text">{{ attempt[attempt_key]["question"] }}</td>
     <td class="page-text">{{ attempt[attempt_key]["response"] }}</td>
     <td>
       <span class="material-icons md-48 {% if attempt[attempt_key]['mark'] %} correct {% else %} wrong {% endif %}">
-        {% if attempt[attempt_key]["mark"] %}
-        check
-        {% else %}
-        clear
-        {% endif %}
+      {% if attempt[attempt_key]["mark"] %}
+      check
+      {% else %}
+      clear
+      {% endif %}
       </span>
     </td>
-
   </tr>
-    {% endfor %}
-
+  {% endfor %}
 </table>
+
 {% endfor %}
 
 {% endblock %}

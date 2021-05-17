@@ -1,189 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
+    <!-- Page title -->
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>PLEASE PASS A TITLE IN THIS ROUTE</title>
+    {% endif %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Page title -->
-  {% if title %}
-  <title>{{ title }}</title>
-  {% else %}
-  <title>PLEASE PASS A TITLE IN THIS ROUTE</title>
-  {% endif %}
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <!-- Bootstrap CSS-->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Open+Sans&display=swap" rel="stylesheet">
 
-  <!-- Google Material Icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- base_style.css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ezTrees.css') }}">
 
-  <!--Google Fonts-->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Open+Sans&display=swap" rel="stylesheet">  
+    <!-- Insert additional style sheets here -->
+    {% block styleSheets %}{% endblock %}
 
-  <!-- base_style.css -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/ezTrees.css') }}">
+  </head>
 
-
-
-  <!-- Insert additional style sheets here -->
-  {% block styleSheets %}{% endblock %}
-
-</head>
-
-
-<body>
-  <div id="particles-js">
-    <div class="relative" id="logo">
-      <div class="absolute">
-        <a href="{{url_for('index')}}">
-          <img id="logo" src="{{ url_for('static', filename='assets/images/logo.png') }}">
-        </a>
+  <body>
+    <!-- REFERENCE: https://github.com/VincentGarreau/particles.js/ -->
+    <div id="particles-js">
+      <div class="relative" id="logo">
+        <div class="absolute">
+          <a href="{{url_for('index')}}">
+          <img 
+            src="{{ url_for('static', filename='assets/images/logo.png') }}"
+            alt="ezTrees Logo"
+            >
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- Navigation bar for every page -->
 
-  <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="site-navbar">
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Navigation bar for every page -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="site-navbar">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-
-      <!-- Items on the lefft side of the navbar -->
-      <ul class="navbar-nav mr-auto nav-fill" id="left-navbar">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('index') }}">
+        <!-- Items on the lefft side of the navbar -->
+        <ul class="navbar-nav mr-auto nav-fill" id="left-navbar">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('index') }}">
             <span class="material-icons md-36 nav-icon">home</span>
             Home
-          </a>
-        </li>
-        
-        <!-- items a non-admin user will see -->
-        {% if not current_user.is_admin %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('content') }}">
+            </a>
+          </li>
+
+          <!-- items a non-admin user will see -->
+          {% if not current_user.is_admin %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('content') }}">
             <span class="material-icons md-36 nav-icon">school</span>
             Learn
-          </a>
-        </li>
-
-        <li class="nav-item">
-          {% if current_user.has_saved_attempt %}
-          <a class="nav-link" href="{{ url_for('quiz_questions') }}">
-          {% else %}
-          <a class="nav-link" href="{{ url_for('quiz') }}">
-          {% endif %}
+            </a>
+          </li>
+          <li class="nav-item">
+            {% if current_user.has_saved_attempt %}
+            <a class="nav-link" href="{{ url_for('quiz_questions') }}">
+            {% else %}
+            <a class="nav-link" href="{{ url_for('quiz') }}">
+            {% endif %}
             <span class="material-icons md-36 nav-icon">bubble_chart</span>
             Quiz
-          </a>
-        </li>
+            </a>
+          </li>
 
-        <!-- items an admin user will see -->
-        {% elif current_user.is_admin and current_user.is_authenticated%}
-        <li class="nav-item">
-          <a class="nav-link" href="/admin">
+          <!-- items an admin user will see -->
+          {% elif current_user.is_admin and current_user.is_authenticated%}
+          <li class="nav-item">
+            <a class="nav-link" href="/admin">
             <span class="material-icons md-36 nav-icon">handyman</span>
             Database Tools
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('user_stats') }}">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('user_stats') }}">
             <span class="material-icons md-36 nav-icon">insights</span>
             User Statistics
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('user_attempts', username='all') }}">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('user_attempts', username='all') }}">
             <span class="material-icons md-36 nav-icon">assessment</span>
             User Attempts
-          </a>
-        </li>
-        {% endif %}  
-      </ul>
+            </a>
+          </li>
+          {% endif %}  
+        </ul>
 
+        <!-- Items on the right side of the navbar -->
+        <ul class="navbar-nav ml-auto nav-fill" id="right-navbar">
 
-      <!-- Items on the right side of the navbar -->
-      <ul class="navbar-nav ml-auto nav-fill" id="right-navbar">
-        
-        <!-- items a user who is not logged in will see -->
-        {% if current_user.is_anonymous %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('register') }}">
+          <!-- items a user who is not logged in will see -->
+          {% if current_user.is_anonymous %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('register') }}">
             <span class="material-icons md-36 nav-icon">face</span>
             Sign Up
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('login') }}">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('login') }}">
             <span class="material-icons md-36 nav-icon">login</span>
             Sign In
-          </a>
-        </li>
-        
-        <!-- items a logged in user will see-->
-        {% elif current_user.is_authenticated %}
+            </a>
+          </li>
+
+          <!-- items a logged in user will see-->
+          {% elif current_user.is_authenticated %}
           <!-- items a non-admin user will see -->
           {% if not current_user.is_admin %}
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('user', username=current_user.username) }}">
-              <span class="material-icons md-36 nav-icon">account_circle</span>
-              Profile
+            <span class="material-icons md-36 nav-icon">account_circle</span>
+            Profile
             </a>
           </li>
           {% endif %}
-
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('logout') }}">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('logout') }}">
             <span class="material-icons md-36 nav-icon">logout</span>
             Sign Out
-          </a>
-        </li>
-        {% endif %}
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
 
-      </ul>
-    </div>
-  </nav>
+    <!-- Show flashed messages under the navbar but above content -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
 
-  <!-- Show flashed messages under the navbar but above content -->
-  {% with messages = get_flashed_messages() %}
-  {% if messages %}
-  <ul>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %}
-  {% endwith %}
+    <!-- Insert page content here -->
+    {% block content %}{% endblock %}
 
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 
-<!-- Insert page content here -->
-{% block content %}{% endblock %}
+    <!-- REFERENCE: https://github.com/VincentGarreau/particles.js/ -->
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+      particlesJS.load('particles-js', "{{url_for('static', filename='assets/json/particlesjs-config.json') }}", function() {
+      console.log('callback - particles.js config loaded');
+      });
+    </script>
 
+    <script src="{{ url_for('static', filename='js/ezTrees.js') }}"></script>
 
-  <!-- Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <!-- Insert additional scripts here -->
+    {% block scripts %}{% endblock %}
 
-<!-- Particles.js -->
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script>
-  particlesJS.load('particles-js', "{{url_for('static', filename='assets/json/particlesjs-config.json') }}", function() {
-  console.log('callback - particles.js config loaded');
-  });
-</script>
-
-  <!-- Insert additional scripts here -->
-  {% block scripts %}{% endblock %}
-
-</body>
+  </body>
+  
 </html>

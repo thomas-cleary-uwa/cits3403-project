@@ -1,24 +1,23 @@
 {% extends "base_content.html" %}
 
 {% block inContainer %}
-    <div class="div-centered" id="quizIntro">
-      <h1 class="page-heading">ezTrees Quiz</h1>
-      <button 
-      class="btn btn-primary btn-lg shadow-none"
-      id="start" 
-      onclick=startQuizClick()>
-        {% if current_user.has_saved_attempt %}
-        Resume Quiz
-        {% else %}
-        Start Quiz
-        {% endif %}
-      </button>
-    </div>
 
-    <script>
-        function startQuizClick() {
-            window.location.href="{{ url_for('quiz_questions') }}";
-        }
-    </script>
+<div class="div-centered" id="quizIntro">
+
+  <h1 class="page-heading">ezTrees Quiz</h1>
+
+  <button 
+  class="btn btn-primary btn-lg shadow-none"
+  id="start" 
+  onclick=sendToPage({{ url_for('quiz_questions') }})
+  >
+  {% if current_user.has_saved_attempt %}
+  Resume Quiz
+  {% else %}
+  Start Quiz
+  {% endif %}
+  </button>
+  
+</div>
 
 {% endblock %}
