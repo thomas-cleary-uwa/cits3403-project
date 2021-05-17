@@ -7,15 +7,15 @@
 
     <p class="page-heading">Sign In</p>
 
-    <form class="form-signin" action="" method="post" novalidate>
+    <form class="form-signin" method="post" novalidate>
       {{ form.hidden_tag() }}
 
       <div class="form-group my-5">
-          {{ form.username.label(class_="page-subheading") }}<br>
-          {{ form.username(size=32, class_="form-control form-control-lg input") }}<br>
-          {% for error in form.username.errors %}
-          <span class="wrong">[{{ error }}]</span>
-          {% endfor %}
+        {{ form.username.label(class_="page-subheading") }}<br>
+        {{ form.username(size=32, class_="form-control form-control-lg input") }}<br>
+        {% for error in form.username.errors %}
+        <span class="wrong">[{{ error }}]</span>
+        {% endfor %}
       </div>
 
       <div class="form-group my-5">
@@ -29,17 +29,12 @@
       <div class="form-group">
         {{ form.submit(class_="btn btn-block btn-primary btn-lg shadow-none") }}
       </div>
+
     </form>
 
     <a class="form-link" href="{{ url_for('register') }}">Don't have an account?</a>
 
-
   </div>
 </div>
-
-    
-    
-  
-
 
 {% endblock %}
