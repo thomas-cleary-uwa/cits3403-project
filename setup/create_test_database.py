@@ -1,7 +1,7 @@
 """
 Creates an SQLite database for testing application.
 Inserts an admin user for the website
-Inserts 3 dummy quiz questions
+Inserts quiz questions
 Inserts 4 dummy users
 """
 
