@@ -3,20 +3,23 @@
 {% block inContainer %}
 
 <div class="div-centered">
-  <img src="{{ user.get_avatar(256) }}">
+  <img src="{{ user.get_avatar(256) }}" alt="Your Profile Picture">
   <h1 class="page-heading" id="profile-heading">{{ current_user.username }}</h1>
 </div>
 
 <table class="table table-bordered table-results" id="user-stats-table">
   <thead>
-    <th class="page-subheading table-col-w33">Number of Logins</th>
-    <th class="page-subheading table-col-w33">Average Score</th>
-    <th class="page-subheading table-col-w33">Highest Score</th>
+    <tr>
+      <th class="page-subheading table-col-w33">Number of Logins</th>
+      <th class="page-subheading table-col-w33">Average Score</th>
+      <th class="page-subheading table-col-w33">Highest Score</th>
+    </tr>
   </thead>
+
   <tr>
     <td class="page-text">{{ user_stats.num_logins }}</td>
     <td class="page-text">
-      {% if user_stats.average_score %}
+      {% if user_stats.num_quiz_attempts > 0 %}
       {{ user_stats.average_score }}%
       {% else %}
       Quiz Not Completed
@@ -32,19 +35,21 @@
   </tr>
 </table>
 
-
 {% if user_stats.num_quiz_attempts > 0 %}
 <table class="table table-bordered table-results">
   <thead>
-    <th class="page-subheading table-col-w33">Attempt ID</th>
-    <th class="page-subheading table-col-w33">Score</th>
-    <th class="page-subheading table-col-w33">Attempt Date</th>
+    <tr>
+      <th class="page-subheading table-col-w33">Attempt ID</th>
+      <th class="page-subheading table-col-w33">Score</th>
+      <th class="page-subheading table-col-w33">Attempt Date</th>
+    </tr>
   </thead>
+
   {% for attempt in attempts %}
   <tr>
     <td class="page-text">
       <a href="{{ url_for('result', score=attempt.score, attempt_id=attempt.id) }}">
-        View Attempt - {{ attempt.id }}
+      View Attempt - {{ attempt.id }}
       </a>
     </td>
     <td class="page-text">
@@ -56,16 +61,16 @@
       {{ attempt.attempt_datetime.year }}
     </td>
   </tr>
-{% endfor %}
+  {% endfor %}
 
-{% else %}
-<div class="div-centered">
-<p class="page-subheading">
-<a href="{{ url_for('quiz') }}">Click here to attempt the quiz.</a>
-</p>
-</div>
-{% endif %}
+  {% else %}
+  <div class="div-centered">
+    <p class="page-subheading">
+      <a href="{{ url_for('quiz') }}">Click here to attempt the quiz.</a>
+    </p>
+  </div>
+  {% endif %}
+
 </table>
-
 
 {% endblock %}
