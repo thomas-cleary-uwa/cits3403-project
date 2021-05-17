@@ -148,6 +148,6 @@ credentials:
 
 
 ## Git Logs
-The git logs have been included in a seperate file, "git-log.txt"
+The git logs have been included in a seperate file, "git.log"
 <br><br>
 
