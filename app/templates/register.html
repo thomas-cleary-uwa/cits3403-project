@@ -2,56 +2,55 @@
 
 {% block inContainer %}
 
-  <div class="row justify-content-center">
-    <div class="col-sm-6 align-self-start p-3 form-col">
+<div class="row justify-content-center">
+  <div class="col-sm-6 align-self-start p-3 form-col">
 
-      <p class="page-heading">Sign Up</p>
+    <p class="page-heading">Sign Up</p>
 
-      <form class="form-signin" action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
+    <form class="form-signin" method="post" novalidate>
+      {{ form.hidden_tag() }}
 
-        <div class="form-group">
-            {{ form.username.label(class_="page-subheading") }}<br>
-            {{ form.username(size=32, class_="form-control form-control-lg input") }}<br>
-            {% for error in form.username.errors %}
-            <span class="wrong">[{{ error }}]</span>
-            {% endfor %}
-        </div>
+      <div class="form-group">
+        {{ form.username.label(class_="page-subheading") }}<br>
+        {{ form.username(size=32, class_="form-control form-control-lg input") }}<br>
+        {% for error in form.username.errors %}
+        <span class="wrong">[{{ error }}]</span>
+        {% endfor %}
+      </div>
 
-        <div class="form-group">
-          {{ form.email.label(class_="page-subheading") }}<br>
-          {{ form.email(size=64, class_="form-control form-control-lg input") }}<br>
-          {% for error in form.email.errors %}
-          <span class="wrong">[{{ error }}]</span>
-          {% endfor %}
-        </div>
+      <div class="form-group">
+        {{ form.email.label(class_="page-subheading") }}<br>
+        {{ form.email(size=64, class_="form-control form-control-lg input") }}<br>
+        {% for error in form.email.errors %}
+        <span class="wrong">[{{ error }}]</span>
+        {% endfor %}
+      </div>
 
-        <div class="form-group">
-          {{ form.password.label(class_="page-subheading") }}<br>
-          {{ form.password(size=32, class_="form-control form-control-lg input") }}<br>
-          {% for error in form.password.errors %}
-          <span class="wrong">[{{ error }}]</span>
-          {% endfor %}
-        </div>
+      <div class="form-group">
+        {{ form.password.label(class_="page-subheading") }}<br>
+        {{ form.password(size=32, class_="form-control form-control-lg input") }}<br>
+        {% for error in form.password.errors %}
+        <span class="wrong">[{{ error }}]</span>
+        {% endfor %}
+      </div>
 
-        <div class="form-group">
-          {{ form.password_repeat.label(class_="page-subheading") }}<br>
-          {{ form.password_repeat(size=32, class_="form-control form-control-lg input") }}<br>
-          {% for error in form.password_repeat.errors %}
-          <span class="wrong">[{{ error }}]</span>
-          {% endfor %}
-        </div>
+      <div class="form-group">
+        {{ form.password_repeat.label(class_="page-subheading") }}<br>
+        {{ form.password_repeat(size=32, class_="form-control form-control-lg input") }}<br>
+        {% for error in form.password_repeat.errors %}
+        <span class="wrong">[{{ error }}]</span>
+        {% endfor %}
+      </div>
 
-        <div class="form-group">
-          {{ form.submit(class_="btn btn-block btn-primary btn-lg shadow-none") }}
-        </div>
-      </form>
-      
-      <a class="form-link" href="{{ url_for('login') }}">Already registered?</a>
+      <div class="form-group">
+        {{ form.submit(class_="btn btn-block btn-primary btn-lg shadow-none") }}
+      </div>
 
-    </div>
+    </form>
+
+    <a class="form-link" href="{{ url_for('login') }}">Already registered?</a>
+
   </div>
-
-
+</div>
 
 {% endblock %}
