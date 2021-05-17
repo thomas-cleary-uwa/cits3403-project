@@ -1,0 +1,96 @@
+{% extends "base_content.html" %}
+
+{% block inContainer %}
+
+<h1 class="page-heading">User Statistics</h1>
+
+<table class="table table-bordered table-results">
+  <thead>
+    <tr>
+      <th colspan="2" class="page-heading table-col-w50 ">All Users</th>
+    </tr>
+  </thead>
+
+  <thead>
+  <tr>
+    <th class="page-subheading">Total Logins</th>
+    <th class="page-subheading">Average Score</th>
+  </tr>
+  </thead>
+
+  <tr>
+    <td class="page-text">{{ totals["login_attempts"] }}</td>
+    {% if not totals["average"] and totals["average"] != 0 %}
+    <td class="page-text">No one has attempted the quiz</td>
+    {% else %}
+    <td class="page-text">{{ totals["average"] }}%</td>
+    {%  endif  %}
+  </tr>
+</table>
+
+
+{% for user, stats in user_info %}
+<table class="table table-bordered table-results">
+  <thead>
+    <tr>
+      <th colspan="3" class="page-heading  table-col-w50">
+
+        {% if stats.num_quiz_attempts > 0 %}
+        <a href="{{ url_for('user_attempts', username=user.username) }}">
+          {{ user.username}}
+        </a>
+
+        {% else %}
+        {{ user.username}}
+
+        {% endif %}
+      </th>
+    </tr>
+  </thead>
+
+
+  <thead>
+    <tr>
+      <th class="page-text page-subheading table-col-w33">Registered On</th>
+      <th class="page-text page-subheading table-col-w33">Last Seen</th>
+      <th class="page-text page-subheading table-col-w33">Login Count</th>
+    </tr>
+  </thead>
+
+  <tr>
+    <td class="page-text">
+      {{ stats.registered_on.day }} - 
+      {{ stats.registered_on.month }} - 
+      {{ stats.registered_on.year }}
+    </td>
+    <td class="page-text">
+      {{ stats.last_seen.day }} - 
+      {{ stats.last_seen.month }} - 
+      {{ stats.last_seen.year }}
+    </td>
+    <td class="page-text">{{ stats.num_logins }}</td>
+  </tr>
+
+  <thead>
+    <tr>
+      <th class="page-text page-subheading table-col-w33"># of Quiz Attempts</th>
+      <th class="page-text page-subheading table-col-w33">Highest Score</th>
+      <th class="page-text page-subheading table-col-w33">Average</th>
+    </tr>
+  </thead>
+
+  <tr>
+    <td class="page-text">{{ stats.num_quiz_attempts }}</td>
+    {% if not stats.highest_score and stats.highest_score != 0%}
+    <td class="page-text">No attempts</td>
+    <td class="page-text">No attempts</td>
+    {% else %}
+    <td class="page-text">{{ stats.highest_score }}%</td>
+    <td class="page-text">{{ stats.average_score }}%</td>
+    {% endif %}
+  </tr>
+</table>
+
+{% endfor %}
+
+{% endblock %}

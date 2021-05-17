@@ -1,0 +1,71 @@
+{% extends "base_content.html" %}
+
+{% block inContainer %}
+
+<div class="div-centered">
+  <img src="{{ user.get_avatar(256) }}">
+  <h1 class="page-heading" id="profile-heading">{{ current_user.username }}</h1>
+</div>
+
+<table class="table table-bordered table-results" id="user-stats-table">
+  <thead>
+    <th class="page-subheading table-col-w33">Number of Logins</th>
+    <th class="page-subheading table-col-w33">Average Score</th>
+    <th class="page-subheading table-col-w33">Highest Score</th>
+  </thead>
+  <tr>
+    <td class="page-text">{{ user_stats.num_logins }}</td>
+    <td class="page-text">
+      {% if user_stats.average_score %}
+      {{ user_stats.average_score }}%
+      {% else %}
+      Quiz Not Completed
+      {% endif %}
+    </td>
+    <td class="page-text">
+      {% if user_stats.average_score %}
+      {{ user_stats.highest_score }}%
+      {% else %}
+      Quiz Not Completed
+      {% endif %}
+    </td>
+  </tr>
+</table>
+
+
+{% if user_stats.num_quiz_attempts > 0 %}
+<table class="table table-bordered table-results">
+  <thead>
+    <th class="page-subheading table-col-w33">Attempt ID</th>
+    <th class="page-subheading table-col-w33">Score</th>
+    <th class="page-subheading table-col-w33">Attempt Date</th>
+  </thead>
+  {% for attempt in attempts %}
+  <tr>
+    <td class="page-text">
+      <a href="{{ url_for('result', score=attempt.score, attempt_id=attempt.id) }}">
+        View Attempt - {{ attempt.id }}
+      </a>
+    </td>
+    <td class="page-text">
+      {{ attempt.score }}%
+    </td>
+    <td class="page-text">
+      {{ attempt.attempt_datetime.day }} - 
+      {{ attempt.attempt_datetime.month }} -
+      {{ attempt.attempt_datetime.year }}
+    </td>
+  </tr>
+{% endfor %}
+
+{% else %}
+<div class="div-centered">
+<p class="page-subheading">
+<a href="{{ url_for('quiz') }}">Click here to attempt the quiz.</a>
+</p>
+</div>
+{% endif %}
+</table>
+
+
+{% endblock %}
