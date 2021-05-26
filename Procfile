@@ -1,1 +1,1 @@
-web: gunicorn eztrees:app;
+web: flask db upgrade; gunicorn eztrees:app;
