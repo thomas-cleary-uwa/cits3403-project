@@ -5,17 +5,17 @@ Inserts an admin user with username: 'admin' password: 'admin'
 
 """
 
-import os
-import sys
+# import os
+# import sys
 import csv
 
-# add app to Python PATH variable
-currentDir = os.path.dirname(os.path.realpath(__file__))
-parentdir = os.path.dirname(currentDir)
-sys.path.insert(0, parentdir)
+# # add app to Python PATH variable
+# currentDir = os.path.dirname(os.path.realpath(__file__))
+# parentdir = os.path.dirname(currentDir)
+# sys.path.insert(0, parentdir)
 
 from app import db
-from app.models import User, Question, UserStats
+from app.models import User, Question
 
 
 
@@ -31,7 +31,7 @@ def add_admin():
 def get_quiz_questions():
     """ get quiz questions from INFILE """
 
-    INFILE = "./quiz_questions.csv"
+    INFILE = "quiz_questions.csv"
 
     questions = []
 

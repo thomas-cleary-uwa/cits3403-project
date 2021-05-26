@@ -1,1 +1,1 @@
-web: flask db init; flask db migrate; flask db upgrade; python setup/setup_application.py; gunicorn eztrees:app;
+web: flask db init; flask db migrate; flask db upgrade; python setup_application.py; gunicorn eztrees:app;
