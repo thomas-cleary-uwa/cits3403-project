@@ -78,18 +78,6 @@ def print_finished_message(message=None):
 
 
 def create_database():
-    """ creates database for the website """
-    print_start_message("Initialising Database [ flask db init ]")
-    os.system("flask db init")
-    print_finished_message("Database initialised")
-
-    print_start_message("Creating database migration script [ flask db migrate ]")
-    os.system("flask db migrate")
-    print_finished_message("Database migrated")
-
-    print_start_message("Upgrading database [ flask db upgrade ]")
-    os.system("flask db upgrade")
-    print_finished_message("Database upgraded")
 
     print_start_message("Inserting admin user into database" + \
     """
@@ -108,7 +96,6 @@ def create_database():
 
 
 def main():
-    """ only run this file when you don't have a migrations folder and app.db """
     create_database()
 
 
