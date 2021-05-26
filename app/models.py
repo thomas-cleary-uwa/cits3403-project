@@ -72,7 +72,7 @@ class UserStats(db.Model):
     # quiz attempt stats
     num_quiz_attempts = db.Column(db.Integer, default=0)
     highest_score     = db.Column(db.Integer, default=None)
-    average_score     = db.Column(db.Integer, default=None)
+    average_score     = db.Column(db.Integer, default=None) 
 
 
     def __repr__(self):
