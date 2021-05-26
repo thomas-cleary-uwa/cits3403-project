@@ -31,7 +31,7 @@ def add_admin():
 def get_quiz_questions():
     """ get quiz questions from INFILE """
 
-    INFILE = "./setup/quiz_questions.csv"
+    INFILE = "./quiz_questions.csv"
 
     questions = []
 
