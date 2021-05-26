@@ -87,8 +87,8 @@ def create_database():
     db.session.commit()"
     """
     )
-    add_admin()
-    print_finished_message("admin inserted [Username='admin', Password='admin']")
+    # add_admin()
+    # print_finished_message("admin inserted [Username='admin', Password='admin']")
 
     print_start_message("Inserting quiz questions into database")
     add_quiz()
